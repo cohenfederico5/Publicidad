@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fresquito's — Panel de Administración</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=Oswald:wght@400;500;600;700&family=Lora:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --red: #C94B2C;
+    --red-dark: #A33820;
+    --cream: #F5EDD6;
+    --cream-dark: #EAD9B4;
+    --yellow: #E8C547;
+    --yellow-light: #F2D97A;
+    --brown: #3D1F0A;
+    --brown-mid: #6B3A1F;
+    --brown-light: #8B5233;
+    --white: #FDFAF2;
+    --text: #2C1505;
+    --surface: #2A1508;
+    --surface-raised: #331A0A;
+    --border: rgba(232,197,71,0.12);
+    --border-mid: rgba(232,197,71,0.22);
+  }
+
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html, body { height:100%; }
+  body { font-family:'Lora',serif; background:var(--surface); color:var(--cream); overflow-x:hidden; }
+
+  /* LOGIN */
+  #loginScreen {
+    position:fixed; inset:0; background:var(--brown);
+    display:flex; align-items:center; justify-content:center; z-index:999;
+  }
+  .login-box {
+    width:100%; max-width:360px; padding:48px 40px;
+    border:2px solid var(--border-mid); background:var(--surface);
+    text-align:center;
+  }
+  .login-logo { font-family:'Playfair Display',serif; font-size:1.8rem; font-style:italic; color:var(--yellow); margin-bottom:4px; }
+  .login-sub { font-family:'Oswald',sans-serif; font-size:0.6rem; letter-spacing:4px; text-transform:uppercase; color:var(--red); margin-bottom:32px; }
+  .login-label { font-family:'Oswald',sans-serif; font-size:0.65rem; letter-spacing:2px; text-transform:uppercase; color:var(--cream-dark); display:block; text-align:left; margin-bottom:6px; }
+  .login-input {
+    width:100%; padding:12px 16px; background:rgba(255,255,255,0.05);
+    border:1px solid var(--border-mid); color:var(--cream);
+    font-family:'Lora',serif; font-size:0.95rem; outline:none;
+    transition:border-color 0.2s; margin-bottom:16px;
+  }
+  .login-input:focus { border-color:var(--yellow); }
+  .login-input.error { border-color:rgba(201,75,44,0.7); }
+  .login-btn {
+    width:100%; padding:13px; font-family:'Oswald',sans-serif;
+    font-size:0.75rem; letter-spacing:2px; text-transform:uppercase;
+    background:var(--yellow); color:var(--brown); border:none;
+    cursor:pointer; font-weight:700; transition:background 0.2s;
+    clip-path:polygon(6px 0%,100% 0%,calc(100% - 6px) 100%,0% 100%);
+  }
+  .login-btn:hover { background:var(--yellow-light); }
+  .login-error { font-family:'Oswald',sans-serif; font-size:0.65rem; letter-spacing:1px; color:#e07060; margin-top:10px; display:none; }
+  .login-error.visible { display:block; }
+
+  /* LAYOUT */
+  #app { display:none; height:100vh; flex-direction:column; }
+  #app.visible { display:flex; }
+
+  /* TOPBAR */
+  .topbar {
+    height:56px; background:var(--brown); border-bottom:2px solid var(--yellow);
+    display:flex; align-items:center; justify-content:space-between;
+    padding:0 32px; flex-shrink:0;
+  }
+  .topbar-logo { font-family:'Playfair Display',serif; font-size:1.2rem; font-style:italic; color:var(--yellow); }
+  .topbar-logo span { font-family:'Oswald',sans-serif; font-size:0.6rem; letter-spacing:3px; text-transform:uppercase; color:var(--cream-dark); margin-left:10px; vertical-align:middle; }
+  .topbar-right { display:flex; align-items:center; gap:16px; }
+  .topbar-badge { font-family:'Oswald',sans-serif; font-size:0.6rem; letter-spacing:2px; text-transform:uppercase; color:var(--cream-dark); }
+  .btn-logout {
+    font-family:'Oswald',sans-serif; font-size:0.65rem; letter-spacing:2px;
+    text-transform:uppercase; background:none; border:1px solid var(--border-mid);
+    color:var(--cream-dark); padding:7px 16px; cursor:pointer; transition:all 0.2s;
+  }
+  .btn-logout:hover { border-color:var(--red); color:var(--red); }
+
+  /* MAIN */
+  .main { display:flex; flex:1; overflow:hidden; }
+
+  /* SIDEBAR */
+  .sidebar {
+    width:220px; background:var(--surface); border-right:1px solid var(--border);
+    padding:24px 0; flex-shrink:0; display:flex; flex-direction:column; gap:4px;
+  }
+  .sidebar-section { font-family:'Oswald',sans-serif; font-size:0.55rem; letter-spacing:3px; text-transform:uppercase; color:var(--brown-light); padding:0 20px; margin:16px 0 6px; }
+  .sidebar-section:first-child { margin-top:0; }
+  .nav-item {
+    display:flex; align-items:center; gap:10px; padding:10px 20px;
+    font-family:'Oswald',sans-serif; font-size:0.75rem; letter-spacing:1px;
+    text-transform:uppercase; color:var(--cream-dark); cursor:pointer;
+    transition:all 0.15s; border-left:2px solid transparent; background:none; border-right:none; border-top:none; border-bottom:none; width:100%; text-align:left;
+  }
+  .nav-item:hover { color:var(--cream); background:rgba(255,255,255,0.04); }
+  .nav-item.active { color:var(--yellow); border-left-color:var(--yellow); background:rgba(232,197,71,0.06); }
+  .nav-item-icon { font-size:1rem; width:20px; text-align:center; }
+  .nav-badge {
+    margin-left:auto; font-family:'Oswald',sans-serif; font-size:0.6rem;
+    background:var(--red); color:var(--cream); padding:2px 7px; border-radius:10px; font-weight:700;
+  }
+
+  /* CONTENT */
+  .content { flex:1; overflow-y:auto; padding:32px; }
+
+  /* PANELS */
+  .panel { display:none; }
+  .panel.active { display:block; }
+
+  /* PAGE HEADER */
+  .page-header { margin-bottom:28px; }
+  .page-title { font-family:'Playfair Display',serif; font-size:1.6rem; font-style:italic; color:var(--cream); margin-bottom:4px; }
+  .page-subtitle { font-family:'Oswald',sans-serif; font-size:0.65rem; letter-spacing:2px; text-transform:uppercase; color:var(--brown-light); }
+
+  /* STATS ROW */
+  .stats-row { display:flex; gap:16px; margin-bottom:28px; flex-wrap:wrap; }
+  .stat-card {
+    background:var(--surface-raised); border:1px solid var(--border);
+    padding:20px 24px; flex:1; min-width:140px;
+  }
+  .stat-label { font-family:'Oswald',sans-serif; font-size:0.6rem; letter-spacing:2px; text-transform:uppercase; color:var(--brown-light); margin-bottom:8px; }
+  .stat-value { font-family:'Oswald',sans-serif; font-size:2rem; font-weight:700; color:var(--yellow); line-height:1; }
+  .stat-sub { font-size:0.78rem; color:var(--cream-dark); margin-top:4px; }
+
+  /* TOOLBAR */
+  .toolbar { display:flex; align-items:center; justify-content:space-between; margin-bottom:16px; flex-wrap:wrap; gap:12px; }
+  .toolbar-left { display:flex; gap:10px; align-items:center; }
+  .search-input {
+    padding:9px 14px; background:rgba(255,255,255,0.05); border:1px solid var(--border-mid);
+    color:var(--cream); font-family:'Lora',serif; font-size:0.85rem; outline:none;
+    transition:border-color 0.2s; width:220px;
+  }
+  .search-input:focus { border-color:var(--yellow); }
+  .search-input::placeholder { color:rgba(245,237,214,0.3); }
+  .btn-export {
+    font-family:'Oswald',sans-serif; font-size:0.65rem; letter-spacing:2px; text-transform:uppercase;
+    background:none; border:1px solid var(--border-mid); color:var(--cream-dark);
+    padding:9px 18px; cursor:pointer; transition:all 0.2s;
+  }
+  .btn-export:hover { border-color:var(--yellow); color:var(--yellow); }
+  .btn-clear-all {
+    font-family:'Oswald',sans-serif; font-size:0.65rem; letter-spacing:2px; text-transform:uppercase;
+    background:none; border:1px solid rgba(201,75,44,0.3); color:rgba(201,75,44,0.7);
+    padding:9px 18px; cursor:pointer; transition:all 0.2s;
+  }
+  .btn-clear-all:hover { border-color:var(--red); color:var(--red); }
+
+  /* TABLE */
+  .table-wrap { overflow-x:auto; }
+  table { width:100%; border-collapse:collapse; }
+  thead th {
+    font-family:'Oswald',sans-serif; font-size:0.6rem; letter-spacing:2px; text-transform:uppercase;
+    color:var(--brown-light); padding:10px 16px; text-align:left;
+    border-bottom:1px solid var(--border-mid); white-space:nowrap;
+  }
+  tbody tr { border-bottom:1px solid var(--border); transition:background 0.15s; }
+  tbody tr:hover { background:rgba(255,255,255,0.03); }
+  tbody td { padding:12px 16px; font-size:0.85rem; color:var(--cream-dark); vertical-align:top; }
+  td.td-main { color:var(--cream); font-weight:500; }
+  td.td-email { font-family:'Lora',serif; font-size:0.82rem; }
+  td.td-fecha { font-family:'Oswald',sans-serif; font-size:0.7rem; letter-spacing:0.5px; color:var(--brown-light); white-space:nowrap; }
+  .empty-state { text-align:center; padding:60px 20px; }
+  .empty-state-icon { font-size:3rem; margin-bottom:16px; opacity:0.4; }
+  .empty-state-text { font-family:'Oswald',sans-serif; font-size:0.75rem; letter-spacing:2px; text-transform:uppercase; color:var(--brown-light); }
+
+  /* ESTADO BADGE */
+  .estado-badge {
+    font-family:'Oswald',sans-serif; font-size:0.6rem; letter-spacing:1px; text-transform:uppercase;
+    padding:3px 10px; font-weight:700; cursor:pointer; border:none; transition:all 0.2s;
+  }
+  .estado-pendiente { background:rgba(232,197,71,0.15); color:var(--yellow); }
+  .estado-contactado { background:rgba(60,160,80,0.15); color:#6dcc88; }
+  .estado-pendiente:hover { background:rgba(232,197,71,0.25); }
+  .estado-contactado:hover { background:rgba(60,160,80,0.25); }
+
+  /* ACCION */
+  .btn-delete {
+    font-family:'Oswald',sans-serif; font-size:0.6rem; letter-spacing:1px; text-transform:uppercase;
+    background:none; border:1px solid rgba(201,75,44,0.25); color:rgba(201,75,44,0.6);
+    padding:4px 10px; cursor:pointer; transition:all 0.2s;
+  }
+  .btn-delete:hover { border-color:var(--red); color:var(--red); background:rgba(201,75,44,0.08); }
+
+  /* MENSAJE EXPANDIBLE */
+  .td-mensaje { max-width:220px; }
+  .mensaje-text { font-size:0.82rem; color:var(--cream-dark); line-height:1.5; white-space:pre-wrap; word-break:break-word; }
+  .mensaje-empty { font-size:0.75rem; color:var(--brown-light); font-style:italic; }
+
+  /* CONFIRM MODAL */
+  .modal-overlay {
+    position:fixed; inset:0; background:rgba(0,0,0,0.6); z-index:500;
+    display:none; align-items:center; justify-content:center;
+  }
+  .modal-overlay.visible { display:flex; }
+  .modal-box { background:var(--surface-raised); border:1px solid var(--border-mid); padding:36px 40px; max-width:340px; width:100%; text-align:center; }
+  .modal-title { font-family:'Playfair Display',serif; font-size:1.1rem; font-style:italic; color:var(--cream); margin-bottom:10px; }
+  .modal-body { font-size:0.85rem; color:var(--cream-dark); line-height:1.6; margin-bottom:24px; }
+  .modal-actions { display:flex; gap:10px; justify-content:center; }
+  .modal-cancel { font-family:'Oswald',sans-serif; font-size:0.68rem; letter-spacing:2px; text-transform:uppercase; background:none; border:1px solid var(--border-mid); color:var(--cream-dark); padding:10px 20px; cursor:pointer; }
+  .modal-confirm { font-family:'Oswald',sans-serif; font-size:0.68rem; letter-spacing:2px; text-transform:uppercase; background:var(--red); color:var(--cream); border:none; padding:10px 20px; cursor:pointer; }
+
+  /* RESPONSIVE */
+  @media(max-width:640px) {
+    .sidebar { display:none; }
+    .content { padding:20px 16px; }
+    .stats-row { flex-direction:column; }
+    .search-input { width:100%; }
+  }
+</style>
+</head>
+<body>
+
+<!-- LOGIN -->
+<div id="loginScreen">
+  <div class="login-box">
+    <div class="login-logo">Fresquito's</div>
+    <div class="login-sub">Panel de Administración</div>
+    <label class="login-label" for="loginPass">Contraseña</label>
+    <input type="password" class="login-input" id="loginPass" placeholder="••••••••" autocomplete="current-password">
+    <button class="login-btn" id="loginBtn">Ingresar</button>
+    <p class="login-error" id="loginError">Contraseña incorrecta</p>
+  </div>
+</div>
+
+<!-- APP -->
+<div id="app">
+
+  <div class="topbar">
+    <div class="topbar-logo">Fresquito's <span>Admin</span></div>
+    <div class="topbar-right">
+      <span class="topbar-badge" id="topbarDate"></span>
+      <button class="btn-logout" id="btnLogout">Salir</button>
+    </div>
+  </div>
+
+  <div class="main">
+    <nav class="sidebar">
+      <span class="sidebar-section">Gestión</span>
+      <button class="nav-item active" data-panel="suscriptores">
+        <span class="nav-item-icon">✉️</span> Suscriptores
+        <span class="nav-badge" id="badgeSusc">0</span>
+      </button>
+      <button class="nav-item" data-panel="mayoristas">
+        <span class="nav-item-icon">🏪</span> Mayoristas
+        <span class="nav-badge" id="badgeMay">0</span>
+      </button>
+    </nav>
+
+    <div class="content">
+
+      <!-- SUSCRIPTORES -->
+      <div class="panel active" id="panel-suscriptores">
+        <div class="page-header">
+          <div class="page-title">Suscriptores</div>
+          <div class="page-subtitle">Lista de espera · emails registrados</div>
+        </div>
+        <div class="stats-row">
+          <div class="stat-card">
+            <div class="stat-label">Total registrados</div>
+            <div class="stat-value" id="statSuscTotal">0</div>
+            <div class="stat-sub">emails en lista</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label">Último registro</div>
+            <div class="stat-value" style="font-size:1rem;padding-top:6px;" id="statSuscUltimo">—</div>
+            <div class="stat-sub">fecha</div>
+          </div>
+        </div>
+        <div class="toolbar">
+          <div class="toolbar-left">
+            <input type="text" class="search-input" id="searchSusc" placeholder="Buscar email...">
+          </div>
+          <div style="display:flex;gap:8px;">
+            <button class="btn-export" id="exportSusc">Exportar CSV</button>
+            <button class="btn-clear-all" id="clearSusc">Borrar todo</button>
+          </div>
+        </div>
+        <div class="table-wrap">
+          <table id="tableSusc">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Email</th>
+                <th>Fecha de registro</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody id="tbodySusc"></tbody>
+          </table>
+          <div class="empty-state" id="emptySusc" style="display:none;">
+            <div class="empty-state-icon">✉️</div>
+            <div class="empty-state-text">Sin suscriptores todavía</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- MAYORISTAS -->
+      <div class="panel" id="panel-mayoristas">
+        <div class="page-header">
+          <div class="page-title">Consultas mayoristas</div>
+          <div class="page-subtitle">Formulario de contacto · negocios interesados</div>
+        </div>
+        <div class="stats-row">
+          <div class="stat-card">
+            <div class="stat-label">Total consultas</div>
+            <div class="stat-value" id="statMayTotal">0</div>
+            <div class="stat-sub">recibidas</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label">Pendientes</div>
+            <div class="stat-value" id="statMayPend">0</div>
+            <div class="stat-sub">sin contactar</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label">Contactados</div>
+            <div class="stat-value" id="statMayCont">0</div>
+            <div class="stat-sub">gestionados</div>
+          </div>
+        </div>
+        <div class="toolbar">
+          <div class="toolbar-left">
+            <input type="text" class="search-input" id="searchMay" placeholder="Buscar nombre o email...">
+          </div>
+          <div style="display:flex;gap:8px;">
+            <button class="btn-export" id="exportMay">Exportar CSV</button>
+            <button class="btn-clear-all" id="clearMay">Borrar todo</button>
+          </div>
+        </div>
+        <div class="table-wrap">
+          <table id="tableMay">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Nombre</th>
+                <th>Email</th>
+                <th>Teléfono</th>
+                <th>Tipo de negocio</th>
+                <th>Mensaje</th>
+                <th>Fecha</th>
+                <th>Estado</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody id="tbodyMay"></tbody>
+          </table>
+          <div class="empty-state" id="emptyMay" style="display:none;">
+            <div class="empty-state-icon">🏪</div>
+            <div class="empty-state-text">Sin consultas todavía</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- CONFIRM MODAL -->
+<div class="modal-overlay" id="confirmModal">
+  <div class="modal-box">
+    <div class="modal-title">¿Confirmás?</div>
+    <p class="modal-body" id="modalBody">Esta acción no se puede deshacer.</p>
+    <div class="modal-actions">
+      <button class="modal-cancel" id="modalCancel">Cancelar</button>
+      <button class="modal-confirm" id="modalConfirm">Confirmar</button>
+    </div>
+  </div>
+</div>
+
+<script>
+  const PASSWORD = 'fresquitos2025';
+
+  // --- LOGIN ---
+  function tryLogin() {
+    const val = document.getElementById('loginPass').value;
+    if (val === PASSWORD) {
+      document.getElementById('loginScreen').style.display = 'none';
+      document.getElementById('app').classList.add('visible');
+      sessionStorage.setItem('fq_auth', '1');
+      init();
+    } else {
+      document.getElementById('loginPass').classList.add('error');
+      document.getElementById('loginError').classList.add('visible');
+    }
+  }
+  document.getElementById('loginBtn').addEventListener('click', tryLogin);
+  document.getElementById('loginPass').addEventListener('keydown', e => { if (e.key === 'Enter') tryLogin(); });
+  document.getElementById('loginPass').addEventListener('input', function() {
+    this.classList.remove('error');
+    document.getElementById('loginError').classList.remove('visible');
+  });
+  document.getElementById('btnLogout').addEventListener('click', () => {
+    sessionStorage.removeItem('fq_auth');
+    location.reload();
+  });
+  if (sessionStorage.getItem('fq_auth') === '1') {
+    document.getElementById('loginScreen').style.display = 'none';
+    document.getElementById('app').classList.add('visible');
+    init();
+  }
+
+  // --- NAV ---
+  document.querySelectorAll('.nav-item').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.nav-item').forEach(b => b.classList.remove('active'));
+      document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+      btn.classList.add('active');
+      document.getElementById('panel-' + btn.dataset.panel).classList.add('active');
+    });
+  });
+
+  // --- MODAL ---
+  let modalCallback = null;
+  function showModal(msg, cb) {
+    document.getElementById('modalBody').textContent = msg;
+    document.getElementById('confirmModal').classList.add('visible');
+    modalCallback = cb;
+  }
+  document.getElementById('modalCancel').addEventListener('click', () => {
+    document.getElementById('confirmModal').classList.remove('visible');
+    modalCallback = null;
+  });
+  document.getElementById('modalConfirm').addEventListener('click', () => {
+    document.getElementById('confirmModal').classList.remove('visible');
+    if (modalCallback) { modalCallback(); modalCallback = null; }
+  });
+
+  // --- HELPERS ---
+  function formatFecha(iso) {
+    if (!iso) return '—';
+    const d = new Date(iso);
+    return d.toLocaleDateString('es-AR', { day:'2-digit', month:'2-digit', year:'numeric' }) +
+      ' ' + d.toLocaleTimeString('es-AR', { hour:'2-digit', minute:'2-digit' });
+  }
+  function getSusc() { return JSON.parse(localStorage.getItem('fresquitos_suscriptores') || '[]'); }
+  function getMay()  { return JSON.parse(localStorage.getItem('fresquitos_mayoristas')   || '[]'); }
+  function saveSusc(d) { localStorage.setItem('fresquitos_suscriptores', JSON.stringify(d)); }
+  function saveMay(d)  { localStorage.setItem('fresquitos_mayoristas',   JSON.stringify(d)); }
+
+  function escapeCSV(v) {
+    if (v == null) return '';
+    const s = String(v);
+    return s.includes(',') || s.includes('"') || s.includes('\n') ? '"' + s.replace(/"/g,'""') + '"' : s;
+  }
+  function downloadCSV(rows, filename) {
+    const csv = rows.map(r => r.map(escapeCSV).join(',')).join('\n');
+    const blob = new Blob(['\uFEFF' + csv], { type:'text/csv;charset=utf-8;' });
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = filename;
+    a.click();
+  }
+
+  // --- SUSCRIPTORES ---
+  function renderSusc(filter) {
+    let data = getSusc();
+    if (filter) data = data.filter(d => d.email.toLowerCase().includes(filter.toLowerCase()));
+    const tbody = document.getElementById('tbodySusc');
+    const empty = document.getElementById('emptySusc');
+    tbody.innerHTML = '';
+    if (!data.length) { empty.style.display = 'block'; return; }
+    empty.style.display = 'none';
+    data.forEach((row, i) => {
+      const tr = document.createElement('tr');
+      tr.innerHTML = `
+        <td style="color:var(--brown-light);font-family:'Oswald',sans-serif;font-size:0.7rem;">${i+1}</td>
+        <td class="td-email td-main">${row.email}</td>
+        <td class="td-fecha">${formatFecha(row.fecha)}</td>
+        <td><button class="btn-delete" data-email="${row.email}">Eliminar</button></td>
+      `;
+      tbody.appendChild(tr);
+    });
+    tbody.querySelectorAll('.btn-delete').forEach(btn => {
+      btn.addEventListener('click', () => {
+        showModal(`¿Eliminás a ${btn.dataset.email}?`, () => {
+          let d = getSusc().filter(r => r.email !== btn.dataset.email);
+          saveSusc(d); updateStats(); renderSusc(document.getElementById('searchSusc').value);
+        });
+      });
+    });
+  }
+
+  function updateStatsSusc() {
+    const d = getSusc();
+    document.getElementById('statSuscTotal').textContent = d.length;
+    document.getElementById('badgeSusc').textContent = d.length;
+    const ultimo = d.length ? formatFecha(d[d.length-1].fecha) : '—';
+    document.getElementById('statSuscUltimo').textContent = ultimo;
+  }
+
+  document.getElementById('searchSusc').addEventListener('input', function() { renderSusc(this.value); });
+  document.getElementById('exportSusc').addEventListener('click', () => {
+    const d = getSusc();
+    if (!d.length) return;
+    downloadCSV([['Email','Fecha'], ...d.map(r => [r.email, formatFecha(r.fecha)])], 'suscriptores_fresquitos.csv');
+  });
+  document.getElementById('clearSusc').addEventListener('click', () => {
+    showModal('¿Borrás todos los suscriptores? Esta acción no se puede deshacer.', () => {
+      saveSusc([]); updateStats(); renderSusc('');
+    });
+  });
+
+  // --- MAYORISTAS ---
+  function renderMay(filter) {
+    let data = getMay();
+    if (filter) data = data.filter(d =>
+      d.nombre.toLowerCase().includes(filter.toLowerCase()) ||
+      d.email.toLowerCase().includes(filter.toLowerCase())
+    );
+    const tbody = document.getElementById('tbodyMay');
+    const empty = document.getElementById('emptyMay');
+    tbody.innerHTML = '';
+    if (!data.length) { empty.style.display = 'block'; return; }
+    empty.style.display = 'none';
+    data.forEach((row, i) => {
+      const estadoClass = row.estado === 'contactado' ? 'estado-contactado' : 'estado-pendiente';
+      const estadoLabel = row.estado === 'contactado' ? 'Contactado' : 'Pendiente';
+      const tr = document.createElement('tr');
+      tr.innerHTML = `
+        <td style="color:var(--brown-light);font-family:'Oswald',sans-serif;font-size:0.7rem;">${i+1}</td>
+        <td class="td-main">${row.nombre}</td>
+        <td class="td-email">${row.email}</td>
+        <td style="font-size:0.82rem;">${row.telefono || '<span style="color:var(--brown-light);font-style:italic;">—</span>'}</td>
+        <td style="font-size:0.82rem;">${row.tipo || '—'}</td>
+        <td class="td-mensaje">${row.mensaje ? `<span class="mensaje-text">${row.mensaje}</span>` : '<span class="mensaje-empty">Sin mensaje</span>'}</td>
+        <td class="td-fecha">${formatFecha(row.fecha)}</td>
+        <td><button class="estado-badge ${estadoClass}" data-id="${row.id}">${estadoLabel}</button></td>
+        <td><button class="btn-delete" data-id="${row.id}">Eliminar</button></td>
+      `;
+      tbody.appendChild(tr);
+    });
+    tbody.querySelectorAll('.estado-badge').forEach(btn => {
+      btn.addEventListener('click', () => {
+        let d = getMay();
+        const idx = d.findIndex(r => String(r.id) === String(btn.dataset.id));
+        if (idx < 0) return;
+        d[idx].estado = d[idx].estado === 'contactado' ? 'pendiente' : 'contactado';
+        saveMay(d); updateStats(); renderMay(document.getElementById('searchMay').value);
+      });
+    });
+    tbody.querySelectorAll('.btn-delete').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const row = getMay().find(r => String(r.id) === String(btn.dataset.id));
+        showModal(`¿Eliminás la consulta de ${row ? row.nombre : 'este contacto'}?`, () => {
+          let d = getMay().filter(r => String(r.id) !== String(btn.dataset.id));
+          saveMay(d); updateStats(); renderMay(document.getElementById('searchMay').value);
+        });
+      });
+    });
+  }
+
+  function updateStatsMay() {
+    const d = getMay();
+    const pend = d.filter(r => r.estado === 'pendiente').length;
+    const cont = d.filter(r => r.estado === 'contactado').length;
+    document.getElementById('statMayTotal').textContent = d.length;
+    document.getElementById('statMayPend').textContent = pend;
+    document.getElementById('statMayCont').textContent = cont;
+    document.getElementById('badgeMay').textContent = pend || d.length;
+  }
+
+  document.getElementById('searchMay').addEventListener('input', function() { renderMay(this.value); });
+  document.getElementById('exportMay').addEventListener('click', () => {
+    const d = getMay();
+    if (!d.length) return;
+    downloadCSV(
+      [['Nombre','Email','Teléfono','Tipo de negocio','Mensaje','Fecha','Estado'],
+       ...d.map(r => [r.nombre, r.email, r.telefono, r.tipo, r.mensaje, formatFecha(r.fecha), r.estado])],
+      'mayoristas_fresquitos.csv'
+    );
+  });
+  document.getElementById('clearMay').addEventListener('click', () => {
+    showModal('¿Borrás todas las consultas mayoristas? Esta acción no se puede deshacer.', () => {
+      saveMay([]); updateStats(); renderMay('');
+    });
+  });
+
+  // --- INIT ---
+  function updateStats() { updateStatsSusc(); updateStatsMay(); }
+
+  function init() {
+    const now = new Date();
+    document.getElementById('topbarDate').textContent =
+      now.toLocaleDateString('es-AR', { weekday:'long', day:'numeric', month:'long' });
+    updateStats();
+    renderSusc('');
+    renderMay('');
+  }
+</script>
+</body>
+</html>

@@ -1,0 +1,1080 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fresquito's — Estrategia Completa de Redes Sociales 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Oswald:wght@400;500;600;700&family=Lora:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --red: #C94B2C;
+    --red-dark: #A33820;
+    --cream: #F5EDD6;
+    --cream-dark: #EAD9B4;
+    --yellow: #E8C547;
+    --yellow-light: #F2D97A;
+    --brown: #3D1F0A;
+    --brown-mid: #6B3A1F;
+    --white: #FDFAF2;
+    --text: #2C1505;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Lora', serif;
+    background: #fff;
+    color: var(--text);
+    font-size: 10.5pt;
+    line-height: 1.6;
+  }
+
+  .page {
+    width: 210mm;
+    min-height: 297mm;
+    margin: 0 auto;
+    padding: 18mm 20mm 20mm;
+    background: #fff;
+  }
+
+  /* COVER */
+  .cover {
+    min-height: 297mm;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 18mm 20mm;
+    background: var(--brown);
+    color: var(--cream);
+    page-break-after: always;
+  }
+  .cover-top { border-bottom: 3px solid var(--yellow); padding-bottom: 16px; }
+  .cover-brand {
+    font-family: 'Playfair Display', serif;
+    font-size: 56pt;
+    font-weight: 900;
+    font-style: italic;
+    color: var(--yellow);
+    line-height: 1;
+  }
+  .cover-tagline {
+    font-family: 'Oswald', sans-serif;
+    font-size: 10pt;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    color: var(--cream-dark);
+    margin-top: 8px;
+  }
+  .cover-title {
+    font-family: 'Oswald', sans-serif;
+    font-size: 22pt;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #fff;
+    margin: 40px 0 12px;
+    line-height: 1.2;
+  }
+  .cover-subtitle {
+    font-family: 'Oswald', sans-serif;
+    font-size: 10pt;
+    letter-spacing: 3px;
+    color: var(--cream-dark);
+    text-transform: uppercase;
+  }
+  .cover-index {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(232,197,71,0.3);
+    padding: 16px 20px;
+    margin-top: 32px;
+  }
+  .cover-index-title {
+    font-family: 'Oswald', sans-serif;
+    font-size: 8pt;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--yellow);
+    margin-bottom: 10px;
+  }
+  .cover-index ul {
+    list-style: none;
+    padding: 0;
+    columns: 2;
+    gap: 20px;
+  }
+  .cover-index ul li {
+    font-family: 'Oswald', sans-serif;
+    font-size: 8.5pt;
+    letter-spacing: 1px;
+    color: var(--cream-dark);
+    margin-bottom: 5px;
+  }
+  .cover-index ul li span {
+    color: var(--yellow);
+    margin-right: 6px;
+  }
+  .cover-bottom {
+    border-top: 1px solid rgba(232,197,71,0.3);
+    padding-top: 12px;
+    font-family: 'Oswald', sans-serif;
+    font-size: 7.5pt;
+    letter-spacing: 2px;
+    color: rgba(245,237,214,0.5);
+    text-transform: uppercase;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  /* HEADER (on content pages) */
+  .doc-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 3px solid var(--yellow);
+    padding-bottom: 12px;
+    margin-bottom: 28px;
+  }
+  .doc-header-brand {
+    font-family: 'Playfair Display', serif;
+    font-size: 18pt;
+    font-weight: 900;
+    font-style: italic;
+    color: var(--red);
+  }
+  .doc-header-subtitle {
+    font-family: 'Oswald', sans-serif;
+    font-size: 7pt;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--brown-mid);
+    margin-top: 2px;
+  }
+  .doc-header-label {
+    font-family: 'Oswald', sans-serif;
+    font-size: 7pt;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #999;
+    text-align: right;
+  }
+
+  /* SECTION HEADERS */
+  .section-block {
+    background: var(--red);
+    color: #fff;
+    font-family: 'Oswald', sans-serif;
+    font-size: 13pt;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding: 9px 16px;
+    margin: 32px 0 18px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    page-break-after: avoid;
+  }
+  .section-block .num {
+    background: rgba(255,255,255,0.18);
+    padding: 2px 8px;
+    font-size: 11pt;
+  }
+
+  /* SUBSECTION */
+  h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 12pt;
+    font-weight: 700;
+    color: var(--red);
+    border-bottom: 1.5px solid var(--cream-dark);
+    padding-bottom: 4px;
+    margin: 22px 0 10px;
+    page-break-after: avoid;
+  }
+
+  /* TABLES */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 12px 0 18px;
+    font-size: 9.5pt;
+  }
+  thead tr {
+    background: var(--brown);
+    color: var(--yellow);
+    font-family: 'Oswald', sans-serif;
+    font-size: 8.5pt;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+  thead th {
+    padding: 8px 10px;
+    text-align: left;
+  }
+  tbody tr:nth-child(odd) { background: var(--cream); }
+  tbody tr:nth-child(even) { background: #fff; }
+  tbody td {
+    padding: 7px 10px;
+    vertical-align: top;
+  }
+  tbody td:first-child {
+    font-family: 'Oswald', sans-serif;
+    font-size: 9pt;
+    color: var(--red);
+    font-weight: 600;
+    white-space: nowrap;
+  }
+
+  /* BOXES */
+  .highlight {
+    background: var(--cream);
+    border-left: 4px solid var(--yellow);
+    padding: 12px 14px;
+    margin: 14px 0;
+    font-size: 9.5pt;
+  }
+  .highlight strong { color: var(--red); }
+
+  .gold-box {
+    background: var(--yellow-light);
+    border: 1.5px solid var(--yellow);
+    padding: 12px 14px;
+    margin: 14px 0;
+    font-size: 9.5pt;
+    font-weight: 600;
+  }
+
+  .red-box {
+    background: #fdf0eb;
+    border: 1.5px solid var(--red);
+    padding: 12px 14px;
+    margin: 14px 0;
+    font-size: 9.5pt;
+  }
+  .red-box strong { color: var(--red); }
+
+  /* LISTS */
+  ul {
+    padding-left: 18px;
+    margin: 8px 0 12px;
+  }
+  ul li {
+    margin-bottom: 5px;
+    font-size: 9.5pt;
+  }
+
+  p { margin-bottom: 10px; font-size: 9.5pt; }
+
+  /* PILARES TABLE */
+  .pilares-table td:first-child { white-space: normal; }
+
+  /* TWO COLUMN */
+  .two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin: 12px 0;
+  }
+  .col-box {
+    background: var(--cream);
+    border-top: 3px solid var(--red);
+    padding: 12px 14px;
+  }
+  .col-box h4 {
+    font-family: 'Oswald', sans-serif;
+    font-size: 9.5pt;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--brown);
+    margin-bottom: 8px;
+  }
+  .col-box ul { padding-left: 14px; }
+  .col-box ul li { font-size: 9pt; }
+
+  /* SEGMENTO CARDS */
+  .segmento {
+    border: 1.5px solid var(--cream-dark);
+    margin: 14px 0;
+    overflow: hidden;
+  }
+  .segmento-header {
+    background: var(--brown-mid);
+    color: var(--yellow);
+    font-family: 'Oswald', sans-serif;
+    font-size: 9.5pt;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 7px 14px;
+  }
+  .segmento-body {
+    padding: 10px 14px;
+    background: var(--cream);
+    font-size: 9.5pt;
+  }
+  .segmento-body .perfil {
+    font-style: italic;
+    color: #555;
+    margin-bottom: 6px;
+  }
+  .segmento-body ul { padding-left: 16px; }
+  .segmento-body ul li { margin-bottom: 3px; }
+
+  /* PHASE BLOCKS */
+  .phase {
+    border: 1.5px solid var(--cream-dark);
+    margin: 14px 0;
+    overflow: hidden;
+  }
+  .phase-header {
+    background: var(--brown-mid);
+    color: var(--yellow);
+    font-family: 'Oswald', sans-serif;
+    font-size: 9.5pt;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 7px 14px;
+  }
+  .phase-body {
+    padding: 10px 14px;
+    background: var(--cream);
+    font-size: 9.5pt;
+  }
+  .phase-body ul { padding-left: 16px; }
+  .phase-body ul li { margin-bottom: 4px; }
+
+  /* TOOL CARDS */
+  .tool-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 12px;
+    margin: 14px 0;
+  }
+  .tool-card {
+    border: 1.5px solid var(--cream-dark);
+    padding: 11px 12px;
+    background: #fff;
+  }
+  .tool-card .tool-name {
+    font-family: 'Oswald', sans-serif;
+    font-size: 9.5pt;
+    font-weight: 700;
+    color: var(--red);
+    margin-bottom: 2px;
+  }
+  .tool-card .tool-type {
+    font-family: 'Oswald', sans-serif;
+    font-size: 7.5pt;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #999;
+    margin-bottom: 6px;
+  }
+  .tool-card p { font-size: 8.5pt; margin: 0; }
+
+  .budget-note {
+    font-size: 8pt;
+    color: #777;
+    font-style: italic;
+    margin-top: -8px;
+    margin-bottom: 14px;
+  }
+
+  /* FOOTER */
+  .doc-footer {
+    border-top: 1px solid var(--cream-dark);
+    padding-top: 8px;
+    margin-top: 36px;
+    font-family: 'Oswald', sans-serif;
+    font-size: 7pt;
+    color: #aaa;
+    letter-spacing: 1px;
+    display: flex;
+    justify-content: space-between;
+    text-transform: uppercase;
+  }
+
+  /* PRINT */
+  @media print {
+    body { background: #fff; }
+    .cover { padding: 15mm 18mm; }
+    .page { margin: 0; padding: 15mm 18mm 18mm; }
+    .section-block { page-break-before: auto; }
+  }
+  @page { size: A4; margin: 0; }
+</style>
+</head>
+<body>
+
+<!-- ======================== COVER ======================== -->
+<div class="cover">
+  <div>
+    <div class="cover-top">
+      <div class="cover-brand">Fresquito's</div>
+      <div class="cover-tagline">Helado Premium Para Perros</div>
+    </div>
+    <div class="cover-title">Estrategia Completa<br>de Redes Sociales</div>
+    <div class="cover-subtitle">Instagram · TikTok · Facebook · WhatsApp · LinkedIn · 2026</div>
+
+    <div class="cover-index">
+      <div class="cover-index-title">Índice</div>
+      <ul>
+        <li><span>01</span> Análisis de la Marca y el Mercado</li>
+        <li><span>02</span> Análisis de Audiencia</li>
+        <li><span>03</span> Análisis de Competencia</li>
+        <li><span>04</span> Estrategia por Plataforma</li>
+        <li><span>05</span> Pilares de Contenido</li>
+        <li><span>06</span> Calendario Editorial</li>
+        <li><span>07</span> Estrategia de Pauta Paga</li>
+        <li><span>08</span> KPIs y Métricas de Éxito</li>
+        <li><span>09</span> Plan de Acción — 90 Días</li>
+        <li><span>10</span> Guía de Tono y Voz de Marca</li>
+        <li><span>11</span> WhatsApp Business</li>
+        <li><span>12</span> LinkedIn — Estrategia B2B</li>
+        <li><span>13</span> Protocolo de Crisis</li>
+        <li><span>14</span> Herramientas Recomendadas</li>
+        <li><span>15</span> Presupuesto en Pesos</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="cover-bottom">
+    <span>infofresquitos@gmail.com · @fresquitos</span>
+    <span>Confidencial · 2026</span>
+  </div>
+</div>
+
+<!-- ======================== CONTENT PAGES ======================== -->
+<div class="page">
+
+  <div class="doc-header">
+    <div>
+      <div class="doc-header-brand">Fresquito's</div>
+      <div class="doc-header-subtitle">Helado Premium Para Perros</div>
+    </div>
+    <div class="doc-header-label">
+      Estrategia de Redes Sociales<br>
+      Instagram · TikTok · Facebook · 2026
+    </div>
+  </div>
+
+  <!-- ======================== SECCIÓN 1 ======================== -->
+  <div class="section-block"><span class="num">1</span> Análisis de la Marca y el Mercado</div>
+
+  <h3>1.1 ¿Qué es Fresquito's?</h3>
+  <p>Fresquito's es un helado premium formulado específicamente para perros en Argentina. No es un snack genérico, es un producto con respaldo veterinario, aprobación SENASA y una propuesta de valor clara: un momento de conexión entre el dueño y su mascota.</p>
+
+  <h3>1.2 Fortalezas de Marca para Redes</h3>
+  <table>
+    <thead><tr><th>Fortaleza</th><th>Descripción</th></tr></thead>
+    <tbody>
+      <tr><td>Producto visual</td><td>El helado siendo lamido por un perro es contenido que se viraliza solo. Alto potencial orgánico.</td></tr>
+      <tr><td>Emoción genuina</td><td>La relación persona-perro genera engagement emocional altísimo en todas las plataformas.</td></tr>
+      <tr><td>Nombre memorable</td><td>Fresquito's es simpático, argentino y fácil de recordar y etiquetar.</td></tr>
+      <tr><td>Nicho sin competencia</td><td>Pawchy acaba de arrancar. La ventana para posicionarse primero es ahora.</td></tr>
+      <tr><td>Múltiples canales de venta</td><td>Retail masivo (kioscos, dietéticas, supermercados) da escala y credibilidad de marca.</td></tr>
+      <tr><td>Respaldo técnico</td><td>SENASA + veterinarios = contenido educativo de alto valor y diferenciación.</td></tr>
+    </tbody>
+  </table>
+
+  <h3>1.3 El Mercado en Argentina</h3>
+  <div class="highlight">
+    Argentina tiene más de 12 millones de perros como mascotas. El 70% de los dueños considera a su perro un miembro de la familia. El gasto en mascotas creció un 40% en los últimos 3 años. El segmento 'premium pet' es el de mayor crecimiento dentro del sector.
+  </div>
+
+  <!-- ======================== SECCIÓN 2 ======================== -->
+  <div class="section-block"><span class="num">2</span> Análisis de Audiencia y Segmentación</div>
+
+  <h3>2.1 Arquetipos de Cliente</h3>
+
+  <div class="segmento">
+    <div class="segmento-header">Segmento A — El Dueño Millennial / Gen Z (18–35 años)</div>
+    <div class="segmento-body">
+      <p class="perfil">Vive en zona urbana, tiene 1 perro al que trata como hijo. Comparte contenido de su mascota en redes. Consume marcas con propósito y diseño cuidado. Descubre productos en TikTok e Instagram.</p>
+      <ul>
+        <li><strong>Plataformas:</strong> Instagram y TikTok principalmente</li>
+        <li><strong>Tipo de contenido:</strong> Reels, videos divertidos, tendencias</li>
+        <li><strong>Motivación de compra:</strong> Mimar a su perro, compartir el momento</li>
+        <li><strong>Canal de compra:</strong> Online y puntos de venta modernos</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="segmento">
+    <div class="segmento-header">Segmento B — Familias con Mascotas (30–50 años)</div>
+    <div class="segmento-body">
+      <p class="perfil">Familia con hijos y perro. El perro es mascota familiar. Buscan productos seguros y de calidad. Descubren productos en Facebook y recomendaciones.</p>
+      <ul>
+        <li><strong>Plataformas:</strong> Facebook e Instagram</li>
+        <li><strong>Tipo de contenido:</strong> Informativo, testimonios, consejos veterinarios</li>
+        <li><strong>Motivación de compra:</strong> Seguridad, calidad, actividad familiar</li>
+        <li><strong>Canal de compra:</strong> Supermercados y puntos físicos</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="segmento">
+    <div class="segmento-header">Segmento C — Amantes de Mascotas Premium (25–45 años)</div>
+    <div class="segmento-body">
+      <p class="perfil">Gasta en premium para su perro (comida, accesorios, veterinaria). Sigue cuentas de perros famosos. Comparte contenido de estilo de vida con mascotas.</p>
+      <ul>
+        <li><strong>Plataformas:</strong> Instagram principalmente</li>
+        <li><strong>Tipo de contenido:</strong> Estética, lifestyle, unboxing</li>
+        <li><strong>Motivación de compra:</strong> Exclusividad, calidad y estética</li>
+        <li><strong>Canal de compra:</strong> Online y dietéticas/pet shops</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="segmento">
+    <div class="segmento-header">Segmento D — Comercios y Mayoristas (B2B)</div>
+    <div class="segmento-body">
+      <p class="perfil">Dueños de kioscos, dietéticas, pet shops, heladerías, supermercados. Buscan productos innovadores que generen tráfico y ventas. Toman decisiones por rentabilidad y diferenciación.</p>
+      <ul>
+        <li><strong>Plataformas:</strong> LinkedIn, Facebook, Instagram (perfil profesional), WhatsApp</li>
+        <li><strong>Tipo de contenido:</strong> Propuesta de valor, márgenes, casos de éxito</li>
+        <li><strong>Motivación de compra:</strong> Rentabilidad, producto diferencial</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ======================== SECCIÓN 3 ======================== -->
+  <div class="section-block"><span class="num">3</span> Análisis de Competencia</div>
+
+  <h3>3.1 Competidores Directos</h3>
+  <table>
+    <thead><tr><th>Marca</th><th>Fortalezas</th><th>Debilidades</th></tr></thead>
+    <tbody>
+      <tr><td>Pawchy (AR)</td><td>Ya en el mercado, distribución en CABA</td><td>Reciente, poca comunidad, diseño genérico</td></tr>
+      <tr><td>Marcas internacionales</td><td>Reconocimiento global</td><td>No disponibles en AR, sin identidad local</td></tr>
+    </tbody>
+  </table>
+
+  <h3>3.2 Oportunidad de Posicionamiento</h3>
+  <div class="gold-box">
+    Fresquito's puede ser LA marca argentina de referencia en helados para perros antes de que el mercado se sature. La ventana es 2026. La clave: identidad retro-vintage única + contenido emocional + distribución masiva.
+  </div>
+
+  <!-- ======================== SECCIÓN 4 ======================== -->
+  <div class="section-block"><span class="num">4</span> Estrategia por Plataforma</div>
+
+  <h3>4.1 Instagram — Plataforma Principal</h3>
+  <table>
+    <thead><tr><th>Parámetro</th><th>Detalle</th></tr></thead>
+    <tbody>
+      <tr><td>Objetivo</td><td>Construir comunidad, posicionar marca y generar ventas</td></tr>
+      <tr><td>Frecuencia</td><td>1 post en feed por día + 3–5 stories por día</td></tr>
+      <tr><td>Formatos clave</td><td>Reels (70%), Carruseles (20%), Fotos (10%)</td></tr>
+      <tr><td>Foco</td><td>Contenido emocional, estético y educativo</td></tr>
+      <tr><td>Handle</td><td>@fresquitos</td></tr>
+      <tr><td>Bio sugerida</td><td>🍦 Helado premium para perros 🐾 Hecho con amor + respaldo veterinario 🇦🇷 Encontranos en kioscos, dietéticas y más 👇</td></tr>
+    </tbody>
+  </table>
+
+  <p><strong>Tipos de Reels para Instagram:</strong></p>
+  <ul>
+    <li>Perro probando Fresquito's por primera vez <em>(ALTA VIRALIDAD)</em></li>
+    <li>'POV: le das helado a tu perro por primera vez'</li>
+    <li>Comparación: helado humano vs. Fresquito's</li>
+    <li>Proceso de preparación (detrás de escena)</li>
+    <li>Veterinario explicando por qué es seguro</li>
+    <li>Transformación: perro triste en verano → perro feliz con Fresquito's</li>
+  </ul>
+
+  <h3>4.2 TikTok — Plataforma de Crecimiento Masivo</h3>
+  <table>
+    <thead><tr><th>Parámetro</th><th>Detalle</th></tr></thead>
+    <tbody>
+      <tr><td>Objetivo</td><td>Viralización, alcance masivo y captación de audiencia joven</td></tr>
+      <tr><td>Frecuencia</td><td>1–2 videos por día</td></tr>
+      <tr><td>Formatos clave</td><td>Videos cortos (15–30s), tendencias, duetos, stitch</td></tr>
+      <tr><td>Foco</td><td>Humor, sorpresa, reacciones de perros</td></tr>
+      <tr><td>Handle</td><td>@fresquitos</td></tr>
+      <tr><td>Estrategia</td><td>Sumarse a tendencias adaptándolas a la marca</td></tr>
+    </tbody>
+  </table>
+
+  <p><strong>Ideas de Videos TikTok:</strong></p>
+  <ul>
+    <li>'Le di helado a mi perro y esto pasó...' (formato sorpresa)</li>
+    <li>Tendencias de audio adaptadas con perros</li>
+    <li>'Cosas que hacen los dueños de perros en verano' (humor)</li>
+    <li>Duetos con videos virales de perros</li>
+    <li>'Rating de sabores de Fresquito's' con diferentes razas</li>
+  </ul>
+
+  <h3>4.3 Facebook — Plataforma de Comunidad y B2B</h3>
+  <table>
+    <thead><tr><th>Parámetro</th><th>Detalle</th></tr></thead>
+    <tbody>
+      <tr><td>Objetivo</td><td>Comunidad familiar, mayoristas y pauta paga</td></tr>
+      <tr><td>Frecuencia</td><td>5–6 posts por semana</td></tr>
+      <tr><td>Formatos clave</td><td>Posts informativos, videos, eventos, grupos</td></tr>
+      <tr><td>Foco</td><td>Contenido educativo, noticias de la marca, distribuidores</td></tr>
+      <tr><td>Grupos objetivo</td><td>Grupos de dueños de perros, grupos de emprendedores pet</td></tr>
+      <tr><td>Extra</td><td>Página de empresa + perfil para pauta Meta Ads</td></tr>
+    </tbody>
+  </table>
+
+  <!-- ======================== SECCIÓN 5 ======================== -->
+  <div class="section-block"><span class="num">5</span> Pilares de Contenido</div>
+
+  <p>Toda la comunicación de Fresquito's se organiza en 5 pilares que garantizan variedad, coherencia y relevancia:</p>
+
+  <table class="pilares-table">
+    <thead><tr><th>Pilar</th><th>% del contenido</th><th>Ejemplos</th></tr></thead>
+    <tbody>
+      <tr><td>❤ Amor &amp; Emoción</td><td>30%</td><td>Perros disfrutando, momentos entre dueño y perro, historias</td></tr>
+      <tr><td>🎓 Educación</td><td>25%</td><td>Beneficios nutricionales, cómo servir, razas, consejos vet</td></tr>
+      <tr><td>😂 Humor &amp; Entretenimiento</td><td>20%</td><td>Memes de perros, videos graciosos, tendencias</td></tr>
+      <tr><td>🛒 Producto &amp; Venta</td><td>15%</td><td>Sabores, dónde comprar, lanzamientos, promos</td></tr>
+      <tr><td>👥 Comunidad &amp; UGC</td><td>10%</td><td>Repost de clientes, concursos, 'mostranos a tu perro'</td></tr>
+    </tbody>
+  </table>
+  <p style="font-size:8pt; color:#777; font-style:italic;">UGC: User Generated Content (contenido generado por usuarios)</p>
+
+  <!-- ======================== SECCIÓN 6 ======================== -->
+  <div class="section-block"><span class="num">6</span> Calendario Editorial — Semana Tipo</div>
+
+  <table>
+    <thead><tr><th>Día</th><th>Instagram</th><th>TikTok / Facebook</th></tr></thead>
+    <tbody>
+      <tr><td>Lunes</td><td>Reel educativo (beneficios del producto)</td><td>TikTok: tip nutricional en formato trendy</td></tr>
+      <tr><td>Martes</td><td>Carrusel: 'Guía de porciones según el tamaño de tu perro'</td><td>Facebook: post informativo con tabla</td></tr>
+      <tr><td>Miércoles</td><td>Reel emocional (perro + dueño)</td><td>TikTok: video de humor/tendencia adaptada</td></tr>
+      <tr><td>Jueves</td><td>Post de producto: sabores, presentaciones</td><td>Facebook: contenido mayoristas/distribuidores</td></tr>
+      <tr><td>Viernes</td><td>Reel viral: reacción de perro probando</td><td>TikTok: 'viernes de helado' con perros</td></tr>
+      <tr><td>Sábado</td><td>UGC: repost cliente o concurso</td><td>Facebook: contenido familiar y de fin de semana</td></tr>
+      <tr><td>Domingo</td><td>Story: 'Domingo de Fresquito's'</td><td>Facebook: frases + foto emocional</td></tr>
+    </tbody>
+  </table>
+
+  <h3>6.1 Fechas Clave del Año</h3>
+  <ul>
+    <li><strong>Verano (Dic–Mar):</strong> PEAK SEASON — máxima inversión y contenido</li>
+    <li><strong>Día del Perro (21 de julio):</strong> campaña especial</li>
+    <li><strong>Navidad y Año Nuevo:</strong> contenido festivo con mascotas</li>
+    <li><strong>Día de la Madre / Padre:</strong> 'El mejor regalo para quien ama a su perro'</li>
+    <li><strong>Primavera (Sep–Nov):</strong> prelanzamiento de temporada</li>
+  </ul>
+
+  <!-- ======================== SECCIÓN 7 ======================== -->
+  <div class="section-block"><span class="num">7</span> Estrategia de Pauta Paga</div>
+
+  <h3>7.1 Meta Ads (Instagram + Facebook)</h3>
+  <table>
+    <thead><tr><th>Parámetro</th><th>Detalle</th></tr></thead>
+    <tbody>
+      <tr><td>Objetivo inicial</td><td>Alcance y reconocimiento de marca (Brand Awareness)</td></tr>
+      <tr><td>Presupuesto sugerido</td><td>Arrancar con $50–100 USD/mes e ir escalando según resultados</td></tr>
+      <tr><td>Audiencia principal</td><td>Dueños de perros, 22–45 años, Argentina urbana (AMBA + grandes ciudades)</td></tr>
+      <tr><td>Intereses a targetear</td><td>Mascotas, perros, comida premium, veterinaria, crianza responsable</td></tr>
+      <tr><td>Formato ganador</td><td>Reels con perro probando el producto (primeros 3 segundos = todo)</td></tr>
+      <tr><td>Campaña #1</td><td>Video de perro probando + CTA a punto de venta o web</td></tr>
+      <tr><td>Campaña #2</td><td>Carrusel educativo + CTA a suscripción o consulta mayorista</td></tr>
+    </tbody>
+  </table>
+  <p style="font-size:8pt; color:#777; font-style:italic;">CTA: Call to Action (llamado a la acción)</p>
+
+  <h3>7.2 TikTok Ads</h3>
+  <table>
+    <thead><tr><th>Parámetro</th><th>Detalle</th></tr></thead>
+    <tbody>
+      <tr><td>Objetivo</td><td>Alcance masivo en audiencia joven (18–30)</td></tr>
+      <tr><td>Formato</td><td>In-Feed Ads con videos orgánicos que funcionaron bien</td></tr>
+      <tr><td>Consejo clave</td><td>Promover primero el contenido que ya funcionó orgánicamente</td></tr>
+      <tr><td>Presupuesto sugerido</td><td>$30–50 USD/mes para testear</td></tr>
+    </tbody>
+  </table>
+
+  <div class="gold-box">
+    💡 <strong>REGLA DE ORO:</strong> Antes de pagar por pauta, probá el contenido en forma orgánica. Si un video ya funciona solo, ahí le ponés plata para amplificarlo. La pauta no arregla contenido malo.
+  </div>
+
+  <!-- ======================== SECCIÓN 8 ======================== -->
+  <div class="section-block"><span class="num">8</span> KPIs y Métricas de Éxito</div>
+
+  <table>
+    <thead><tr><th>Métrica</th><th>Mes 1–2</th><th>Mes 3–6</th></tr></thead>
+    <tbody>
+      <tr><td>Seguidores Instagram</td><td>500–1.000</td><td>5.000–10.000</td></tr>
+      <tr><td>Seguidores TikTok</td><td>500–2.000</td><td>10.000–30.000</td></tr>
+      <tr><td>Seguidores Facebook</td><td>300–600</td><td>2.000–5.000</td></tr>
+      <tr><td>Alcance semanal</td><td>5.000–10.000</td><td>50.000+</td></tr>
+      <tr><td>Engagement rate</td><td>5–8%</td><td>4–6% (sostenido)</td></tr>
+      <tr><td>Consultas mayoristas</td><td>5–10/mes</td><td>20–30/mes</td></tr>
+      <tr><td>Videos virales (10k+ views)</td><td>1–2</td><td>5–10</td></tr>
+    </tbody>
+  </table>
+
+  <!-- ======================== SECCIÓN 9 ======================== -->
+  <div class="section-block"><span class="num">9</span> Plan de Acción — Primeros 90 Días</div>
+
+  <div class="phase">
+    <div class="phase-header">Fase 1 — Mes 1: Construcción de Base</div>
+    <div class="phase-body">
+      <p><strong>Objetivo:</strong> Crear perfiles, identidad visual, primeros 30 posts y primeras 1.000 personas alcanzadas.</p>
+      <ul>
+        <li>Crear perfiles en Instagram, TikTok y Facebook con identidad unificada</li>
+        <li>Foto de perfil: el logo. Bio optimizada con keywords y CTA</li>
+        <li>Preparar banco de contenido inicial: 20–30 piezas antes de publicar</li>
+        <li>Grabar 10 videos de perros probando Fresquito's (el contenido más valioso)</li>
+        <li>Publicar 1 vez por día mínimo en todas las plataformas</li>
+        <li>Seguir y hacer engagement con cuentas de perros populares en Argentina</li>
+        <li>Lanzar primera campaña paga pequeña (Brand Awareness, $30–50 USD)</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="phase">
+    <div class="phase-header">Fase 2 — Mes 2: Crecimiento y Comunidad</div>
+    <div class="phase-body">
+      <p><strong>Objetivo:</strong> Alcanzar 1.000 seguidores, primer video viral, primeras consultas mayoristas.</p>
+      <ul>
+        <li>Identificar los 3 mejores posts y amplificarlos con pauta</li>
+        <li>Lanzar primer concurso: 'Mostranos a tu perro con Fresquito's'</li>
+        <li>Buscar micro-influencers de mascotas en Argentina (10k–100k seguidores)</li>
+        <li>Crear contenido con veterinario para reforzar credibilidad</li>
+        <li>Empezar a publicar en grupos de Facebook de dueños de perros</li>
+        <li>Primera ronda de stories con encuestas y preguntas para generar engagement</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="phase">
+    <div class="phase-header">Fase 3 — Mes 3: Escala y Conversión</div>
+    <div class="phase-body">
+      <p><strong>Objetivo:</strong> 5.000+ seguidores, primer video con 50k+ views, conversiones medibles.</p>
+      <ul>
+        <li>Escalar presupuesto de pauta en los formatos que probaron funcionar</li>
+        <li>Lanzar campaña específica para mayoristas (Facebook + LinkedIn)</li>
+        <li>Colaboración con influencer de mascotas para llegar a nueva audiencia</li>
+        <li>Activar sección de puntos de venta en redes con mapas y stories</li>
+        <li>Analizar métricas y ajustar estrategia según lo que funcionó</li>
+        <li>Preparar contenido de temporada (verano o primavera según el mes)</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ======================== SECCIÓN 10 ======================== -->
+  <div class="section-block"><span class="num">10</span> Guía de Tono y Voz de Marca</div>
+
+  <h3>La Personalidad de Fresquito's en Redes</h3>
+  <table>
+    <thead><tr><th>Aspecto</th><th>Definición</th></tr></thead>
+    <tbody>
+      <tr><td>Somos</td><td>Cercanos, cálidos, argentinos, divertidos y apasionados por los perros</td></tr>
+      <tr><td>No somos</td><td>Fríos, corporativos, técnicos ni exagerados</td></tr>
+      <tr><td>Hablamos de</td><td>'vos', 'tu perro', 'tu compañero', 'tu mejor amigo'</td></tr>
+      <tr><td>Evitamos</td><td>Anglicismos innecesarios, lenguaje de laboratorio</td></tr>
+      <tr><td>Emojis</td><td>Sí, con moderación: 🐾 🍦 ❤ 🐶 ✨</td></tr>
+      <tr><td>Hashtags clave</td><td>#Fresquitos #HeladoParaPerros #PerrosArgentina #MiPerro #PetFood</td></tr>
+    </tbody>
+  </table>
+
+  <h3>Frases de Marca para usar en Contenido</h3>
+  <ul>
+    <li>"Porque tu perro también merece un mimo"</li>
+    <li>"El helado que hace mover la cola"</li>
+    <li>"Hecho con amor, respaldado por veterinarios"</li>
+    <li>"Fresquito's: el momento favorito de tu perro"</li>
+    <li>"Un pote de felicidad para tu mejor amigo"</li>
+  </ul>
+
+  <!-- ======================== SECCIÓN 11 ======================== -->
+  <div class="section-block"><span class="num">11</span> WhatsApp Business</div>
+
+  <p>WhatsApp es el canal de comunicación más usado en Argentina. Para Fresquito's cumple dos roles distintos y ambos son críticos: <strong>atención al cliente final</strong> y <strong>gestión de mayoristas</strong>.</p>
+
+  <h3>11.1 Configuración Inicial</h3>
+  <table>
+    <thead><tr><th>Parámetro</th><th>Recomendación</th></tr></thead>
+    <tbody>
+      <tr><td>Nombre de perfil</td><td>Fresquito's Helado para Perros</td></tr>
+      <tr><td>Foto de perfil</td><td>Logo sobre fondo crema — mismo que redes sociales</td></tr>
+      <tr><td>Categoría</td><td>Comida y bebida</td></tr>
+      <tr><td>Descripción</td><td>Helado premium para perros 🐾 Respaldo veterinario · SENASA · 🇦🇷</td></tr>
+      <tr><td>Horario de atención</td><td>Publicar horario real — no dejar vacío (genera desconfianza)</td></tr>
+      <tr><td>Link en bio de Instagram</td><td>Agregar el número de WhatsApp Business como canal de contacto</td></tr>
+    </tbody>
+  </table>
+
+  <h3>11.2 Mensajes Automáticos</h3>
+  <div class="two-col">
+    <div class="col-box">
+      <h4>Mensaje de Bienvenida</h4>
+      <p style="font-size:8.5pt; font-style:italic; color:#555;">"¡Hola! Soy Fresquito's 🍦🐾 Gracias por escribirnos. En breve te respondemos. Si querés saber dónde encontrar nuestros helados, escribí <strong>PUNTOS</strong>. Si sos comercio y querés vender Fresquito's, escribí <strong>MAYORISTA</strong>."</p>
+    </div>
+    <div class="col-box">
+      <h4>Mensaje de Ausencia</h4>
+      <p style="font-size:8.5pt; font-style:italic; color:#555;">"Estamos fuera de horario pero tu mensaje nos llegó 🐶 Te respondemos el próximo día hábil. Si es urgente, escribinos a infofresquitos@gmail.com."</p>
+    </div>
+  </div>
+
+  <h3>11.3 Usos Clave</h3>
+  <table>
+    <thead><tr><th>Uso</th><th>Cómo implementarlo</th></tr></thead>
+    <tbody>
+      <tr><td>Consultas de puntos de venta</td><td>Respuesta rápida guardada con lista de locales por zona</td></tr>
+      <tr><td>Consultas mayoristas</td><td>Enviar catálogo PDF con precios y condiciones directamente por WA</td></tr>
+      <tr><td>Post-venta</td><td>Solicitar foto o video del perro probando el producto — UGC directo</td></tr>
+      <tr><td>Listas de difusión</td><td>Crear lista separada para distribuidores: novedades, temporada, promos B2B</td></tr>
+      <tr><td>Catálogo de productos</td><td>Activar la función Catálogo en WA Business con los dos sabores y descripción</td></tr>
+    </tbody>
+  </table>
+
+  <div class="gold-box">
+    💡 <strong>Consejo clave:</strong> Agregá el número de WhatsApp Business en el link de la bio de Instagram y en el pie de cada folleto impreso. Es el canal con mayor tasa de respuesta en Argentina — más que el email.
+  </div>
+
+  <!-- ======================== SECCIÓN 12 ======================== -->
+  <div class="section-block"><span class="num">12</span> LinkedIn — Estrategia B2B</div>
+
+  <p>LinkedIn no es una plataforma para vender helado al consumidor final. Su rol para Fresquito's es exclusivamente <strong>B2B</strong>: llegar a compradores de supermercados, cadenas de pet shops, dietéticas y distribuidoras. También sirve para posicionar a los fundadores como referentes del sector.</p>
+
+  <h3>12.1 Configuración de la Página</h3>
+  <table>
+    <thead><tr><th>Campo</th><th>Recomendación</th></tr></thead>
+    <tbody>
+      <tr><td>Tipo de página</td><td>Empresa (no perfil personal)</td></tr>
+      <tr><td>Industria</td><td>Producción de alimentos / Productos para mascotas</td></tr>
+      <tr><td>Tagline</td><td>"El helado premium para perros que Argentina estaba esperando"</td></tr>
+      <tr><td>Descripción</td><td>Incluir: propuesta de valor para comercios, aprobación SENASA, distribución disponible, contacto mayorista</td></tr>
+      <tr><td>Frecuencia de publicación</td><td>2–3 posts por semana — menos es más en LinkedIn</td></tr>
+    </tbody>
+  </table>
+
+  <h3>12.2 Tipos de Contenido para LinkedIn</h3>
+  <ul>
+    <li><strong>Hitos de la marca:</strong> "Llegamos a 50 puntos de venta en AMBA" — genera credibilidad</li>
+    <li><strong>Datos del mercado pet:</strong> estadísticas de crecimiento del sector en Argentina</li>
+    <li><strong>Proceso productivo:</strong> detrás de escena, control de calidad, respaldo SENASA</li>
+    <li><strong>Caso de éxito de distribuidor:</strong> "El kiosco de San Telmo que triplicó sus ventas en verano"</li>
+    <li><strong>Apertura a nuevas zonas:</strong> "Buscamos distribuidores en Rosario, Córdoba y Mendoza"</li>
+  </ul>
+
+  <h3>12.3 Estrategia de Prospección</h3>
+  <div class="phase">
+    <div class="phase-header">Paso 1 — Identificar decisores</div>
+    <div class="phase-body">Buscar en LinkedIn: "Jefe de compras supermercado", "Encargado de abastecimiento pet shop", "Gerente comercial dietética" en Argentina. Conectar con mensaje personalizado breve.</div>
+  </div>
+  <div class="phase">
+    <div class="phase-header">Paso 2 — Mensaje de contacto inicial</div>
+    <div class="phase-body"><em style="color:#555; font-size:9pt;">"Hola [nombre], te escribo desde Fresquito's, el primer helado premium para perros con aprobación SENASA en Argentina. Estamos expandiendo nuestra distribución y creo que podría ser un producto muy interesante para [nombre del comercio]. ¿Te puedo enviar información sobre condiciones comerciales?"</em></div>
+  </div>
+  <div class="phase">
+    <div class="phase-header">Paso 3 — Enviar propuesta por WhatsApp o email</div>
+    <div class="phase-body">No hacer el pitch completo por LinkedIn. Obtener el contacto directo y derivar a WhatsApp Business o email con el PDF de propuesta mayorista.</div>
+  </div>
+
+  <!-- ======================== SECCIÓN 13 ======================== -->
+  <div class="section-block"><span class="num">13</span> Protocolo de Crisis y Comentarios Negativos</div>
+
+  <p>Fresquito's es un producto de alimentación animal. Los comentarios más riesgosos no son quejas de precio o servicio, sino cuestionamientos sobre <strong>seguridad y salud</strong>. Un solo comentario viral mal manejado puede dañar la reputación que tardó meses en construirse.</p>
+
+  <h3>13.1 Tipos de Comentarios y Respuesta Recomendada</h3>
+  <table>
+    <thead><tr><th>Tipo de comentario</th><th>Respuesta recomendada</th><th>Tiempo máx.</th></tr></thead>
+    <tbody>
+      <tr>
+        <td>Pregunta sobre ingredientes o seguridad</td>
+        <td>Responder públicamente con información clara: ingredientes naturales, respaldo veterinario, SENASA. Invitar a escribir por DM si quieren más detalle.</td>
+        <td>2 horas</td>
+      </tr>
+      <tr>
+        <td>Comentario negativo de experiencia</td>
+        <td>Responder con empatía, sin ponerse a la defensiva. Ofrecer resolver por DM. No argumentar públicamente.</td>
+        <td>3 horas</td>
+      </tr>
+      <tr>
+        <td>Afirmación falsa o peligrosa</td>
+        <td>Responder una vez, con datos concretos y tono calmo. No entrar en debate. Pinear el comentario con la aclaración.</td>
+        <td>1 hora</td>
+      </tr>
+      <tr>
+        <td>Troll o comentario agresivo</td>
+        <td>No responder. Ocultar el comentario si afecta la imagen. Nunca borrar sin ocultar primero — puede generar "Streisand effect".</td>
+        <td>—</td>
+      </tr>
+      <tr>
+        <td>Denuncia de problema de salud</td>
+        <td>Responder inmediatamente por DM. Pedir información del caso. Derivar al veterinario. NO responder públicamente hasta tener los hechos.</td>
+        <td>30 min</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3>13.2 Respuestas Preparadas — Guardar como Respuestas Rápidas en Instagram</h3>
+  <div class="highlight">
+    <strong>Sobre seguridad del producto:</strong><br>
+    "¡Hola! Fresquito's está formulado específicamente para perros, sin azúcar añadida, sin lactosa y sin ingredientes tóxicos para el organismo canino. Tiene aprobación SENASA (Est. Nº 2025-96/A/H) y respaldo veterinario. Ante cualquier duda, escribinos por DM 🐾"
+  </div>
+  <div class="highlight">
+    <strong>Ante queja de experiencia:</strong><br>
+    "Lamentamos que no haya sido la mejor experiencia 🙏 Cada perro tiene sus gustos, igual que nosotros. Te invitamos a escribirnos por DM para contarnos más y ver cómo podemos ayudarte."
+  </div>
+  <div class="highlight">
+    <strong>Ante pregunta sobre dónde comprar:</strong><br>
+    "¡Hola! Podés encontrarnos en kioscos, dietéticas y pet shops. Escribinos por DM con tu zona y te decimos el punto de venta más cercano 🍦"
+  </div>
+
+  <h3>13.3 Señales de Alerta — Crisis en Escalada</h3>
+  <div class="red-box">
+    <strong>Activar protocolo de crisis si:</strong>
+    <ul style="margin-top:6px;">
+      <li>Un comentario negativo sobre salud supera 50 likes o 20 respuestas</li>
+      <li>Un influencer o cuenta grande (5k+ seguidores) menciona negativamente el producto</li>
+      <li>Aparecen múltiples comentarios similares en poco tiempo (patrón organizado)</li>
+      <li>Un medio o periodista solicita información</li>
+    </ul>
+    <br>En esos casos: <strong>no improvisar</strong>. Preparar un comunicado breve, claro y basado en hechos. Consultar al veterinario de respaldo antes de publicarlo.
+  </div>
+
+  <!-- ======================== SECCIÓN 14 ======================== -->
+  <div class="section-block"><span class="num">14</span> Herramientas Recomendadas</div>
+
+  <p>Stack mínimo viable para gestionar las redes de Fresquito's sin equipo grande. Todas tienen versión gratuita o costo accesible.</p>
+
+  <h3>14.1 Creación de Contenido</h3>
+  <div class="tool-grid">
+    <div class="tool-card">
+      <div class="tool-name">Canva</div>
+      <div class="tool-type">Diseño gráfico</div>
+      <p>Para posts, stories, carruseles y folletos. Crear plantillas reutilizables con el logo y los colores de marca.</p>
+    </div>
+    <div class="tool-card">
+      <div class="tool-name">CapCut</div>
+      <div class="tool-type">Edición de video</div>
+      <p>Ideal para editar Reels y TikToks en el celular. Subtítulos automáticos, efectos y plantillas de tendencias. Gratuito.</p>
+    </div>
+    <div class="tool-card">
+      <div class="tool-name">InShot</div>
+      <div class="tool-type">Edición de video</div>
+      <p>Alternativa a CapCut. Intuitivo para recortar clips, agregar música y ajustar formato a cada red.</p>
+    </div>
+  </div>
+
+  <h3>14.2 Gestión y Programación</h3>
+  <div class="tool-grid">
+    <div class="tool-card">
+      <div class="tool-name">Meta Business Suite</div>
+      <div class="tool-type">Programación · Gratuito</div>
+      <p>Programar posts en Instagram y Facebook desde el mismo lugar. Gestiona los mensajes de ambas plataformas.</p>
+    </div>
+    <div class="tool-card">
+      <div class="tool-name">Later</div>
+      <div class="tool-type">Programación · Freemium</div>
+      <p>Mejor interfaz visual para planificar el feed. Permite ver cómo va a quedar el grid antes de publicar.</p>
+    </div>
+    <div class="tool-card">
+      <div class="tool-name">TikTok Studio</div>
+      <div class="tool-type">Analítica TikTok · Gratuito</div>
+      <p>App oficial para creadores. Programa videos, analíticas detalladas y seguimiento de tendencias.</p>
+    </div>
+  </div>
+
+  <h3>14.3 Analítica y Seguimiento de KPIs</h3>
+  <div class="tool-grid">
+    <div class="tool-card">
+      <div class="tool-name">Instagram Insights</div>
+      <div class="tool-type">Analítica nativa · Gratuito</div>
+      <p>Suficiente para el primer año. Revisar semanalmente: alcance, saves y shares (más valiosos que likes para el algoritmo).</p>
+    </div>
+    <div class="tool-card">
+      <div class="tool-name">Google Sheets</div>
+      <div class="tool-type">Tracking manual · Gratuito</div>
+      <p>Planilla simple con los KPIs de la estrategia. Volcar los números cada semana para ver tendencias.</p>
+    </div>
+    <div class="tool-card">
+      <div class="tool-name">Metricool</div>
+      <div class="tool-type">Analítica multi-red · Freemium</div>
+      <p>Conecta Instagram, TikTok y Facebook en un solo panel. El plan gratuito incluye 1 cuenta por red.</p>
+    </div>
+  </div>
+
+  <h3>14.4 Recursos de Contenido</h3>
+  <table>
+    <thead><tr><th>Herramienta</th><th>Uso</th><th>Costo</th></tr></thead>
+    <tbody>
+      <tr><td>Unsplash / Pexels</td><td>Imágenes de stock de perros de alta calidad</td><td>Gratuito</td></tr>
+      <tr><td>Epidemic Sound</td><td>Música sin copyright para videos</td><td>~$15 USD/mes</td></tr>
+      <tr><td>Remove.bg</td><td>Eliminar fondos de fotos del producto</td><td>Freemium</td></tr>
+      <tr><td>ChatGPT / Claude</td><td>Generar captions, ideas de contenido, respuestas rápidas</td><td>Freemium</td></tr>
+    </tbody>
+  </table>
+
+  <div class="gold-box">
+    💡 <strong>Stack mínimo recomendado para arrancar:</strong> Canva + CapCut + Meta Business Suite + Instagram Insights + Google Sheets. Costo total: $0. Agregar herramientas pagas solo cuando el volumen de trabajo lo justifique.
+  </div>
+
+  <!-- ======================== SECCIÓN 15 ======================== -->
+  <div class="section-block"><span class="num">15</span> Presupuesto en Pesos Argentinos</div>
+
+  <p>Los presupuestos de pauta están expresados en dólares como referencia universal. Dado el contexto cambiario argentino, se incluyen equivalencias aproximadas y lineamientos para manejar la inversión publicitaria sin sorpresas.</p>
+
+  <h3>15.1 Tabla de Referencia (2026)</h3>
+  <table>
+    <thead><tr><th>Ítem</th><th>USD/mes</th><th>ARS estimado*</th><th>Fase</th></tr></thead>
+    <tbody>
+      <tr><td>Meta Ads — arranque</td><td>$50–100</td><td>$50.000–$100.000</td><td>Mes 1–2</td></tr>
+      <tr><td>Meta Ads — crecimiento</td><td>$100–200</td><td>$100.000–$200.000</td><td>Mes 3–6</td></tr>
+      <tr><td>TikTok Ads — test</td><td>$30–50</td><td>$30.000–$50.000</td><td>Mes 2–3</td></tr>
+      <tr><td>Micro-influencer (1 campaña)</td><td>$50–200</td><td>$50.000–$200.000</td><td>Mes 2+</td></tr>
+      <tr><td>Herramientas pagas (opcionales)</td><td>$15–30</td><td>$15.000–$30.000</td><td>Cuando escale</td></tr>
+      <tr><td><strong>Total mensual mínimo</strong></td><td><strong>$80–150</strong></td><td><strong>$80.000–$150.000</strong></td><td><strong>Fase 1</strong></td></tr>
+    </tbody>
+  </table>
+  <p class="budget-note">* Estimación referencial. El tipo de cambio varía. Recalcular al momento de ejecutar la pauta.</p>
+
+  <h3>15.2 Consideraciones Prácticas para Pauta en Argentina</h3>
+  <table>
+    <thead><tr><th>Punto</th><th>Recomendación</th></tr></thead>
+    <tbody>
+      <tr>
+        <td>Método de pago</td>
+        <td>Meta Ads acepta tarjeta en pesos pero cobra al tipo de cambio oficial + impuestos (PAIS, percepción AFIP). Considerar tarjeta en dólares si se tiene acceso para evitar sobrecargos.</td>
+      </tr>
+      <tr>
+        <td>Cargos adicionales en ARS</td>
+        <td>Sumar aproximadamente 30–45% sobre el monto base por impuestos nacionales al pagar con tarjeta en pesos.</td>
+      </tr>
+      <tr>
+        <td>Presupuesto diario vs. mensual</td>
+        <td>Arrancar con presupuesto diario bajo ($2–3 USD/día) en lugar de campañas grandes. Permite apagar rápido si algo no funciona sin quemar el presupuesto mensual.</td>
+      </tr>
+      <tr>
+        <td>Período de aprendizaje</td>
+        <td>Meta tarda 7–10 días en optimizar una campaña nueva. No evaluar resultados antes de ese período ni hacer cambios bruscos en el presupuesto durante esos días.</td>
+      </tr>
+      <tr>
+        <td>Facturación</td>
+        <td>Guardar todos los comprobantes de pauta. Meta emite facturas descargables desde el Administrador de Anuncios.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3>15.3 Prioridad de Inversión</h3>
+  <div class="phase">
+    <div class="phase-header">Prioridad 1 — Contenido antes que pauta</div>
+    <div class="phase-body">Invertir en grabar buenos videos con perros reales probando el producto. Un buen video orgánico viral vale más que $500 USD en pauta con contenido mediocre.</div>
+  </div>
+  <div class="phase">
+    <div class="phase-header">Prioridad 2 — Meta Ads para amplificar lo que ya funciona</div>
+    <div class="phase-body">Solo pautar videos que ya demostraron tracción orgánica. Mínimo: 3x la tasa de engagement normal de la cuenta antes de invertir en ese contenido.</div>
+  </div>
+  <div class="phase">
+    <div class="phase-header">Prioridad 3 — TikTok Ads cuando el canal esté activo</div>
+    <div class="phase-body">No pautar en TikTok hasta tener al menos 20 videos publicados orgánicamente y entender qué funciona en esa plataforma para la marca.</div>
+  </div>
+  <div class="phase">
+    <div class="phase-header">Prioridad 4 — Influencers solo con acuerdo claro</div>
+    <div class="phase-body">Establecer por escrito: qué deben publicar, cuándo, en qué formato, y si el acuerdo incluye exclusividad frente a competidores directos (Pawchy).</div>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="doc-footer">
+    <span>Fresquito's · infofresquitos@gmail.com · @fresquitos</span>
+    <span>Estrategia Completa de Redes Sociales · Confidencial · 2026</span>
+  </div>
+
+</div>
+</body>
+</html>

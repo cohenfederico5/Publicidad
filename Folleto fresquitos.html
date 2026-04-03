@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Folleto Fresquito's</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Oswald:wght@400;500;600;700&family=Lora:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { background:#888; display:flex; justify-content:center; padding:40px 20px; font-family:'Lora',serif; }
+  .page { width:210mm; min-height:297mm; background:#F0E6C0; position:relative; overflow:hidden; box-shadow:0 8px 40px rgba(0,0,0,0.4); display:flex; flex-direction:column; }
+
+  .header { background:#3D1F0A; padding:22px 36px 16px; text-align:center; border-bottom:4px solid #D4A840; }
+  .brand-name { font-family:'Playfair Display',serif; font-size:54px; font-weight:900; font-style:italic; color:#D4A840; line-height:1; }
+  .brand-sub { font-family:'Oswald',sans-serif; font-size:10px; letter-spacing:4px; text-transform:uppercase; color:#E0D4A0; margin-top:5px; }
+  .brand-vet { display:inline-block; font-family:'Oswald',sans-serif; font-size:9px; letter-spacing:2px; text-transform:uppercase; color:#3D1F0A; background:#D4A840; padding:3px 14px; margin-top:8px; font-weight:700; }
+
+  .strip { background:#C85C4A; padding:8px 0; text-align:center; font-family:'Oswald',sans-serif; font-size:8.5px; letter-spacing:3px; text-transform:uppercase; color:#F0E6C0; border-bottom:2px solid #A8443A; }
+  .strip-dot { color:#D4A840; margin:0 8px; }
+
+  .body { padding:20px 32px; flex:1; display:flex; flex-direction:column; gap:16px; }
+
+  .welcome { text-align:center; padding-bottom:14px; border-bottom:1px solid #E0D4A0; }
+  .welcome-title { font-family:'Playfair Display',serif; font-size:20px; font-weight:900; color:#3D1F0A; margin-bottom:6px; }
+  .welcome-title em { color:#C85C4A; font-style:italic; }
+  .welcome-text { font-size:10.5px; color:#6B3A1F; line-height:1.7; max-width:440px; margin:0 auto; }
+
+  .sec-label { font-family:'Oswald',sans-serif; font-size:8.5px; letter-spacing:4px; text-transform:uppercase; color:#C85C4A; display:flex; align-items:center; gap:8px; margin-bottom:10px; }
+  .sec-label::after { content:''; flex:1; height:1px; background:#E0D4A0; }
+
+  .sabores-grid { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+
+  .sabor-card { background:#3D1F0A; border:3px solid #D4A840; padding:18px 16px; text-align:center; position:relative; }
+  .sabor-card::before { content:''; position:absolute; inset:5px; border:1px solid rgba(212,168,64,0.2); pointer-events:none; }
+  .sabor-card:nth-child(2) { border-color:#C85C4A; }
+  .sabor-card:nth-child(2)::before { border-color:rgba(200,92,74,0.2); }
+
+  .sabor-img { width:120px; height:120px; object-fit:cover; border-radius:50%; border:4px solid #D4A840; margin:0 auto 12px; display:block; box-shadow:0 4px 12px rgba(0,0,0,0.3); }
+  .sabor-card:nth-child(2) .sabor-img { border-color:#C85C4A; }
+
+  .sabor-name { font-family:'Playfair Display',serif; font-size:26px; font-weight:900; font-style:italic; color:#D4A840; margin-bottom:6px; }
+  .sabor-card:nth-child(2) .sabor-name { color:#E0D4A0; }
+  .sabor-desc { font-size:9.5px; color:#E0D4A0; line-height:1.65; }
+  .sabor-tag { display:inline-block; font-family:'Oswald',sans-serif; font-size:7.5px; letter-spacing:2px; text-transform:uppercase; background:#D4A840; color:#3D1F0A; padding:3px 10px; margin-top:10px; font-weight:700; }
+  .sabor-card:nth-child(2) .sabor-tag { background:#C85C4A; color:#F0E6C0; }
+
+  .qr-section { background:#3D1F0A; border:3px solid #D4A840; padding:16px 20px; position:relative; }
+  .qr-section::before { content:''; position:absolute; inset:5px; border:1px solid rgba(212,168,64,0.2); pointer-events:none; }
+  .qr-message { font-family:'Playfair Display',serif; font-size:13px; font-weight:700; font-style:italic; color:#F0E6C0; text-align:center; margin-bottom:14px; position:relative; z-index:1; }
+  .qr-bottom { display:flex; gap:24px; align-items:center; justify-content:center; position:relative; z-index:1; }
+  .qr-wrap { width:70px; height:70px; background:white; border:2px solid #D4A840; display:flex; flex-direction:column; align-items:center; justify-content:center; flex-shrink:0; padding:4px; }
+  .qr-scan-label { font-family:'Oswald',sans-serif; font-size:6px; color:#3D1F0A; letter-spacing:1px; text-transform:uppercase; margin-top:2px; }
+  .qr-redes { display:flex; flex-direction:column; gap:6px; }
+  .qr-red { font-family:'Oswald',sans-serif; font-size:9.5px; color:#E0D4A0; letter-spacing:0.5px; }
+  .qr-red strong { color:#D4A840; }
+
+  .redes-row { display:flex; justify-content:center; align-items:center; gap:12px; padding:10px 0; border-top:1px solid #E0D4A0; border-bottom:1px solid #E0D4A0; flex-wrap:wrap; }
+  .red-item { font-family:'Oswald',sans-serif; font-size:9px; letter-spacing:1px; text-transform:uppercase; color:#6B3A1F; display:flex; align-items:center; gap:4px; }
+  .red-item strong { color:#C85C4A; }
+  .red-sep { color:#E0D4A0; font-size:12px; }
+
+  .senasa-row { display:flex; gap:10px; }
+  .senasa-box { background:#E0D4A0; padding:8px 12px; border-left:3px solid #3D1F0A; flex:1; }
+  .senasa-box p { font-size:8px; color:#3D1F0A; line-height:1.6; }
+  .senasa-box strong { font-family:'Oswald',sans-serif; text-transform:uppercase; font-size:7.5px; letter-spacing:0.5px; }
+
+  .footer { background:#3D1F0A; padding:9px 32px; display:flex; justify-content:space-between; align-items:center; border-top:3px solid #D4A840; }
+  .footer-logo { font-family:'Playfair Display',serif; font-size:18px; font-weight:900; font-style:italic; color:#D4A840; }
+  .footer-center { font-family:'Oswald',sans-serif; font-size:8px; letter-spacing:2px; text-transform:uppercase; color:#6B3A1F; text-align:center; }
+  .footer-right { font-family:'Oswald',sans-serif; font-size:7.5px; color:#6B3A1F; text-align:right; line-height:1.5; }
+
+  @media print { body { background:white; padding:0; } .page { box-shadow:none; width:100%; } }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <div class="header">
+    <div class="brand-name">Fresquito's</div>
+    <div class="brand-sub">Helado Premium Para Perros</div>
+    <div class="brand-vet">👨‍⚕️ Respaldado por Veterinarios</div>
+  </div>
+
+  <div class="strip">
+    Saludable <span class="strip-dot">✦</span> Alto Valor Proteico <span class="strip-dot">✦</span> Reducido en Azúcares <span class="strip-dot">✦</span> Con Minerales <span class="strip-dot">✦</span> 100% Canino
+  </div>
+
+  <div class="body">
+
+    <div class="welcome">
+      <div class="welcome-title">Porque tu perro también <em>merece un mimo</em> 🐾</div>
+      <p class="welcome-text">Fresquito's es el primer helado cremoso, sabroso y 100% seguro formulado especialmente para el organismo canino. Un momento único entre vos y tu mejor amigo.</p>
+    </div>
+
+    <div>
+      <div class="sec-label">★ Nuestros Sabores</div>
+      <div class="sabores-grid">
+        <div class="sabor-card">
+          <img src="/mnt/user-data/uploads/1000228112.jpg" alt="Sabor Carne" class="sabor-img" onerror="this.style.display='none'">
+          <div class="sabor-name">Carne</div>
+          <p class="sabor-desc">Cremoso, nutritivo y lleno de proteínas. El sabor favorito de todo perro. Irresistible en cada lamida.</p>
+          <span class="sabor-tag">★ El Favorito</span>
+        </div>
+        <div class="sabor-card">
+          <img src="/mnt/user-data/uploads/1000228114.jpg" alt="Sabor Pollo" class="sabor-img" onerror="this.style.display='none'">
+          <div class="sabor-name">Pollo</div>
+          <p class="sabor-desc">Suave, liviano y delicioso. Ideal para perros más delicados. Un clásico que nunca falla.</p>
+          <span class="sabor-tag">★ Suave & Liviano</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="qr-section">
+      <div class="qr-message">Escaneá el código y accedé a toda la información sobre <em>Fresquito's</em></div>
+      <div class="qr-bottom">
+        <div class="qr-wrap">
+          <svg width="58" height="58" viewBox="0 0 70 70" xmlns="http://www.w3.org/2000/svg">
+            <rect x="0" y="0" width="28" height="28" fill="#3D1F0A" rx="2"/>
+            <rect x="4" y="4" width="20" height="20" fill="white" rx="1"/>
+            <rect x="8" y="8" width="12" height="12" fill="#3D1F0A" rx="1"/>
+            <rect x="42" y="0" width="28" height="28" fill="#3D1F0A" rx="2"/>
+            <rect x="46" y="4" width="20" height="20" fill="white" rx="1"/>
+            <rect x="50" y="8" width="12" height="12" fill="#3D1F0A" rx="1"/>
+            <rect x="0" y="42" width="28" height="28" fill="#3D1F0A" rx="2"/>
+            <rect x="4" y="46" width="20" height="20" fill="white" rx="1"/>
+            <rect x="8" y="50" width="12" height="12" fill="#3D1F0A" rx="1"/>
+            <rect x="32" y="0" width="8" height="8" fill="#3D1F0A" rx="1"/>
+            <rect x="32" y="10" width="8" height="4" fill="#3D1F0A" rx="1"/>
+            <rect x="44" y="32" width="8" height="4" fill="#3D1F0A" rx="1"/>
+            <rect x="54" y="32" width="4" height="8" fill="#3D1F0A" rx="1"/>
+            <rect x="38" y="42" width="8" height="4" fill="#3D1F0A" rx="1"/>
+            <rect x="48" y="38" width="4" height="12" fill="#3D1F0A" rx="1"/>
+            <rect x="54" y="48" width="4" height="8" fill="#3D1F0A" rx="1"/>
+            <rect x="60" y="48" width="10" height="4" fill="#3D1F0A" rx="1"/>
+          </svg>
+          <div class="qr-scan-label">Escaneame</div>
+        </div>
+        <div class="qr-redes">
+          <div class="qr-red">📸 Instagram &nbsp;<strong>@fresquitos</strong></div>
+          <div class="qr-red">🎵 TikTok &nbsp;<strong>@fresquitos</strong></div>
+          <div class="qr-red">📘 Facebook &nbsp;<strong>Fresquito's</strong></div>
+          <div class="qr-red">✉️ &nbsp;<strong>infofresquitos@gmail.com</strong></div>
+        </div>
+      </div>
+      <div style="text-align:center; margin-top:12px; position:relative; z-index:1; border-top:1px solid rgba(232,197,71,0.25); padding-top:10px;">
+        <span style="font-family:'Oswald',sans-serif; font-size:8px; letter-spacing:2px; text-transform:uppercase; color:#D4A840;">✦ Producto inscripto y aprobado por SENASA · Est. Nº 2025-96/A/H ✦</span>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+</body>
+</html>

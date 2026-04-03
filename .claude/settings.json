@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npx skills:*)",
+      "Bash(node -e ':*)",
+      "Bash(npm init:*)",
+      "Bash(npm install:*)"
+    ]
+  }
+}
