@@ -4,7 +4,21 @@
       "Bash(npx skills:*)",
       "Bash(node -e ':*)",
       "Bash(npm init:*)",
-      "Bash(npm install:*)"
+      "Bash(npm install:*)",
+      "Bash(python -c ':*)",
+      "Bash(powershell -Command ':*)",
+      "WebSearch",
+      "WebFetch(domain:strange.com.ar)",
+      "WebFetch(domain:ontap.com.ar)",
+      "WebFetch(domain:tostadocafeclub.com)",
+      "WebFetch(domain:saigonargentina.com)",
+      "WebFetch(domain:gontrancherrier.com.ar)",
+      "WebFetch(domain:hierbabuenarestaurante.com)",
+      "WebFetch(domain:goodjoe.coffee)",
+      "WebFetch(domain:www.periploharbor.com)",
+      "WebFetch(domain:www.selena.ar)",
+      "WebFetch(domain:koidumplings.com)",
+      "WebFetch(domain:madpastacompany.com.ar)"
     ]
   }
 }
