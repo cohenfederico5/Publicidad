@@ -668,6 +668,9 @@
 </footer>
 
 <script>
+  // URL del Google Apps Script — reemplazá con tu URL después de desplegar
+  const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzX157RfBuTis8Z0OXPppmC87_SWIHUgCt-4dDFOmGukehFY1B9DOiO3rkObGBtqt4w/exec';
+
   // NAV
   const hamburger = document.getElementById('hamburger');
   const navLinks = document.getElementById('navLinks');
@@ -876,9 +879,10 @@
       return;
     }
     input.classList.remove('field-error');
-    const suscriptores = JSON.parse(localStorage.getItem('fresquitos_suscriptores') || '[]');
-    suscriptores.push({ email: input.value.trim(), fecha: new Date().toISOString() });
-    localStorage.setItem('fresquitos_suscriptores', JSON.stringify(suscriptores));
+    fetch(APPS_SCRIPT_URL, {
+      method: 'POST', mode: 'no-cors',
+      body: JSON.stringify({ action: 'save_suscriptor', email: input.value.trim(), fecha: new Date().toISOString() })
+    });
     input.disabled = true;
     btn.disabled = true;
     btn.textContent = '¡Listo!';
@@ -916,18 +920,20 @@
     btn.disabled = true;
     btn.textContent = 'Enviando...';
 
-    const consultas = JSON.parse(localStorage.getItem('fresquitos_mayoristas') || '[]');
-    consultas.push({
-      id: Date.now(),
-      nombre: nombre,
-      email: email,
-      telefono: document.getElementById('mayTel').value.trim(),
-      tipo: tipo,
-      mensaje: document.getElementById('mayMensaje').value.trim(),
-      fecha: new Date().toISOString(),
-      estado: 'pendiente'
+    fetch(APPS_SCRIPT_URL, {
+      method: 'POST', mode: 'no-cors',
+      body: JSON.stringify({
+        action: 'save_mayorista',
+        id: Date.now(),
+        nombre: nombre,
+        email: email,
+        telefono: document.getElementById('mayTel').value.trim(),
+        tipo: tipo,
+        mensaje: document.getElementById('mayMensaje').value.trim(),
+        fecha: new Date().toISOString(),
+        estado: 'pendiente'
+      })
     });
-    localStorage.setItem('fresquitos_mayoristas', JSON.stringify(consultas));
 
     setTimeout(() => {
       document.getElementById('mayoristasFormContent').style.display = 'none';

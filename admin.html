@@ -373,6 +373,7 @@
 
 <script>
   const PASSWORD = 'fresquitos2025';
+  const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzX157RfBuTis8Z0OXPppmC87_SWIHUgCt-4dDFOmGukehFY1B9DOiO3rkObGBtqt4w/exec';
 
   // --- LOGIN ---
   function tryLogin() {
@@ -436,10 +437,35 @@
     return d.toLocaleDateString('es-AR', { day:'2-digit', month:'2-digit', year:'numeric' }) +
       ' ' + d.toLocaleTimeString('es-AR', { hour:'2-digit', minute:'2-digit' });
   }
-  function getSusc() { return JSON.parse(localStorage.getItem('fresquitos_suscriptores') || '[]'); }
-  function getMay()  { return JSON.parse(localStorage.getItem('fresquitos_mayoristas')   || '[]'); }
-  function saveSusc(d) { localStorage.setItem('fresquitos_suscriptores', JSON.stringify(d)); }
-  function saveMay(d)  { localStorage.setItem('fresquitos_mayoristas',   JSON.stringify(d)); }
+
+  // --- DATOS (cache en memoria, cargado desde Google Sheets) ---
+  let cachesSusc = [];
+  let cacheMay = [];
+
+  function getSusc() { return cachesSusc; }
+  function getMay()  { return cacheMay; }
+
+  function postToSheet(data) {
+    if (APPS_SCRIPT_URL === 'PEGAR_URL_AQUI') return;
+    fetch(APPS_SCRIPT_URL, { method: 'POST', mode: 'no-cors', body: JSON.stringify(data) })
+      .catch(e => console.error('Error enviando a Google Sheets:', e));
+  }
+
+  async function loadSusc() {
+    if (APPS_SCRIPT_URL === 'PEGAR_URL_AQUI') { cachesSusc = []; return; }
+    try {
+      const res = await fetch(APPS_SCRIPT_URL + '?tipo=suscriptores');
+      cachesSusc = await res.json();
+    } catch(e) { console.error('Error cargando suscriptores:', e); cachesSusc = []; }
+  }
+
+  async function loadMay() {
+    if (APPS_SCRIPT_URL === 'PEGAR_URL_AQUI') { cacheMay = []; return; }
+    try {
+      const res = await fetch(APPS_SCRIPT_URL + '?tipo=mayoristas');
+      cacheMay = await res.json();
+    } catch(e) { console.error('Error cargando mayoristas:', e); cacheMay = []; }
+  }
 
   function escapeCSV(v) {
     if (v == null) return '';
@@ -477,8 +503,9 @@
     tbody.querySelectorAll('.btn-delete').forEach(btn => {
       btn.addEventListener('click', () => {
         showModal(`¿Eliminás a ${btn.dataset.email}?`, () => {
-          let d = getSusc().filter(r => r.email !== btn.dataset.email);
-          saveSusc(d); updateStats(); renderSusc(document.getElementById('searchSusc').value);
+          postToSheet({ action: 'delete_suscriptor', email: btn.dataset.email });
+          cachesSusc = cachesSusc.filter(r => r.email !== btn.dataset.email);
+          updateStats(); renderSusc(document.getElementById('searchSusc').value);
         });
       });
     });
@@ -500,7 +527,8 @@
   });
   document.getElementById('clearSusc').addEventListener('click', () => {
     showModal('¿Borrás todos los suscriptores? Esta acción no se puede deshacer.', () => {
-      saveSusc([]); updateStats(); renderSusc('');
+      postToSheet({ action: 'clear_suscriptores' });
+      cachesSusc = []; updateStats(); renderSusc('');
     });
   });
 
@@ -535,19 +563,21 @@
     });
     tbody.querySelectorAll('.estado-badge').forEach(btn => {
       btn.addEventListener('click', () => {
-        let d = getMay();
-        const idx = d.findIndex(r => String(r.id) === String(btn.dataset.id));
+        const idx = cacheMay.findIndex(r => String(r.id) === String(btn.dataset.id));
         if (idx < 0) return;
-        d[idx].estado = d[idx].estado === 'contactado' ? 'pendiente' : 'contactado';
-        saveMay(d); updateStats(); renderMay(document.getElementById('searchMay').value);
+        const nuevoEstado = cacheMay[idx].estado === 'contactado' ? 'pendiente' : 'contactado';
+        postToSheet({ action: 'update_estado', id: btn.dataset.id, estado: nuevoEstado });
+        cacheMay[idx].estado = nuevoEstado;
+        updateStats(); renderMay(document.getElementById('searchMay').value);
       });
     });
     tbody.querySelectorAll('.btn-delete').forEach(btn => {
       btn.addEventListener('click', () => {
-        const row = getMay().find(r => String(r.id) === String(btn.dataset.id));
+        const row = cacheMay.find(r => String(r.id) === String(btn.dataset.id));
         showModal(`¿Eliminás la consulta de ${row ? row.nombre : 'este contacto'}?`, () => {
-          let d = getMay().filter(r => String(r.id) !== String(btn.dataset.id));
-          saveMay(d); updateStats(); renderMay(document.getElementById('searchMay').value);
+          postToSheet({ action: 'delete_mayorista', id: btn.dataset.id });
+          cacheMay = cacheMay.filter(r => String(r.id) !== String(btn.dataset.id));
+          updateStats(); renderMay(document.getElementById('searchMay').value);
         });
       });
     });
@@ -575,17 +605,19 @@
   });
   document.getElementById('clearMay').addEventListener('click', () => {
     showModal('¿Borrás todas las consultas mayoristas? Esta acción no se puede deshacer.', () => {
-      saveMay([]); updateStats(); renderMay('');
+      postToSheet({ action: 'clear_mayoristas' });
+      cacheMay = []; updateStats(); renderMay('');
     });
   });
 
   // --- INIT ---
   function updateStats() { updateStatsSusc(); updateStatsMay(); }
 
-  function init() {
+  async function init() {
     const now = new Date();
     document.getElementById('topbarDate').textContent =
       now.toLocaleDateString('es-AR', { weekday:'long', day:'numeric', month:'long' });
+    await Promise.all([loadSusc(), loadMay()]);
     updateStats();
     renderSusc('');
     renderMay('');
