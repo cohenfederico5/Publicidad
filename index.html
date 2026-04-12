@@ -89,6 +89,19 @@
   .helado-desc { font-size:0.9rem; color:var(--brown-mid); line-height:1.7; }
   .helado-tag { display:inline-block; font-family:'Oswald',sans-serif; font-size:0.65rem; letter-spacing:2px; text-transform:uppercase; background:var(--yellow); color:var(--brown); padding:4px 12px; margin-top:20px; font-weight:700; }
   .helado-card:nth-child(2) .helado-tag { background:var(--red); color:var(--cream); }
+  .helado-nutri-toggle { font-family:'Oswald',sans-serif; font-size:0.65rem; letter-spacing:2px; text-transform:uppercase; background:none; border:1px solid var(--cream-dark); color:var(--brown-mid); padding:9px 20px; cursor:pointer; margin-top:20px; transition:all 0.2s; width:100%; display:flex; align-items:center; justify-content:center; gap:8px; }
+  .helado-nutri-toggle:hover { border-color:var(--yellow); color:var(--brown); }
+  .helado-nutri-toggle .toggle-arrow { display:inline-block; transition:transform 0.25s; font-size:0.7rem; }
+  .helado-nutri-toggle.open .toggle-arrow { transform:rotate(180deg); }
+  .helado-nutri { max-height:0; overflow:hidden; transition:max-height 0.35s ease; }
+  .helado-nutri.open { max-height:400px; }
+  .helado-nutri-table { width:100%; border-collapse:collapse; margin-top:14px; text-align:left; }
+  .helado-nutri-table thead tr { background:var(--brown); }
+  .helado-nutri-table thead th { font-family:'Oswald',sans-serif; font-size:0.6rem; letter-spacing:2px; text-transform:uppercase; color:var(--yellow); padding:8px 10px; }
+  .helado-nutri-table tbody tr { border-bottom:1px solid var(--cream-dark); }
+  .helado-nutri-table tbody tr:last-child { border-bottom:none; background:rgba(61,31,10,0.06); }
+  .helado-nutri-table td { font-size:0.8rem; color:var(--text); padding:7px 10px; line-height:1.4; }
+  .helado-nutri-table td:last-child { font-weight:600; text-align:right; white-space:nowrap; color:var(--brown); }
 
   .benefits-bar { background:var(--red); padding:50px 40px; display:flex; justify-content:center; gap:50px; flex-wrap:wrap; }
   .benefit-item { text-align:center; color:var(--cream); }
@@ -294,7 +307,7 @@
   <a href="#inicio" class="nav-logo">Fresquito's</a>
   <ul class="nav-links" id="navLinks">
     <li><a href="#nosotros">Nosotros</a></li>
-    <li><a href="#nuestros-helados">Helados</a></li>
+    <li><a href="#nuestros-helados">Sabores</a></li>
     <li><a href="#calculadora">Calculadora</a></li>
     <li><a href="#suscripcion">Suscripción</a></li>
     <li><a href="#mayoristas">Mayoristas</a></li>
@@ -314,7 +327,7 @@
     <p class="hero-desc">Porque tu perro merece lo mejor. Formulado con ingredientes naturales y pensado especialmente para el organismo canino.</p>
     <div class="hero-ctas">
       <a href="#nuestros-helados" class="btn-primary">Ver Sabores</a>
-      <a href="#calculadora" class="btn-outline">Calculá la Porción</a>
+      <a href="#calculadora" class="btn-outline">Calculá tu Porción</a>
     </div>
   </div>
 </section>
@@ -373,14 +386,46 @@
     <div class="helado-card reveal">
       <img src="/mnt/user-data/uploads/1000228112.jpg" alt="Sabor Carne" class="helado-img" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22140%22 height=%22140%22 viewBox=%220 0 140 140%22%3E%3Ccircle cx=%2270%22 cy=%2270%22 r=%2270%22 fill=%22%233D1F0A%22/%3E%3Ctext x=%2270%22 y=%2285%22 text-anchor=%22middle%22 fill=%22%23E8C547%22 font-family=%22Georgia,serif%22 font-size=%2250%22 font-style=%22italic%22 font-weight=%22bold%22%3EC%3C/text%3E%3C/svg%3E'">
       <div class="helado-name">Carne</div>
-      <p class="helado-desc">El sabor favorito de todo perro. Cremoso, nutritivo y lleno de proteínas. Una experiencia irresistible en cada lamida.</p>
+      <p class="helado-desc">Intenso y cremoso. Nutritivo y lleno de proteínas. Un sabor que los perros adoran desde el primer lamido.</p>
       <span class="helado-tag">Favorito</span>
+      <button class="helado-nutri-toggle" onclick="toggleNutri(this)">Composición nutricional <span class="toggle-arrow">▼</span></button>
+      <div class="helado-nutri">
+        <table class="helado-nutri-table">
+          <thead><tr><th>Composición Centesimal</th><th></th></tr></thead>
+          <tbody>
+            <tr><td>Proteína bruta (mínimo)</td><td>3,5%</td></tr>
+            <tr><td>Extracto etéreo (mínimo)</td><td>8,3%</td></tr>
+            <tr><td>Fibra cruda (máximo)</td><td>1%</td></tr>
+            <tr><td>Minerales totales (máximo)</td><td>0,9%</td></tr>
+            <tr><td>Humedad (máximo)</td><td>60,5%</td></tr>
+            <tr><td>Calcio (mín. y máx.)</td><td>0,29% – 0,36%</td></tr>
+            <tr><td>Fósforo (mín. y máx.)</td><td>0,01% – 0,05%</td></tr>
+            <tr><td>Valor energético (cada 100g)</td><td>196 Kcal húmedo</td></tr>
+          </tbody>
+        </table>
+      </div>
     </div>
     <div class="helado-card reveal" style="transition-delay:0.15s">
       <img src="/mnt/user-data/uploads/1000228114.jpg" alt="Sabor Pollo" class="helado-img" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22140%22 height=%22140%22 viewBox=%220 0 140 140%22%3E%3Ccircle cx=%2270%22 cy=%2270%22 r=%2270%22 fill=%22%23C94B2C%22/%3E%3Ctext x=%2270%22 y=%2285%22 text-anchor=%22middle%22 fill=%22%23F5EDD6%22 font-family=%22Georgia,serif%22 font-size=%2250%22 font-style=%22italic%22 font-weight=%22bold%22%3EP%3C/text%3E%3C/svg%3E'">
       <div class="helado-name">Pollo</div>
-      <p class="helado-desc">Suave, liviano y delicioso. Ideal para perros más delicados. Un clásico que nunca falla y hace mover la cola al instante.</p>
+      <p class="helado-desc">Suave y fresco. Nutritivo y lleno de proteínas. Un clásico que nunca falla y deja con ganas de más.</p>
       <span class="helado-tag">Suave & Liviano</span>
+      <button class="helado-nutri-toggle" onclick="toggleNutri(this)">Composición nutricional <span class="toggle-arrow">▼</span></button>
+      <div class="helado-nutri">
+        <table class="helado-nutri-table">
+          <thead><tr><th>Composición Centesimal</th><th></th></tr></thead>
+          <tbody>
+            <tr><td>Proteína bruta (mínimo)</td><td>3,4%</td></tr>
+            <tr><td>Extracto etéreo (mínimo)</td><td>8,2%</td></tr>
+            <tr><td>Fibra cruda (máximo)</td><td>1%</td></tr>
+            <tr><td>Minerales totales (máximo)</td><td>0,9%</td></tr>
+            <tr><td>Humedad (máximo)</td><td>60,2%</td></tr>
+            <tr><td>Calcio (mín. y máx.)</td><td>0,30% – 0,36%</td></tr>
+            <tr><td>Fósforo (mín. y máx.)</td><td>0,01% – 0,05%</td></tr>
+            <tr><td>Valor energético (cada 100g)</td><td>197 Kcal húmedo</td></tr>
+          </tbody>
+        </table>
+      </div>
     </div>
   </div>
   <a href="#suscripcion" class="btn-primary reveal" style="background:var(--yellow);color:var(--brown);">Quiero probarlos</a>
@@ -397,7 +442,7 @@
 <!-- CALCULADORA -->
 <section id="calculadora">
   <span class="section-label reveal">★ Encontrá la porción ideal</span>
-  <h2 class="section-title reveal" style="margin:0 auto 16px;">Calculá la porción <em>de tu perro</em></h2>
+  <h2 class="section-title reveal" style="margin:0 auto 16px;">Calculá <em>tu porción</em></h2>
   <p class="calc-desc reveal">Respondé unas preguntas sobre tu perro y te decimos cuánto Fresquito's darle.</p>
   <div class="calc-box reveal">
     <div class="calc-progress">
@@ -666,7 +711,7 @@
       <h2 class="section-title">Preguntas <em>frecuentes</em></h2>
     </div>
     <div class="faq-item reveal"><button class="faq-question"><span class="faq-question-text">¿Qué es Fresquito's?</span><span class="faq-icon">+</span></button><div class="faq-answer"><div class="faq-answer-inner">Fresquito's es un helado cremoso, sabroso y seguro, creado especialmente para perros adultos sanos. Es un suplemento alimenticio desarrollado con asesoramiento veterinario, formulado con ingredientes naturales seleccionados para ser compatibles con el organismo canino.</div></div></div>
-    <div class="faq-item reveal"><button class="faq-question"><span class="faq-question-text">¿Qué ingredientes tiene?</span><span class="faq-icon">+</span></button><div class="faq-answer"><div class="faq-answer-inner">Leche descremada en polvo, suero de queso en polvo, aceite de palma, maltodextrina, dextrosa, estabilizantes y emulsificantes (mono y diglicéridos de ácidos grasos, goma guar, goma de celulosa, carragenina, polioxietilén sorbitan monooleato), cloruro de calcio, citrato de magnesio, ácido ascórbico. Aromatizante sabor carne o pollo según variedad.<br><br><strong>Composición centesimal:</strong><table class="faq-table"><tr><th>Componente</th><th>Valor</th></tr><tr><td>Proteína bruta (mín.)</td><td>3,4%</td></tr><tr><td>Extracto etéreo (mín.)</td><td>8,2%</td></tr><tr><td>Fibra cruda (máx.)</td><td>1%</td></tr><tr><td>Minerales totales (máx.)</td><td>0,9%</td></tr><tr><td>Humedad (máx.)</td><td>60,2%</td></tr><tr><td>Calcio</td><td>0,30%–0,36%</td></tr><tr><td>Fósforo</td><td>0,01%–0,05%</td></tr><tr><td>Valor energético</td><td>4950 Kcal/kg de MS</td></tr></table></div></div></div>
+    <div class="faq-item reveal"><button class="faq-question"><span class="faq-question-text">¿Qué ingredientes tiene?</span><span class="faq-icon">+</span></button><div class="faq-answer"><div class="faq-answer-inner">Leche descremada en polvo, suero de queso en polvo, aceite de palma, maltodextrina, dextrosa, estabilizantes y emulsificantes (mono y diglicéridos de ácidos grasos, goma guar, goma de celulosa, carragenina, polioxietilén sorbitan monooleato), cloruro de calcio, citrato de magnesio, ácido ascórbico. Aromatizante sabor carne o pollo según variedad.</div></div></div>
     <div class="faq-item reveal"><button class="faq-question"><span class="faq-question-text">¿Todos los perros pueden comerlo?</span><span class="faq-icon">+</span></button><div class="faq-answer"><div class="faq-answer-inner">Fresquito's está formulado para perros adultos sanos, a partir de los 30 días en cachorros y hasta los 18 años en perros adultos. No se recomienda para perros con diabetes, hiperactividad, obesidad o trastornos gastrointestinales. Ante cualquier duda, consultá con tu veterinario.</div></div></div>
     <div class="faq-item reveal"><button class="faq-question"><span class="faq-question-text">¿Cuánto le doy a mi perro?</span><span class="faq-icon">+</span></button><div class="faq-answer"><div class="faq-answer-inner">Las dosis recomendadas están sujetas al peso del animal. Una cuchara equivale a 60g aproximadamente.<table class="faq-table"><tr><th>Peso del perro</th><th>Porción</th></tr><tr><td>Pequeño (hasta 10 kg)</td><td>1 cuchara</td></tr><tr><td>Mediano (10 a 20 kg)</td><td>2 cucharas</td></tr><tr><td>Grande (20 a 40 kg)</td><td>3 cucharas</td></tr><tr><td>Gigante (40 a 60 kg)</td><td>4 cucharas</td></tr></table>Las cantidades pueden variar según la actividad, condición y estado fisiológico del perro. Consultá siempre con tu veterinario.</div></div></div>
     <div class="faq-item reveal"><button class="faq-question"><span class="faq-question-text">¿Cómo se conserva y se sirve?</span><span class="faq-icon">+</span></button><div class="faq-answer"><div class="faq-answer-inner">Conservar en freezer a -18°C hasta un máximo de 6 meses desde su elaboración. Antes de servir, dejá el envase a temperatura ambiente durante 5 a 10 minutos para una textura más cremosa. Una vez descongelado, no volver a congelar. Conservá siempre en su envase original.</div></div></div>
@@ -683,7 +728,7 @@
   <div class="contacto-channels reveal">
     <a href="https://instagram.com/fresquitos.ar" class="channel-card" target="_blank"><span class="channel-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="28" height="28" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></span><span class="channel-name">@fresquitos.ar</span></a>
     <a href="https://tiktok.com/@fresquitos.ar" class="channel-card" target="_blank"><span class="channel-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="28" height="28" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.18 8.18 0 004.78 1.52V6.75a4.85 4.85 0 01-1.01-.06z"/></svg></span><span class="channel-name">@fresquitos.ar</span></a>
-    <a href="https://facebook.com/fresquitos" class="channel-card" target="_blank"><span class="channel-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="28" height="28" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></span><span class="channel-name">Fresquito's</span></a>
+    <a href="https://facebook.com/fresquitos.ar" class="channel-card" target="_blank"><span class="channel-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="28" height="28" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></span><span class="channel-name">@fresquitos.ar</span></a>
     <a href="https://wa.me/5491161931536" class="channel-card" target="_blank"><span class="channel-icon">💬</span><span class="channel-name">WhatsApp</span></a>
     <a href="mailto:infofresquitos@gmail.com" class="channel-card"><span class="channel-icon">✉️</span><span class="channel-name">infofresquitos@gmail.com</span></a>
   </div>
@@ -693,7 +738,7 @@
   <div class="footer-logo">Fresquito's</div>
   <div class="footer-tagline">Helado Premium Para Perros</div>
   <div class="footer-links">
-    <a href="#nosotros">Nosotros</a><a href="#nuestros-helados">Helados</a><a href="#calculadora">Calculadora</a><a href="#suscripcion">Suscripción</a><a href="#mayoristas">Mayoristas</a><a href="#puntos-de-venta">¿Dónde encontrarnos?</a><a href="#blog">Blog</a><a href="#faq">FAQ</a><a href="#contacto">Contacto</a>
+    <a href="#nosotros">Nosotros</a><a href="#nuestros-helados">Sabores</a><a href="#calculadora">Calculadora</a><a href="#suscripcion">Suscripción</a><a href="#mayoristas">Mayoristas</a><a href="#puntos-de-venta">¿Dónde encontrarnos?</a><a href="#blog">Blog</a><a href="#faq">FAQ</a><a href="#contacto">Contacto</a>
   </div>
   <div class="footer-copy">© 2026 Fresquito's · Helado Premium Para Perros · Argentina · www.fresquitos.com.ar</div>
 </footer>
@@ -701,6 +746,13 @@
 <script>
   // URL del Google Apps Script — reemplazá con tu URL después de desplegar
   const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzX157RfBuTis8Z0OXPppmC87_SWIHUgCt-4dDFOmGukehFY1B9DOiO3rkObGBtqt4w/exec';
+
+  // TOGGLE NUTRICIONAL
+  function toggleNutri(btn) {
+    const panel = btn.nextElementSibling;
+    const open = panel.classList.toggle('open');
+    btn.classList.toggle('open', open);
+  }
 
   // NAV
   const hamburger = document.getElementById('hamburger');
