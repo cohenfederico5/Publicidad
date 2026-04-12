@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fresquito's — Generador de Posts Instagram</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Oswald:wght@400;500;600;700&family=Lora:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --red: #C94B2C;
+    --cream: #F5EDD6;
+    --cream-dark: #EAD9B4;
+    --yellow: #E8C547;
+    --yellow-light: #F2D97A;
+    --brown: #3D1F0A;
+    --brown-mid: #6B3A1F;
+    --white: #FDFAF2;
+    --text: #2C1505;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Lora', serif;
+    background: var(--cream);
+    color: var(--text);
+    min-height: 100vh;
+  }
+
+  /* HEADER */
+  header {
+    background: var(--brown);
+    padding: 20px 32px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .header-brand {
+    font-family: 'Playfair Display', serif;
+    font-size: 26px;
+    font-weight: 900;
+    font-style: italic;
+    color: var(--yellow);
+  }
+  .header-sub {
+    font-family: 'Oswald', sans-serif;
+    font-size: 10px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.45);
+    margin-top: 3px;
+  }
+  .header-badge {
+    font-family: 'Oswald', sans-serif;
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--yellow);
+    border: 1px solid rgba(232,197,71,0.4);
+    padding: 5px 12px;
+  }
+
+  /* MAIN */
+  main {
+    max-width: 780px;
+    margin: 40px auto;
+    padding: 0 24px 60px;
+  }
+
+  .page-title {
+    font-family: 'Oswald', sans-serif;
+    font-size: 11px;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    color: var(--brown-mid);
+    margin-bottom: 6px;
+  }
+  .page-heading {
+    font-family: 'Playfair Display', serif;
+    font-size: 28px;
+    font-weight: 900;
+    color: var(--brown);
+    margin-bottom: 6px;
+  }
+  .page-desc {
+    font-size: 13px;
+    color: #666;
+    margin-bottom: 32px;
+  }
+
+  /* FORM CARD */
+  .form-card {
+    background: #fff;
+    border: 1.5px solid var(--cream-dark);
+    padding: 28px 28px 24px;
+    margin-bottom: 20px;
+  }
+  .form-card-title {
+    font-family: 'Oswald', sans-serif;
+    font-size: 10px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--brown-mid);
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--cream-dark);
+  }
+
+  .form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 16px;
+  }
+  .form-group { display: flex; flex-direction: column; gap: 6px; }
+  .form-group.full { grid-column: 1 / -1; }
+
+  label {
+    font-family: 'Oswald', sans-serif;
+    font-size: 9.5px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--brown-mid);
+  }
+
+  select, textarea, input[type="text"] {
+    font-family: 'Lora', serif;
+    font-size: 13px;
+    color: var(--text);
+    background: var(--white);
+    border: 1.5px solid var(--cream-dark);
+    padding: 10px 12px;
+    outline: none;
+    width: 100%;
+    transition: border-color 0.15s;
+    appearance: none;
+    -webkit-appearance: none;
+  }
+  select {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%236B3A1F' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    padding-right: 32px;
+    cursor: pointer;
+  }
+  select:focus, textarea:focus, input:focus {
+    border-color: var(--yellow);
+  }
+  textarea {
+    resize: vertical;
+    min-height: 80px;
+    line-height: 1.6;
+  }
+
+  /* CHECKBOXES */
+  .checkbox-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 2px;
+  }
+  .checkbox-group label {
+    font-family: 'Oswald', sans-serif;
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--brown);
+    background: var(--cream);
+    border: 1.5px solid var(--cream-dark);
+    padding: 6px 12px;
+    cursor: pointer;
+    transition: all 0.15s;
+    user-select: none;
+  }
+  .checkbox-group input[type="checkbox"] { display: none; }
+  .checkbox-group input[type="checkbox"]:checked + label {
+    background: var(--brown);
+    color: var(--yellow);
+    border-color: var(--brown);
+  }
+
+  /* BUTTON */
+  .btn-generar {
+    width: 100%;
+    background: var(--brown);
+    color: var(--yellow);
+    font-family: 'Oswald', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    border: none;
+    padding: 16px;
+    cursor: pointer;
+    transition: background 0.15s;
+    margin-top: 8px;
+  }
+  .btn-generar:hover { background: var(--brown-mid); }
+  .btn-generar:active { background: #2a1206; }
+
+  /* OUTPUT */
+  .output-card {
+    background: var(--brown);
+    border: 1.5px solid var(--brown);
+    padding: 0;
+    display: none;
+  }
+  .output-card.visible { display: block; }
+  .output-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 14px 20px;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+  }
+  .output-title {
+    font-family: 'Oswald', sans-serif;
+    font-size: 10px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--yellow);
+  }
+  .btn-copiar {
+    font-family: 'Oswald', sans-serif;
+    font-size: 9px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    background: var(--yellow);
+    color: var(--brown);
+    border: none;
+    padding: 6px 14px;
+    cursor: pointer;
+    font-weight: 700;
+    transition: background 0.15s;
+  }
+  .btn-copiar:hover { background: var(--yellow-light); }
+  .btn-copiar.copied { background: #4caf50; color: #fff; }
+
+  #prompt-output {
+    font-family: 'Lora', serif;
+    font-size: 12.5px;
+    color: var(--cream);
+    background: transparent;
+    border: none;
+    padding: 20px 20px 24px;
+    width: 100%;
+    min-height: 220px;
+    resize: vertical;
+    line-height: 1.7;
+    outline: none;
+  }
+
+  .instruccion {
+    background: rgba(232,197,71,0.12);
+    border-left: 3px solid var(--yellow);
+    padding: 10px 14px;
+    margin-top: 12px;
+    font-size: 12px;
+    color: var(--cream);
+    line-height: 1.6;
+  }
+  .instruccion strong {
+    font-family: 'Oswald', sans-serif;
+    font-size: 9px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--yellow);
+    display: block;
+    margin-bottom: 4px;
+  }
+
+  /* DIVIDER */
+  .divider {
+    border: none;
+    border-top: 1px solid var(--cream-dark);
+    margin: 28px 0;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div>
+    <div class="header-brand">Fresquito's</div>
+    <div class="header-sub">Helado Premium Para Perros</div>
+  </div>
+  <div class="header-badge">Generador de Posts</div>
+</header>
+
+<main>
+  <div class="page-title">Instagram · @fresquitos</div>
+  <div class="page-heading">Generador de Posts</div>
+  <div class="page-desc">Completá el formulario y copiá el prompt generado directo a Claude Code para obtener el post listo para publicar.</div>
+
+  <div class="form-card">
+    <div class="form-card-title">Configurá tu post</div>
+
+    <div class="form-grid">
+
+      <div class="form-group">
+        <label for="pilar">Pilar de contenido</label>
+        <select id="pilar">
+          <option value="">Elegí un pilar...</option>
+          <option value="emocional">Emocional — conexión perro/dueño</option>
+          <option value="educativo">Educativo — salud, ingredientes, SENASA</option>
+          <option value="producto">Producto — sabores, formato, suscripción</option>
+          <option value="b2b">B2B — distribuidores y negocios</option>
+          <option value="detras">Detrás de escena — equipo, proceso, valores</option>
+          <option value="ugc">UGC / Testimonio — momento real con el producto</option>
+          <option value="lanzamiento">Lanzamiento — anuncio, expectativa, pronto</option>
+          <option value="temporada">Temporada / Verano — calor, refresco, salidas</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="formato">Formato</label>
+        <select id="formato">
+          <option value="">Elegí un formato...</option>
+          <option value="post_imagen">Post imagen única</option>
+          <option value="carrusel">Carrusel (slides)</option>
+          <option value="reel">Reel (video corto)</option>
+          <option value="story">Story</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="tono">Tono del post</label>
+        <select id="tono">
+          <option value="calido">Cálido y emocional</option>
+          <option value="divertido">Divertido y fresco</option>
+          <option value="informativo">Informativo y claro</option>
+          <option value="urgente">Urgente / acción</option>
+          <option value="profesional">Profesional (para B2B)</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="sabor">Producto destacado</label>
+        <select id="sabor">
+          <option value="ambos">Ambos sabores</option>
+          <option value="carne">Carne 🥩</option>
+          <option value="pollo">Pollo 🍗</option>
+          <option value="ninguno">Ninguno / marca general</option>
+        </select>
+      </div>
+
+      <div class="form-group full">
+        <label for="tema">Tema o idea para el post <span style="font-size:9px;color:#aaa;letter-spacing:0;text-transform:none;">(opcional)</span></label>
+        <textarea id="tema" placeholder="Ej: un perro que tiene calor en el verano, o que los distribuidores se sumen antes del lanzamiento..."></textarea>
+      </div>
+
+      <div class="form-group full">
+        <label>Extras a incluir</label>
+        <div class="checkbox-group">
+          <input type="checkbox" id="ex_hashtags" checked>
+          <label for="ex_hashtags">Hashtags</label>
+
+          <input type="checkbox" id="ex_cta" checked>
+          <label for="ex_cta">Call to action</label>
+
+          <input type="checkbox" id="ex_senasa">
+          <label for="ex_senasa">Mencionar SENASA</label>
+
+          <input type="checkbox" id="ex_vet">
+          <label for="ex_vet">Mencionar veterinarios</label>
+
+          <input type="checkbox" id="ex_slides">
+          <label for="ex_slides">Texto por slide</label>
+
+          <input type="checkbox" id="ex_alt">
+          <label for="ex_alt">2 versiones del copy</label>
+        </div>
+      </div>
+
+    </div>
+
+    <button class="btn-generar" onclick="generarPrompt()">Generar prompt para Claude →</button>
+  </div>
+
+  <!-- OUTPUT -->
+  <div class="output-card" id="output-card">
+    <div class="output-header">
+      <div class="output-title">Prompt listo — copialo a Claude Code</div>
+      <button class="btn-copiar" id="btn-copiar" onclick="copiarPrompt()">Copiar</button>
+    </div>
+    <textarea id="prompt-output" readonly></textarea>
+    <div style="padding: 0 20px 20px;">
+      <div class="instruccion">
+        <strong>Cómo usarlo</strong>
+        Copiá el texto de arriba y pegalo directamente en Claude Code (esta misma ventana de chat). Claude va a generar el post completo con copy, caption y hashtags listos para publicar.
+      </div>
+    </div>
+  </div>
+
+</main>
+
+<script>
+  const pilares = {
+    emocional: "Emocional — conexión entre el dueño y su perro",
+    educativo: "Educativo — información sobre salud canina, ingredientes seguros y avales oficiales",
+    producto: "Producto — los sabores, el formato de suscripción y los beneficios del helado",
+    b2b: "B2B — convocatoria a distribuidores, petshops, dietéticas y negocios interesados en vender Fresquito's",
+    detras: "Detrás de escena — el equipo, el proceso de elaboración y los valores de la marca",
+    ugc: "UGC / Testimonio — un momento real de disfrute del producto",
+    lanzamiento: "Lanzamiento — anuncio de próxima llegada, expectativa, 'muy pronto'",
+    temporada: "Temporada / Verano — el calor, la necesidad de refrescarse, salidas al parque"
+  };
+
+  const formatos = {
+    post_imagen: "post de imagen única",
+    carrusel: "carrusel (varios slides con texto propio en cada uno)",
+    reel: "Reel (video corto — describí la escena visual y el copy de pantalla)",
+    story: "Story (formato vertical, texto breve, impacto inmediato)"
+  };
+
+  const tonos = {
+    calido: "cálido, cercano y emocionalmente resonante",
+    divertido: "divertido, fresco y con energía positiva",
+    informativo: "informativo, claro y directo, pero sin perder calidez",
+    urgente: "urgente, con llamado a la acción claro",
+    profesional: "profesional y directo, orientado a dueños de negocios"
+  };
+
+  const sabores = {
+    ambos: "mencionar ambos sabores (Carne y Pollo)",
+    carne: "destacar el sabor Carne 🥩",
+    pollo: "destacar el sabor Pollo 🍗",
+    ninguno: "no destacar ningún sabor en particular, hablar de la marca en general"
+  };
+
+  function generarPrompt() {
+    const pilar = document.getElementById('pilar').value;
+    const formato = document.getElementById('formato').value;
+    const tono = document.getElementById('tono').value;
+    const saborVal = document.getElementById('sabor').value;
+    const tema = document.getElementById('tema').value.trim();
+
+    const exHashtags = document.getElementById('ex_hashtags').checked;
+    const exCta = document.getElementById('ex_cta').checked;
+    const exSenasa = document.getElementById('ex_senasa').checked;
+    const exVet = document.getElementById('ex_vet').checked;
+    const exSlides = document.getElementById('ex_slides').checked;
+    const exAlt = document.getElementById('ex_alt').checked;
+
+    if (!pilar || !formato) {
+      alert('Elegí al menos el pilar de contenido y el formato.');
+      return;
+    }
+
+    let extras = [];
+    if (exHashtags) extras.push("- Incluir entre 5 y 8 hashtags relevantes para Argentina (mezcla de populares y nicho)");
+    if (exCta) extras.push("- Incluir un call to action claro al final del caption");
+    if (exSenasa) extras.push("- Mencionar la aprobación SENASA Est. Nº 2025-96/A/H");
+    if (exVet) extras.push("- Mencionar el respaldo veterinario del producto");
+    if (exSlides && formato === 'carrusel') extras.push("- Escribir el texto de cada slide por separado, numerados");
+    if (exAlt) extras.push("- Dar 2 versiones alternativas del copy principal para elegir");
+
+    const prompt = `Sos el community manager de Fresquito's, una marca argentina de helado premium para perros (sabores: Carne y Pollo). La marca es cálida, premium y emocionalmente resonante. El tono es argentino, cercano, nunca genérico.
+
+CONTEXTO DE MARCA:
+- Nombre: Fresquito's — Helado Premium Para Perros
+- Productos: helado canino en sabores Carne y Pollo (potes 360cc, suscripción mensual)
+- Avales: SENASA Est. Nº 2025-96/A/H + respaldo veterinario
+- Público: dueños de perros que tratan a su mascota como un miembro de la familia
+- Zona de distribución actual: CABA y GBA
+- Redes: @fresquitos | infofresquitos@gmail.com
+- Colores y estética: vintage cálido, terracota, crema, dorado — premium pero accesible
+
+BRIEF DEL POST:
+- Pilar de contenido: ${pilares[pilar]}
+- Formato: ${formatos[formato]}
+- Tono: ${tonos[tono]}
+- Producto a destacar: ${sabores[saborVal]}${tema ? `\n- Idea o tema específico: ${tema}` : ''}
+
+ENTREGÁ:
+1. Copy principal (el texto visual que va en la imagen/pantalla)
+2. Caption completo para Instagram (incluye el copy y todo el texto del pie de foto)${extras.length > 0 ? '\n\nREQUISITOS ADICIONALES:\n' + extras.join('\n') : ''}
+
+Escribí en español de Argentina. No uses frases genéricas ni clichés. El copy principal tiene que ser breve y con impacto. El caption puede ser un poco más largo pero sin perder ritmo.`;
+
+    document.getElementById('prompt-output').value = prompt;
+    const card = document.getElementById('output-card');
+    card.classList.add('visible');
+    card.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+    const btn = document.getElementById('btn-copiar');
+    btn.textContent = 'Copiar';
+    btn.classList.remove('copied');
+  }
+
+  function copiarPrompt() {
+    const output = document.getElementById('prompt-output');
+    navigator.clipboard.writeText(output.value).then(() => {
+      const btn = document.getElementById('btn-copiar');
+      btn.textContent = 'Copiado ✓';
+      btn.classList.add('copied');
+      setTimeout(() => {
+        btn.textContent = 'Copiar';
+        btn.classList.remove('copied');
+      }, 2500);
+    });
+  }
+</script>
+
+</body>
+</html>

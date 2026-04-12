@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fresquito's — Instagram: Bio y Primeros 9 Posts</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Oswald:wght@400;500;600;700&family=Lora:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --red: #C94B2C;
+    --red-dark: #A33820;
+    --cream: #F5EDD6;
+    --cream-dark: #EAD9B4;
+    --yellow: #E8C547;
+    --yellow-light: #F2D97A;
+    --brown: #3D1F0A;
+    --brown-mid: #6B3A1F;
+    --white: #FDFAF2;
+    --text: #2C1505;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Lora', serif;
+    background: #fff;
+    color: var(--text);
+    font-size: 10.5pt;
+    line-height: 1.6;
+  }
+
+  /* COVER */
+  .cover {
+    width: 210mm;
+    min-height: 297mm;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 18mm 20mm;
+    background: var(--brown);
+    color: var(--cream);
+    page-break-after: always;
+  }
+  .cover-top { border-bottom: 3px solid var(--yellow); padding-bottom: 16px; }
+  .cover-brand {
+    font-family: 'Playfair Display', serif;
+    font-size: 56pt;
+    font-weight: 900;
+    font-style: italic;
+    color: var(--yellow);
+    line-height: 1;
+  }
+  .cover-tagline {
+    font-family: 'Oswald', sans-serif;
+    font-size: 10pt;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    color: var(--cream-dark);
+    margin-top: 8px;
+  }
+  .cover-title {
+    font-family: 'Oswald', sans-serif;
+    font-size: 22pt;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #fff;
+    margin: 40px 0 12px;
+    line-height: 1.2;
+  }
+  .cover-subtitle {
+    font-family: 'Oswald', sans-serif;
+    font-size: 10pt;
+    letter-spacing: 3px;
+    color: var(--cream-dark);
+    text-transform: uppercase;
+  }
+  .cover-index {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(232,197,71,0.3);
+    padding: 16px 20px;
+    margin-top: 32px;
+  }
+  .cover-index-title {
+    font-family: 'Oswald', sans-serif;
+    font-size: 8pt;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--yellow);
+    margin-bottom: 10px;
+  }
+  .cover-index ul { list-style: none; padding: 0; }
+  .cover-index ul li {
+    font-family: 'Oswald', sans-serif;
+    font-size: 9.5pt;
+    color: var(--cream);
+    padding: 4px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.07);
+    display: flex;
+    gap: 12px;
+  }
+  .cover-index ul li:last-child { border-bottom: none; }
+  .cover-index ul li span {
+    color: var(--yellow);
+    font-weight: 700;
+    min-width: 24px;
+  }
+  .cover-bottom {
+    display: flex;
+    justify-content: space-between;
+    font-family: 'Oswald', sans-serif;
+    font-size: 7.5pt;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.4);
+    border-top: 1px solid rgba(255,255,255,0.1);
+    padding-top: 12px;
+  }
+
+  /* PAGE */
+  .page {
+    width: 210mm;
+    min-height: 297mm;
+    margin: 0 auto;
+    padding: 18mm 20mm 20mm;
+    background: #fff;
+    page-break-after: always;
+  }
+
+  /* HEADER */
+  .doc-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    border-bottom: 2px solid var(--brown);
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+  }
+  .doc-header-brand {
+    font-family: 'Playfair Display', serif;
+    font-size: 16pt;
+    font-weight: 900;
+    font-style: italic;
+    color: var(--brown);
+    line-height: 1;
+  }
+  .doc-header-subtitle {
+    font-family: 'Oswald', sans-serif;
+    font-size: 7.5pt;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--brown-mid);
+    margin-top: 3px;
+  }
+  .doc-header-label {
+    font-family: 'Oswald', sans-serif;
+    font-size: 7.5pt;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #aaa;
+    text-align: right;
+    line-height: 1.6;
+  }
+
+  /* SECTION TITLE */
+  .section-block {
+    background: var(--brown);
+    color: var(--yellow);
+    font-family: 'Oswald', sans-serif;
+    font-size: 11pt;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    padding: 9px 14px;
+    margin: 22px 0 14px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .section-block .num {
+    background: var(--yellow);
+    color: var(--brown);
+    font-size: 9pt;
+    font-weight: 700;
+    padding: 2px 7px;
+    border-radius: 2px;
+  }
+
+  /* BIO BLOCK */
+  .bio-block {
+    background: var(--cream);
+    border: 1.5px solid var(--cream-dark);
+    border-left: 4px solid var(--yellow);
+    padding: 14px 18px;
+    margin: 14px 0;
+    font-family: 'Lora', serif;
+    font-size: 10pt;
+    line-height: 1.7;
+    white-space: pre-line;
+  }
+  .bio-label {
+    font-family: 'Oswald', sans-serif;
+    font-size: 7.5pt;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--brown-mid);
+    margin-bottom: 8px;
+  }
+
+  /* POST CARD */
+  .post-card {
+    border: 1.5px solid var(--cream-dark);
+    margin: 18px 0;
+    overflow: hidden;
+  }
+  .post-header {
+    background: var(--brown-mid);
+    color: var(--yellow);
+    font-family: 'Oswald', sans-serif;
+    font-size: 9.5pt;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 7px 14px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .post-header .post-num {
+    background: var(--yellow);
+    color: var(--brown);
+    font-size: 8pt;
+    font-weight: 700;
+    padding: 2px 8px;
+    border-radius: 2px;
+  }
+  .post-body {
+    background: var(--cream);
+    padding: 12px 14px;
+  }
+  .post-meta {
+    font-family: 'Oswald', sans-serif;
+    font-size: 8pt;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--brown-mid);
+    margin-bottom: 10px;
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+  .post-meta span { display: flex; align-items: center; gap: 4px; }
+  .post-meta .label {
+    color: #aaa;
+    font-weight: 400;
+  }
+
+  .post-section-label {
+    font-family: 'Oswald', sans-serif;
+    font-size: 7.5pt;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--red);
+    margin: 10px 0 4px;
+  }
+  .post-copy {
+    background: #fff;
+    border-left: 3px solid var(--yellow);
+    padding: 8px 12px;
+    font-family: 'Playfair Display', serif;
+    font-size: 10.5pt;
+    font-style: italic;
+    color: var(--text);
+    margin-bottom: 10px;
+  }
+  .post-caption {
+    background: #fff;
+    border-left: 3px solid var(--cream-dark);
+    padding: 8px 12px;
+    font-size: 9.5pt;
+    color: #444;
+    line-height: 1.65;
+    white-space: pre-line;
+  }
+  .post-hashtags {
+    font-size: 8.5pt;
+    color: #888;
+    font-style: italic;
+    margin-top: 6px;
+  }
+
+  /* FOOTER */
+  .doc-footer {
+    border-top: 1px solid var(--cream-dark);
+    padding-top: 8px;
+    margin-top: 36px;
+    font-family: 'Oswald', sans-serif;
+    font-size: 7pt;
+    color: #aaa;
+    letter-spacing: 1px;
+    display: flex;
+    justify-content: space-between;
+    text-transform: uppercase;
+  }
+
+  /* PRINT */
+  @media print {
+    body { background: #fff; }
+    .cover { margin: 0; }
+    .page { margin: 0; padding: 15mm 18mm 18mm; }
+  }
+  @page { size: A4; margin: 0; }
+</style>
+</head>
+<body>
+
+<!-- COVER -->
+<div class="cover">
+  <div>
+    <div class="cover-top">
+      <div class="cover-brand">Fresquito's</div>
+      <div class="cover-tagline">Helado Premium Para Perros</div>
+    </div>
+    <div class="cover-title">Instagram —<br>Bio y Primeros 9 Posts</div>
+    <div class="cover-subtitle">Contenido Listo para Publicar · 2026</div>
+
+    <div class="cover-index">
+      <div class="cover-index-title">Contenido</div>
+      <ul>
+        <li><span>Bio</span> Perfil de Instagram</li>
+        <li><span>01</span> Teaser de lanzamiento</li>
+        <li><span>02</span> Presentación de marca</li>
+        <li><span>03</span> Los sabores</li>
+        <li><span>04</span> Aval veterinario y SENASA</li>
+        <li><span>05</span> Emocional / el problema</li>
+        <li><span>06</span> UGC / momento de disfrute</li>
+        <li><span>07</span> B2B: convocatoria a distribuidores</li>
+        <li><span>08</span> Detrás de escena / valores</li>
+        <li><span>09</span> CTA de lanzamiento</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="cover-bottom">
+    <span>infofresquitos@gmail.com · @fresquitos</span>
+    <span>Confidencial · 2026</span>
+  </div>
+</div>
+
+<!-- PÁGINA 1 — BIO + POSTS 1–3 -->
+<div class="page">
+
+  <div class="doc-header">
+    <div>
+      <div class="doc-header-brand">Fresquito's</div>
+      <div class="doc-header-subtitle">Helado Premium Para Perros</div>
+    </div>
+    <div class="doc-header-label">
+      Instagram — Contenido<br>
+      @fresquitos · 2026
+    </div>
+  </div>
+
+  <!-- BIO -->
+  <div class="section-block"><span class="num">Bio</span> Perfil de Instagram</div>
+  <div class="bio-label">Texto de la bio</div>
+  <div class="bio-block">Helado premium para perros 🍦🐾
+Carne &amp; Pollo | Avalado por veterinarios
+SENASA Est. Nº 2025-96/A/H
+📩 Consultá por distribución → infofresquitos@gmail.com</div>
+
+  <!-- POST 1 -->
+  <div class="section-block"><span class="num">Posts</span> Primeros 9 posts</div>
+
+  <div class="post-card">
+    <div class="post-header">
+      Post 1 — Teaser de lanzamiento
+      <span class="post-num">01</span>
+    </div>
+    <div class="post-body">
+      <div class="post-meta">
+        <span><span class="label">Formato:</span> Imagen oscura, solo el logo y una frase</span>
+      </div>
+      <div class="post-section-label">Copy principal</div>
+      <div class="post-copy">Algo está llegando para los perros de Argentina.
+Pronto. 🐾</div>
+      <div class="post-section-label">Caption</div>
+      <div class="post-caption">El verano de tu perro nunca va a ser el mismo.
+Fresquito's está en camino. Seguinos para ser el primero en enterarte.
+—
+<span class="post-hashtags">#fresquitos #heladoparaperros #proximamente #perrosdeargentina</span></div>
+    </div>
+  </div>
+
+  <!-- POST 2 -->
+  <div class="post-card">
+    <div class="post-header">
+      Post 2 — Presentación de marca
+      <span class="post-num">02</span>
+    </div>
+    <div class="post-body">
+      <div class="post-meta">
+        <span><span class="label">Formato:</span> Carrusel 3 slides (¿Qué es? / ¿Para quién? / ¿Por qué?)</span>
+      </div>
+      <div class="post-section-label">Copy slide 1</div>
+      <div class="post-copy">Fresquito's es el primer helado premium para perros de Argentina.</div>
+      <div class="post-section-label">Copy slide 2</div>
+      <div class="post-copy">Para los que tratan a su perro como se merece.</div>
+      <div class="post-section-label">Copy slide 3</div>
+      <div class="post-copy">Formulado especialmente para el organismo canino. Sin ingredientes dañinos. Sin vueltas.</div>
+      <div class="post-section-label">Caption</div>
+      <div class="post-caption">Porque tu perro también tiene calor. Y también merece un mimo de verdad.
+—
+<span class="post-hashtags">#fresquitos #perros #heladoparaperros #mascotasargentina</span></div>
+    </div>
+  </div>
+
+  <!-- POST 3 -->
+  <div class="post-card">
+    <div class="post-header">
+      Post 3 — Los sabores
+      <span class="post-num">03</span>
+    </div>
+    <div class="post-body">
+      <div class="post-meta">
+        <span><span class="label">Formato:</span> Imagen o carrusel mostrando los dos productos</span>
+      </div>
+      <div class="post-section-label">Copy principal</div>
+      <div class="post-copy">Dos sabores. Una sola misión: hacer feliz a tu perro.
+🥩 Carne
+🍗 Pollo</div>
+      <div class="post-section-label">Caption</div>
+      <div class="post-caption">Ingredientes naturales, sabores que encantan, formulados para el organismo canino.
+Carne y Pollo. ¿Cuál elegiría el tuyo?
+—
+<span class="post-hashtags">#fresquitos #carne #pollo #heladocanino #perrosfelices</span></div>
+    </div>
+  </div>
+
+  <div class="doc-footer">
+    <span>Fresquito's · @fresquitos</span>
+    <span>Instagram — Contenido · 2026</span>
+  </div>
+</div>
+
+<!-- PÁGINA 2 — POSTS 4–7 -->
+<div class="page">
+
+  <div class="doc-header">
+    <div>
+      <div class="doc-header-brand">Fresquito's</div>
+      <div class="doc-header-subtitle">Helado Premium Para Perros</div>
+    </div>
+    <div class="doc-header-label">
+      Instagram — Contenido<br>
+      @fresquitos · 2026
+    </div>
+  </div>
+
+  <!-- POST 4 -->
+  <div class="post-card">
+    <div class="post-header">
+      Post 4 — Aval veterinario y SENASA
+      <span class="post-num">04</span>
+    </div>
+    <div class="post-body">
+      <div class="post-meta">
+        <span><span class="label">Formato:</span> Diseño tipo "sello de garantía", tipografía fuerte</span>
+      </div>
+      <div class="post-section-label">Copy principal</div>
+      <div class="post-copy">No lo decimos nosotros. Lo avalan los veterinarios.</div>
+      <div class="post-section-label">Caption</div>
+      <div class="post-caption">Fresquito's está formulado con ingredientes aptos para perros y aprobado por SENASA (Est. Nº 2025-96/A/H).
+Porque la salud de tu perro no es negociable.
+—
+<span class="post-hashtags">#senasa #veterinario #saludcanina #fresquitos #confianza</span></div>
+    </div>
+  </div>
+
+  <!-- POST 5 -->
+  <div class="post-card">
+    <div class="post-header">
+      Post 5 — Emocional / el problema
+      <span class="post-num">05</span>
+    </div>
+    <div class="post-body">
+      <div class="post-meta">
+        <span><span class="label">Formato:</span> Foto de perro en verano, cara de calor</span>
+      </div>
+      <div class="post-section-label">Copy principal</div>
+      <div class="post-copy">El calor no es solo tuyo.</div>
+      <div class="post-section-label">Caption</div>
+      <div class="post-caption">Tu perro no puede decirte que tiene calor. Pero vos lo sabés.
+Fresquito's es la forma más rica de refrescarlo.
+Próximamente en CABA y GBA.
+—
+<span class="post-hashtags">#veranoperros #fresquitos #heladoparaperros #mimoscaninos</span></div>
+    </div>
+  </div>
+
+  <!-- POST 6 -->
+  <div class="post-card">
+    <div class="post-header">
+      Post 6 — UGC / momento de disfrute
+      <span class="post-num">06</span>
+    </div>
+    <div class="post-body">
+      <div class="post-meta">
+        <span><span class="label">Formato:</span> Foto de perro "disfrutando" (lifestyle/stock por ahora)</span>
+      </div>
+      <div class="post-section-label">Copy principal</div>
+      <div class="post-copy">Esta cara no tiene precio.</div>
+      <div class="post-section-label">Caption</div>
+      <div class="post-caption">El helado que hace mover la cola desde el primer lamido.
+¿Ya seguís a tu futuro helado favorito? 🐾
+—
+<span class="post-hashtags">#perrosfelices #fresquitos #heladocanino #mimosargentina</span></div>
+    </div>
+  </div>
+
+  <!-- POST 7 -->
+  <div class="post-card">
+    <div class="post-header">
+      Post 7 — B2B: convocatoria a distribuidores
+      <span class="post-num">07</span>
+    </div>
+    <div class="post-body">
+      <div class="post-meta">
+        <span><span class="label">Formato:</span> Diseño más "profesional", tipografía limpia</span>
+      </div>
+      <div class="post-section-label">Copy principal</div>
+      <div class="post-copy">¿Tenés un petshop, cafetería pet friendly, dietética o kiosco?
+Sumá Fresquito's a tu negocio.</div>
+      <div class="post-section-label">Caption</div>
+      <div class="post-caption">Estamos buscando distribuidores en CABA y GBA para lanzar juntos.
+Petshops, estaciones de servicio, supermercados, cafés y restaurantes pet friendly — este mensaje es para vos.
+Escribinos a infofresquitos@gmail.com o por DM.
+—
+<span class="post-hashtags">#distribuidores #petshop #negociosargentina #fresquitos #oportunidaddenegocio</span></div>
+    </div>
+  </div>
+
+  <div class="doc-footer">
+    <span>Fresquito's · @fresquitos</span>
+    <span>Instagram — Contenido · 2026</span>
+  </div>
+</div>
+
+<!-- PÁGINA 3 — POSTS 8–9 -->
+<div class="page">
+
+  <div class="doc-header">
+    <div>
+      <div class="doc-header-brand">Fresquito's</div>
+      <div class="doc-header-subtitle">Helado Premium Para Perros</div>
+    </div>
+    <div class="doc-header-label">
+      Instagram — Contenido<br>
+      @fresquitos · 2026
+    </div>
+  </div>
+
+  <!-- POST 8 -->
+  <div class="post-card">
+    <div class="post-header">
+      Post 8 — Detrás de escena / valores
+      <span class="post-num">08</span>
+    </div>
+    <div class="post-body">
+      <div class="post-meta">
+        <span><span class="label">Formato:</span> Foto del producto, proceso, o del equipo</span>
+      </div>
+      <div class="post-section-label">Copy principal</div>
+      <div class="post-copy">Hecho con cuidado. Para quien más querés.</div>
+      <div class="post-section-label">Caption</div>
+      <div class="post-caption">En Fresquito's creemos que los perros merecen lo mejor. Por eso usamos ingredientes naturales, trabajamos con el aval de veterinarios y seguimos los estándares de SENASA.
+No es un capricho. Es lo que corresponde.
+—
+<span class="post-hashtags">#fresquitos #detrasdeescena #calidadcanina #heladopremium</span></div>
+    </div>
+  </div>
+
+  <!-- POST 9 -->
+  <div class="post-card">
+    <div class="post-header">
+      Post 9 — CTA de lanzamiento
+      <span class="post-num">09</span>
+    </div>
+    <div class="post-body">
+      <div class="post-meta">
+        <span><span class="label">Formato:</span> Diseño de impacto, fecha o "muy pronto"</span>
+      </div>
+      <div class="post-section-label">Copy principal</div>
+      <div class="post-copy">CABA y GBA. Muy pronto.</div>
+      <div class="post-section-label">Caption</div>
+      <div class="post-caption">Fresquito's está llegando. Seguinos, activá la campanita y preparate para darle a tu perro el verano que se merece.
+¿Querés ser distribuidor? Escribinos ya: infofresquitos@gmail.com
+—
+<span class="post-hashtags">#fresquitos #proximamente #heladoparaperros #lanzamiento #perrosargentina</span></div>
+    </div>
+  </div>
+
+  <div class="doc-footer">
+    <span>Fresquito's · @fresquitos</span>
+    <span>Instagram — Contenido · 2026</span>
+  </div>
+</div>
+
+</body>
+</html>
