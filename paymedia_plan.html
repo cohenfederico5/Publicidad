@@ -1,0 +1,900 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Plan de Paymedia — Fresquito's</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700;1,900&family=Oswald:wght@400;500;600;700&family=Lora:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --red: #D95B5B;
+    --red-dark: #BF4545;
+    --red-muted: rgba(217,91,91,0.12);
+    --cream: #F2E6CE;
+    --cream-dark: #E2D4B0;
+    --yellow: #D9BC66;
+    --yellow-light: #E5CB7A;
+    --yellow-muted: rgba(217,188,102,0.18);
+    --brown: #3D1F0A;
+    --brown-mid: #6B3A1F;
+    --white: #FDFAF2;
+    --text: #2C1505;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Lora', serif;
+    background: var(--cream);
+    color: var(--text);
+    min-height: 100vh;
+    padding: 60px 24px 80px;
+    position: relative;
+  }
+
+  /* Subtle noise texture overlay */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.4;
+  }
+
+  .doc-wrapper {
+    max-width: 900px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* ── HEADER ── */
+  .doc-header {
+    text-align: center;
+    padding-bottom: 48px;
+    border-bottom: 1px solid var(--yellow);
+    margin-bottom: 64px;
+    position: relative;
+  }
+
+  .doc-header::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 120px;
+    height: 1px;
+    background: var(--red);
+  }
+
+  .brand-eyebrow {
+    font-family: 'Oswald', sans-serif;
+    font-size: 0.65rem;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    color: var(--brown-mid);
+    margin-bottom: 16px;
+  }
+
+  .brand-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.6rem;
+    font-weight: 900;
+    font-style: italic;
+    color: var(--brown);
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+
+  .brand-name span {
+    color: var(--red);
+  }
+
+  .doc-title {
+    font-family: 'Oswald', sans-serif;
+    font-size: 0.7rem;
+    letter-spacing: 6px;
+    text-transform: uppercase;
+    color: var(--brown-mid);
+    margin-top: 12px;
+    padding: 6px 20px;
+    border: 1px solid var(--cream-dark);
+    display: inline-block;
+  }
+
+  /* ── SECTION WRAPPER ── */
+  .section {
+    margin-bottom: 72px;
+  }
+
+  .section-label {
+    font-family: 'Oswald', sans-serif;
+    font-size: 0.6rem;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    color: var(--red);
+    margin-bottom: 8px;
+    display: block;
+  }
+
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    font-weight: 900;
+    color: var(--brown);
+    line-height: 1.15;
+    margin-bottom: 6px;
+  }
+
+  .section-title em {
+    font-style: italic;
+    color: var(--red);
+  }
+
+  .section-sub {
+    font-family: 'Oswald', sans-serif;
+    font-size: 0.72rem;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--brown-mid);
+    margin-bottom: 40px;
+  }
+
+  /* ── ARCHITECTURE DIAGRAM ── */
+  .diagram {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+    margin: 40px 0;
+  }
+
+  .diagram-box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    clip-path: polygon(10px 0%, 100% 0%, calc(100% - 10px) 100%, 0% 100%);
+  }
+
+  .diagram-source {
+    background: var(--brown);
+    color: var(--yellow);
+    padding: 14px 44px;
+    clip-path: polygon(10px 0%, 100% 0%, calc(100% - 10px) 100%, 0% 100%);
+  }
+
+  .diagram-source span {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    font-style: italic;
+    letter-spacing: 1px;
+  }
+
+  .diagram-arrow {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 48px;
+    justify-content: center;
+    gap: 2px;
+    color: var(--brown-mid);
+  }
+
+  .arrow-line {
+    width: 2px;
+    height: 22px;
+    background: var(--yellow);
+  }
+
+  .arrow-head {
+    width: 0;
+    height: 0;
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+    border-top: 9px solid var(--yellow);
+  }
+
+  .diagram-gtm {
+    background: var(--yellow);
+    color: var(--brown);
+    padding: 20px 56px;
+    clip-path: polygon(10px 0%, 100% 0%, calc(100% - 10px) 100%, 0% 100%);
+    box-shadow: 0 4px 32px rgba(217,188,102,0.4);
+    border: 2px solid var(--yellow-light);
+    position: relative;
+  }
+
+  .gtm-label {
+    font-family: 'Oswald', sans-serif;
+    font-size: 0.55rem;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--brown-mid);
+    display: block;
+    margin-bottom: 4px;
+  }
+
+  .gtm-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.4rem;
+    font-weight: 900;
+    color: var(--brown);
+    letter-spacing: 0.5px;
+  }
+
+  /* Fan arrows from GTM to platforms */
+  .diagram-fan {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 16px;
+    width: 100%;
+    margin-top: 0;
+    position: relative;
+    padding-top: 32px;
+  }
+
+  .diagram-fan::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 2px;
+    height: 16px;
+    background: var(--yellow);
+  }
+
+  /* Horizontal bar connecting platform arrows */
+  .fan-bar {
+    position: absolute;
+    top: 16px;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+  }
+
+  .fan-bar-line {
+    height: 2px;
+    background: var(--yellow);
+    width: 80%;
+    max-width: 680px;
+  }
+
+  .platform-col {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 1;
+    max-width: 160px;
+  }
+
+  .platform-arrow-down {
+    width: 2px;
+    height: 24px;
+    background: var(--yellow);
+    position: relative;
+  }
+
+  .platform-arrow-down::after {
+    content: '';
+    position: absolute;
+    bottom: -7px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 8px solid var(--yellow);
+  }
+
+  .platform-box {
+    background: var(--white);
+    border: 1.5px solid var(--cream-dark);
+    padding: 12px 10px;
+    text-align: center;
+    margin-top: 16px;
+    width: 100%;
+    clip-path: polygon(6px 0%, 100% 0%, calc(100% - 6px) 100%, 0% 100%);
+    transition: border-color 0.2s, box-shadow 0.2s;
+  }
+
+  .platform-box:hover {
+    border-color: var(--yellow);
+    box-shadow: 0 2px 16px rgba(217,188,102,0.2);
+  }
+
+  .platform-icon {
+    font-size: 1.4rem;
+    display: block;
+    margin-bottom: 6px;
+  }
+
+  .platform-name {
+    font-family: 'Oswald', sans-serif;
+    font-size: 0.62rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--brown);
+    font-weight: 600;
+    display: block;
+    margin-bottom: 2px;
+  }
+
+  .platform-desc {
+    font-family: 'Lora', serif;
+    font-size: 0.62rem;
+    color: var(--brown-mid);
+    font-style: italic;
+    line-height: 1.4;
+  }
+
+  .platform-box.future {
+    border-style: dashed;
+    border-color: var(--cream-dark);
+    opacity: 0.75;
+  }
+
+  .diagram-note {
+    background: var(--yellow-muted);
+    border-left: 3px solid var(--yellow);
+    padding: 16px 20px;
+    margin-top: 40px;
+    font-size: 0.88rem;
+    line-height: 1.7;
+    color: var(--text);
+  }
+
+  .diagram-note strong {
+    font-family: 'Oswald', sans-serif;
+    font-size: 0.75rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--brown);
+  }
+
+  /* ── COMPARISON TABLE ── */
+  .compare-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 32px;
+    overflow: hidden;
+  }
+
+  .compare-table thead tr th {
+    padding: 14px 24px;
+    font-family: 'Oswald', sans-serif;
+    font-size: 0.7rem;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    font-weight: 600;
+  }
+
+  .col-bad {
+    background: rgba(191,69,69,0.08);
+    color: var(--red-dark);
+    border: 1.5px solid rgba(191,69,69,0.18);
+    border-bottom: none;
+    clip-path: polygon(8px 0%, 100% 0%, 100% 100%, 0% 100%);
+  }
+
+  .col-good {
+    background: var(--yellow);
+    color: var(--brown);
+    border: 1.5px solid var(--yellow);
+    border-bottom: none;
+    clip-path: polygon(0% 0%, calc(100% - 8px) 0%, 100% 100%, 0% 100%);
+  }
+
+  .compare-table tbody tr td {
+    padding: 14px 24px;
+    font-size: 0.88rem;
+    line-height: 1.5;
+    vertical-align: top;
+    border-bottom: 1px solid var(--cream-dark);
+  }
+
+  .compare-table tbody tr:last-child td {
+    border-bottom: none;
+  }
+
+  .td-bad {
+    background: var(--white);
+    border-left: 1.5px solid rgba(191,69,69,0.18);
+    border-right: 1.5px solid rgba(191,69,69,0.18);
+    color: var(--brown-mid);
+  }
+
+  .td-good {
+    background: var(--yellow-muted);
+    border-left: 1.5px solid var(--yellow);
+    border-right: 1.5px solid var(--yellow);
+    color: var(--brown);
+    font-weight: 500;
+  }
+
+  .td-bad-last {
+    border-bottom: 1.5px solid rgba(191,69,69,0.18) !important;
+  }
+
+  .td-good-last {
+    border-bottom: 1.5px solid var(--yellow) !important;
+  }
+
+  .mark-bad {
+    color: var(--red);
+    font-weight: 700;
+    margin-right: 8px;
+  }
+
+  .mark-good {
+    color: var(--brown);
+    font-weight: 700;
+    margin-right: 8px;
+  }
+
+  /* ── CHECKLIST / PHASES ── */
+  .phases-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin-top: 36px;
+  }
+
+  @media (max-width: 640px) {
+    .phases-grid { grid-template-columns: 1fr; }
+    .diagram-fan { gap: 8px; }
+    .platform-col { max-width: 120px; }
+    .platform-name { font-size: 0.55rem; }
+  }
+
+  .phase-card {
+    background: var(--white);
+    border: 1.5px solid var(--cream-dark);
+    padding: 28px 24px;
+    position: relative;
+    clip-path: polygon(10px 0%, 100% 0%, calc(100% - 10px) 100%, 0% 100%);
+  }
+
+  .phase-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: var(--yellow);
+  }
+
+  .phase-number {
+    font-family: 'Oswald', sans-serif;
+    font-size: 0.55rem;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    color: var(--red);
+    display: block;
+    margin-bottom: 6px;
+  }
+
+  .phase-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    font-style: italic;
+    color: var(--brown);
+    margin-bottom: 20px;
+    line-height: 1.25;
+  }
+
+  .checklist {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .checklist li {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    cursor: pointer;
+  }
+
+  .checklist li input[type="checkbox"] {
+    display: none;
+  }
+
+  .check-box {
+    width: 16px;
+    height: 16px;
+    min-width: 16px;
+    border: 1.5px solid var(--brown-mid);
+    background: transparent;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 2px;
+    transition: all 0.2s;
+    cursor: pointer;
+    clip-path: polygon(2px 0%, 100% 0%, calc(100% - 2px) 100%, 0% 100%);
+    flex-shrink: 0;
+  }
+
+  .check-mark {
+    display: none;
+    width: 8px;
+    height: 8px;
+    background: var(--yellow);
+    clip-path: polygon(1px 0%, 100% 0%, calc(100% - 1px) 100%, 0% 100%);
+  }
+
+  input[type="checkbox"]:checked ~ .check-box {
+    border-color: var(--yellow);
+    background: var(--brown);
+  }
+
+  input[type="checkbox"]:checked ~ .check-box .check-mark {
+    display: block;
+  }
+
+  input[type="checkbox"]:checked ~ .check-text {
+    text-decoration: line-through;
+    color: var(--brown-mid);
+    opacity: 0.6;
+  }
+
+  .check-text {
+    font-size: 0.83rem;
+    line-height: 1.55;
+    color: var(--text);
+    transition: all 0.2s;
+  }
+
+  .check-text strong {
+    font-family: 'Oswald', sans-serif;
+    font-size: 0.75rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--brown);
+    display: block;
+    margin-bottom: 1px;
+    font-style: normal;
+  }
+
+  /* ── FOOTER ── */
+  .doc-footer {
+    margin-top: 80px;
+    padding-top: 24px;
+    border-top: 1px solid var(--yellow);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .footer-brand {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    font-weight: 900;
+    font-style: italic;
+    color: var(--brown);
+  }
+
+  .footer-note {
+    font-family: 'Oswald', sans-serif;
+    font-size: 0.6rem;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--brown-mid);
+  }
+
+  /* ── PRINT ── */
+  @media print {
+    body { padding: 20px; background: white; }
+    body::before { display: none; }
+    .phase-card { break-inside: avoid; }
+    .section { break-inside: avoid; }
+  }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .doc-header { animation: fadeUp 0.7s ease forwards; }
+  .section:nth-child(1) { animation: fadeUp 0.7s 0.1s ease both; }
+  .section:nth-child(2) { animation: fadeUp 0.7s 0.2s ease both; }
+  .section:nth-child(3) { animation: fadeUp 0.7s 0.3s ease both; }
+  .phase-card { animation: fadeUp 0.5s ease both; }
+  .phase-card:nth-child(1) { animation-delay: 0.35s; }
+  .phase-card:nth-child(2) { animation-delay: 0.45s; }
+  .phase-card:nth-child(3) { animation-delay: 0.55s; }
+  .phase-card:nth-child(4) { animation-delay: 0.65s; }
+</style>
+</head>
+<body>
+
+<div class="doc-wrapper">
+
+  <!-- HEADER -->
+  <header class="doc-header">
+    <p class="brand-eyebrow">Estrategia Digital Interna</p>
+    <h1 class="brand-name">Fresquito<span>'s</span></h1>
+    <p class="doc-title">Plan de Paymedia &amp; Tracking — 2025</p>
+  </header>
+
+  <!-- SECTION 1: ARQUITECTURA -->
+  <section class="section">
+    <span class="section-label">Sección 01</span>
+    <h2 class="section-title">Arquitectura de <em>Paymedia</em></h2>
+    <p class="section-sub">Google Tag Manager como centro de todo</p>
+
+    <div class="diagram">
+
+      <!-- Sitio web -->
+      <div class="diagram-source">
+        <span>fresquitos.com.ar</span>
+      </div>
+
+      <!-- Arrow down -->
+      <div class="diagram-arrow">
+        <div class="arrow-line"></div>
+        <div class="arrow-head"></div>
+      </div>
+
+      <!-- GTM box -->
+      <div class="diagram-gtm">
+        <span class="gtm-label">Contenedor central</span>
+        <span class="gtm-name">Google Tag Manager</span>
+      </div>
+
+      <!-- Fan to platforms -->
+      <div class="diagram-fan">
+        <div class="fan-bar"><div class="fan-bar-line"></div></div>
+
+        <div class="platform-col">
+          <div class="platform-arrow-down"></div>
+          <div class="platform-box">
+            <span class="platform-icon">📊</span>
+            <span class="platform-name">GA4</span>
+            <span class="platform-desc">Google Analytics</span>
+          </div>
+        </div>
+
+        <div class="platform-col">
+          <div class="platform-arrow-down"></div>
+          <div class="platform-box">
+            <span class="platform-icon">🔵</span>
+            <span class="platform-name">Meta Pixel</span>
+            <span class="platform-desc">Facebook + Instagram Ads</span>
+          </div>
+        </div>
+
+        <div class="platform-col">
+          <div class="platform-arrow-down"></div>
+          <div class="platform-box">
+            <span class="platform-icon">🎯</span>
+            <span class="platform-name">Google Ads</span>
+            <span class="platform-desc">Conversion Tag</span>
+          </div>
+        </div>
+
+        <div class="platform-col">
+          <div class="platform-arrow-down"></div>
+          <div class="platform-box">
+            <span class="platform-icon">🎵</span>
+            <span class="platform-name">TikTok Pixel</span>
+            <span class="platform-desc">TikTok Ads</span>
+          </div>
+        </div>
+
+        <div class="platform-col">
+          <div class="platform-arrow-down"></div>
+          <div class="platform-box future">
+            <span class="platform-icon">＋</span>
+            <span class="platform-name">Futuras</span>
+            <span class="platform-desc">Cualquier plataforma</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="diagram-note">
+      <strong>La clave:</strong> Con GTM instalás <strong>UN SOLO contenedor</strong> en el sitio y manejás todos los pixels desde un dashboard web — sin tocar el código nunca más.
+    </div>
+  </section>
+
+  <!-- SECTION 2: COMPARACIÓN -->
+  <section class="section">
+    <span class="section-label">Sección 02</span>
+    <h2 class="section-title">¿Por qué GTM y no <em>pegar cada pixel directo</em>?</h2>
+    <p class="section-sub">Directo en HTML vs. Google Tag Manager</p>
+
+    <table class="compare-table">
+      <thead>
+        <tr>
+          <th class="col-bad">✗ &nbsp;Directo en HTML</th>
+          <th class="col-good">✓ &nbsp;Con Google Tag Manager</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="td-bad"><span class="mark-bad">✗</span>Editar código para cada plataforma nueva</td>
+          <td class="td-good"><span class="mark-good">✓</span>Todo desde el dashboard web, sin tocar archivos</td>
+        </tr>
+        <tr>
+          <td class="td-bad"><span class="mark-bad">✗</span>Un error puede romper otro pixel silenciosamente</td>
+          <td class="td-good"><span class="mark-good">✓</span>Tags aislados, sin interferencia entre sí</td>
+        </tr>
+        <tr>
+          <td class="td-bad"><span class="mark-bad">✗</span>Difícil debuggear qué está fallando y por qué</td>
+          <td class="td-good"><span class="mark-good">✓</span>Modo preview/debug integrado en GTM</td>
+        </tr>
+        <tr>
+          <td class="td-bad td-bad-last"><span class="mark-bad">✗</span>Cambios peligrosos: cualquier error va directo a producción</td>
+          <td class="td-good td-good-last"><span class="mark-good">✓</span>Deploy instantáneo y reversible sin riesgo</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- SECTION 3: CHECKLIST -->
+  <section class="section">
+    <span class="section-label">Sección 03</span>
+    <h2 class="section-title">Plan de <em>Implementación</em></h2>
+    <p class="section-sub">4 fases — en orden de ejecución</p>
+
+    <div class="phases-grid">
+
+      <!-- FASE 1 -->
+      <div class="phase-card">
+        <span class="phase-number">Fase 01 — Prerequisito</span>
+        <p class="phase-title">Infraestructura base</p>
+        <ul class="checklist">
+          <li onclick="toggle(this)">
+            <label>
+              <input type="checkbox">
+              <span class="check-box"><span class="check-mark"></span></span>
+            </label>
+            <span class="check-text">
+              <strong>Dominio</strong>
+              Conectar fresquitos.com.ar a Netlify via panel de NIC Argentina
+            </span>
+          </li>
+          <li onclick="toggle(this)">
+            <label>
+              <input type="checkbox">
+              <span class="check-box"><span class="check-mark"></span></span>
+            </label>
+            <span class="check-text">
+              <strong>HTTPS</strong>
+              Verificar que HTTPS esté activo — Netlify lo da automático con el dominio propio
+            </span>
+          </li>
+        </ul>
+      </div>
+
+      <!-- FASE 2 -->
+      <div class="phase-card">
+        <span class="phase-number">Fase 02 — Base de tracking</span>
+        <p class="phase-title">Google Tag Manager + Analytics</p>
+        <ul class="checklist">
+          <li onclick="toggle(this)">
+            <label>
+              <input type="checkbox">
+              <span class="check-box"><span class="check-mark"></span></span>
+            </label>
+            <span class="check-text">
+              <strong>GTM</strong>
+              Crear cuenta GTM → instalar 2 snippets en el sitio (único toque al código)
+            </span>
+          </li>
+          <li onclick="toggle(this)">
+            <label>
+              <input type="checkbox">
+              <span class="check-box"><span class="check-mark"></span></span>
+            </label>
+            <span class="check-text">
+              <strong>GA4</strong>
+              Crear cuenta Google Analytics 4 → configurar desde GTM sin tocar el HTML
+            </span>
+          </li>
+        </ul>
+      </div>
+
+      <!-- FASE 3 -->
+      <div class="phase-card">
+        <span class="phase-number">Fase 03 — Pixels de ads</span>
+        <p class="phase-title">Una plataforma por vez</p>
+        <ul class="checklist">
+          <li onclick="toggle(this)">
+            <label>
+              <input type="checkbox">
+              <span class="check-box"><span class="check-mark"></span></span>
+            </label>
+            <span class="check-text">
+              <strong>Meta Pixel</strong>
+              Cubre Facebook + Instagram Ads — configurar desde GTM
+            </span>
+          </li>
+          <li onclick="toggle(this)">
+            <label>
+              <input type="checkbox">
+              <span class="check-box"><span class="check-mark"></span></span>
+            </label>
+            <span class="check-text">
+              <strong>Google Ads Tag</strong>
+              Conversion tag para campañas de Search y Display — desde GTM
+            </span>
+          </li>
+          <li onclick="toggle(this)">
+            <label>
+              <input type="checkbox">
+              <span class="check-box"><span class="check-mark"></span></span>
+            </label>
+            <span class="check-text">
+              <strong>TikTok Pixel</strong>
+              Configurar desde GTM cuando se active pauta en TikTok
+            </span>
+          </li>
+        </ul>
+      </div>
+
+      <!-- FASE 4 -->
+      <div class="phase-card">
+        <span class="phase-number">Fase 04 — Legal y conversiones</span>
+        <p class="phase-title">Obligatorio para todas las plataformas</p>
+        <ul class="checklist">
+          <li onclick="toggle(this)">
+            <label>
+              <input type="checkbox">
+              <span class="check-box"><span class="check-mark"></span></span>
+            </label>
+            <span class="check-text">
+              <strong>Política de privacidad</strong>
+              Página obligatoria en el sitio — requerida por Google, Meta y TikTok
+            </span>
+          </li>
+          <li onclick="toggle(this)">
+            <label>
+              <input type="checkbox">
+              <span class="check-box"><span class="check-mark"></span></span>
+            </label>
+            <span class="check-text">
+              <strong>Eventos de conversión</strong>
+              Definir en GTM: clic en WhatsApp, clic en email, clic en CTA principal
+            </span>
+          </li>
+        </ul>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="doc-footer">
+    <span class="footer-brand">Fresquito's</span>
+    <span class="footer-note">© 2025 — Documento interno de estrategia digital</span>
+  </footer>
+
+</div>
+
+<script>
+  function toggle(li) {
+    const cb = li.querySelector('input[type="checkbox"]');
+    cb.checked = !cb.checked;
+  }
+</script>
+
+</body>
+</html>

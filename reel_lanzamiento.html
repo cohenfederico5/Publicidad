@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Fresquito's — Reel Lanzamiento</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,700;1,900&family=Oswald:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+
+  body {
+    background: #555;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    overflow: hidden;
+    cursor: none;
+  }
+
+  /* ── Stage 9:16 ── */
+  .stage {
+    width: 607px;
+    height: 1080px;
+    background: #F2E6CE;
+    position: relative;
+    overflow: hidden;
+    flex-shrink: 0;
+    transform-origin: center center;
+  }
+
+  /* Subtle radial warmth */
+  .stage::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse at 50% 42%, rgba(217,188,102,0.25) 0%, transparent 62%);
+    pointer-events: none; z-index: 0;
+  }
+
+  /* ── PATAS ── */
+  .pata {
+    position: absolute;
+    opacity: 0;
+    z-index: 3;
+  }
+  .stage.go .pata {
+    animation: pataRise 0.5s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  }
+  @keyframes pataRise {
+    from { opacity: 0; transform: translateY(60px) scale(0.6); }
+    to   { opacity: 1; transform: translateY(0)    scale(1);   }
+  }
+
+  /* ── BOCHAS ── */
+  .bocha {
+    position: absolute;
+    opacity: 0;
+    z-index: 2;
+  }
+  .bocha img {
+    display: block;
+    width: 100%; height: 100%;
+    object-fit: contain;
+  }
+  .stage.go .bocha {
+    animation: popIn 0.65s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+  }
+  @keyframes popIn {
+    0%   { opacity: 0; transform: scale(0)    rotate(var(--rot, -5deg)); }
+    65%  { opacity: 1; transform: scale(1.12) rotate(var(--rot,  3deg)); }
+    100% { opacity: 1; transform: scale(1)    rotate(var(--rot,  0deg)); }
+  }
+
+  /* ── MENSAJE CENTRAL ── */
+  .mensaje {
+    position: absolute;
+    left: 50%; top: 46%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    width: 520px;
+    opacity: 0;
+    z-index: 10;
+    pointer-events: none;
+  }
+  .stage.go .mensaje {
+    animation: fadeSlideUp 1s ease forwards;
+    animation-delay: 6.8s;
+  }
+  .mensaje-texto {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-style: italic;
+    font-weight: 900;
+    font-size: 62px;
+    color: #3D1F0A;
+    line-height: 1.1;
+    text-shadow: 2px 2px 0 rgba(242,230,206,0.9);
+  }
+  .mensaje-puntos { color: #D95B5B; }
+
+  /* ── BOTTOM CARD ── */
+  .bottom-card {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 140px;
+    background: #7A4020;
+    border-radius: 20px 20px 0 0;
+    z-index: 20;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transform: translateY(40px);
+    pointer-events: none;
+  }
+  .stage.go .bottom-card {
+    animation: cardUp 0.85s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    animation-delay: 9.0s;
+  }
+  @keyframes cardUp {
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .card-brand {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-style: italic; font-weight: 900;
+    font-size: 52px;
+    color: #F2E6CE;
+    line-height: 1;
+    margin-bottom: 12px;
+  }
+  .card-tagline {
+    font-family: 'Oswald', sans-serif;
+    font-weight: 300;
+    font-size: 20px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: #D9BC66;
+    margin-bottom: 14px;
+  }
+  .card-sep {
+    width: 40px; height: 2px;
+    background: #D9BC66;
+    border-radius: 1px;
+    margin-bottom: 14px;
+  }
+  .card-handle {
+    font-family: 'Oswald', sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    letter-spacing: 1.5px;
+    color: #F2E6CE;
+    margin-bottom: 5px;
+  }
+  .card-pronto {
+    font-family: 'Oswald', sans-serif;
+    font-weight: 300;
+    font-size: 13px;
+    letter-spacing: 2px;
+    color: #D97B73;
+    margin-bottom: 12px;
+  }
+  .card-senasa {
+    font-family: 'Oswald', sans-serif;
+    font-weight: 300;
+    font-size: 10px;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: #D9BC66;
+    opacity: 0.65;
+  }
+
+  /* ── SHARED ── */
+  @keyframes fadeSlideUp {
+    from { opacity: 0; transform: translate(-50%, calc(-50% + 26px)); }
+    to   { opacity: 1; transform: translate(-50%, -50%); }
+  }
+
+  /* ── READY INDICATOR — a la derecha del stage ── */
+  #ready-msg {
+    position: fixed;
+    top: 50%;
+    right: 20px;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 10px;
+    pointer-events: none;
+    z-index: 200;
+  }
+  #ready-msg .rm-step {
+    background: rgba(61,31,10,0.82);
+    color: #F2E6CE;
+    font-family: 'Oswald', sans-serif;
+    font-size: 13px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 9px 18px;
+    border-radius: 24px;
+    backdrop-filter: blur(4px);
+    white-space: nowrap;
+  }
+  #ready-msg .rm-step span {
+    color: #D9BC66;
+    font-weight: 600;
+  }
+  #ready-msg.hidden { display: none; }
+
+  /* ── INSTRUCCIONES ── */
+  .instrucciones {
+    position: fixed; bottom: 14px; left: 50%; transform: translateX(-50%);
+    background: rgba(0,0,0,0.65); color: #fff;
+    padding: 7px 18px; border-radius: 20px;
+    font-size: 12px; font-family: sans-serif; z-index: 999;
+    white-space: nowrap;
+  }
+  .instrucciones kbd {
+    background: #fff; color: #000;
+    padding: 1px 5px; border-radius: 3px; font-size: 11px;
+  }
+</style>
+</head>
+<body>
+<div class="stage" id="stage">
+
+  <!-- ══════════════════════════════════
+       PATAS — trail diagonal largo (11 huellas)
+       x alterna ~258px / ~318px, y sube de abajo
+  ══════════════════════════════════ -->
+  <div class="pata" style="left:258px; top:970px; animation-delay:0.15s;">
+    <svg width="48" height="48" viewBox="0 0 56 56"><ellipse cx="28" cy="34" rx="14" ry="11" fill="#D97B73" opacity="0.85"/><ellipse cx="14" cy="20" rx="6" ry="8" fill="#D97B73" opacity="0.85" transform="rotate(-15 14 20)"/><ellipse cx="28" cy="14" rx="6" ry="8" fill="#D97B73" opacity="0.85"/><ellipse cx="42" cy="20" rx="6" ry="8" fill="#D97B73" opacity="0.85" transform="rotate(15 42 20)"/></svg>
+  </div>
+  <div class="pata" style="left:322px; top:900px; animation-delay:0.4s;">
+    <svg width="48" height="48" viewBox="0 0 56 56" style="transform:scaleX(-1)"><ellipse cx="28" cy="34" rx="14" ry="11" fill="#D97B73" opacity="0.85"/><ellipse cx="14" cy="20" rx="6" ry="8" fill="#D97B73" opacity="0.85" transform="rotate(-15 14 20)"/><ellipse cx="28" cy="14" rx="6" ry="8" fill="#D97B73" opacity="0.85"/><ellipse cx="42" cy="20" rx="6" ry="8" fill="#D97B73" opacity="0.85" transform="rotate(15 42 20)"/></svg>
+  </div>
+  <div class="pata" style="left:258px; top:830px; animation-delay:0.65s;">
+    <svg width="48" height="48" viewBox="0 0 56 56"><ellipse cx="28" cy="34" rx="14" ry="11" fill="#D97B73" opacity="0.85"/><ellipse cx="14" cy="20" rx="6" ry="8" fill="#D97B73" opacity="0.85" transform="rotate(-15 14 20)"/><ellipse cx="28" cy="14" rx="6" ry="8" fill="#D97B73" opacity="0.85"/><ellipse cx="42" cy="20" rx="6" ry="8" fill="#D97B73" opacity="0.85" transform="rotate(15 42 20)"/></svg>
+  </div>
+  <div class="pata" style="left:322px; top:760px; animation-delay:0.9s;">
+    <svg width="48" height="48" viewBox="0 0 56 56" style="transform:scaleX(-1)"><ellipse cx="28" cy="34" rx="14" ry="11" fill="#D97B73" opacity="0.85"/><ellipse cx="14" cy="20" rx="6" ry="8" fill="#D97B73" opacity="0.85" transform="rotate(-15 14 20)"/><ellipse cx="28" cy="14" rx="6" ry="8" fill="#D97B73" opacity="0.85"/><ellipse cx="42" cy="20" rx="6" ry="8" fill="#D97B73" opacity="0.85" transform="rotate(15 42 20)"/></svg>
+  </div>
+  <div class="pata" style="left:258px; top:690px; animation-delay:1.15s;">
+    <svg width="48" height="48" viewBox="0 0 56 56"><ellipse cx="28" cy="34" rx="14" ry="11" fill="#D97B73" opacity="0.85"/><ellipse cx="14" cy="20" rx="6" ry="8" fill="#D97B73" opacity="0.85" transform="rotate(-15 14 20)"/><ellipse cx="28" cy="14" rx="6" ry="8" fill="#D97B73" opacity="0.85"/><ellipse cx="42" cy="20" rx="6" ry="8" fill="#D97B73" opacity="0.85" transform="rotate(15 42 20)"/></svg>
+  </div>
+  <div class="pata" style="left:322px; top:620px; animation-delay:1.4s;">
+    <svg width="48" height="48" viewBox="0 0 56 56" style="transform:scaleX(-1)"><ellipse cx="28" cy="34" rx="14" ry="11" fill="#D97B73" opacity="0.85"/><ellipse cx="14" cy="20" rx="6" ry="8" fill="#D97B73" opacity="0.85" transform="rotate(-15 14 20)"/><ellipse cx="28" cy="14" rx="6" ry="8" fill="#D97B73" opacity="0.85"/><ellipse cx="42" cy="20" rx="6" ry="8" fill="#D97B73" opacity="0.85" transform="rotate(15 42 20)"/></svg>
+  </div>
+  <div class="pata" style="left:258px; top:550px; animation-delay:1.65s;">
+    <svg width="48" height="48" viewBox="0 0 56 56"><ellipse cx="28" cy="34" rx="14" ry="11" fill="#D97B73" opacity="0.85"/><ellipse cx="14" cy="20" rx="6" ry="8" fill="#D97B73" opacity="0.85" transform="rotate(-15 14 20)"/><ellipse cx="28" cy="14" rx="6" ry="8" fill="#D97B73" opacity="0.85"/><ellipse cx="42" cy="20" rx="6" ry="8" fill="#D97B73" opacity="0.85" transform="rotate(15 42 20)"/></svg>
+  </div>
+  <div class="pata" style="left:322px; top:480px; animation-delay:1.9s;">
+    <svg width="48" height="48" viewBox="0 0 56 56" style="transform:scaleX(-1)"><ellipse cx="28" cy="34" rx="14" ry="11" fill="#D97B73" opacity="0.85"/><ellipse cx="14" cy="20" rx="6" ry="8" fill="#D97B73" opacity="0.85" transform="rotate(-15 14 20)"/><ellipse cx="28" cy="14" rx="6" ry="8" fill="#D97B73" opacity="0.85"/><ellipse cx="42" cy="20" rx="6" ry="8" fill="#D97B73" opacity="0.85" transform="rotate(15 42 20)"/></svg>
+  </div>
+  <div class="pata" style="left:258px; top:410px; animation-delay:2.15s;">
+    <svg width="48" height="48" viewBox="0 0 56 56"><ellipse cx="28" cy="34" rx="14" ry="11" fill="#D97B73" opacity="0.85"/><ellipse cx="14" cy="20" rx="6" ry="8" fill="#D97B73" opacity="0.85" transform="rotate(-15 14 20)"/><ellipse cx="28" cy="14" rx="6" ry="8" fill="#D97B73" opacity="0.85"/><ellipse cx="42" cy="20" rx="6" ry="8" fill="#D97B73" opacity="0.85" transform="rotate(15 42 20)"/></svg>
+  </div>
+  <div class="pata" style="left:322px; top:340px; animation-delay:2.4s;">
+    <svg width="48" height="48" viewBox="0 0 56 56" style="transform:scaleX(-1)"><ellipse cx="28" cy="34" rx="14" ry="11" fill="#D97B73" opacity="0.85"/><ellipse cx="14" cy="20" rx="6" ry="8" fill="#D97B73" opacity="0.85" transform="rotate(-15 14 20)"/><ellipse cx="28" cy="14" rx="6" ry="8" fill="#D97B73" opacity="0.85"/><ellipse cx="42" cy="20" rx="6" ry="8" fill="#D97B73" opacity="0.85" transform="rotate(15 42 20)"/></svg>
+  </div>
+  <div class="pata" style="left:258px; top:270px; animation-delay:2.65s;">
+    <svg width="48" height="48" viewBox="0 0 56 56"><ellipse cx="28" cy="34" rx="14" ry="11" fill="#D97B73" opacity="0.85"/><ellipse cx="14" cy="20" rx="6" ry="8" fill="#D97B73" opacity="0.85" transform="rotate(-15 14 20)"/><ellipse cx="28" cy="14" rx="6" ry="8" fill="#D97B73" opacity="0.85"/><ellipse cx="42" cy="20" rx="6" ry="8" fill="#D97B73" opacity="0.85" transform="rotate(15 42 20)"/></svg>
+  </div>
+
+  <!-- ══════════════════════════════════
+       BOCHAS — cascade (7)
+  ══════════════════════════════════ -->
+  <div class="bocha" style="left:-30px; top:30px;  width:240px; height:240px; --rot:-9deg;  animation-delay:3.5s;">
+    <img src="foto_vainilla-removebg-preview.png" alt="helado">
+  </div>
+  <div class="bocha" style="right:-25px; top:70px;  width:210px; height:210px; --rot:11deg;  animation-delay:3.95s;">
+    <img src="foto_vainilla-removebg-preview.png" alt="helado">
+  </div>
+  <div class="bocha" style="left:-10px;  top:320px; width:195px; height:195px; --rot:-6deg;  animation-delay:4.4s;">
+    <img src="foto_vainilla-removebg-preview.png" alt="helado">
+  </div>
+  <div class="bocha" style="right:-55px; top:360px; width:210px; height:210px; --rot:13deg;  animation-delay:4.85s;">
+    <img src="foto_vainilla-removebg-preview.png" alt="helado">
+  </div>
+  <div class="bocha" style="left:-15px;  top:610px; width:220px; height:220px; --rot:-11deg; animation-delay:5.3s;">
+    <img src="foto_vainilla-removebg-preview.png" alt="helado">
+  </div>
+  <div class="bocha" style="right:-10px; top:650px; width:190px; height:190px; --rot:7deg;   animation-delay:5.75s;">
+    <img src="foto_vainilla-removebg-preview.png" alt="helado">
+  </div>
+  <div class="bocha" style="left:190px; top:-30px; width:230px; height:230px; --rot:4deg;   animation-delay:6.1s;">
+    <img src="foto_vainilla-removebg-preview.png" alt="helado">
+  </div>
+
+  <!-- ══════════════════════════════════
+       MENSAJE ÚNICO
+  ══════════════════════════════════ -->
+  <div class="mensaje">
+    <div class="mensaje-texto">
+      Algo rico y nutritivo<br>está llegando<span class="mensaje-puntos">.</span><span class="mensaje-puntos">.</span><span class="mensaje-puntos">.</span>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════
+       BOTTOM CARD
+  ══════════════════════════════════ -->
+  <div class="bottom-card">
+    <div class="card-brand">Fresquito's</div>
+    <div class="card-tagline">Helado Premium Para Perros</div>
+  </div>
+
+
+</div><!-- /stage -->
+
+<div id="ready-msg">
+  <div class="rm-step"><span>1.</span> Win+Alt+R → grabar</div>
+  <div class="rm-step"><span>2.</span> Espacio → comenzar</div>
+  <div class="rm-step"><span>R</span> → reiniciar</div>
+</div>
+
+<div class="instrucciones">
+  <kbd>Win+Alt+R</kbd> grabar &nbsp;·&nbsp; <kbd>Espacio</kbd> comenzar &nbsp;·&nbsp; <kbd>R</kbd> reiniciar
+</div>
+
+<script>
+
+  // Auto-escala el stage para que entre en pantalla
+  function fitStage() {
+    const stage = document.getElementById('stage');
+    const scale = Math.min(
+      window.innerHeight / 1080,
+      window.innerWidth  / 607
+    ) * 0.88;
+    stage.style.transform = `scale(${scale})`;
+  }
+  fitStage();
+  window.addEventListener('resize', fitStage);
+
+  function pawSound(ctx, time) {
+    // Pad suave: ruido mid-range con ataque suave
+    const bufSize = Math.floor(ctx.sampleRate * 0.12);
+    const buf = ctx.createBuffer(1, bufSize, ctx.sampleRate);
+    const d = buf.getChannelData(0);
+    for (let i = 0; i < bufSize; i++) d[i] = Math.random() * 2 - 1;
+    const src = ctx.createBufferSource();
+    src.buffer = buf;
+    const bp = ctx.createBiquadFilter();
+    bp.type = 'bandpass'; bp.frequency.value = 750; bp.Q.value = 2.2;
+    const padGain = ctx.createGain();
+    padGain.gain.setValueAtTime(0, time);
+    padGain.gain.linearRampToValueAtTime(0.38, time + 0.018);
+    padGain.gain.exponentialRampToValueAtTime(0.001, time + 0.10);
+    src.connect(bp); bp.connect(padGain); padGain.connect(ctx.destination);
+    src.start(time); src.stop(time + 0.11);
+    // Sub-grave redondeado
+    const osc = ctx.createOscillator();
+    osc.frequency.setValueAtTime(55, time);
+    osc.frequency.exponentialRampToValueAtTime(24, time + 0.09);
+    const subGain = ctx.createGain();
+    subGain.gain.setValueAtTime(0.18, time);
+    subGain.gain.exponentialRampToValueAtTime(0.001, time + 0.095);
+    osc.connect(subGain); subGain.connect(ctx.destination);
+    osc.start(time); osc.stop(time + 0.10);
+  }
+
+  const pataDelays = [0.15, 0.4, 0.65, 0.9, 1.15, 1.4, 1.65, 1.9, 2.15, 2.4, 2.65];
+
+  let started = false;
+  document.addEventListener('keydown', e => {
+    if (e.key === 'r' || e.key === 'R') { location.reload(); return; }
+    if (e.key === ' ' && !started) {
+      e.preventDefault();
+      started = true;
+      document.getElementById('ready-msg').classList.add('hidden');
+      document.querySelector('.instrucciones').style.display = 'none';
+      const ctx = new (window.AudioContext || window.webkitAudioContext)();
+      document.getElementById('stage').classList.add('go');
+      const now = ctx.currentTime;
+      pataDelays.forEach(d => pawSound(ctx, now + d));
+    }
+  });
+</script>
+</body>
+</html>

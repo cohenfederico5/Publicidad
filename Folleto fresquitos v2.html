@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fresquito's — Presentación Comercial</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700;1,900&family=Oswald:wght@300;400;500;600;700&family=Lora:ital,wght@0,400;0,500;1,400;1,500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --red: #D95B5B;
+    --red-dark: #BF4545;
+    --cream: #F2E6CE;
+    --cream-dark: #E2D4B0;
+    --yellow: #D9BC66;
+    --yellow-light: #E8CF80;
+    --brown: #3D1F0A;
+    --brown-mid: #6B3A1F;
+    --brown-light: #8B5A30;
+    --white: #FDFAF2;
+    --text: #2C1505;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: #6B6B6B;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 40px 20px;
+    font-family: 'Lora', serif;
+    min-height: 100vh;
+  }
+
+  .page {
+    width: 210mm;
+    min-height: 297mm;
+    background: var(--cream);
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 12px 60px rgba(0,0,0,0.5);
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* ── HEADER ── */
+  .header {
+    background: var(--brown);
+    padding: 20px 40px 18px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .header::before {
+    content: '';
+    position: absolute;
+    top: -30px; right: -30px;
+    width: 180px; height: 180px;
+    border-radius: 50%;
+    border: 40px solid rgba(217,188,102,0.08);
+  }
+
+  .header::after {
+    content: '';
+    position: absolute;
+    bottom: -50px; left: 60px;
+    width: 140px; height: 140px;
+    border-radius: 50%;
+    border: 30px solid rgba(217,188,102,0.06);
+  }
+
+  .header-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+  }
+
+  .brand-block {}
+
+  .brand-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 58px;
+    font-weight: 900;
+    font-style: italic;
+    color: var(--yellow);
+    line-height: 1;
+    letter-spacing: -1px;
+  }
+
+  .brand-tagline {
+    font-family: 'Oswald', sans-serif;
+    font-size: 10px;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    color: rgba(242,230,206,0.6);
+    margin-top: 6px;
+  }
+
+  .header-badges {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    align-items: flex-end;
+  }
+
+  .badge {
+    font-family: 'Oswald', sans-serif;
+    font-size: 8px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 4px 12px;
+    font-weight: 600;
+  }
+
+  .badge-vet {
+    background: rgba(217,188,102,0.15);
+    border: 1px solid rgba(217,188,102,0.4);
+    color: var(--yellow);
+  }
+
+  .badge-senasa {
+    background: rgba(242,230,206,0.08);
+    border: 1px solid rgba(242,230,206,0.2);
+    color: rgba(242,230,206,0.7);
+  }
+
+  /* ── HOOK BAND ── */
+  .hook-band {
+    background: var(--yellow);
+    padding: 15px 40px;
+    position: relative;
+  }
+
+  .hook-band::before {
+    content: '✦';
+    position: absolute;
+    left: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--brown);
+    opacity: 0.3;
+    font-size: 10px;
+  }
+
+  .hook-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 15px;
+    font-weight: 900;
+    color: var(--brown);
+    line-height: 1.2;
+  }
+
+  .hook-title em {
+    font-style: italic;
+    color: var(--brown-mid);
+  }
+
+  .hook-sub {
+    font-family: 'Oswald', sans-serif;
+    font-size: 9px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--brown-mid);
+    margin-top: 4px;
+  }
+
+  /* ── BODY ── */
+  .body {
+    flex: 1;
+    padding: 20px 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  /* ── INTRO ── */
+  .intro {
+    display: grid;
+    grid-template-columns: 3px 1fr;
+    gap: 16px;
+    align-items: start;
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--cream-dark);
+  }
+
+  .intro-line {
+    background: var(--red);
+    height: 100%;
+    min-height: 40px;
+  }
+
+  .intro-text {
+    font-size: 11px;
+    color: var(--brown-mid);
+    line-height: 1.8;
+  }
+
+  .intro-text strong {
+    color: var(--brown);
+    font-weight: 500;
+  }
+
+  /* ── SECTION LABEL ── */
+  .sec-label {
+    font-family: 'Oswald', sans-serif;
+    font-size: 10px;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    color: var(--red);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 12px;
+  }
+
+  .sec-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--cream-dark);
+  }
+
+  /* ── SABORES ── */
+  .sabores-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+  }
+
+  .sabor-card {
+    background: var(--white);
+    border: 1px solid var(--cream-dark);
+    padding: 16px 14px;
+    text-align: center;
+    position: relative;
+    border-top: 3px solid var(--yellow);
+  }
+
+  .sabor-card.pollo {
+    border-top-color: var(--red);
+  }
+
+  .sabor-img-wrap {
+    width: 130px;
+    height: 130px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin: 0 auto 12px;
+    border: 3px solid var(--cream-dark);
+    background: var(--cream-dark);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    transform: translateZ(0);
+    -webkit-mask-image: -webkit-radial-gradient(white, black);
+  }
+
+  .sabor-card.pollo .sabor-img-wrap {
+    border-color: rgba(217,91,91,0.2);
+  }
+
+  .sabor-img {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .sabor-name {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Playfair Display', serif;
+    font-size: 26px;
+    font-weight: 900;
+    font-style: italic;
+    color: var(--white);
+    line-height: 1;
+    text-align: center;
+    background: rgba(61,31,10,0.45);
+    text-shadow: 0 2px 8px rgba(0,0,0,0.5);
+    z-index: 2;
+  }
+
+  .sabor-meta {
+    font-family: 'Oswald', sans-serif;
+    font-size: 11px;
+    letter-spacing: 1.5px;
+    color: var(--brown-mid);
+    line-height: 1.8;
+  }
+
+  .sabor-format {
+    display: inline-block;
+    background: var(--cream-dark);
+    font-family: 'Oswald', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--brown);
+    padding: 3px 12px;
+    margin-bottom: 8px;
+  }
+
+  /* ── CREDENCIALES ── */
+  .credenciales {
+    display: flex;
+    gap: 10px;
+  }
+
+  .cred-item {
+    flex: 1;
+    background: var(--cream-dark);
+    border-left: 3px solid var(--brown);
+    padding: 9px 12px;
+  }
+
+  .cred-item.highlight {
+    border-left-color: var(--yellow);
+  }
+
+  .cred-title {
+    font-family: 'Oswald', sans-serif;
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--brown);
+    font-weight: 600;
+    margin-bottom: 3px;
+  }
+
+  .cred-body {
+    font-size: 9.5px;
+    color: var(--brown-mid);
+    line-height: 1.45;
+  }
+
+  /* ── CTA ── */
+  .cta-section {
+    background: var(--brown);
+    margin: 0 -40px -24px;
+    padding: 22px 40px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cta-section::before {
+    content: '';
+    position: absolute;
+    top: -40px; right: -20px;
+    width: 160px; height: 160px;
+    border-radius: 50%;
+    border: 35px solid rgba(217,188,102,0.07);
+  }
+
+  .cta-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+  }
+
+  .cta-left {}
+
+  .cta-headline {
+    font-family: 'Playfair Display', serif;
+    font-size: 16px;
+    font-weight: 700;
+    font-style: italic;
+    color: var(--yellow);
+    line-height: 1.3;
+    margin-bottom: 4px;
+  }
+
+  .cta-sub {
+    font-family: 'Oswald', sans-serif;
+    font-size: 8.5px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: rgba(242,230,206,0.5);
+  }
+
+  .cta-contacts {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    align-items: flex-end;
+  }
+
+  .cta-contact {
+    font-family: 'Oswald', sans-serif;
+    font-size: 10px;
+    color: var(--cream);
+    letter-spacing: 0.5px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .cta-contact strong {
+    color: var(--yellow);
+  }
+
+  /* ── FOOTER ── */
+  .footer {
+    background: var(--brown-mid);
+    padding: 7px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 2px solid rgba(217,188,102,0.3);
+  }
+
+  .footer-brand {
+    font-family: 'Playfair Display', serif;
+    font-size: 13px;
+    font-weight: 900;
+    font-style: italic;
+    color: var(--yellow);
+    opacity: 0.7;
+  }
+
+  .footer-senasa {
+    font-family: 'Oswald', sans-serif;
+    font-size: 7px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: rgba(242,230,206,0.4);
+  }
+
+  @media print {
+    body { background: white; padding: 0; }
+    .page { box-shadow: none; width: 100%; min-height: 297mm; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- HEADER -->
+  <div class="header" style="background:var(--cream-dark);">
+    <div class="header-inner">
+      <div class="brand-block">
+        <div class="brand-name" style="color:var(--brown);">Fresquito's</div>
+        <div class="brand-tagline" style="color:var(--brown-mid);">Helado Premium Para Perros</div>
+      </div>
+      <img src="logo_sin_fondo.png" alt="Fresquito's" style="height:100px;">
+    </div>
+  </div>
+
+  <!-- INTRO BAND -->
+  <div class="hook-band">
+    <div class="hook-title">Fresquito's es el primer helado cremoso y 100% seguro formulado especialmente para el organismo canino.</div>
+    <div class="hook-sub" style="margin-top:8px; font-size:12px; letter-spacing:1.5px; text-transform:none; color:var(--brown-mid); font-family:'Lora',serif; font-style:italic;">Pensado exclusivamente para el bienestar de tu perro. Fórmula desarrollada por veterinarios con ingredientes naturales y nutritivos.</div>
+  </div>
+
+  <!-- BODY -->
+  <div class="body">
+
+    <!-- SABORES -->
+    <div>
+      <div class="sec-label">Nuestros Sabores</div>
+      <div class="sabores-grid">
+
+        <div class="sabor-card">
+          <div class="sabor-img-wrap">
+            <img src="/mnt/user-data/uploads/1000228112.jpg" alt="Sabor Carne" class="sabor-img" onerror="this.style.display='none'">
+            <div class="sabor-name">Carne</div>
+          </div>
+          <div class="sabor-format">Pote 360cc</div>
+          <div class="sabor-meta">
+            SENASA N° 26-244/A
+          </div>
+        </div>
+
+        <div class="sabor-card pollo">
+          <div class="sabor-img-wrap">
+            <img src="/mnt/user-data/uploads/1000228114.jpg" alt="Sabor Pollo" class="sabor-img" onerror="this.style.display='none'">
+            <div class="sabor-name">Pollo</div>
+          </div>
+          <div class="sabor-format">Pote 360cc</div>
+          <div class="sabor-meta">
+            SENASA N° 26-247/A
+          </div>
+        </div>
+
+      </div>
+      <p style="text-align:center; font-size:12px; color:var(--brown-mid); line-height:1.5; margin-top:12px; font-family:'Lora',serif; font-style:italic;">Cremoso, nutritivo, con alto valor proteico y minerales.</p>
+      <div class="credenciales" style="margin-top:12px;">
+        <div class="cred-item highlight">
+          <div class="cred-title">Aval Veterinario</div>
+          <div class="cred-body">Fórmula desarrollada y respaldada por profesionales veterinarios. Seguro para el organismo canino.</div>
+        </div>
+        <div class="cred-item">
+          <div class="cred-title">Aprobado por SENASA</div>
+          <div class="cred-body">Producto inscripto y habilitado. Cumple todas las normas sanitarias y de calidad vigentes.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- POR QUE -->
+    <div>
+      <div class="sec-label">Por qué sumar Fresquito's</div>
+      <div class="credenciales">
+        <div class="cred-item highlight">
+          <div class="cred-title">Mercado en Crecimiento</div>
+          <div class="cred-body">El segmento de comida premium para perros crece año a año. Las personas cada vez buscan más productos de calidad para sus mascotas. Fresquito's no solo es un snack que el perro puede disfrutar como premio, sino que también le aporta nutrientes: calcio, magnesio y vitamina C.</div>
+        </div>
+        <div class="cred-item">
+          <div class="cred-title">Sin Competencia Directa</div>
+          <div class="cred-body">No existe otro helado premium para perros que cumpla la función de snack y suplemento nutritivo. Fresquito's ocupa un lugar que ningún otro producto cubre.</div>
+        </div>
+        <div class="cred-item">
+          <div class="cred-title">Producto Nuevo</div>
+          <div class="cred-body">La idea de darle un helado a tu perro genera curiosidad inmediata. Es un producto que atrae la atención, genera conversación y se convierte en recomendación boca a boca. Es un producto conocido en otros países pero en Argentina representa algo nuevo y distinto dentro del mundo de las mascotas.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CONDICIONES -->
+    <div>
+      <div class="sec-label">Fresquito's en tu negocio</div>
+      <div class="credenciales">
+        <div class="cred-item highlight">
+          <div class="cred-title">Condiciones Flexibles</div>
+          <div class="cred-body">Trabajamos con condiciones adaptadas a cada negocio. Coordinamos una reunión para contarte todo sin compromiso.</div>
+        </div>
+        <div class="cred-item">
+          <div class="cred-title">Material POP</div>
+          <div class="cred-body">Te proveemos de material de exhibición y comunicación para destacar el producto en tu local.</div>
+        </div>
+        <div class="cred-item">
+          <div class="cred-title">Asesoramiento Personalizado</div>
+          <div class="cred-body">Te acompañamos en todo el proceso: desde la incorporación del producto hasta la atención al cliente final.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CONTACTO -->
+    <div style="background:var(--brown); margin:0 -40px -24px; padding:14px 40px; display:flex; justify-content:center; gap:32px; align-items:center; border-top:3px solid var(--yellow);">
+      <span style="font-family:'Oswald',sans-serif; font-size:11px; color:var(--cream); letter-spacing:0.5px;">📸 <strong style="color:var(--yellow);">@fresquitos.petfood</strong></span>
+      <span style="font-family:'Oswald',sans-serif; font-size:11px; color:var(--cream); letter-spacing:0.5px;">✉️ <strong style="color:var(--yellow);">infofresquitos@gmail.com</strong></span>
+      <span style="font-family:'Oswald',sans-serif; font-size:11px; color:var(--cream); letter-spacing:0.5px;">📞 <strong style="color:var(--yellow);">11 6193-1536</strong></span>
+    </div>
+
+  </div>
+
+
+
+</div>
+</body>
+</html>

@@ -20,7 +20,7 @@ SENASA Est. Nº 2025-96/A/H
 > Pronto. 🐾
 
 **Caption:**
-> El verano de tu perro nunca va a ser el mismo.
+> Tu perro gozará de algo delicioso y nutritivo.
 > Fresquito's está en camino. Seguinos para ser el primero en enterarte.
 > —
 > #fresquitos #heladoparaperros #proximamente #perrosdeargentina

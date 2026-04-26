@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-Marketing materials for **Fresquito's** — a premium dog ice cream brand ("Helado Premium Para Perros") based in Argentina. The brand sells two flavors: **Carne** (beef) and **Pollo** (chicken), vet-backed, SENASA-approved (Est. Nº 2025-96/A/H).
+Marketing materials for **Fresquito's** — a premium dog ice cream brand ("Helado Premium Para Perros") based in Argentina. The brand sells two flavors: **Carne** (beef) and **Pollo** (chicken), vet-backed, SENASA-approved (producto inscripto + establecimiento habilitado Est. Nº 2025-96/A/H).
 
 ## Files
 
@@ -43,7 +43,7 @@ All HTML files share a consistent visual identity — use these values when edit
 
 ## Social / Contact
 
-- Instagram / TikTok / Facebook: `@fresquitos`
+- Instagram / TikTok / Facebook: `@fresquitos.petfood`
 - Email: `infofresquitos@gmail.com`
 
 ## Working with the HTML Files

@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Fresquito's — Teaser Post</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,700;1,900&family=Oswald:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body {
+    background:#555;
+    display:flex; align-items:center; justify-content:center;
+    min-height:100vh;
+  }
+  .stage {
+    width:1080px; height:1080px;
+    background:#F2E6CE;
+    position:relative; overflow:hidden; flex-shrink:0;
+  }
+  .stage::before {
+    content:''; position:absolute; inset:0;
+    background:radial-gradient(ellipse at 50% 45%, rgba(217,188,102,0.28) 0%, transparent 65%);
+    pointer-events:none; z-index:0;
+  }
+  .bocha {
+    position:absolute; z-index:1;
+  }
+  .bocha img {
+    display:block; mix-blend-mode:multiply;
+    width:100%; height:100%; object-fit:contain;
+  }
+  .pata {
+    position:absolute; z-index:2;
+  }
+  .texto {
+    position:absolute; left:50%; top:50%;
+    transform:translate(-50%, -50%);
+    text-align:center; z-index:20;
+    white-space:nowrap; pointer-events:none;
+  }
+  .texto-principal {
+    font-family:'Playfair Display', Georgia, serif;
+    font-size:64px; font-style:italic; font-weight:900;
+    color:#3D1F0A; line-height:1.2;
+    text-shadow:3px 3px 0 rgba(242,230,206,0.95), -1px -1px 0 rgba(242,230,206,0.8);
+  }
+  .texto-puntos { color:#D95B5B; }
+  .logo-final {
+    position:absolute; bottom:52px; left:50%;
+    transform:translateX(-50%);
+    text-align:center; z-index:20; white-space:nowrap;
+  }
+  .logo-nombre {
+    font-family:'Playfair Display', Georgia, serif;
+    font-size:40px; font-style:italic; font-weight:900;
+    color:#3D1F0A; letter-spacing:2px;
+  }
+  .logo-sub {
+    font-family:'Oswald', sans-serif;
+    font-size:13px; letter-spacing:6px; text-transform:uppercase;
+    color:#D95B5B; margin-top:5px;
+  }
+  .instrucciones {
+    position:fixed; bottom:14px; left:50%; transform:translateX(-50%);
+    background:rgba(0,0,0,0.65); color:#fff;
+    padding:7px 18px; border-radius:20px;
+    font-size:12px; font-family:sans-serif; z-index:999;
+  }
+</style>
+</head>
+<body>
+<div class="stage">
+
+  <!-- BOCHAS -->
+  <div class="bocha" style="left:-30px; top:10px; width:260px; height:260px; transform:rotate(-8deg);">
+    <img src="bocha_dorada.jpeg" alt="helado">
+  </div>
+  <div class="bocha" style="right:-20px; top:55px; width:210px; height:210px; transform:rotate(10deg);">
+    <img src="bocha_dorada.jpeg" alt="helado" style="transform:scaleX(-1);">
+  </div>
+  <div class="bocha" style="left:30px; top:370px; width:160px; height:160px; transform:rotate(-5deg);">
+    <img src="bocha_dorada.jpeg" alt="helado">
+  </div>
+  <div class="bocha" style="right:-25px; top:390px; width:245px; height:245px; transform:rotate(12deg);">
+    <img src="bocha_dorada.jpeg" alt="helado" style="transform:scaleX(-1);">
+  </div>
+  <div class="bocha" style="left:15px; top:690px; width:200px; height:200px; transform:rotate(-10deg);">
+    <img src="bocha_dorada.jpeg" alt="helado">
+  </div>
+  <div class="bocha" style="right:25px; top:750px; width:155px; height:155px; transform:rotate(6deg);">
+    <img src="bocha_dorada.jpeg" alt="helado" style="transform:scaleX(-1);">
+  </div>
+  <div class="bocha" style="left:300px; top:-10px; width:220px; height:220px; transform:rotate(4deg);">
+    <img src="bocha_dorada.jpeg" alt="helado">
+  </div>
+  <div class="bocha" style="left:350px; top:880px; width:175px; height:175px; transform:rotate(-7deg);">
+    <img src="bocha_dorada.jpeg" alt="helado" style="transform:scaleX(-1);">
+  </div>
+
+  <!-- HUELLAS -->
+  <div class="pata" style="left:490px;top:138px;">
+    <svg width="56" height="56" viewBox="0 0 56 56"><ellipse cx="28" cy="34" rx="14" ry="11" fill="#D97B73" opacity="0.9"/><ellipse cx="14" cy="20" rx="6" ry="8" fill="#D97B73" opacity="0.9" transform="rotate(-15 14 20)"/><ellipse cx="28" cy="14" rx="6" ry="8" fill="#D97B73" opacity="0.9"/><ellipse cx="42" cy="20" rx="6" ry="8" fill="#D97B73" opacity="0.9" transform="rotate(15 42 20)"/></svg>
+  </div>
+  <div class="pata" style="left:543px;top:218px;">
+    <svg width="56" height="56" viewBox="0 0 56 56" style="transform:scaleX(-1)"><ellipse cx="28" cy="34" rx="14" ry="11" fill="#D97B73" opacity="0.9"/><ellipse cx="14" cy="20" rx="6" ry="8" fill="#D97B73" opacity="0.9" transform="rotate(-15 14 20)"/><ellipse cx="28" cy="14" rx="6" ry="8" fill="#D97B73" opacity="0.9"/><ellipse cx="42" cy="20" rx="6" ry="8" fill="#D97B73" opacity="0.9" transform="rotate(15 42 20)"/></svg>
+  </div>
+  <div class="pata" style="left:485px;top:298px;">
+    <svg width="56" height="56" viewBox="0 0 56 56"><ellipse cx="28" cy="34" rx="14" ry="11" fill="#D97B73" opacity="0.9"/><ellipse cx="14" cy="20" rx="6" ry="8" fill="#D97B73" opacity="0.9" transform="rotate(-15 14 20)"/><ellipse cx="28" cy="14" rx="6" ry="8" fill="#D97B73" opacity="0.9"/><ellipse cx="42" cy="20" rx="6" ry="8" fill="#D97B73" opacity="0.9" transform="rotate(15 42 20)"/></svg>
+  </div>
+  <div class="pata" style="left:545px;top:378px;">
+    <svg width="56" height="56" viewBox="0 0 56 56" style="transform:scaleX(-1)"><ellipse cx="28" cy="34" rx="14" ry="11" fill="#D97B73" opacity="0.9"/><ellipse cx="14" cy="20" rx="6" ry="8" fill="#D97B73" opacity="0.9" transform="rotate(-15 14 20)"/><ellipse cx="28" cy="14" rx="6" ry="8" fill="#D97B73" opacity="0.9"/><ellipse cx="42" cy="20" rx="6" ry="8" fill="#D97B73" opacity="0.9" transform="rotate(15 42 20)"/></svg>
+  </div>
+  <div class="pata" style="left:487px;top:635px;">
+    <svg width="56" height="56" viewBox="0 0 56 56"><ellipse cx="28" cy="34" rx="14" ry="11" fill="#D97B73" opacity="0.9"/><ellipse cx="14" cy="20" rx="6" ry="8" fill="#D97B73" opacity="0.9" transform="rotate(-15 14 20)"/><ellipse cx="28" cy="14" rx="6" ry="8" fill="#D97B73" opacity="0.9"/><ellipse cx="42" cy="20" rx="6" ry="8" fill="#D97B73" opacity="0.9" transform="rotate(15 42 20)"/></svg>
+  </div>
+  <div class="pata" style="left:547px;top:715px;">
+    <svg width="56" height="56" viewBox="0 0 56 56" style="transform:scaleX(-1)"><ellipse cx="28" cy="34" rx="14" ry="11" fill="#D97B73" opacity="0.9"/><ellipse cx="14" cy="20" rx="6" ry="8" fill="#D97B73" opacity="0.9" transform="rotate(-15 14 20)"/><ellipse cx="28" cy="14" rx="6" ry="8" fill="#D97B73" opacity="0.9"/><ellipse cx="42" cy="20" rx="6" ry="8" fill="#D97B73" opacity="0.9" transform="rotate(15 42 20)"/></svg>
+  </div>
+  <div class="pata" style="left:489px;top:795px;">
+    <svg width="56" height="56" viewBox="0 0 56 56"><ellipse cx="28" cy="34" rx="14" ry="11" fill="#D97B73" opacity="0.9"/><ellipse cx="14" cy="20" rx="6" ry="8" fill="#D97B73" opacity="0.9" transform="rotate(-15 14 20)"/><ellipse cx="28" cy="14" rx="6" ry="8" fill="#D97B73" opacity="0.9"/><ellipse cx="42" cy="20" rx="6" ry="8" fill="#D97B73" opacity="0.9" transform="rotate(15 42 20)"/></svg>
+  </div>
+  <div class="pata" style="left:549px;top:875px;">
+    <svg width="56" height="56" viewBox="0 0 56 56" style="transform:scaleX(-1)"><ellipse cx="28" cy="34" rx="14" ry="11" fill="#D97B73" opacity="0.9"/><ellipse cx="14" cy="20" rx="6" ry="8" fill="#D97B73" opacity="0.9" transform="rotate(-15 14 20)"/><ellipse cx="28" cy="14" rx="6" ry="8" fill="#D97B73" opacity="0.9"/><ellipse cx="42" cy="20" rx="6" ry="8" fill="#D97B73" opacity="0.9" transform="rotate(15 42 20)"/></svg>
+  </div>
+
+  <!-- TEXTO -->
+  <div class="texto">
+    <div class="texto-principal">
+      Algo rico está<br>llegando<span class="texto-puntos">...</span>
+    </div>
+  </div>
+
+  <!-- LOGO -->
+  <div class="logo-final">
+    <div class="logo-nombre">Fresquito's</div>
+    <div class="logo-sub">Helado Premium Para Perros</div>
+  </div>
+
+</div>
+
+<div class="instrucciones">
+  Capturá con <kbd>Win + Shift + S</kbd> → seleccioná el cuadrado → guardá como PNG
+</div>
+</body>
+</html>
