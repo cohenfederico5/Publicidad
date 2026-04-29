@@ -9,6 +9,10 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
 })(window,document,'script','dataLayer','GTM-W8GS399F');</script>
 <!-- End Google Tag Manager -->
+<!-- Meta Pixel -->
+<script>!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');fbq('init','1394225389091939');fbq('track','PageView');</script>
+<noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1394225389091939&ev=PageView&noscript=1"/></noscript>
+<!-- End Meta Pixel -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Fresquito's – Helado Premium Para Perros</title>
 <meta name="description" content="Fresquito's es el primer helado premium para perros de Argentina. Formulado con ingredientes naturales y respaldado por veterinarios. Sabores: Carne y Pollo.">
@@ -311,6 +315,23 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     .calc-email-row input { border-right:2px solid rgba(232,197,71,0.4); border-bottom:none; }
     .nosotros-grid { grid-template-columns:1fr !important; gap:40px !important; }
   }
+
+  /* ── COOKIE BANNER ── */
+  #cookie-banner { position:fixed; bottom:0; left:0; right:0; z-index:10000; background:var(--brown); border-top:3px solid var(--yellow); padding:16px 32px; display:flex; align-items:center; justify-content:space-between; gap:20px; flex-wrap:wrap; transform:translateY(100%); transition:transform 0.4s ease; }
+  #cookie-banner.visible { transform:translateY(0); }
+  .cookie-text { font-family:'Lora',serif; font-size:0.82rem; color:rgba(240,230,200,0.85); line-height:1.6; flex:1; min-width:220px; }
+  .cookie-text a { color:var(--yellow); text-decoration:none; border-bottom:1px solid rgba(217,188,102,0.4); }
+  .cookie-text a:hover { border-color:var(--yellow); }
+  .cookie-actions { display:flex; gap:10px; flex-shrink:0; }
+  .cookie-btn-accept { font-family:'Oswald',sans-serif; font-size:0.68rem; letter-spacing:2px; text-transform:uppercase; background:var(--yellow); color:var(--brown); border:none; padding:10px 24px; cursor:pointer; font-weight:700; clip-path:polygon(6px 0%,100% 0%,calc(100% - 6px) 100%,0% 100%); transition:background 0.2s; }
+  .cookie-btn-accept:hover { background:var(--yellow-light); }
+  .cookie-btn-reject { font-family:'Oswald',sans-serif; font-size:0.68rem; letter-spacing:2px; text-transform:uppercase; background:transparent; color:rgba(240,230,200,0.5); border:1px solid rgba(240,230,200,0.2); padding:9px 20px; cursor:pointer; transition:all 0.2s; clip-path:polygon(6px 0%,100% 0%,calc(100% - 6px) 100%,0% 100%); }
+  .cookie-btn-reject:hover { color:rgba(240,230,200,0.8); border-color:rgba(240,230,200,0.4); }
+
+  /* ── PRIVACY DISCLAIMER ── */
+  .privacy-note { font-size:0.75rem; color:var(--brown-mid); margin-top:10px; line-height:1.5; font-style:italic; }
+  .privacy-note a { color:var(--brown-mid); text-decoration:underline; text-underline-offset:2px; }
+  .privacy-note a:hover { color:var(--red); }
 </style>
 </head>
 <body>
@@ -320,7 +341,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
 
 <nav>
-  <a href="#inicio" class="nav-logo">Fresquito's</a>
+  <a href="#inicio" class="nav-logo" style="display:flex; flex-direction:column; line-height:1.1;">
+    Fresquito's
+    <span style="font-family:'Oswald',sans-serif; font-size:0.55rem; letter-spacing:3px; text-transform:uppercase; color:var(--yellow); font-style:normal; font-weight:400;">Helado Premium Para Perros</span>
+  </a>
   <ul class="nav-links" id="navLinks">
     <li><a href="#nosotros">Nosotros</a></li>
     <li><a href="#nuestros-helados">Sabores</a></li>
@@ -335,11 +359,22 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
 </nav>
 
+<!-- Cookie Banner -->
+<div id="cookie-banner" role="dialog" aria-label="Aviso de cookies">
+  <p class="cookie-text">Usamos cookies y tecnologías de seguimiento (Google Analytics, Meta Pixel, TikTok) para mejorar tu experiencia y mostrarte publicidad relevante. Consultá nuestra <a href="/privacidad.html">Política de Privacidad</a>.</p>
+  <div class="cookie-actions">
+    <button class="cookie-btn-reject" id="btnCookieReject">Solo esenciales</button>
+    <button class="cookie-btn-accept" id="btnCookieAccept">Aceptar todo</button>
+  </div>
+</div>
+<!-- End Cookie Banner -->
+
 <section id="inicio">
   <div class="hero-bg-circles"><div class="hero-circle"></div><div class="hero-circle"></div><div class="hero-circle"></div></div>
   <div class="hero-content">
     <span class="hero-badge">★ Helado Premium Para Perros ★</span>
     <h1 class="hero-title">Fresquito's</h1>
+    <img src="logo_sin_fondo.png" alt="Fresquito's logo" style="width:clamp(120px,20vw,200px); margin:0 auto 20px; display:block; animation:fadeUp 0.8s 0.35s ease forwards; opacity:0;">
     <p class="hero-desc">Pensado exclusivamente para el bienestar de tu perro. Fórmula desarrollada por veterinarios con ingredientes naturales y nutritivos.</p>
     <div class="hero-ctas">
       <a href="#nuestros-helados" class="btn-primary">Ver Sabores</a>
@@ -547,6 +582,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <input type="email" id="calcEmail" placeholder="tucorreo@gmail.com">
           <button id="btnEmailSend">Enviar</button>
         </div>
+        <p class="privacy-note" style="text-align:left;margin-top:6px;">Al enviar aceptás nuestra <a href="/privacidad.html">Política de Privacidad</a>.</p>
         <p class="calc-email-success" id="emailSuccess">¡Listo! Te escribimos pronto 🐾</p>
         <button class="calc-result-restart" id="btnRestart">Calcular de nuevo</button>
       </div>
@@ -593,6 +629,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <input type="email" id="suscEmail" placeholder="tucorreo@gmail.com">
     <button type="button" id="btnSuscribirse">Anotarme</button>
   </div>
+  <p class="privacy-note reveal">Al anotarte aceptás nuestra <a href="/privacidad.html">Política de Privacidad</a>.</p>
   <p class="suscripcion-success reveal" id="suscSuccess">¡Ya estás en la lista! Te avisamos antes que nadie 🐾</p>
 </section>
 
@@ -643,6 +680,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <label for="mayMensaje">Mensaje (opcional)</label>
           <textarea id="mayMensaje" placeholder="Contanos sobre tu negocio..."></textarea>
         </div>
+        <p class="privacy-note">Al enviar aceptás nuestra <a href="/privacidad.html">Política de Privacidad</a>.</p>
         <button class="btn-primary" id="btnMayoristas">Enviar consulta</button>
       </div>
       <div class="form-success" id="mayoristasSuccess">
@@ -758,7 +796,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <div class="footer-links">
     <a href="#nosotros">Nosotros</a><a href="#nuestros-helados">Sabores</a><a href="#calculadora">Calculadora</a><a href="#suscripcion">Suscripción</a><a href="#mayoristas">Mayoristas</a><a href="#puntos-de-venta">¿Dónde encontrarnos?</a><a href="#blog">Blog</a><a href="#faq">FAQ</a><a href="#contacto">Contacto</a>
   </div>
-  <div class="footer-copy">© 2026 Fresquito's · Helado Premium Para Perros · Argentina · www.fresquitos.com.ar</div>
+  <div class="footer-copy">© 2026 Fresquito's · Helado Premium Para Perros · Argentina · www.fresquitos.com.ar · <a href="/privacidad.html" style="color:inherit;opacity:0.6;text-decoration:none;">Política de Privacidad</a></div>
 </footer>
 
 <script>
@@ -994,6 +1032,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     btn.disabled = true;
     btn.textContent = '¡Listo!';
     success.classList.add('visible');
+    dataLayer.push({ event: 'newsletter_subscribe' });
   });
   document.getElementById('suscEmail').addEventListener('input', function() {
     this.classList.remove('field-error');
@@ -1045,6 +1084,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     setTimeout(() => {
       document.getElementById('mayoristasFormContent').style.display = 'none';
       document.getElementById('mayoristasSuccess').classList.add('visible');
+      dataLayer.push({ event: 'mayoristas_form_submit' });
     }, 800);
   });
 
@@ -1063,6 +1103,24 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     document.getElementById('mayoristasFormContent').style.display = 'block';
     document.getElementById('mayoristasSuccess').classList.remove('visible');
   });
+
+  // Cookie banner
+  (function() {
+    var consent = localStorage.getItem('fresquitos_cookie_consent');
+    if (!consent) {
+      setTimeout(function() {
+        document.getElementById('cookie-banner').classList.add('visible');
+      }, 1200);
+    }
+    document.getElementById('btnCookieAccept').addEventListener('click', function() {
+      localStorage.setItem('fresquitos_cookie_consent', 'accepted');
+      document.getElementById('cookie-banner').classList.remove('visible');
+    });
+    document.getElementById('btnCookieReject').addEventListener('click', function() {
+      localStorage.setItem('fresquitos_cookie_consent', 'rejected');
+      document.getElementById('cookie-banner').classList.remove('visible');
+    });
+  })();
 </script>
 </body>
 </html>

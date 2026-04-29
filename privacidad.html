@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Política de Privacidad — Fresquito's</title>
+<meta name="robots" content="noindex">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Oswald:wght@400;500;600;700&family=Lora:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --red: #D95B5B; --red-dark: #BF4545;
+    --cream: #F2E6CE; --cream-dark: #E2D4B0;
+    --yellow: #D9BC66; --yellow-light: #E5CB7A;
+    --brown: #3D1F0A; --brown-mid: #6B3A1F;
+    --white: #FDFAF2; --text: #2C1505;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html { scroll-behavior:smooth; }
+  body { font-family:'Lora',serif; background:var(--cream); color:var(--text); overflow-x:hidden; }
+  body::before { content:''; position:fixed; inset:0; background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E"); pointer-events:none; z-index:9999; opacity:0.35; }
+
+  nav { position:fixed; top:0; left:0; right:0; z-index:100; background:var(--cream-dark); border-bottom:3px solid var(--yellow); padding:0 40px; display:flex; align-items:center; justify-content:space-between; height:64px; }
+  .nav-logo { font-family:'Playfair Display',serif; font-size:1.5rem; font-weight:900; color:var(--yellow); text-decoration:none; letter-spacing:1px; font-style:italic; }
+  .nav-back { font-family:'Oswald',sans-serif; font-size:0.68rem; letter-spacing:2.5px; text-transform:uppercase; color:var(--brown); text-decoration:none; border:1.5px solid var(--brown); padding:7px 18px; transition:all 0.2s; clip-path:polygon(6px 0%,100% 0%,calc(100% - 6px) 100%,0% 100%); }
+  .nav-back:hover { border-color:var(--red); color:var(--red); }
+
+  .page-wrapper { max-width:760px; margin:0 auto; padding:120px 24px 100px; }
+
+  /* HERO */
+  .page-hero { text-align:center; padding-bottom:64px; border-bottom:1px solid var(--cream-dark); margin-bottom:72px; position:relative; animation:fadeUp 0.7s ease both; }
+  .page-hero::after { content:''; position:absolute; bottom:-4px; left:50%; transform:translateX(-50%); width:80px; height:1px; background:var(--red); }
+  .hero-eyebrow { font-family:'Oswald',sans-serif; font-size:0.6rem; letter-spacing:6px; text-transform:uppercase; color:var(--brown-mid); margin-bottom:18px; display:block; }
+  .hero-brand { font-family:'Playfair Display',serif; font-size:3rem; font-weight:900; font-style:italic; color:var(--brown); line-height:1; margin-bottom:8px; }
+  .hero-brand span { color:var(--red); }
+  .hero-title { font-family:'Oswald',sans-serif; font-size:0.72rem; letter-spacing:5px; text-transform:uppercase; color:var(--brown-mid); padding:7px 24px; border:1px solid var(--cream-dark); display:inline-block; margin-top:14px; }
+  .hero-date { font-size:0.82rem; color:var(--brown-mid); margin-top:18px; font-style:italic; }
+
+  /* SECTIONS */
+  .policy-section { margin-bottom:64px; animation:fadeUp 0.6s ease both; }
+  .section-label { font-family:'Oswald',sans-serif; font-size:0.58rem; letter-spacing:5px; text-transform:uppercase; color:var(--red); margin-bottom:10px; display:block; }
+  .section-title { font-family:'Playfair Display',serif; font-size:1.8rem; font-weight:900; color:var(--brown); line-height:1.15; margin-bottom:24px; }
+  .section-title em { font-style:italic; color:var(--red); }
+
+  .policy-body { font-size:0.95rem; line-height:1.9; color:var(--brown-mid); }
+  .policy-body p { margin-bottom:16px; }
+  .policy-body p:last-child { margin-bottom:0; }
+  .policy-body strong { color:var(--brown); font-family:'Oswald',sans-serif; font-size:0.85rem; letter-spacing:0.5px; }
+
+  .divider { display:flex; align-items:center; gap:16px; margin:40px 0; }
+  .divider-line { flex:1; height:1px; background:var(--cream-dark); }
+  .divider-paw { color:var(--yellow); font-size:1rem; }
+
+  /* DATA LIST */
+  .data-list { list-style:none; margin-top:20px; display:flex; flex-direction:column; gap:12px; }
+  .data-list li { display:flex; align-items:flex-start; gap:14px; padding:16px 20px; background:var(--white); border-left:3px solid var(--yellow); }
+  .data-list li .data-icon { font-size:1rem; flex-shrink:0; margin-top:1px; }
+  .data-list li .data-text { font-size:0.88rem; line-height:1.65; color:var(--text); }
+  .data-list li .data-text strong { display:block; font-family:'Oswald',sans-serif; font-size:0.72rem; letter-spacing:1.5px; text-transform:uppercase; color:var(--brown); margin-bottom:3px; }
+
+  /* TRACKER CARDS */
+  .tracker-grid { display:flex; flex-direction:column; gap:2px; margin-top:24px; }
+  .tracker-card { background:var(--white); padding:20px 24px; display:flex; align-items:flex-start; gap:18px; border-left:4px solid var(--cream-dark); transition:border-color 0.2s; }
+  .tracker-card:hover { border-color:var(--yellow); }
+  .tracker-card.google { border-left-color:#4285F4; }
+  .tracker-card.meta { border-left-color:#0866FF; }
+  .tracker-card.tiktok { border-left-color:#000; }
+  .tracker-icon { font-size:1.4rem; flex-shrink:0; margin-top:2px; }
+  .tracker-info { flex:1; }
+  .tracker-name { font-family:'Oswald',sans-serif; font-size:0.8rem; letter-spacing:2px; text-transform:uppercase; color:var(--brown); font-weight:700; display:block; margin-bottom:4px; }
+  .tracker-desc { font-size:0.85rem; line-height:1.6; color:var(--brown-mid); }
+  .tracker-link { display:inline-block; margin-top:8px; font-family:'Oswald',sans-serif; font-size:0.62rem; letter-spacing:1.5px; text-transform:uppercase; color:var(--red); text-decoration:none; border-bottom:1px solid rgba(217,91,91,0.3); transition:border-color 0.2s; }
+  .tracker-link:hover { border-color:var(--red); }
+
+  /* RIGHTS BOX */
+  .rights-box { background:var(--cream-dark); border:3px solid var(--yellow); padding:36px 32px; position:relative; margin-top:24px; }
+  .rights-box::before { content:''; position:absolute; inset:6px; border:1px solid rgba(217,188,102,0.25); pointer-events:none; }
+  .rights-grid { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+  @media(max-width:560px) { .rights-grid { grid-template-columns:1fr; } }
+  .right-item { display:flex; align-items:flex-start; gap:12px; }
+  .right-icon { width:28px; height:28px; min-width:28px; background:var(--yellow); display:flex; align-items:center; justify-content:center; font-size:0.85rem; clip-path:polygon(4px 0%,100% 0%,calc(100% - 4px) 100%,0% 100%); }
+  .right-text { font-size:0.85rem; line-height:1.55; color:var(--text); }
+  .right-text strong { display:block; font-family:'Oswald',sans-serif; font-size:0.7rem; letter-spacing:1.5px; text-transform:uppercase; color:var(--brown); margin-bottom:2px; }
+
+  /* CONTACT BOX */
+  .contact-box { background:var(--brown); padding:36px 32px; text-align:center; position:relative; overflow:hidden; margin-top:24px; }
+  .contact-box::before { content:'Fresquito\'s'; position:absolute; font-family:'Playfair Display',serif; font-size:6rem; font-weight:900; font-style:italic; color:rgba(255,255,255,0.04); top:50%; left:50%; transform:translate(-50%,-50%); white-space:nowrap; pointer-events:none; }
+  .contact-label { font-family:'Oswald',sans-serif; font-size:0.6rem; letter-spacing:5px; text-transform:uppercase; color:var(--yellow); margin-bottom:12px; display:block; }
+  .contact-email { font-family:'Playfair Display',serif; font-size:1.3rem; font-weight:700; font-style:italic; color:var(--cream); display:inline-block; text-decoration:none; border-bottom:2px solid var(--yellow); padding-bottom:2px; transition:color 0.2s; }
+  .contact-email:hover { color:var(--yellow); }
+  .contact-note { font-size:0.82rem; color:rgba(240,230,200,0.6); margin-top:14px; line-height:1.6; }
+
+  footer { background:var(--brown); border-top:3px solid var(--yellow); padding:32px 40px; text-align:center; }
+  .footer-logo { font-family:'Playfair Display',serif; font-size:1.4rem; font-weight:900; font-style:italic; color:var(--yellow); margin-bottom:8px; }
+  .footer-copy { font-family:'Oswald',sans-serif; font-size:0.58rem; letter-spacing:2px; text-transform:uppercase; color:rgba(240,230,200,0.5); }
+  .footer-links { display:flex; gap:24px; justify-content:center; margin-bottom:12px; flex-wrap:wrap; }
+  .footer-links a { font-family:'Oswald',sans-serif; font-size:0.6rem; letter-spacing:2px; text-transform:uppercase; color:rgba(240,230,200,0.6); text-decoration:none; transition:color 0.2s; }
+  .footer-links a:hover { color:var(--yellow); }
+
+  @keyframes fadeUp { from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:translateY(0)} }
+  .policy-section:nth-child(1){animation-delay:0.1s}
+  .policy-section:nth-child(2){animation-delay:0.15s}
+  .policy-section:nth-child(3){animation-delay:0.2s}
+  .policy-section:nth-child(4){animation-delay:0.25s}
+  .policy-section:nth-child(5){animation-delay:0.3s}
+  .policy-section:nth-child(6){animation-delay:0.35s}
+  .policy-section:nth-child(7){animation-delay:0.4s}
+  .policy-section:nth-child(8){animation-delay:0.45s}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="nav-logo">Fresquito's</a>
+  <a href="/" class="nav-back">← Volver al inicio</a>
+</nav>
+
+<div class="page-wrapper">
+
+  <!-- HERO -->
+  <header class="page-hero">
+    <span class="hero-eyebrow">Fresquito's — Documento legal</span>
+    <h1 class="hero-brand">Fresquito<span>'s</span></h1>
+    <div class="hero-title">Política de Privacidad</div>
+    <p class="hero-date">Última actualización: Abril de 2026</p>
+  </header>
+
+  <!-- 1. INTRODUCCIÓN -->
+  <section class="policy-section">
+    <span class="section-label">01</span>
+    <h2 class="section-title">¿Quiénes <em>somos</em>?</h2>
+    <div class="policy-body">
+      <p>Fresquito's es una marca argentina de helado premium para perros, con sede en Argentina. Podés encontrarnos en <strong>fresquitos.com.ar</strong> y contactarnos en <strong>infofresquitos@gmail.com</strong>.</p>
+      <p>Esta Política de Privacidad describe qué información recopilamos cuando visitás nuestro sitio web, cómo la usamos y qué derechos tenés sobre ella. Al navegar por <strong>fresquitos.com.ar</strong>, aceptás las prácticas descriptas en este documento.</p>
+    </div>
+  </section>
+
+  <div class="divider"><div class="divider-line"></div><span class="divider-paw">🐾</span><div class="divider-line"></div></div>
+
+  <!-- 2. DATOS QUE RECOPILAMOS -->
+  <section class="policy-section">
+    <span class="section-label">02</span>
+    <h2 class="section-title">Datos que <em>recopilamos</em></h2>
+    <div class="policy-body">
+      <p>Recopilamos información de dos maneras: la que nos proporcionás directamente y la que se genera automáticamente al usar el sitio.</p>
+    </div>
+    <ul class="data-list">
+      <li>
+        <span class="data-icon">📋</span>
+        <div class="data-text">
+          <strong>Datos de formularios</strong>
+          Cuando completás nuestro formulario de contacto o suscripción (newsletter o consultas de mayoristas), recopilamos tu nombre y dirección de email.
+        </div>
+      </li>
+      <li>
+        <span class="data-icon">🌐</span>
+        <div class="data-text">
+          <strong>Datos de navegación</strong>
+          Páginas visitadas, tiempo de permanencia, secciones que exploraste, botones en los que hiciste click y desde dónde llegaste al sitio (red social, buscador, etc.).
+        </div>
+      </li>
+      <li>
+        <span class="data-icon">📱</span>
+        <div class="data-text">
+          <strong>Datos de dispositivo</strong>
+          Tipo de dispositivo (celular, computadora, tablet), sistema operativo, navegador y resolución de pantalla. Esta información es anónima y no permite identificarte personalmente.
+        </div>
+      </li>
+      <li>
+        <span class="data-icon">📍</span>
+        <div class="data-text">
+          <strong>Ubicación aproximada</strong>
+          País y ciudad de origen de la visita, derivada de tu dirección IP. No almacenamos tu IP completa ni tu ubicación exacta.
+        </div>
+      </li>
+    </ul>
+  </section>
+
+  <div class="divider"><div class="divider-line"></div><span class="divider-paw">🐾</span><div class="divider-line"></div></div>
+
+  <!-- 3. CÓMO USAMOS TUS DATOS -->
+  <section class="policy-section">
+    <span class="section-label">03</span>
+    <h2 class="section-title">Cómo usamos <em>tus datos</em></h2>
+    <ul class="data-list">
+      <li>
+        <span class="data-icon">📈</span>
+        <div class="data-text">
+          <strong>Mejorar el sitio</strong>
+          Analizamos el comportamiento de navegación para entender qué funciona y mejorar la experiencia de todos los visitantes.
+        </div>
+      </li>
+      <li>
+        <span class="data-icon">✉️</span>
+        <div class="data-text">
+          <strong>Comunicaciones</strong>
+          Si nos dejaste tu email, podemos enviarte novedades sobre Fresquito's: nuevos sabores, puntos de venta y promociones. Siempre podés darte de baja.
+        </div>
+      </li>
+      <li>
+        <span class="data-icon">🎯</span>
+        <div class="data-text">
+          <strong>Publicidad relevante</strong>
+          Usamos los datos de navegación para mostrar anuncios de Fresquito's en plataformas como Facebook, Instagram, TikTok y Google, tanto a vos como a personas con intereses similares.
+        </div>
+      </li>
+      <li>
+        <span class="data-icon">📊</span>
+        <div class="data-text">
+          <strong>Medición y análisis</strong>
+          Medimos el rendimiento de nuestras campañas publicitarias para invertir mejor y ofrecerte contenido que realmente te interese.
+        </div>
+      </li>
+    </ul>
+  </section>
+
+  <div class="divider"><div class="divider-line"></div><span class="divider-paw">🐾</span><div class="divider-line"></div></div>
+
+  <!-- 4. COOKIES Y TRACKING -->
+  <section class="policy-section">
+    <span class="section-label">04</span>
+    <h2 class="section-title">Cookies y tecnologías <em>de seguimiento</em></h2>
+    <div class="policy-body">
+      <p>Utilizamos cookies y herramientas de seguimiento para analizar el tráfico y medir nuestras campañas. A continuación, las plataformas que usamos y qué hace cada una:</p>
+    </div>
+    <div class="tracker-grid">
+      <div class="tracker-card google">
+        <span class="tracker-icon">🏷️</span>
+        <div class="tracker-info">
+          <span class="tracker-name">Google Tag Manager</span>
+          <p class="tracker-desc">Contenedor que gestiona todos los demás tags de seguimiento desde un único punto. No recopila datos por sí mismo, pero coordina las herramientas que sí lo hacen.</p>
+          <a href="https://policies.google.com/privacy" target="_blank" rel="noopener" class="tracker-link">Política de privacidad de Google →</a>
+        </div>
+      </div>
+      <div class="tracker-card google">
+        <span class="tracker-icon">📊</span>
+        <div class="tracker-info">
+          <span class="tracker-name">Google Analytics 4</span>
+          <p class="tracker-desc">Mide el tráfico del sitio: cuántas personas visitan, qué secciones recorren y cómo llegaron. Los datos son anónimos y agregados.</p>
+          <a href="https://policies.google.com/privacy" target="_blank" rel="noopener" class="tracker-link">Política de privacidad de Google →</a>
+        </div>
+      </div>
+      <div class="tracker-card meta">
+        <span class="tracker-icon">🔵</span>
+        <div class="tracker-info">
+          <span class="tracker-name">Meta Pixel (Facebook + Instagram)</span>
+          <p class="tracker-desc">Mide el rendimiento de anuncios en Facebook e Instagram. Permite mostrar Fresquito's a personas que visitaron el sitio o tienen intereses similares.</p>
+          <a href="https://www.facebook.com/privacy/policy/" target="_blank" rel="noopener" class="tracker-link">Política de privacidad de Meta →</a>
+        </div>
+      </div>
+      <div class="tracker-card google">
+        <span class="tracker-icon">🎯</span>
+        <div class="tracker-info">
+          <span class="tracker-name">Google Ads</span>
+          <p class="tracker-desc">Mide conversiones de campañas en Google Search y Display. Registra cuando alguien hace click en un anuncio y realiza una acción en el sitio.</p>
+          <a href="https://policies.google.com/privacy" target="_blank" rel="noopener" class="tracker-link">Política de privacidad de Google →</a>
+        </div>
+      </div>
+      <div class="tracker-card tiktok">
+        <span class="tracker-icon">🎵</span>
+        <div class="tracker-info">
+          <span class="tracker-name">TikTok Pixel</span>
+          <p class="tracker-desc">Mide el rendimiento de anuncios en TikTok. Permite optimizar campañas y mostrarle Fresquito's a personas con intereses afines.</p>
+          <a href="https://www.tiktok.com/legal/page/global/privacy-policy/es" target="_blank" rel="noopener" class="tracker-link">Política de privacidad de TikTok →</a>
+        </div>
+      </div>
+    </div>
+    <div class="policy-body" style="margin-top:24px;">
+      <p>Podés administrar o desactivar las cookies desde la configuración de tu navegador. Tené en cuenta que desactivarlas puede afectar la funcionalidad del sitio.</p>
+    </div>
+  </section>
+
+  <div class="divider"><div class="divider-line"></div><span class="divider-paw">🐾</span><div class="divider-line"></div></div>
+
+  <!-- 5. COMPARTIR DATOS -->
+  <section class="policy-section">
+    <span class="section-label">05</span>
+    <h2 class="section-title">Compartir datos <em>con terceros</em></h2>
+    <div class="policy-body">
+      <p><strong>No vendemos tus datos personales.</strong> Los compartimos únicamente con los proveedores de tecnología listados en la sección anterior (Google, Meta, TikTok), y solo en la medida necesaria para operar el sitio y medir nuestras campañas.</p>
+      <p>Estos proveedores tienen sus propias políticas de privacidad y están obligados a proteger tu información conforme a la legislación aplicable. No compartimos datos con ningún otro tercero, anunciante o intermediario.</p>
+    </div>
+  </section>
+
+  <div class="divider"><div class="divider-line"></div><span class="divider-paw">🐾</span><div class="divider-line"></div></div>
+
+  <!-- 6. TUS DERECHOS -->
+  <section class="policy-section">
+    <span class="section-label">06</span>
+    <h2 class="section-title">Tus <em>derechos</em></h2>
+    <div class="policy-body">
+      <p>En Argentina, la Ley 25.326 de Protección de Datos Personales te garantiza los siguientes derechos. Para ejercerlos, escribinos a <strong>infofresquitos@gmail.com</strong>.</p>
+    </div>
+    <div class="rights-box">
+      <div class="rights-grid">
+        <div class="right-item">
+          <div class="right-icon">👁</div>
+          <div class="right-text">
+            <strong>Acceso</strong>
+            Podés solicitar una copia de los datos que tenemos sobre vos.
+          </div>
+        </div>
+        <div class="right-item">
+          <div class="right-icon">✏️</div>
+          <div class="right-text">
+            <strong>Rectificación</strong>
+            Podés pedir que corrijamos datos incorrectos o incompletos.
+          </div>
+        </div>
+        <div class="right-item">
+          <div class="right-icon">🗑</div>
+          <div class="right-text">
+            <strong>Eliminación</strong>
+            Podés pedir que eliminemos tus datos personales de nuestros registros.
+          </div>
+        </div>
+        <div class="right-item">
+          <div class="right-icon">🚫</div>
+          <div class="right-text">
+            <strong>Oposición</strong>
+            Podés oponerte al uso de tus datos para publicidad o comunicaciones.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"><div class="divider-line"></div><span class="divider-paw">🐾</span><div class="divider-line"></div></div>
+
+  <!-- 7. CAMBIOS -->
+  <section class="policy-section">
+    <span class="section-label">07</span>
+    <h2 class="section-title">Cambios a esta <em>política</em></h2>
+    <div class="policy-body">
+      <p>Podemos actualizar esta Política de Privacidad cuando incorporemos nuevas herramientas de análisis o modifiquemos nuestras prácticas. La fecha de "última actualización" al inicio del documento siempre reflejará la versión vigente.</p>
+      <p>Te recomendamos revisarla periódicamente. El uso continuado del sitio después de cualquier cambio implica tu aceptación de la política actualizada.</p>
+    </div>
+  </section>
+
+  <div class="divider"><div class="divider-line"></div><span class="divider-paw">🐾</span><div class="divider-line"></div></div>
+
+  <!-- 8. CONTACTO -->
+  <section class="policy-section">
+    <span class="section-label">08</span>
+    <h2 class="section-title">¿Tenés <em>preguntas</em>?</h2>
+    <div class="policy-body">
+      <p>Si tenés dudas sobre esta política o querés ejercer tus derechos, escribinos directamente.</p>
+    </div>
+    <div class="contact-box">
+      <span class="contact-label">Contacto de privacidad</span>
+      <a href="mailto:infofresquitos@gmail.com" class="contact-email">infofresquitos@gmail.com</a>
+      <p class="contact-note">Respondemos en un plazo máximo de 30 días hábiles.</p>
+    </div>
+  </section>
+
+</div>
+
+<footer>
+  <div class="footer-logo">Fresquito's</div>
+  <div class="footer-links">
+    <a href="/">Inicio</a>
+    <a href="/#nosotros">Nosotros</a>
+    <a href="/#nuestros-helados">Sabores</a>
+    <a href="/#contacto">Contacto</a>
+  </div>
+  <div class="footer-copy">© 2026 Fresquito's · Helado Premium Para Perros · Argentina · fresquitos.com.ar</div>
+</footer>
+
+</body>
+</html>
