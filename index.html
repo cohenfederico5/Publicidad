@@ -13,6 +13,10 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <script>!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');fbq('init','1394225389091939');fbq('track','PageView');</script>
 <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1394225389091939&ev=PageView&noscript=1"/></noscript>
 <!-- End Meta Pixel -->
+<!-- Google Ads Tag -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-18009096311"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','AW-18009096311');</script>
+<!-- End Google Ads Tag -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Fresquito's – Helado Premium Para Perros</title>
 <meta name="description" content="Fresquito's es el primer helado premium para perros de Argentina. Formulado con ingredientes naturales y respaldado por veterinarios. Sabores: Carne y Pollo.">
@@ -58,6 +62,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   .hero-title { font-family:'Playfair Display',serif; font-size:clamp(4rem,10vw,8rem); font-weight:900; font-style:italic; color:var(--brown); line-height:0.9; margin-bottom:28px; animation:fadeUp 0.8s 0.2s ease forwards; opacity:0; }
   .hero-desc { font-size:1.05rem; color:var(--text); line-height:1.8; max-width:480px; margin:0 auto 44px; animation:fadeUp 0.8s 0.4s ease forwards; opacity:0; }
   .hero-ctas { display:flex; gap:16px; justify-content:center; flex-wrap:wrap; animation:fadeUp 0.8s 0.5s ease forwards; opacity:0; }
+  .hero-trust { display:flex; gap:24px; justify-content:center; flex-wrap:wrap; margin-top:32px; animation:fadeUp 0.8s 0.7s ease forwards; opacity:0; }
+  .trust-item { display:flex; align-items:center; gap:7px; font-family:'Oswald',sans-serif; font-size:0.68rem; letter-spacing:2px; text-transform:uppercase; color:var(--brown-mid); }
+  .trust-item::before { content:'✓'; color:var(--yellow); font-size:0.9rem; font-weight:700; }
+  .trust-senasa { border:1px solid var(--yellow); padding:6px 14px; color:var(--brown); background:rgba(212,168,64,0.08); }
+  .trust-senasa::before { content:'🛡'; font-size:0.75rem; }
 
   .btn-primary { font-family:'Oswald',sans-serif; font-size:0.8rem; letter-spacing:3px; text-transform:uppercase; background:var(--yellow); color:var(--brown); border:none; padding:16px 36px; cursor:pointer; text-decoration:none; display:inline-block; font-weight:700; transition:all 0.2s; clip-path:polygon(8px 0%,100% 0%,calc(100% - 8px) 100%,0% 100%); }
   .btn-primary:hover { background:var(--yellow-light); transform:translateY(-2px); }
@@ -99,12 +108,12 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   .helado-card:hover { transform:translateY(-6px); }
   .helado-card::before { content:''; position:absolute; top:0; left:0; right:0; height:4px; background:var(--yellow); }
   .helado-card:nth-child(2)::before { background:var(--red); }
-  .helado-img { width:140px; height:140px; object-fit:cover; border-radius:50%; border:4px solid var(--yellow); margin-bottom:20px; box-shadow:0 4px 16px rgba(0,0,0,0.15); }
-  .helado-card:nth-child(2) .helado-img { border-color:var(--red); }
+  .helado-img { width:320px; height:280px; object-fit:contain; margin-top:16px; margin-bottom:20px; filter:drop-shadow(0 6px 18px rgba(0,0,0,0.18)); }
+  .helado-card:nth-child(2) .helado-img { }
   .helado-name { font-family:'Playfair Display',serif; font-size:1.8rem; font-weight:900; font-style:italic; color:var(--brown); margin-bottom:12px; }
   .helado-desc { font-size:0.9rem; color:var(--brown-mid); line-height:1.7; }
-  .helado-tag { display:inline-block; font-family:'Oswald',sans-serif; font-size:0.65rem; letter-spacing:2px; text-transform:uppercase; background:var(--yellow); color:var(--brown); padding:4px 12px; margin-top:20px; font-weight:700; }
-  .helado-card:nth-child(2) .helado-tag { background:var(--red); color:var(--cream); }
+  .helado-nutrientes { display:flex; gap:6px; flex-wrap:wrap; justify-content:center; margin-top:20px; }
+  .helado-nutriente { font-family:'Oswald',sans-serif; font-size:0.62rem; font-weight:600; letter-spacing:1.5px; text-transform:uppercase; color:var(--brown-mid); background:var(--cream-dark); padding:4px 10px; border:1px solid rgba(61,31,10,0.12); }
   .helado-nutri-toggle { font-family:'Oswald',sans-serif; font-size:0.65rem; letter-spacing:2px; text-transform:uppercase; background:none; border:1px solid var(--cream-dark); color:var(--brown-mid); padding:9px 20px; cursor:pointer; margin-top:20px; transition:all 0.2s; width:100%; display:flex; align-items:center; justify-content:center; gap:8px; }
   .helado-nutri-toggle:hover { border-color:var(--yellow); color:var(--brown); }
   .helado-nutri-toggle .toggle-arrow { display:inline-block; transition:transform 0.25s; font-size:0.7rem; }
@@ -193,14 +202,17 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   .suscripcion-form button:hover { background:var(--brown-mid); border-color:var(--brown-mid); }
 
   /* PLAN CARD */
-  .plan-card { background:var(--cream-dark); border:3px solid var(--brown); max-width:380px; margin:0 auto 48px; position:relative; z-index:1; }
+  .plan-cards-grid { display:flex; gap:24px; justify-content:center; flex-wrap:wrap; margin-bottom:48px; position:relative; z-index:1; }
+  .plan-card { background:var(--cream-dark); border:3px solid var(--brown); width:340px; position:relative; }
+  .plan-card.plan-destacado { border-color:var(--yellow); }
+  .plan-badge { position:absolute; top:-14px; left:50%; transform:translateX(-50%); background:var(--yellow); color:var(--brown); font-family:'Oswald',sans-serif; font-size:0.6rem; letter-spacing:3px; text-transform:uppercase; font-weight:700; padding:5px 18px; white-space:nowrap; }
   .plan-card-header { background:var(--cream-dark); padding:18px 28px 14px; border-bottom:1px solid rgba(232,197,71,0.2); }
   .plan-card-tag { font-family:'Oswald',sans-serif; font-size:0.62rem; letter-spacing:3px; text-transform:uppercase; color:var(--red); margin-bottom:0; margin-top:8px; }
   .plan-card-name { font-family:'Playfair Display',serif; font-size:1.6rem; font-weight:900; font-style:italic; color:var(--brown); line-height:1.1; }
   .plan-card-body { padding:16px 28px 20px; }
-  .plan-card-format { display:flex; align-items:center; gap:16px; margin-bottom:20px; padding-bottom:20px; border-bottom:1px solid rgba(232,197,71,0.15); }
+  .plan-card-format { display:flex; align-items:center; justify-content:center; gap:16px; margin-bottom:20px; padding-bottom:20px; border-bottom:1px solid rgba(232,197,71,0.15); }
   .plan-card-format-icon { font-size:2rem; }
-  .plan-card-format-text strong { font-family:'Oswald',sans-serif; font-size:1rem; letter-spacing:1px; text-transform:uppercase; color:var(--brown); display:block; }
+  .plan-card-format-text strong { font-family:'Oswald',sans-serif; font-size:1rem; letter-spacing:1px; text-transform:uppercase; color:var(--brown); display:block; text-align:center; }
   .plan-card-format-text span { font-size:0.85rem; color:var(--brown-mid); }
   .plan-card-includes { list-style:none; display:flex; flex-direction:column; gap:10px; margin-bottom:20px; }
   .plan-card-includes li { display:flex; align-items:flex-start; gap:10px; font-size:0.88rem; color:var(--text); line-height:1.4; text-align:left; }
@@ -299,6 +311,27 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   .reveal { opacity:0; transform:translateY(40px); transition:opacity 0.7s ease,transform 0.7s ease; }
   .reveal.visible { opacity:1; transform:translateY(0); }
 
+  /* Pedido Online card */
+  .pedido-online-card { background:var(--brown); max-width:560px; margin:40px auto 0; padding:48px 40px; text-align:center; position:relative; overflow:hidden; }
+  .pedido-online-card::before { content:'ONLINE'; position:absolute; font-family:'Playfair Display',serif; font-size:7rem; font-weight:900; font-style:italic; color:rgba(255,255,255,0.04); top:50%; left:50%; transform:translate(-50%,-50%); white-space:nowrap; pointer-events:none; }
+  .pedido-online-label { font-family:'Oswald',sans-serif; font-size:0.62rem; letter-spacing:4px; text-transform:uppercase; color:var(--yellow); display:block; margin-bottom:16px; }
+  .pedido-online-title { font-family:'Playfair Display',serif; font-size:clamp(1.8rem,4vw,2.6rem); font-weight:900; font-style:italic; color:var(--cream); line-height:1.1; margin-bottom:16px; }
+  .pedido-online-desc { font-family:'Lora',serif; font-size:0.97rem; color:rgba(240,230,192,0.75); line-height:1.7; max-width:340px; margin:0 auto 32px; }
+  .locales-chips-wrap { margin:0 auto 48px; }
+  .locales-chips { display:flex; flex-wrap:wrap; gap:10px; justify-content:center; margin-top:16px; }
+  .locales-chip { font-family:'Oswald',sans-serif; font-size:0.72rem; letter-spacing:2px; text-transform:uppercase; color:var(--brown); border:1px solid var(--cream-dark); background:var(--white); padding:10px 18px; display:inline-flex; align-items:center; gap:8px; }
+
+  /* Testimonios */
+  .testi-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:28px; max-width:1100px; margin:0 auto; text-align:left; }
+  .testi-card { background:var(--white); border:1px solid var(--cream-dark); padding:32px 28px 24px; position:relative; display:flex; flex-direction:column; gap:16px; }
+  .testi-flavor { position:absolute; top:0; right:0; font-family:'Oswald',sans-serif; font-size:0.6rem; letter-spacing:3px; text-transform:uppercase; background:var(--yellow); color:var(--brown); padding:6px 14px; font-weight:700; }
+  .testi-stars { color:var(--yellow); font-size:1rem; letter-spacing:2px; }
+  .testi-quote { font-family:'Lora',serif; font-style:italic; font-size:0.97rem; line-height:1.75; color:var(--text); flex:1; }
+  .testi-author { display:flex; align-items:center; gap:14px; padding-top:16px; border-top:1px solid var(--cream-dark); }
+  .testi-avatar { width:44px; height:44px; border-radius:50%; background:var(--cream); border:2px solid var(--yellow); display:flex; align-items:center; justify-content:center; font-size:1.4rem; flex-shrink:0; }
+  .testi-name { font-family:'Oswald',sans-serif; font-size:0.8rem; letter-spacing:2px; text-transform:uppercase; color:var(--brown); font-weight:700; }
+  .testi-pet { font-family:'Lora',serif; font-size:0.78rem; color:var(--red); font-style:italic; margin-top:2px; }
+
   @media (max-width:768px) {
     nav { padding:0 20px; }
     .nav-links { display:none; flex-direction:column; position:absolute; top:64px; left:0; right:0; background:var(--cream-dark); padding:20px; border-bottom:2px solid var(--yellow); }
@@ -372,32 +405,34 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <section id="inicio">
   <div class="hero-bg-circles"><div class="hero-circle"></div><div class="hero-circle"></div><div class="hero-circle"></div></div>
   <div class="hero-content">
-    <span class="hero-badge">★ Helado Premium Para Perros ★</span>
-    <h1 class="hero-title">Fresquito's</h1>
-    <img src="logo_sin_fondo.png" alt="Fresquito's logo" style="width:clamp(120px,20vw,200px); margin:0 auto 20px; display:block; animation:fadeUp 0.8s 0.35s ease forwards; opacity:0;">
+    <h1 class="hero-title" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);">Fresquito's – Helado Premium Para Perros</h1>
+    <img src="logo_sin_fondo.png" alt="Fresquito's – Helado Premium Para Perros" style="width:clamp(220px,35vw,420px); margin:0 auto 28px; display:block; animation:fadeUp 0.8s 0.2s ease forwards; opacity:0;">
     <p class="hero-desc">Pensado exclusivamente para el bienestar de tu perro. Fórmula desarrollada por veterinarios con ingredientes naturales y nutritivos.</p>
     <div class="hero-ctas">
       <a href="#nuestros-helados" class="btn-primary">Ver Sabores</a>
       <a href="#calculadora" class="btn-outline">Calculá tu Porción</a>
+    </div>
+    <div class="hero-trust">
+      <span class="trust-item trust-senasa">SENASA inscripto · Est. Nº 2025-96/A/H</span>
     </div>
   </div>
 </section>
 
 <div class="marquee-strip">
   <div class="marquee-track">
-    <span class="marquee-item">Saludable <span class="marquee-dot">✦</span></span>
+    <span class="marquee-item">Nutritivo <span class="marquee-dot">✦</span></span>
     <span class="marquee-item">Alto Valor Proteico <span class="marquee-dot">✦</span></span>
     <span class="marquee-item">Reducido en Azúcares <span class="marquee-dot">✦</span></span>
     <span class="marquee-item">Con Minerales <span class="marquee-dot">✦</span></span>
-    <span class="marquee-item">Aprobado por Veterinarios <span class="marquee-dot">✦</span></span>
+    <span class="marquee-item">Formulado por Veterinarios <span class="marquee-dot">✦</span></span>
     <span class="marquee-item">100% Canino <span class="marquee-dot">✦</span></span>
     <span class="marquee-item">Aprobado por SENASA <span class="marquee-dot">✦</span></span>
     <span class="marquee-item">Hecho con Amor <span class="marquee-dot">✦</span></span>
-    <span class="marquee-item">Saludable <span class="marquee-dot">✦</span></span>
+    <span class="marquee-item">Nutritivo <span class="marquee-dot">✦</span></span>
     <span class="marquee-item">Alto Valor Proteico <span class="marquee-dot">✦</span></span>
     <span class="marquee-item">Reducido en Azúcares <span class="marquee-dot">✦</span></span>
     <span class="marquee-item">Con Minerales <span class="marquee-dot">✦</span></span>
-    <span class="marquee-item">Aprobado por Veterinarios <span class="marquee-dot">✦</span></span>
+    <span class="marquee-item">Formulado por Veterinarios <span class="marquee-dot">✦</span></span>
     <span class="marquee-item">100% Canino <span class="marquee-dot">✦</span></span>
     <span class="marquee-item">Aprobado por SENASA <span class="marquee-dot">✦</span></span>
     <span class="marquee-item">Hecho con Amor <span class="marquee-dot">✦</span></span>
@@ -421,7 +456,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <p class="section-body" style="margin-top:16px;">Cada pote es un momento especial entre vos y tu mejor amigo.</p>
       <div class="pills">
         <span class="pill">Receta Veterinaria</span>
-        <span class="pill">Saludable</span>
+        <span class="pill">Nutritivo</span>
         <span class="pill">Ingredientes Naturales</span>
         <span class="pill">Con Amor 🐾</span>
       </div>
@@ -431,14 +466,18 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <section id="nuestros-helados">
   <span class="section-label reveal">★ Lo que ofrecemos</span>
-  <h2 class="section-title reveal" style="margin:0 auto 16px;">Nuestros <em>Sabores</em></h2>
+  <h2 class="section-title reveal" style="margin:0 auto 16px;">Nuestros <em>Helados</em></h2>
   <p class="helados-intro reveal">Dos sabores únicos, formulados para que tu perro los coma con felicidad y lo disfrute.</p>
   <div class="helados-grid">
     <div class="helado-card reveal">
-      <img src="/mnt/user-data/uploads/1000228112.jpg" alt="Sabor Carne" class="helado-img" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22140%22 height=%22140%22 viewBox=%220 0 140 140%22%3E%3Ccircle cx=%2270%22 cy=%2270%22 r=%2270%22 fill=%22%233D1F0A%22/%3E%3Ctext x=%2270%22 y=%2285%22 text-anchor=%22middle%22 fill=%22%23E8C547%22 font-family=%22Georgia,serif%22 font-size=%2250%22 font-style=%22italic%22 font-weight=%22bold%22%3EC%3C/text%3E%3C/svg%3E'">
       <div class="helado-name">Carne</div>
+      <img src="pote carne (sin fondo).png" alt="Sabor Carne" class="helado-img">
       <p class="helado-desc">Intenso y cremoso. Nutritivo y lleno de proteínas. Un sabor que los perros adoran desde el primer lamido.</p>
-      <span class="helado-tag">Favorito</span>
+      <div class="helado-nutrientes">
+        <span class="helado-nutriente">Calcio</span>
+        <span class="helado-nutriente">Magnesio</span>
+        <span class="helado-nutriente">Vitamina C</span>
+      </div>
       <button class="helado-nutri-toggle" onclick="toggleNutri(this)">Composición nutricional <span class="toggle-arrow">▼</span></button>
       <div class="helado-nutri">
         <table class="helado-nutri-table">
@@ -457,10 +496,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </div>
     </div>
     <div class="helado-card reveal" style="transition-delay:0.15s">
-      <img src="/mnt/user-data/uploads/1000228114.jpg" alt="Sabor Pollo" class="helado-img" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22140%22 height=%22140%22 viewBox=%220 0 140 140%22%3E%3Ccircle cx=%2270%22 cy=%2270%22 r=%2270%22 fill=%22%23C94B2C%22/%3E%3Ctext x=%2270%22 y=%2285%22 text-anchor=%22middle%22 fill=%22%23F5EDD6%22 font-family=%22Georgia,serif%22 font-size=%2250%22 font-style=%22italic%22 font-weight=%22bold%22%3EP%3C/text%3E%3C/svg%3E'">
       <div class="helado-name">Pollo</div>
+      <img src="pote pollo (sin fondo).png" alt="Sabor Pollo" class="helado-img">
       <p class="helado-desc">Suave y fresco. Nutritivo y lleno de proteínas. Un clásico que nunca falla y deja con ganas de más.</p>
-      <span class="helado-tag">Suave & Liviano</span>
+      <div class="helado-nutrientes">
+        <span class="helado-nutriente">Calcio</span>
+        <span class="helado-nutriente">Magnesio</span>
+        <span class="helado-nutriente">Vitamina C</span>
+      </div>
       <button class="helado-nutri-toggle" onclick="toggleNutri(this)">Composición nutricional <span class="toggle-arrow">▼</span></button>
       <div class="helado-nutri">
         <table class="helado-nutri-table">
@@ -483,11 +526,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </section>
 
 <div class="benefits-bar">
-  <div class="benefit-item"><div class="benefit-icon">💪</div><div class="benefit-title">Saludable</div></div>
+  <div class="benefit-item"><div class="benefit-icon">💪</div><div class="benefit-title">Nutritivo</div></div>
   <div class="benefit-item"><div class="benefit-icon">🥩</div><div class="benefit-title">Valor Proteico</div></div>
   <div class="benefit-item"><div class="benefit-icon">🍬</div><div class="benefit-title">Reducido en Azúcares</div></div>
   <div class="benefit-item"><div class="benefit-icon"><span style="font-family:'Oswald',sans-serif;font-size:0.85em;font-weight:700;letter-spacing:1px">Ca·Mg</span></div><div class="benefit-title">Con Minerales</div></div>
-  <div class="benefit-item"><div class="benefit-icon">👨‍⚕️</div><div class="benefit-title">Aprobado por Veterinarios</div></div>
+  <div class="benefit-item"><div class="benefit-icon">👨‍⚕️</div><div class="benefit-title">Formulado por Veterinarios</div></div>
   <div class="benefit-item"><div class="benefit-icon">🌿</div><div class="benefit-title">Nutrición funcional</div></div>
   <div class="benefit-item"><div class="benefit-icon">❤️</div><div class="benefit-title">Pensado para el bienestar del perro</div></div>
   <div class="benefit-item"><div class="benefit-icon">🐾</div><div class="benefit-title">100% Canino</div></div></div>
@@ -595,33 +638,108 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </div>
 </section>
 
+<section id="testimonios" style="background:var(--cream);text-align:center;">
+  <span class="section-label reveal">★ Lo que dicen los dueños</span>
+  <h2 class="section-title reveal">Perros <em>felices</em></h2>
+  <p class="section-body reveal" style="margin:0 auto 56px;">Cada pote es un momento especial. Esto nos dicen los primeros en probarlo.</p>
+  <div class="testi-grid">
+
+    <div class="testi-card reveal">
+      <div class="testi-flavor">Sabor Carne</div>
+      <div class="testi-stars">★★★★★</div>
+      <p class="testi-quote">"Lo sacamos del freezer y Milo enloqueció. Nunca lo vi tan emocionado con algo que no sea su correa. Calidad increíble y encima es nutritivo."</p>
+      <div class="testi-author">
+        <div class="testi-avatar">🐕</div>
+        <div>
+          <div class="testi-name">Valentina R.</div>
+          <div class="testi-pet">Milo · Golden Retriever · 4 años</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="testi-card reveal" style="transition-delay:0.12s">
+      <div class="testi-flavor">Sabor Pollo</div>
+      <div class="testi-stars">★★★★★</div>
+      <p class="testi-quote">"Soy veterinaria y me alegra enormemente que exista un producto así en Argentina. Los ingredientes son serios y la respuesta de los perros habla sola."</p>
+      <div class="testi-author">
+        <div class="testi-avatar">🐾</div>
+        <div>
+          <div class="testi-name">Dra. Luciana M.</div>
+          <div class="testi-pet">Veterinaria · Border Collie y Labrador</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="testi-card reveal" style="transition-delay:0.24s">
+      <div class="testi-flavor">Mix de Sabores</div>
+      <div class="testi-stars">★★★★★</div>
+      <p class="testi-quote">"Tenemos dos perras y cada una prefiere un sabor distinto. Compramos los dos y alternamos. Ya es parte de la rutina del verano en casa."</p>
+      <div class="testi-author">
+        <div class="testi-avatar">🐩</div>
+        <div>
+          <div class="testi-name">Martín &amp; Sofi</div>
+          <div class="testi-pet">Luna y Tina · Poodle y Beagle</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
 <section id="suscripcion">
   <span class="section-label reveal">★ El plan</span>
   <h2 class="section-title reveal">Un mimo <em>cada mes</em></h2>
   <p class="suscripcion-desc reveal">Recibí Fresquito's en tu puerta todos los meses. Sin complicaciones, sin quedarte sin stock.</p>
 
-  <div class="plan-card reveal">
-    <div class="plan-card-header">
-      <div class="plan-card-name">Suscripción<br>Fresquito's</div>
-      <div class="plan-card-tag">Plan mensual</div>
-    </div>
-    <div class="plan-card-body">
-      <div class="plan-card-format">
-        <div class="plan-card-format-icon">🍦</div>
-        <div class="plan-card-format-text">
-          <strong>4 potes de 360cc</strong>
+  <div class="plan-cards-grid reveal">
+
+    <div class="plan-card">
+      <div class="plan-card-header">
+        <div class="plan-card-name">Suscripción<br>Fresquito's</div>
+        <div class="plan-card-tag">Plan mensual</div>
+      </div>
+      <div class="plan-card-body">
+        <div class="plan-card-format">
+          <div class="plan-card-format-text">
+            <strong>2 potes de 360cc</strong>
+          </div>
+        </div>
+        <ul class="plan-card-includes">
+          <li>Elegís el sabor o combinalos</li>
+          <li>Entrega mensual a domicilio</li>
+          <li>Podés pausar o cancelar cuando quieras</li>
+        </ul>
+        <div class="plan-card-flavors">
+          <span class="plan-flavor-tag plan-flavor-carne">Carne</span>
+          <span class="plan-flavor-tag plan-flavor-pollo">Pollo</span>
         </div>
       </div>
-<ul class="plan-card-includes">
-        <li>Elegis el sabor o combinalos</li>
-        <li>Entrega mensual a domicilio</li>
-        <li>Podés pausar tu suscripción o cancelarla cuando quieras</li>
-      </ul>
-      <div class="plan-card-flavors">
-        <span class="plan-flavor-tag plan-flavor-carne">Carne</span>
-        <span class="plan-flavor-tag plan-flavor-pollo">Pollo</span>
+    </div>
+
+    <div class="plan-card plan-destacado">
+      <div class="plan-badge">★ Más popular</div>
+      <div class="plan-card-header">
+        <div class="plan-card-name">Suscripción<br>Fresquito's</div>
+        <div class="plan-card-tag">Plan mensual</div>
+      </div>
+      <div class="plan-card-body">
+        <div class="plan-card-format">
+          <div class="plan-card-format-text">
+            <strong>4 potes de 360cc</strong>
+          </div>
+        </div>
+        <ul class="plan-card-includes">
+          <li>Elegís el sabor o combinalos</li>
+          <li>Entrega mensual a domicilio</li>
+          <li>Podés pausar o cancelar cuando quieras</li>
+        </ul>
+        <div class="plan-card-flavors">
+          <span class="plan-flavor-tag plan-flavor-carne">Carne</span>
+          <span class="plan-flavor-tag plan-flavor-pollo">Pollo</span>
+        </div>
       </div>
     </div>
+
   </div>
 
   <p class="suscripcion-desc reveal" style="margin-bottom:16px;">¿Querés ser de los primeros en suscribirte? Dejanos tu email y te avisamos cuando abramos las suscripciones.</p>
@@ -696,30 +814,27 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <section id="puntos-de-venta" style="background:var(--cream);padding:100px 40px;text-align:center;">
   <span class="section-label reveal">★ Encontranos</span>
   <h2 class="section-title reveal">¿Dónde comprar <em>Fresquito's</em>?</h2>
-  <p class="reveal" style="font-size:1rem;color:var(--brown-mid);max-width:480px;margin:0 auto 60px;line-height:1.8;">Estamos trabajando para llegar a locales de todo el país. Próximamente vas a poder encontrarnos cerca tuyo.</p>
-  <div class="reveal" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:2px;max-width:900px;margin:0 auto 48px;">
-    <div style="background:var(--cream-dark);padding:40px 24px;text-align:center;">
-      <div style="font-size:2rem;margin-bottom:12px;">🗺️</div>
-      <div style="font-family:'Oswald',sans-serif;font-size:0.72rem;letter-spacing:3px;text-transform:uppercase;color:var(--red);margin-bottom:8px;">CABA</div>
-      <div style="font-family:'Playfair Display',serif;font-size:1.1rem;color:var(--brown);font-style:italic;">Próximamente</div>
-    </div>
-    <div style="background:var(--cream-dark);padding:40px 24px;text-align:center;">
-      <div style="font-size:2rem;margin-bottom:12px;">🗺️</div>
-      <div style="font-family:'Oswald',sans-serif;font-size:0.72rem;letter-spacing:3px;text-transform:uppercase;color:var(--red);margin-bottom:8px;">Zona Norte</div>
-      <div style="font-family:'Playfair Display',serif;font-size:1.1rem;color:var(--brown);font-style:italic;">Próximamente</div>
-    </div>
-    <div style="background:var(--cream-dark);padding:40px 24px;text-align:center;">
-      <div style="font-size:2rem;margin-bottom:12px;">🗺️</div>
-      <div style="font-family:'Oswald',sans-serif;font-size:0.72rem;letter-spacing:3px;text-transform:uppercase;color:var(--red);margin-bottom:8px;">Zona Sur</div>
-      <div style="font-family:'Playfair Display',serif;font-size:1.1rem;color:var(--brown);font-style:italic;">Próximamente</div>
-    </div>
-    <div style="background:var(--cream-dark);padding:40px 24px;text-align:center;">
-      <div style="font-size:2rem;margin-bottom:12px;">🗺️</div>
-      <div style="font-family:'Oswald',sans-serif;font-size:0.72rem;letter-spacing:3px;text-transform:uppercase;color:var(--red);margin-bottom:8px;">Zona Oeste</div>
-      <div style="font-family:'Playfair Display',serif;font-size:1.1rem;color:var(--brown);font-style:italic;">Próximamente</div>
+
+  <div class="pedido-online-card reveal">
+    <span class="pedido-online-label">Disponible ahora</span>
+    <h3 class="pedido-online-title">Pedido Online</h3>
+    <p class="pedido-online-desc">Recibís Fresquito's en tu casa. Envíos coordinados por WhatsApp.</p>
+    <a href="https://wa.me/5491161931536?text=Hola%21%20Quisiera%20hacer%20un%20pedido%20de%20Fresquito%27s%20%F0%9F%90%BE" class="btn-primary" target="_blank" rel="noopener noreferrer">Pedir por WhatsApp</a>
+  </div>
+
+  <div class="reveal locales-chips-wrap">
+    <span class="section-label" style="margin-bottom:20px;font-size:0.85rem;letter-spacing:4px;margin-top:48px;display:block;">Próximamente en locales físicos</span>
+    <div class="locales-chips">
+      <span class="locales-chip">🐾 Pet Shops</span>
+      <span class="locales-chip">🛒 Kioscos</span>
+      <span class="locales-chip">🌿 Dietéticas</span>
+      <span class="locales-chip">☕ Cafés Pet Friendly</span>
+      <span class="locales-chip">⛽ Estaciones de Servicio</span>
+      <span class="locales-chip">🏪 Supermercados</span>
     </div>
   </div>
-  <p class="reveal" style="font-size:0.88rem;color:var(--brown-mid);margin-bottom:20px;">Seguinos en Instagram para enterarte cuando lleguemos a tu zona.</p>
+  <p class="reveal" style="font-size:1rem;color:var(--brown-mid);max-width:480px;margin:0 auto 8px;line-height:1.8;">Estamos trabajando para llegar a todo el país.</p>
+  <p class="reveal" style="font-size:1rem;color:var(--brown-mid);margin-bottom:20px;line-height:1.8;">Seguinos en Instagram para enterarte cuando lleguemos a tu zona.</p>
   <a href="https://instagram.com/fresquitos.petfood" class="btn-primary reveal" target="_blank" rel="noopener noreferrer">@fresquitos.petfood</a>
 </section>
 
@@ -785,7 +900,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <a href="https://instagram.com/fresquitos.petfood" class="channel-card" target="_blank" rel="noopener noreferrer"><span class="channel-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="28" height="28" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></span><span class="channel-name">@fresquitos.petfood</span></a>
     <a href="https://tiktok.com/@fresquitos.petfood" class="channel-card" target="_blank" rel="noopener noreferrer"><span class="channel-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="28" height="28" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.18 8.18 0 004.78 1.52V6.75a4.85 4.85 0 01-1.01-.06z"/></svg></span><span class="channel-name">@fresquitos.petfood</span></a>
     <a href="https://facebook.com/fresquitos.petfood" class="channel-card" target="_blank" rel="noopener noreferrer"><span class="channel-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="28" height="28" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></span><span class="channel-name">@fresquitos.petfood</span></a>
-    <a href="https://wa.me/5491161931536" class="channel-card" target="_blank" rel="noopener noreferrer"><span class="channel-icon">💬</span><span class="channel-name">WhatsApp</span></a>
+    <a href="https://wa.me/5491161931536?text=Hola%21%20Me%20interesa%20Fresquito%27s%2C%20quisiera%20m%C3%A1s%20informaci%C3%B3n%20%F0%9F%90%BE" class="channel-card" target="_blank" rel="noopener noreferrer"><span class="channel-icon">💬</span><span class="channel-name">WhatsApp</span></a>
     <a href="mailto:infofresquitos@gmail.com" class="channel-card"><span class="channel-icon">✉️</span><span class="channel-name">infofresquitos@gmail.com</span></a>
   </div>
 </section>
@@ -1033,6 +1148,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     btn.textContent = '¡Listo!';
     success.classList.add('visible');
     dataLayer.push({ event: 'newsletter_subscribe' });
+    fbq('track', 'Lead');
   });
   document.getElementById('suscEmail').addEventListener('input', function() {
     this.classList.remove('field-error');
@@ -1085,6 +1201,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       document.getElementById('mayoristasFormContent').style.display = 'none';
       document.getElementById('mayoristasSuccess').classList.add('visible');
       dataLayer.push({ event: 'mayoristas_form_submit' });
+      fbq('track', 'Lead');
     }, 800);
   });
 
@@ -1102,6 +1219,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     btn.textContent = 'Enviar consulta';
     document.getElementById('mayoristasFormContent').style.display = 'block';
     document.getElementById('mayoristasSuccess').classList.remove('visible');
+  });
+
+  // WhatsApp clicks
+  document.querySelectorAll('a[href*="wa.me"]').forEach(function(link) {
+    link.addEventListener('click', function() {
+      dataLayer.push({ event: 'whatsapp_click' });
+      fbq('track', 'Contact');
+    });
   });
 
   // Cookie banner
