@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fresquito's — Folleto Comercial</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream:       #F5EDD8;
+    --cream-light: #FBF6EC;
+    --cream-dark:  #E2D4B4;
+    --red:         #C94C3A;
+    --yellow:      #D4A92A;
+    --brown:       #2E1508;
+    --brown-mid:   #5C2E10;
+    --brown-light: #8B5220;
+    --white:       #FEFAF0;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: #4a4a4a;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px 20px 60px;
+    font-family: 'DM Sans', sans-serif;
+    min-height: 100vh;
+  }
+
+  .print-hint {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    color: rgba(255,255,255,0.45);
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .print-hint button {
+    background: var(--yellow);
+    color: var(--brown);
+    border: none;
+    padding: 7px 18px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+  .print-hint button:hover { background: #e8c84a; }
+
+  /* ── PAGE ── */
+  .page {
+    width: 210mm;
+    min-height: 297mm;
+    background: var(--cream);
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 20px 80px rgba(0,0,0,0.55);
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* ── HEADER ── */
+  .header {
+    background: var(--brown);
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+    padding: 22px 32px;
+    gap: 20px;
+    position: relative;
+    overflow: hidden;
+  }
+  .header::after {
+    content: '';
+    position: absolute;
+    right: -30px; top: -30px;
+    width: 160px; height: 160px;
+    border-radius: 50%;
+    border: 40px solid rgba(212,169,42,0.07);
+    pointer-events: none;
+  }
+
+  .header-overline {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 8px;
+    font-weight: 700;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: rgba(212,169,42,0.6);
+    margin-bottom: 4px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .header-overline::before {
+    content: '';
+    display: inline-block;
+    width: 16px; height: 1px;
+    background: rgba(212,169,42,0.5);
+  }
+  .header-brand {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 52px;
+    color: var(--cream);
+    line-height: 1;
+    letter-spacing: 3px;
+  }
+  .header-brand span { color: var(--yellow); }
+  .header-sub {
+    font-family: 'DM Serif Display', serif;
+    font-style: italic;
+    font-size: 12px;
+    color: rgba(245,237,216,0.5);
+    margin-top: 4px;
+  }
+
+  .header-logo {
+    height: 88px;
+    filter: drop-shadow(0 4px 14px rgba(0,0,0,0.4));
+    position: relative;
+    z-index: 1;
+  }
+
+  /* ── HOOK BAND ── */
+  .hook {
+    background: var(--yellow);
+    padding: 11px 32px;
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+  }
+  .hook-text {
+    font-family: 'DM Serif Display', serif;
+    font-style: italic;
+    font-size: 12.5px;
+    color: var(--brown);
+    line-height: 1.45;
+  }
+  .hook-text strong {
+    font-style: normal;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--brown-mid);
+    margin-right: 4px;
+  }
+
+  /* ── BODY ── */
+  .body {
+    flex: 1;
+    padding: 22px 32px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+  }
+
+  /* ── SEC LABEL ── */
+  .sec-label {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 12px;
+  }
+  .sec-label span {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 8.5px;
+    font-weight: 700;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--red);
+  }
+  .sec-label::before, .sec-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--cream-dark);
+  }
+  .sec-label::before { flex: none; width: 16px; }
+
+  /* ── SABORES ── */
+  .sabores-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+
+  .sabor-card {
+    background: var(--white);
+    border: 1px solid var(--cream-dark);
+    display: grid;
+    grid-template-columns: 130px 1fr;
+    gap: 0;
+    overflow: hidden;
+  }
+
+  .sabor-img-col {
+    background: var(--cream-light);
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    padding: 8px 4px 0;
+    position: relative;
+  }
+  .sabor-accent {
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+  }
+  .sabor-img {
+    width: 110px;
+    display: block;
+    filter: drop-shadow(0 6px 14px rgba(0,0,0,0.2));
+  }
+
+  .sabor-info {
+    padding: 14px 14px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 6px;
+  }
+  .sabor-tag {
+    display: inline-block;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 8px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #fff;
+    padding: 3px 10px;
+    align-self: flex-start;
+  }
+  .sabor-name {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 26px;
+    line-height: 1;
+    letter-spacing: 2px;
+    color: var(--brown);
+  }
+  .sabor-desc {
+    font-family: 'DM Serif Display', serif;
+    font-style: italic;
+    font-size: 10.5px;
+    color: var(--brown-mid);
+    line-height: 1.5;
+  }
+  .sabor-senasa {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 8px;
+    color: var(--brown-light);
+    letter-spacing: 1px;
+    margin-top: 2px;
+  }
+  .nutrientes {
+    display: flex;
+    gap: 4px;
+    flex-wrap: wrap;
+    margin-top: 2px;
+  }
+  .nutriente {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 7.5px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    color: var(--brown-mid);
+    background: var(--cream-dark);
+    padding: 2px 7px;
+  }
+
+  /* ── RAZONES ── */
+  .razones-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    border: 1px solid var(--cream-dark);
+  }
+  .razon {
+    padding: 14px 16px;
+    border-right: 1px solid var(--cream-dark);
+    border-bottom: 1px solid var(--cream-dark);
+    position: relative;
+  }
+  .razon:nth-child(2n) { border-right: none; }
+  .razon:nth-child(3), .razon:nth-child(4) { border-bottom: none; }
+  .razon-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 32px;
+    color: var(--cream-dark);
+    line-height: 1;
+    position: absolute;
+    top: 10px; right: 12px;
+    letter-spacing: 1px;
+  }
+  .razon-title {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: var(--brown);
+    margin-bottom: 5px;
+    padding-right: 28px;
+  }
+  .razon-text {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 9px;
+    color: var(--brown-light);
+    line-height: 1.65;
+  }
+
+  /* ── NEGOCIOS ── */
+  .negocios-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 10px;
+  }
+  .negocio-item {
+    border-left: 3px solid var(--yellow);
+    padding-left: 12px;
+  }
+  .negocio-title {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 9.5px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: var(--brown);
+    margin-bottom: 4px;
+    text-transform: uppercase;
+  }
+  .negocio-text {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 9px;
+    color: var(--brown-light);
+    line-height: 1.6;
+  }
+
+  /* ── CREDENCIALES BAND ── */
+  .creds-band {
+    background: var(--brown);
+    padding: 14px 32px;
+    display: flex;
+    gap: 24px;
+    align-items: stretch;
+  }
+  .cred-item {
+    flex: 1;
+    border-left: 2px solid rgba(212,169,42,0.35);
+    padding-left: 14px;
+  }
+  .cred-title {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 8px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--yellow);
+    margin-bottom: 4px;
+  }
+  .cred-text {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 9px;
+    color: rgba(245,237,216,0.55);
+    line-height: 1.55;
+  }
+
+  /* ── CONTACTO FOOTER ── */
+  .contacto {
+    background: var(--red);
+    padding: 16px 32px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+  }
+  .contacto-left {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+  .contacto-headline {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 22px;
+    letter-spacing: 2px;
+    color: #fff;
+    line-height: 1;
+  }
+  .contacto-sub {
+    font-family: 'DM Serif Display', serif;
+    font-style: italic;
+    font-size: 10px;
+    color: rgba(255,255,255,0.65);
+  }
+  .contacto-items {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  .contacto-item {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+  .contacto-item-label {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 7px;
+    font-weight: 700;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.55);
+  }
+  .contacto-item-value {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    color: #fff;
+    letter-spacing: 0.3px;
+  }
+
+  /* ── MICRO FOOTER ── */
+  .micro-footer {
+    background: var(--brown);
+    padding: 7px 32px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid rgba(212,169,42,0.15);
+  }
+  .micro-footer-brand {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 14px;
+    color: rgba(212,169,42,0.4);
+    letter-spacing: 2px;
+  }
+  .micro-footer-legal {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 7px;
+    color: rgba(245,237,216,0.2);
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+  }
+
+  /* ── PRINT ── */
+  * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+  @media print {
+    body { padding: 0; }
+    .print-hint { display: none; }
+    .page {
+      box-shadow: none;
+      width: 210mm;
+      min-height: 297mm;
+      page-break-after: always;
+    }
+  }
+</style>
+</head>
+<body>
+
+<div class="print-hint">
+  Folleto A4 listo para imprimir
+  <button onclick="window.print()">Imprimir / Guardar PDF</button>
+</div>
+
+<div class="page">
+
+  <!-- HEADER -->
+  <div class="header">
+    <div class="header-left">
+      <div class="header-overline">Presentación Comercial</div>
+      <div class="header-brand">Fresquito<span>'s</span></div>
+      <div class="header-sub">Helado Premium Para Perros</div>
+    </div>
+    <img src="logo_sin_fondo.png" alt="Fresquito's" class="header-logo">
+  </div>
+
+  <!-- HOOK -->
+  <div class="hook">
+    <div class="hook-text">
+      <strong>El producto</strong>
+      Fresquito's es el primer helado cremoso y 100% seguro formulado especialmente para el organismo canino. Pensado para el bienestar de tu perro — con ingredientes naturales, calcio, magnesio y vitamina C.
+    </div>
+  </div>
+
+  <!-- BODY -->
+  <div class="body">
+
+    <!-- SABORES -->
+    <div>
+      <div class="sec-label"><span>Nuestros Sabores — Pote 360cc</span></div>
+      <div class="sabores-grid">
+
+        <div class="sabor-card">
+          <div class="sabor-img-col">
+            <div class="sabor-accent" style="background: var(--red);"></div>
+            <img src="pote carne (sin fondo).png" alt="Sabor Carne" class="sabor-img">
+          </div>
+          <div class="sabor-info">
+            <div class="sabor-tag" style="background: var(--red);">Sabor</div>
+            <div class="sabor-name">Carne</div>
+            <div class="sabor-desc">Alto valor proteico. Cremoso y nutritivo para perros de todas las razas.</div>
+            <div class="nutrientes">
+              <span class="nutriente">Calcio</span>
+              <span class="nutriente">Magnesio</span>
+              <span class="nutriente">Vit. C</span>
+              <span class="nutriente">Proteínas</span>
+            </div>
+            <div class="sabor-senasa">SENASA N° 26-244/A</div>
+          </div>
+        </div>
+
+        <div class="sabor-card">
+          <div class="sabor-img-col">
+            <div class="sabor-accent" style="background: var(--yellow);"></div>
+            <img src="pote pollo (sin fondo).png" alt="Sabor Pollo" class="sabor-img">
+          </div>
+          <div class="sabor-info">
+            <div class="sabor-tag" style="background: var(--yellow); color: var(--brown);">Sabor</div>
+            <div class="sabor-name">Pollo</div>
+            <div class="sabor-desc">Suave y digestivo. Fresco y muy rico — ideal en días de calor.</div>
+            <div class="nutrientes">
+              <span class="nutriente">Calcio</span>
+              <span class="nutriente">Magnesio</span>
+              <span class="nutriente">Vit. C</span>
+              <span class="nutriente">Aminoácidos</span>
+            </div>
+            <div class="sabor-senasa">SENASA N° 26-247/A</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- POR QUÉ -->
+    <div>
+      <div class="sec-label"><span>Por qué sumar Fresquito's a tu negocio</span></div>
+      <div class="razones-grid">
+        <div class="razon">
+          <div class="razon-num">01</div>
+          <div class="razon-title">Mercado en crecimiento</div>
+          <div class="razon-text">La comida premium para mascotas crece año a año. Las personas buscan productos de calidad y seguros. Fresquito's aporta nutrientes mientras funciona como snack premium: calcio, magnesio y vitamina C.</div>
+        </div>
+        <div class="razon">
+          <div class="razon-num">02</div>
+          <div class="razon-title">Sin competencia directa</div>
+          <div class="razon-text">No existe otro helado premium para perros que combine la función de snack y suplemento nutritivo. Fresquito's ocupa un lugar que ningún otro producto cubre en el mercado argentino.</div>
+        </div>
+        <div class="razon">
+          <div class="razon-num">03</div>
+          <div class="razon-title">Genera conversación</div>
+          <div class="razon-text">La idea de darle un helado a tu perro genera curiosidad inmediata. Atrae la atención, genera conversación y se convierte en recomendación boca a boca. Conocido en otros países, novedoso en Argentina.</div>
+        </div>
+        <div class="razon">
+          <div class="razon-num">04</div>
+          <div class="razon-title">Locales pet friendly</div>
+          <div class="razon-text">Cada vez más personas eligen locales que aceptan mascotas. Fresquito's te permite ofrecer algo concreto para el perro mientras el dueño visita tu local. Un diferencial que fideliza.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- NEGOCIOS -->
+    <div>
+      <div class="sec-label"><span>Fresquito's en tu negocio</span></div>
+      <div class="negocios-grid">
+        <div class="negocio-item">
+          <div class="negocio-title">Condiciones Flexibles</div>
+          <div class="negocio-text">Trabajamos con condiciones adaptadas a cada negocio. Coordinamos una reunión para contarte todo sin compromiso.</div>
+        </div>
+        <div class="negocio-item">
+          <div class="negocio-title">Material POP</div>
+          <div class="negocio-text">Te proveemos de material de exhibición y comunicación para destacar el producto en tu local.</div>
+        </div>
+        <div class="negocio-item">
+          <div class="negocio-title">Asesoramiento Personalizado</div>
+          <div class="negocio-text">Te acompañamos en todo el proceso: desde la incorporación del producto hasta la atención al cliente final.</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- CREDENCIALES BAND -->
+  <div class="creds-band">
+    <div class="cred-item">
+      <div class="cred-title">Aval Veterinario</div>
+      <div class="cred-text">Fórmula desarrollada y respaldada por profesionales veterinarios. Seguro para el organismo canino de cualquier raza y edad.</div>
+    </div>
+    <div class="cred-item">
+      <div class="cred-title">Aprobado por SENASA</div>
+      <div class="cred-text">Producto inscripto y habilitado. Cumple todas las normas sanitarias y de calidad vigentes en Argentina.</div>
+    </div>
+    <div class="cred-item">
+      <div class="cred-title">Ingredientes Naturales</div>
+      <div class="cred-text">Sin colorantes artificiales ni conservantes. Solo ingredientes de calidad, pensados para el bienestar canino.</div>
+    </div>
+  </div>
+
+  <!-- CONTACTO -->
+  <div class="contacto">
+    <div class="contacto-left">
+      <div class="contacto-headline">¿Querés sumarlo?</div>
+      <div class="contacto-sub">Coordinamos una reunión sin compromiso</div>
+    </div>
+    <div class="contacto-items">
+      <div class="contacto-item">
+        <div class="contacto-item-label">Instagram</div>
+        <div class="contacto-item-value">@fresquitos.petfood</div>
+      </div>
+      <div class="contacto-item">
+        <div class="contacto-item-label">Email</div>
+        <div class="contacto-item-value">infofresquitos@gmail.com</div>
+      </div>
+      <div class="contacto-item">
+        <div class="contacto-item-label">Teléfono</div>
+        <div class="contacto-item-value">11 6193-1536</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MICRO FOOTER -->
+  <div class="micro-footer">
+    <div class="micro-footer-brand">Fresquito's</div>
+    <div class="micro-footer-legal">Helado Premium Para Perros · Producto habilitado por SENASA · Formulado por veterinarios</div>
+  </div>
+
+</div>
+
+</body>
+</html>

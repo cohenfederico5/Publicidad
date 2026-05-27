@@ -88,13 +88,14 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   .divider-line { flex:1; height:1px; background:var(--cream-dark); }
   .divider-icon { color:var(--red); font-size:1.2rem; }
 
-  .nosotros-frame { background:var(--cream-dark); border:4px solid var(--yellow); padding:48px 40px; text-align:center; position:relative; }
-  .nosotros-frame::before { content:''; position:absolute; inset:8px; border:1px solid rgba(232,197,71,0.3); pointer-events:none; }
-  .nosotros-big-text { font-family:'Playfair Display',serif; font-size:7rem; font-weight:900; font-style:italic; color:var(--yellow); opacity:0.15; line-height:1; user-select:none; }
-  .nosotros-tagline { font-family:'Oswald',sans-serif; font-size:1.2rem; letter-spacing:3px; text-transform:uppercase; color:var(--brown); margin-top:-40px; position:relative; }
-  .nosotros-tagline strong { color:var(--red); }
-  .stamp { position:absolute; bottom:-24px; right:-24px; width:90px; height:90px; background:var(--red); border-radius:50%; border:3px solid var(--red-dark); display:flex; flex-direction:column; align-items:center; justify-content:center; transform:rotate(15deg); box-shadow:3px 3px 0 var(--brown); }
-  .stamp-text { font-family:'Oswald',sans-serif; font-size:0.55rem; letter-spacing:1px; text-transform:uppercase; color:var(--cream); text-align:center; line-height:1.3; }
+  .nosotros-fotos { display:flex; flex-direction:column; gap:36px; padding:8px 0; }
+  .nosotros-foto-top, .nosotros-foto-bottom { overflow:hidden; border:3px solid var(--yellow); box-shadow:6px 6px 0 var(--cream-dark); }
+  .nosotros-foto-top { margin-right:40px; }
+  .nosotros-foto-bottom { margin-left:40px; }
+  .nosotros-foto-top img, .nosotros-foto-bottom img { width:100%; object-fit:cover; display:block; transition:transform 0.5s ease; }
+  .nosotros-foto-top img { height:240px; object-position:center 30%; }
+  .nosotros-foto-bottom img { height:220px; object-position:center 40%; }
+  .nosotros-foto-top:hover img, .nosotros-foto-bottom:hover img { transform:scale(1.04); }
   .pills { display:flex; gap:10px; flex-wrap:wrap; margin-top:28px; }
   .pill { font-family:'Oswald',sans-serif; font-size:0.7rem; letter-spacing:2px; text-transform:uppercase; background:var(--cream-dark); color:var(--brown); padding:8px 16px; border-left:3px solid var(--red); }
 
@@ -219,7 +220,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   .plan-card-includes li::before { content:'✦'; color:var(--red); font-size:0.7rem; flex-shrink:0; min-width:12px; text-align:center; margin-top:2px; }
   .plan-card-benefits { display:flex; flex-wrap:wrap; gap:6px; margin-bottom:16px; }
   .plan-card-benefits span { font-family:'Oswald',sans-serif; font-size:0.6rem; letter-spacing:1.5px; text-transform:uppercase; background:var(--white); color:var(--brown); padding:4px 10px; border:1px solid var(--cream-dark); }
-  .plan-card-flavors { display:flex; gap:8px; justify-content:center; }
+  .plan-card-flavors { display:flex; gap:8px; justify-content:center; margin-bottom:20px; }
+  .plan-card-cta { display:block; width:100%; text-align:center; font-family:'Oswald',sans-serif; font-size:0.78rem; letter-spacing:2px; text-transform:uppercase; font-weight:700; padding:14px 20px; background:var(--brown); color:var(--cream); text-decoration:none; transition:background 0.2s; clip-path:polygon(6px 0%,100% 0%,calc(100% - 6px) 100%,0% 100%); }
+  .plan-card-cta:hover { background:var(--brown-mid); }
+  .plan-card-cta-destacado { background:var(--yellow); color:var(--brown); }
+  .plan-card-cta-destacado:hover { background:var(--yellow-light); color:var(--brown); }
   .plan-flavor-tag { font-family:'Oswald',sans-serif; font-size:0.62rem; letter-spacing:2px; text-transform:uppercase; padding:5px 14px; font-weight:700; }
   .plan-flavor-carne { background:var(--yellow); color:var(--brown); }
   .plan-flavor-pollo { background:var(--red); color:var(--cream); }
@@ -339,6 +344,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     .hamburger { display:flex; }
     section { padding:70px 24px; }
     .mayoristas-inner { grid-template-columns:1fr; gap:40px; }
+    .mayoristas-benefits { display:none; }
     .suscripcion-form { flex-direction:column; }
     .suscripcion-form input { border-right:3px solid var(--brown); border-bottom:none; }
     .contacto-channels { flex-direction:column; align-items:center; }
@@ -347,6 +353,17 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     .calc-email-row { flex-direction:column; }
     .calc-email-row input { border-right:2px solid rgba(232,197,71,0.4); border-bottom:none; }
     .nosotros-grid { grid-template-columns:1fr !important; gap:40px !important; }
+    .nosotros-foto-top { margin-right:16px; }
+    .nosotros-foto-bottom { margin-left:16px; }
+    .nosotros-foto-top img { height:180px; }
+    .nosotros-foto-bottom img { height:150px; }
+    .nosotros-fotos { gap:24px; }
+    .benefit-item:nth-child(n+5) { display:none; }
+    .plan-cards-grid { flex-direction:column; align-items:center; }
+    .plan-card { width:100%; max-width:380px; }
+    .hero-ctas { flex-direction:column; align-items:center; }
+    .whatsapp-float { bottom:20px; right:16px; padding:14px; border-radius:50%; }
+    .whatsapp-float-label { display:none; }
   }
 
   /* ── COOKIE BANNER ── */
@@ -365,6 +382,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   .privacy-note { font-size:0.75rem; color:var(--brown-mid); margin-top:10px; line-height:1.5; font-style:italic; }
   .privacy-note a { color:var(--brown-mid); text-decoration:underline; text-underline-offset:2px; }
   .privacy-note a:hover { color:var(--red); }
+
+  /* ── WHATSAPP FLOTANTE ── */
+  .whatsapp-float { position:fixed; bottom:32px; right:32px; z-index:9000; background:#25D366; color:#fff; border-radius:50px; padding:14px 20px 14px 16px; display:flex; align-items:center; gap:10px; text-decoration:none; box-shadow:0 4px 20px rgba(0,0,0,0.2); transition:transform 0.2s, box-shadow 0.2s; }
+  .whatsapp-float:hover { transform:translateY(-3px); box-shadow:0 8px 28px rgba(0,0,0,0.25); }
+  .whatsapp-float-label { font-family:'Oswald',sans-serif; font-size:0.75rem; letter-spacing:2px; text-transform:uppercase; font-weight:700; white-space:nowrap; }
 </style>
 </head>
 <body>
@@ -385,7 +407,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <li><a href="#suscripcion">Suscripción</a></li>
     <li><a href="#mayoristas">Mayoristas</a></li>
     <li><a href="#puntos-de-venta">¿Dónde encontrarnos?</a></li>
-    <li><a href="#blog">Blog</a></li>
     <li><a href="#faq">FAQ</a></li>
     <li><a href="#contacto">Contacto</a></li>
   </ul>
@@ -407,10 +428,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <div class="hero-content">
     <h1 class="hero-title" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);">Fresquito's – Helado Premium Para Perros</h1>
     <img src="logo_sin_fondo.png" alt="Fresquito's – Helado Premium Para Perros" style="width:clamp(220px,35vw,420px); margin:0 auto 28px; display:block; animation:fadeUp 0.8s 0.2s ease forwards; opacity:0;">
-    <p class="hero-desc">Pensado exclusivamente para el bienestar de tu perro. Fórmula desarrollada por veterinarios con ingredientes naturales y nutritivos.</p>
+    <p class="hero-desc">Formulado y desarrollado por veterinarios con ingredientes saludables y nutritivos.</p>
     <div class="hero-ctas">
-      <a href="#nuestros-helados" class="btn-primary">Ver Sabores</a>
-      <a href="#calculadora" class="btn-outline">Calculá tu Porción</a>
+      <a href="https://wa.me/5491161931536?text=Hola%21%20Quisiera%20hacer%20un%20pedido%20de%20Fresquito%27s%20%F0%9F%90%BE" class="btn-primary" target="_blank" rel="noopener noreferrer" id="heroWhatsappCta">Pedir por WhatsApp</a>
+      <a href="#nuestros-helados" class="btn-outline">Ver Sabores</a>
     </div>
     <div class="hero-trust">
       <span class="trust-item trust-senasa">SENASA inscripto · Est. Nº 2025-96/A/H</span>
@@ -440,12 +461,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </div>
 
 <section id="nosotros" style="padding:100px 40px; background:var(--white);">
-  <div style="max-width:1100px; margin:0 auto; display:grid; grid-template-columns:1fr 1fr; gap:80px; align-items:center;" class="nosotros-grid">
-    <div class="reveal">
-      <div class="nosotros-frame">
-        <div class="nosotros-big-text">F's</div>
-        <div class="nosotros-tagline">El mejor helado<br><strong>pensado para ellos</strong></div>
-        <div class="stamp"><span class="stamp-text">Hecho<br>con<br><span style="font-size:1.4rem;line-height:1">❤️</span></span></div>
+  <div style="max-width:1100px; margin:0 auto; display:grid; grid-template-columns:1fr 1fr; gap:120px; align-items:center;" class="nosotros-grid">
+    <div class="reveal nosotros-fotos">
+      <div class="nosotros-foto-top">
+        <img src="perro caniche lamiendo helado.png" alt="Caniche disfrutando un Fresquito's en el parque">
+      </div>
+      <div class="nosotros-foto-bottom">
+        <img src="perro lamiendo helado.png" alt="Labrador disfrutando un Fresquito's en el jardín">
       </div>
     </div>
     <div class="reveal" style="transition-delay:0.15s">
@@ -713,6 +735,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <span class="plan-flavor-tag plan-flavor-carne">Carne</span>
           <span class="plan-flavor-tag plan-flavor-pollo">Pollo</span>
         </div>
+        <a href="https://wa.me/5491161931536?text=Hola%21%20Quisiera%20suscribirme%20al%20plan%20de%202%20potes%20%F0%9F%90%BE" class="plan-card-cta" target="_blank" rel="noopener noreferrer">Quiero este plan</a>
       </div>
     </div>
 
@@ -737,18 +760,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <span class="plan-flavor-tag plan-flavor-carne">Carne</span>
           <span class="plan-flavor-tag plan-flavor-pollo">Pollo</span>
         </div>
+        <a href="https://wa.me/5491161931536?text=Hola%21%20Quisiera%20suscribirme%20al%20plan%20de%204%20potes%20%F0%9F%90%BE" class="plan-card-cta plan-card-cta-destacado" target="_blank" rel="noopener noreferrer">Quiero este plan</a>
       </div>
     </div>
 
   </div>
 
-  <p class="suscripcion-desc reveal" style="margin-bottom:16px;">¿Querés ser de los primeros en suscribirte? Dejanos tu email y te avisamos cuando abramos las suscripciones.</p>
-  <div class="suscripcion-form reveal">
-    <input type="email" id="suscEmail" placeholder="tucorreo@gmail.com">
-    <button type="button" id="btnSuscribirse">Anotarme</button>
-  </div>
-  <p class="privacy-note reveal">Al anotarte aceptás nuestra <a href="/privacidad.html">Política de Privacidad</a>.</p>
-  <p class="suscripcion-success reveal" id="suscSuccess">¡Ya estás en la lista! Te avisamos antes que nadie 🐾</p>
 </section>
 
 <section id="mayoristas" style="padding:100px 40px; background:var(--white);">
@@ -833,75 +850,49 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <span class="locales-chip">🏪 Supermercados</span>
     </div>
   </div>
-  <p class="reveal" style="font-size:1rem;color:var(--brown-mid);max-width:480px;margin:0 auto 8px;line-height:1.8;">Estamos trabajando para llegar a todo el país.</p>
-  <p class="reveal" style="font-size:1rem;color:var(--brown-mid);margin-bottom:20px;line-height:1.8;">Seguinos en Instagram para enterarte cuando lleguemos a tu zona.</p>
-  <a href="https://instagram.com/fresquitos.petfood" class="btn-primary reveal" target="_blank" rel="noopener noreferrer">@fresquitos.petfood</a>
-</section>
 
-<section id="blog">
-  <div class="blog-header reveal">
-    <span class="section-label">★ Mundo canino</span>
-    <h2 class="section-title">Nuestro <em>Blog</em></h2>
-    <p style="font-size:1rem;color:var(--brown-mid);max-width:480px;margin:12px auto 0;line-height:1.8;">Todo lo que necesitás saber para cuidar mejor a tu perro. Consejos, novedades y mucho amor.</p>
+  <div class="reveal" style="margin-top:56px; max-width:480px; margin-left:auto; margin-right:auto;">
+    <p style="font-size:1rem; color:var(--brown-mid); line-height:1.8; margin-bottom:20px;">Estamos trabajando para llegar a todo el país. Dejanos tu email y te contamos antes que nadie cuando lleguemos a tu zona.</p>
+    <div class="suscripcion-form">
+      <input type="email" id="suscEmail" placeholder="tucorreo@gmail.com">
+      <button type="button" id="btnSuscribirse">Anotarme</button>
+    </div>
+    <p class="privacy-note">Al anotarte aceptás nuestra <a href="/privacidad.html">Política de Privacidad</a>.</p>
+    <p class="suscripcion-success" id="suscSuccess">¡Ya estás en la lista! Te avisamos antes que nadie 🐾</p>
   </div>
-  <div class="blog-grid">
-    <div class="blog-card reveal">
-      <div class="blog-card-img" style="background:var(--cream-dark);"><span>🐾</span><span class="blog-card-cat">Nutrición</span></div>
-      <div class="blog-card-body">
-        <div class="blog-card-date">Próximamente</div>
-        <div class="blog-card-title">¿Qué alimentos son peligrosos para los perros?</div>
-        <p class="blog-card-excerpt">Conocé cuáles son los alimentos que jamás deberías darle a tu perro y por qué es tan importante leer las etiquetas.</p>
-        <span class="blog-card-link" style="opacity:0.4;cursor:default;">Próximamente</span>
-      </div>
-    </div>
-    <div class="blog-card reveal" style="transition-delay:0.1s">
-      <div class="blog-card-img" style="background:var(--red);"><span>❄️</span><span class="blog-card-cat">Bienestar</span></div>
-      <div class="blog-card-body">
-        <div class="blog-card-date">Próximamente</div>
-        <div class="blog-card-title">Cómo mantener hidratado a tu perro en verano</div>
-        <p class="blog-card-excerpt">El calor puede ser peligroso para los perros. Te damos los mejores consejos para que tu compañero esté fresco y seguro.</p>
-        <span class="blog-card-link" style="opacity:0.4;cursor:default;">Próximamente</span>
-      </div>
-    </div>
-    <div class="blog-card reveal" style="transition-delay:0.2s">
-      <div class="blog-card-img" style="background:var(--cream-dark);"><span>🏃</span><span class="blog-card-cat">Actividad</span></div>
-      <div class="blog-card-body">
-        <div class="blog-card-date">Próximamente</div>
-        <div class="blog-card-title">¿Cuánto ejercicio necesita tu perro según su raza?</div>
-        <p class="blog-card-excerpt">No todos los perros necesitan la misma cantidad de actividad física. Descubrí cuál es la rutina ideal para el tuyo.</p>
-        <span class="blog-card-link" style="opacity:0.4;cursor:default;">Próximamente</span>
-      </div>
-    </div>
+
+  <div class="reveal" style="margin-top:48px;">
+    <p style="font-size:1rem; color:var(--brown-mid); margin-bottom:20px; line-height:1.8;">También seguinos en Instagram para novedades y lanzamientos.</p>
+    <a href="https://instagram.com/fresquitos.petfood" class="btn-primary" target="_blank" rel="noopener noreferrer">@fresquitos.petfood</a>
   </div>
 </section>
 
-<section id="faq" style="background:var(--cream);padding:100px 40px;">
+
+<section id="faq" style="background:var(--white);padding:100px 40px;">
   <div class="faq-inner">
     <div class="faq-header reveal">
       <span class="section-label">★ Todo lo que necesitás saber</span>
       <h2 class="section-title">Preguntas <em>frecuentes</em></h2>
     </div>
-    <div class="faq-item reveal"><button class="faq-question"><span class="faq-question-text">¿Qué es Fresquito's?</span><span class="faq-icon">+</span></button><div class="faq-answer"><div class="faq-answer-inner">Fresquito's es un helado cremoso, sabroso y seguro, creado especialmente para perros adultos sanos. Es un suplemento alimenticio desarrollado con asesoramiento veterinario, formulado con ingredientes naturales seleccionados para ser compatibles con el organismo canino.</div></div></div>
+    <div class="faq-item reveal"><button class="faq-question"><span class="faq-question-text">¿Qué es Fresquito's?</span><span class="faq-icon">+</span></button><div class="faq-answer"><div class="faq-answer-inner">Fresquito's es un helado pensado para el organismo canino cuya fórmula fue desarrollada y avalada por veterinarios. Es un suplemento alimenticio ideal con ingredientes nutritivos y de la más alta calidad seleccionados para el bienestar y disfrute del perro.</div></div></div>
     <div class="faq-item reveal"><button class="faq-question"><span class="faq-question-text">¿Qué ingredientes tiene?</span><span class="faq-icon">+</span></button><div class="faq-answer"><div class="faq-answer-inner">Leche descremada en polvo, suero de queso en polvo, aceite de palma, maltodextrina, dextrosa, estabilizantes y emulsificantes (mono y diglicéridos de ácidos grasos, goma guar, goma de celulosa, carragenina, polioxietilén sorbitan monooleato), cloruro de calcio, citrato de magnesio, ácido ascórbico. Aromatizante sabor carne o pollo según variedad.</div></div></div>
     <div class="faq-item reveal"><button class="faq-question"><span class="faq-question-text">¿Todos los perros pueden comerlo?</span><span class="faq-icon">+</span></button><div class="faq-answer"><div class="faq-answer-inner">Fresquito's está formulado para perros adultos sanos, a partir de los 30 días en cachorros y hasta los 18 años en perros adultos. No se recomienda para perros con diabetes, hiperactividad, obesidad o trastornos gastrointestinales. Ante cualquier duda, consultá con tu veterinario.</div></div></div>
     <div class="faq-item reveal"><button class="faq-question"><span class="faq-question-text">¿Cuánto le doy a mi perro?</span><span class="faq-icon">+</span></button><div class="faq-answer"><div class="faq-answer-inner">Las dosis recomendadas están sujetas al peso del animal. Una cuchara equivale a 15g aproximadamente.<table class="faq-table"><tr><th>Tamaño</th><th>Peso</th><th>Porción (1 cuchara = 15g)</th></tr><tr><td>Pequeños</td><td>Hasta 10 kg</td><td>1 a 2 cucharas</td></tr><tr><td>Medianos</td><td>10 a 25 kg</td><td>2 a 4 cucharas</td></tr><tr><td>Grandes</td><td>25 a 40 kg</td><td>4 a 6 cucharas</td></tr><tr><td>Muy grandes</td><td>40 kg o más</td><td>6 a 8 cucharas</td></tr></table>Las cantidades pueden variar según la actividad, condición y estado fisiológico del perro. Consultá siempre con tu veterinario.</div></div></div>
     <div class="faq-item reveal"><button class="faq-question"><span class="faq-question-text">¿Cómo se conserva y se sirve?</span><span class="faq-icon">+</span></button><div class="faq-answer"><div class="faq-answer-inner">Conservar en freezer a -18°C hasta un máximo de 6 meses desde su elaboración. Antes de servir, dejá el envase a temperatura ambiente durante 5 a 10 minutos para una textura más cremosa. Una vez descongelado, no volver a congelar. Conservá siempre en su envase original.</div></div></div>
-    <div class="faq-item reveal"><button class="faq-question"><span class="faq-question-text">¿Con qué frecuencia puede comerlo?</span><span class="faq-icon">+</span></button><div class="faq-answer"><div class="faq-answer-inner">Fresquito's es un snack congelado que puede ofrecerse post actividad física o como premio funcional. No constituye un alimento completo. Puede darse 1 o 2 veces por semana según la dieta y nivel de actividad del perro. Siempre con moderación y bajo supervisión.</div></div></div>
+    <div class="faq-item reveal"><button class="faq-question"><span class="faq-question-text">¿Con qué frecuencia puede comerlo?</span><span class="faq-icon">+</span></button><div class="faq-answer"><div class="faq-answer-inner">Fresquito's es un snack congelado que puede ofrecerse post actividad física o como premio funcional. No constituye un alimento completo. Se recomienda 1 a 3 veces por semana según la dieta, el nivel de actividad del perro y la porción administrada. Siempre con moderación y bajo supervisión.</div></div></div>
     <div class="faq-item reveal"><button class="faq-question"><span class="faq-question-text">¿Está habilitado por SENASA?</span><span class="faq-icon">+</span></button><div class="faq-answer"><div class="faq-answer-inner">Fresquito's está aprobado e inscripto ante SENASA como suplemento alimenticio para perros adultos. El establecimiento elaborador, Ferjuan S.R.L., también se encuentra habilitado por SENASA (Nº 2025-96/A/H), ubicado en Florencio Sánchez 88, B1766, La Tablada, Pcia. de Buenos Aires.</div></div></div>
-    <div class="faq-item reveal"><button class="faq-question"><span class="faq-question-text">¿Dónde puedo comprarlo?</span><span class="faq-icon">+</span></button><div class="faq-answer"><div class="faq-answer-inner">Fresquito's va a estar disponible online, en puntos de venta físicos y a través de distribuidores mayoristas. Suscribite a nuestra lista para enterarte antes que nadie cuando estemos disponibles.</div></div></div>
   </div>
 </section>
 
 <section id="contacto">
   <span class="section-label reveal">★ Hablemos</span>
   <h2 class="section-title reveal">Estamos para <em>ayudarte</em></h2>
-  <p class="contacto-desc reveal">¿Tenés preguntas, querés vender Fresquito's o simplemente querés contarnos sobre tu perro? Escribinos, con gusto respondemos.</p>
+  <p class="contacto-desc reveal">Escribinos, con gusto responderemos a la brevedad.</p>
   <div class="contacto-channels reveal">
     <a href="https://instagram.com/fresquitos.petfood" class="channel-card" target="_blank" rel="noopener noreferrer"><span class="channel-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="28" height="28" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></span><span class="channel-name">@fresquitos.petfood</span></a>
     <a href="https://tiktok.com/@fresquitos.petfood" class="channel-card" target="_blank" rel="noopener noreferrer"><span class="channel-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="28" height="28" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.18 8.18 0 004.78 1.52V6.75a4.85 4.85 0 01-1.01-.06z"/></svg></span><span class="channel-name">@fresquitos.petfood</span></a>
     <a href="https://facebook.com/fresquitos.petfood" class="channel-card" target="_blank" rel="noopener noreferrer"><span class="channel-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="28" height="28" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></span><span class="channel-name">@fresquitos.petfood</span></a>
-    <a href="https://wa.me/5491161931536?text=Hola%21%20Me%20interesa%20Fresquito%27s%2C%20quisiera%20m%C3%A1s%20informaci%C3%B3n%20%F0%9F%90%BE" class="channel-card" target="_blank" rel="noopener noreferrer"><span class="channel-icon">💬</span><span class="channel-name">WhatsApp</span></a>
-    <a href="mailto:infofresquitos@gmail.com" class="channel-card"><span class="channel-icon">✉️</span><span class="channel-name">infofresquitos@gmail.com</span></a>
+<a href="mailto:infofresquitos@gmail.com" class="channel-card"><span class="channel-icon">✉️</span><span class="channel-name">infofresquitos@gmail.com</span></a>
   </div>
 </section>
 
@@ -909,7 +900,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <div class="footer-logo">Fresquito's</div>
   <div class="footer-tagline">Helado Premium Para Perros</div>
   <div class="footer-links">
-    <a href="#nosotros">Nosotros</a><a href="#nuestros-helados">Sabores</a><a href="#calculadora">Calculadora</a><a href="#suscripcion">Suscripción</a><a href="#mayoristas">Mayoristas</a><a href="#puntos-de-venta">¿Dónde encontrarnos?</a><a href="#blog">Blog</a><a href="#faq">FAQ</a><a href="#contacto">Contacto</a>
+    <a href="#nosotros">Nosotros</a><a href="#nuestros-helados">Sabores</a><a href="#calculadora">Calculadora</a><a href="#suscripcion">Suscripción</a><a href="#mayoristas">Mayoristas</a><a href="#puntos-de-venta">¿Dónde encontrarnos?</a><a href="#faq">FAQ</a><a href="#contacto">Contacto</a>
   </div>
   <div class="footer-copy">© 2026 Fresquito's · Helado Premium Para Perros · Argentina · www.fresquitos.com.ar · <a href="/privacidad.html" style="color:inherit;opacity:0.6;text-decoration:none;">Política de Privacidad</a></div>
 </footer>
@@ -953,7 +944,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   function checkWidth() {
     if (!nosotrosGrid) return;
     nosotrosGrid.style.gridTemplateColumns = window.innerWidth < 768 ? '1fr' : '1fr 1fr';
-    nosotrosGrid.style.gap = window.innerWidth < 768 ? '40px' : '80px';
+    nosotrosGrid.style.gap = window.innerWidth < 768 ? '40px' : '120px';
   }
   checkWidth();
   window.addEventListener('resize', checkWidth);
@@ -1221,12 +1212,19 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     document.getElementById('mayoristasSuccess').classList.remove('visible');
   });
 
-  // WhatsApp clicks
+  // WhatsApp clicks (todos los links wa.me)
   document.querySelectorAll('a[href*="wa.me"]').forEach(function(link) {
     link.addEventListener('click', function() {
       dataLayer.push({ event: 'whatsapp_click' });
       fbq('track', 'Contact');
     });
+  });
+
+  // Hero WhatsApp CTA tracking
+  var heroWa = document.getElementById('heroWhatsappCta');
+  if (heroWa) heroWa.addEventListener('click', function() {
+    dataLayer.push({ event: 'whatsapp_click' });
+    fbq('track', 'Contact');
   });
 
   // Cookie banner
@@ -1247,5 +1245,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     });
   })();
 </script>
+
+<!-- Botón flotante WhatsApp -->
+<a href="https://wa.me/5491161931536?text=Hola%21%20Quisiera%20hacer%20un%20pedido%20de%20Fresquito%27s%20%F0%9F%90%BE" class="whatsapp-float" id="whatsappFloat" target="_blank" rel="noopener noreferrer" aria-label="Contactar por WhatsApp">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="28" height="28"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+  <span class="whatsapp-float-label">Pedir ahora</span>
+</a>
 </body>
 </html>
