@@ -360,6 +360,12 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     #inicio { min-height:auto; padding:80px 40px 60px; }
   }
 
+  @media (max-width:800px) {
+    .nav-logo span { display:none; }
+    .nav-links a { font-size:0.65rem; letter-spacing:1px; }
+    .nav-links { gap:14px; }
+  }
+
   /* ── WHATSAPP FLOTANTE ── */
   .whatsapp-float { position:fixed; bottom:32px; right:32px; z-index:9000; background:#25D366; color:#fff; border-radius:50px; padding:18px 28px 18px 22px; display:flex; align-items:center; gap:12px; text-decoration:none; box-shadow:0 4px 20px rgba(0,0,0,0.2); transition:transform 0.2s, box-shadow 0.2s; }
   .whatsapp-float:hover { transform:translateY(-3px); box-shadow:0 8px 28px rgba(0,0,0,0.25); }
