@@ -3,3 +3,30 @@ node_modules/
 Thumbs.db
 desktop.ini
 ~$*
+
+# ─────────────────────────────────────────────────────────────
+# MATERIAL INTERNO — NO SE COMMITEA
+#
+# Ojo: el repo de GitHub es PUBLICO y ademas Netlify publica
+# TODO lo que esta en el repo. O sea que cualquier archivo que
+# se commitee queda visible para cualquiera en dos lugares.
+#
+# Estas carpetas tienen material comercial y de estrategia que
+# no debe ser publico. Viven solo en el disco de Fede.
+# ─────────────────────────────────────────────────────────────
+
+Comercial/
+Estrategia/
+Amarula/
+Recursos/
+Archivo/
+backup/
+Impresos/
+
+# Documentos de trabajo sueltos
+*.docx
+*.csv
+
+# Herramientas de Claude Code, no son del proyecto
+.agents/
+skills-lock.json

@@ -1,2 +1,0 @@
-LORA_URL_V2=https://v3b.fal.media/files/b/0a996f00/nL2oZatyBNcwC3zW4QvbP_pytorch_lora_weights.safetensors
-Fecha: 2026-05-08T21:30:51.882Z
