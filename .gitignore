@@ -30,3 +30,4 @@ Impresos/
 # Herramientas de Claude Code, no son del proyecto
 .agents/
 skills-lock.json
+.claude/skills/
