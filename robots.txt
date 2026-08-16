@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+
+# El panel de administracion no debe indexarse
+Disallow: /admin.html
+
+Sitemap: https://fresquitos.com.ar/sitemap.xml
