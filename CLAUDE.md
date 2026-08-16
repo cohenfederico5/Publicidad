@@ -6,15 +6,34 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 Marketing materials for **Fresquito's** — a premium dog ice cream brand ("Helado Premium Para Perros") based in Argentina. The brand sells two flavors: **Carne** (beef) and **Pollo** (chicken), vet-backed, SENASA-approved (producto inscripto + establecimiento habilitado Est. Nº 2025-96/A/H).
 
-## Files
+## Folder structure
 
-| File | Purpose |
-|------|---------|
-| `fresquitos.html` | Main landing page / website |
-| `Folleto fresquitos.html` | Print-ready A4 flyer (210mm × 297mm) |
-| `Propuesta Fresquito's - Retriever.pdf` | Agency proposal from Retriever |
-| `Gestion redes sociales (prompts claude).docx` | Claude prompts for social media management |
-| `estrategia_fresquitos.docx` | Marketing strategy document |
+Reorganizada el 14/08/2026. La raíz tiene solo la web y la configuración; todo lo demás va por tema.
+
+| Ubicación | Qué hay |
+|-----------|---------|
+| **raíz** | La web: `index.html` (landing), `admin.html` (panel), `privacidad.html`, `Code.gs` (backend Apps Script) + las 5 imágenes que index.html referencia por ruta relativa |
+| `Impresos/` | Materiales para imprimir: folletos (comercios, pet friendly) y ploteos de freezer (tapa 45×43,5 · frente 45×62) |
+| `Comercial/` | Venta y prospección: propuesta B2B, one-pager y checklist de agencia, restaurantes red Wana, contactos |
+| `Estrategia/` | Planes y guías: estrategia de redes, paid media, calendario de pre-lanzamiento, guías, `.docx` de referencia |
+| `Amarula/` | Todo lo de la AI influencer: dataset del LoRA, plan, URL del modelo |
+| `Recursos/` | Material fuente: **rótulos originales de Carne y Pollo (PDF)**, fotos de producto, logos, fuentes tipográficas, reel |
+| `Archivo/` | Cosas viejas que ya no se usan pero no se borran (teasers, sabor vainilla, deploy viejo) |
+| `backup/` | Versiones anteriores de archivos que siguen vivos |
+
+⚠️ **No mover** las 5 imágenes de la raíz — `index.html` las referencia por nombre y se rompe la web local:
+
+```
+logo_sin_fondo.png
+perro caniche lamiendo helado 3.png
+perro lamiendo helado 2.png
+pote carne (web).png
+pote pollo (web).png
+```
+
+El resto de los HTML son autocontenidos (imágenes en base64) y se pueden mover libremente.
+
+**Fotos del producto (actualizado 16/08/2026).** Los potes de la web y de los 4 impresos salen de la misma tanda: `Recursos/fotos potes/`. Los masters procesados —enderezados, con la tapa balanceada a neutro y el par normalizado por diámetro del cuerpo— están en `Recursos/pote {carne,pollo} (master alta).png`; de ahí se regenera cualquier variante. Los renders 3D viejos (tapa kraft marrón, que **no existe** en el producto real) y las versiones del 12/08 quedaron en `Archivo/reemplazados 16-08-2026/`.
 
 ## Brand Design System
 
@@ -48,6 +67,6 @@ All HTML files share a consistent visual identity — use these values when edit
 
 ## Working with the HTML Files
 
-Open directly in a browser — no build step required. The flyer (`Folleto fresquitos.html`) is print-optimized; use browser print (`Ctrl+P`) or `@media print` styles to generate PDFs.
+Open directly in a browser — no build step required. Los folletos y ploteos de `Impresos/` están optimizados para impresión: `Ctrl+P` → Guardar como PDF genera el archivo a escala 1:1 para la gráfica.
 
-Product images are referenced via local upload paths (`/mnt/user-data/uploads/...`); replace with actual hosted URLs when deploying.
+Los ploteos de freezer usan medidas reales en cm/mm con `@page { size: ... }`, así que el PDF sale al tamaño físico exacto. Las imágenes van embebidas en base64 para que el archivo sea portable.
