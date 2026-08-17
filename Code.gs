@@ -14,15 +14,17 @@
 //       y no hay que tocar index.html ni admin.html.
 // ======================================================
 //
-// LAS DOS PROPIEDADES
+// LAS PROPIEDADES
 // Ni la clave ni el ID de la planilla van escritos acá: este archivo está
 // en un repo público. Se cargan en:
 //   Configuración del proyecto (engranaje) → Propiedades del script
 //
 //   ADMIN_PASSWORD  → la clave para entrar al panel
 //   SHEET_ID        → el ID de la planilla de suscriptores
+//   NOTIF_EMAIL     → a dónde llegan los avisos de formularios nuevos
+//                     (si se deja vacía, simplemente no se manda nada)
 //
-// Para cambiar la clave en el futuro se edita ese valor y listo: no hace
+// Para cambiar cualquiera de las tres se edita ese valor y listo: no hace
 // falta volver a implementar.
 // ======================================================
 
@@ -36,6 +38,96 @@ function getSS_() {
   var id = PropertiesService.getScriptProperties().getProperty('SHEET_ID');
   if (!id) throw new Error('Falta cargar la propiedad SHEET_ID');
   return SpreadsheetApp.openById(id);
+}
+
+
+// ------------------------------------------------------
+// AVISOS POR MAIL
+// ------------------------------------------------------
+// Se llaman DESPUÉS de guardar en la planilla y van envueltos en try/catch:
+// si el mail falla, el dato ya quedó guardado igual. Nunca perder un
+// suscriptor por culpa de una notificación.
+
+function escapeHtml_(v) {
+  return String(v == null ? '' : v)
+    .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;');
+}
+
+function avisar_(asunto, htmlBody, responderA) {
+  try {
+    var dest = PropertiesService.getScriptProperties().getProperty('NOTIF_EMAIL');
+    if (!dest) return;
+
+    var opciones = {
+      to: dest,
+      subject: asunto,
+      htmlBody: htmlBody + PIE_MAIL,
+      name: "Fresquito's"
+    };
+    // Así se puede contestar el mail y le llega directo a la persona.
+    if (responderA && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(responderA)) {
+      opciones.replyTo = responderA;
+    }
+    MailApp.sendEmail(opciones);
+
+  } catch (err) {
+    console.error('No se pudo mandar el aviso: ' + err);
+  }
+}
+
+var PIE_MAIL =
+  '<p style="margin-top:28px;padding-top:14px;border-top:1px solid #E0D4A0;' +
+  'font-family:Arial,sans-serif;font-size:12px;color:#8B7355;">' +
+  'Aviso automático de fresquitos.com.ar · ' +
+  '<a href="https://fresquitos.com.ar/admin.html" style="color:#C85C4A;">Abrir el panel</a></p>';
+
+function avisarSuscriptor_(email, fecha) {
+  var html =
+    '<div style="font-family:Arial,sans-serif;font-size:15px;color:#2C1505;">' +
+    '<p style="font-size:17px;"><b>Nuevo suscriptor en la lista de espera</b></p>' +
+    '<p style="font-size:18px;"><a href="mailto:' + escapeHtml_(email) + '">' +
+    escapeHtml_(email) + '</a></p>' +
+    '<p style="color:#6B5B47;">' + escapeHtml_(fecha) + '</p></div>';
+  avisar_('🍦 Nuevo suscriptor: ' + email, html, email);
+}
+
+function avisarMayorista_(d) {
+  var fila = function(etiqueta, valor) {
+    if (!valor) return '';
+    return '<tr><td style="padding:6px 16px 6px 0;color:#8B7355;white-space:nowrap;' +
+           'vertical-align:top;">' + etiqueta + '</td>' +
+           '<td style="padding:6px 0;"><b>' + valor + '</b></td></tr>';
+  };
+
+  var tel = escapeHtml_(d.telefono);
+  var telLink = tel
+    ? '<a href="tel:' + tel.replace(/[^0-9+]/g, '') + '">' + tel + '</a>'
+    : '';
+
+  var html =
+    '<div style="font-family:Arial,sans-serif;font-size:15px;color:#2C1505;">' +
+    '<p style="font-size:17px;"><b>Nueva consulta mayorista</b></p>' +
+    '<table style="font-size:15px;border-collapse:collapse;">' +
+      fila('Nombre',  escapeHtml_(d.nombre)) +
+      fila('Email',   '<a href="mailto:' + escapeHtml_(d.email) + '">' + escapeHtml_(d.email) + '</a>') +
+      fila('Teléfono', telLink) +
+      fila('Negocio', escapeHtml_(d.tipo)) +
+    '</table>';
+
+  if (limpiar_(d.mensaje)) {
+    html += '<p style="margin-top:18px;color:#8B7355;">Mensaje</p>' +
+            '<p style="background:#F7F2E4;padding:14px 16px;border-left:3px solid #C85C4A;' +
+            'margin:0;white-space:pre-wrap;">' + escapeHtml_(d.mensaje) + '</p>';
+  }
+
+  html += '<p style="margin-top:20px;color:#6B5B47;font-size:13px;">' +
+          'Podés responder este mail y le llega directo.</p></div>';
+
+  var asunto = '🏪 Consulta mayorista: ' + limpiar_(d.nombre);
+  if (limpiar_(d.tipo)) asunto += ' (' + limpiar_(d.tipo) + ')';
+
+  avisar_(asunto, html, d.email);
 }
 
 
@@ -100,6 +192,7 @@ function doPost(e) {
       if (!emailValido_(data.email)) return jsonOut({ ok: false, error: 'email inválido' });
       var hojaS = getOrCreateSheet(ss, 'Suscriptores', ['Email', 'Fecha']);
       hojaS.appendRow([limpiar_(data.email), limpiar_(data.fecha)]);
+      avisarSuscriptor_(limpiar_(data.email), limpiar_(data.fecha));
       return jsonOut({ ok: true });
     }
 
@@ -113,6 +206,7 @@ function doPost(e) {
         limpiar_(data.telefono), limpiar_(data.tipo), limpiar_(data.mensaje),
         limpiar_(data.fecha), 'pendiente'
       ]);
+      avisarMayorista_(data);
       return jsonOut({ ok: true });
     }
 
