@@ -372,37 +372,85 @@
 </div>
 
 <script>
-  const PASSWORD = 'fresquitos2025';
+  // La clave NO vive acá. Se valida contra el Apps Script, que la guarda
+  // en sus Propiedades del script (ver Code.gs). Lo que se guarda en
+  // sessionStorage es lo que tecleó el usuario, y sólo mientras dure la pestaña.
   const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwyJMjSdNr7XfZIZ3HhQjzdsBUHKzmGg2gTWeIeSwmiCgBQCP0oRypl3Hwx2go6MT95/exec';
 
+  function getToken() { return sessionStorage.getItem('fq_token') || ''; }
+
+  // Content-Type text/plain evita el preflight CORS que Apps Script no sabe
+  // responder; así podemos leer la respuesta en vez de disparar a ciegas.
+  async function api(payload) {
+    const res = await fetch(APPS_SCRIPT_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+      body: JSON.stringify(payload)
+    });
+    return res.json();
+  }
+
+  // Llamada autenticada: agrega el token y cierra sesión si el server lo rechaza.
+  async function apiAuth(payload) {
+    const r = await api(Object.assign({ token: getToken() }, payload));
+    if (!r.ok && r.error === 'no autorizado') { logout(); throw new Error('no autorizado'); }
+    return r;
+  }
+
+  function escapeHTML(v) {
+    return String(v == null ? '' : v).replace(/[&<>"']/g, c =>
+      ({ '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;', "'":'&#39;' }[c]));
+  }
+
   // --- LOGIN ---
-  function tryLogin() {
+  function abrirPanel() {
+    document.getElementById('loginScreen').style.display = 'none';
+    document.getElementById('app').classList.add('visible');
+    init();
+  }
+
+  function logout() {
+    sessionStorage.removeItem('fq_token');
+    location.reload();
+  }
+
+  function loginError(msg) {
+    const el = document.getElementById('loginError');
+    el.textContent = msg;
+    el.classList.add('visible');
+    document.getElementById('loginPass').classList.add('error');
+  }
+
+  async function tryLogin() {
+    const btn = document.getElementById('loginBtn');
     const val = document.getElementById('loginPass').value;
-    if (val === PASSWORD) {
-      document.getElementById('loginScreen').style.display = 'none';
-      document.getElementById('app').classList.add('visible');
-      sessionStorage.setItem('fq_auth', '1');
-      init();
-    } else {
-      document.getElementById('loginPass').classList.add('error');
-      document.getElementById('loginError').classList.add('visible');
+    if (!val) { loginError('Ingresá la contraseña'); return; }
+
+    btn.disabled = true;
+    btn.textContent = 'Verificando...';
+    try {
+      const r = await api({ action: 'login', token: val });
+      if (r.ok) {
+        sessionStorage.setItem('fq_token', val);
+        abrirPanel();
+        return;
+      }
+      loginError('Contraseña incorrecta');
+    } catch (e) {
+      loginError('No se pudo conectar con el servidor');
+    } finally {
+      btn.disabled = false;
+      btn.textContent = 'Ingresar';
     }
   }
+
   document.getElementById('loginBtn').addEventListener('click', tryLogin);
   document.getElementById('loginPass').addEventListener('keydown', e => { if (e.key === 'Enter') tryLogin(); });
   document.getElementById('loginPass').addEventListener('input', function() {
     this.classList.remove('error');
     document.getElementById('loginError').classList.remove('visible');
   });
-  document.getElementById('btnLogout').addEventListener('click', () => {
-    sessionStorage.removeItem('fq_auth');
-    location.reload();
-  });
-  if (sessionStorage.getItem('fq_auth') === '1') {
-    document.getElementById('loginScreen').style.display = 'none';
-    document.getElementById('app').classList.add('visible');
-    init();
-  }
+  document.getElementById('btnLogout').addEventListener('click', logout);
 
   // --- NAV ---
   document.querySelectorAll('.nav-item').forEach(btn => {
@@ -446,24 +494,20 @@
   function getMay()  { return cacheMay; }
 
   function postToSheet(data) {
-    if (APPS_SCRIPT_URL === 'PEGAR_URL_AQUI') return;
-    fetch(APPS_SCRIPT_URL, { method: 'POST', mode: 'no-cors', body: JSON.stringify(data) })
-      .catch(e => console.error('Error enviando a Google Sheets:', e));
+    apiAuth(data).catch(e => console.error('Error enviando a Google Sheets:', e));
   }
 
   async function loadSusc() {
-    if (APPS_SCRIPT_URL === 'PEGAR_URL_AQUI') { cachesSusc = []; return; }
     try {
-      const res = await fetch(APPS_SCRIPT_URL + '?tipo=suscriptores');
-      cachesSusc = await res.json();
+      const r = await apiAuth({ action: 'list_suscriptores' });
+      cachesSusc = r.ok ? r.datos : [];
     } catch(e) { console.error('Error cargando suscriptores:', e); cachesSusc = []; }
   }
 
   async function loadMay() {
-    if (APPS_SCRIPT_URL === 'PEGAR_URL_AQUI') { cacheMay = []; return; }
     try {
-      const res = await fetch(APPS_SCRIPT_URL + '?tipo=mayoristas');
-      cacheMay = await res.json();
+      const r = await apiAuth({ action: 'list_mayoristas' });
+      cacheMay = r.ok ? r.datos : [];
     } catch(e) { console.error('Error cargando mayoristas:', e); cacheMay = []; }
   }
 
@@ -484,7 +528,7 @@
   // --- SUSCRIPTORES ---
   function renderSusc(filter) {
     let data = getSusc();
-    if (filter) data = data.filter(d => d.email.toLowerCase().includes(filter.toLowerCase()));
+    if (filter) data = data.filter(d => String(d.email || '').toLowerCase().includes(filter.toLowerCase()));
     const tbody = document.getElementById('tbodySusc');
     const empty = document.getElementById('emptySusc');
     tbody.innerHTML = '';
@@ -494,9 +538,9 @@
       const tr = document.createElement('tr');
       tr.innerHTML = `
         <td style="color:var(--brown-light);font-family:'Oswald',sans-serif;font-size:0.7rem;">${i+1}</td>
-        <td class="td-email td-main">${row.email}</td>
+        <td class="td-email td-main">${escapeHTML(row.email)}</td>
         <td class="td-fecha">${formatFecha(row.fecha)}</td>
-        <td><button class="btn-delete" data-email="${row.email}">Eliminar</button></td>
+        <td><button class="btn-delete" data-email="${escapeHTML(row.email)}">Eliminar</button></td>
       `;
       tbody.appendChild(tr);
     });
@@ -536,8 +580,8 @@
   function renderMay(filter) {
     let data = getMay();
     if (filter) data = data.filter(d =>
-      d.nombre.toLowerCase().includes(filter.toLowerCase()) ||
-      d.email.toLowerCase().includes(filter.toLowerCase())
+      String(d.nombre || '').toLowerCase().includes(filter.toLowerCase()) ||
+      String(d.email || '').toLowerCase().includes(filter.toLowerCase())
     );
     const tbody = document.getElementById('tbodyMay');
     const empty = document.getElementById('emptyMay');
@@ -550,14 +594,14 @@
       const tr = document.createElement('tr');
       tr.innerHTML = `
         <td style="color:var(--brown-light);font-family:'Oswald',sans-serif;font-size:0.7rem;">${i+1}</td>
-        <td class="td-main">${row.nombre}</td>
-        <td class="td-email">${row.email}</td>
-        <td style="font-size:0.82rem;">${row.telefono || '<span style="color:var(--brown-light);font-style:italic;">—</span>'}</td>
-        <td style="font-size:0.82rem;">${row.tipo || '—'}</td>
-        <td class="td-mensaje">${row.mensaje ? `<span class="mensaje-text">${row.mensaje}</span>` : '<span class="mensaje-empty">Sin mensaje</span>'}</td>
+        <td class="td-main">${escapeHTML(row.nombre)}</td>
+        <td class="td-email">${escapeHTML(row.email)}</td>
+        <td style="font-size:0.82rem;">${row.telefono ? escapeHTML(row.telefono) : '<span style="color:var(--brown-light);font-style:italic;">—</span>'}</td>
+        <td style="font-size:0.82rem;">${row.tipo ? escapeHTML(row.tipo) : '—'}</td>
+        <td class="td-mensaje">${row.mensaje ? `<span class="mensaje-text">${escapeHTML(row.mensaje)}</span>` : '<span class="mensaje-empty">Sin mensaje</span>'}</td>
         <td class="td-fecha">${formatFecha(row.fecha)}</td>
-        <td><button class="estado-badge ${estadoClass}" data-id="${row.id}">${estadoLabel}</button></td>
-        <td><button class="btn-delete" data-id="${row.id}">Eliminar</button></td>
+        <td><button class="estado-badge ${estadoClass}" data-id="${escapeHTML(row.id)}">${estadoLabel}</button></td>
+        <td><button class="btn-delete" data-id="${escapeHTML(row.id)}">Eliminar</button></td>
       `;
       tbody.appendChild(tr);
     });
@@ -622,6 +666,9 @@
     renderSusc('');
     renderMay('');
   }
+
+  // Si ya había sesión abierta en esta pestaña, entrar directo.
+  if (getToken()) abrirPanel();
 </script>
 </body>
 </html>
