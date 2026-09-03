@@ -44,23 +44,24 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   body::before { content:''; position:fixed; inset:0; background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E"); pointer-events:none; z-index:9999; opacity:0.35; }
 
   nav { position:fixed; top:0; left:0; right:0; z-index:100; background:var(--cream-dark); border-bottom:3px solid var(--yellow); padding:0 40px; display:flex; align-items:center; justify-content:space-between; height:64px; }
-  .nav-logo { font-family:'Playfair Display',serif; font-size:1.5rem; font-weight:900; color:var(--yellow); text-decoration:none; letter-spacing:1px; font-style:italic; }
+  .nav-logo { font-family:'Playfair Display',serif; font-size:1.5rem; font-weight:900; color:#A8740A; text-decoration:none; letter-spacing:1px; font-style:italic; }
+  .nav-logo span { margin-top:7px; }
   .nav-links { display:flex; gap:24px; list-style:none; }
   .nav-links a { font-family:'Oswald',sans-serif; font-size:0.72rem; letter-spacing:2px; text-transform:uppercase; color:var(--brown); text-decoration:none; transition:color 0.2s; }
   .nav-links a:hover { color:var(--red); }
   .hamburger { display:none; flex-direction:column; gap:5px; cursor:pointer; background:none; border:none; padding:4px; }
   .hamburger span { width:24px; height:2px; background:var(--brown); }
 
-  #inicio { background:var(--cream-dark); display:flex; align-items:center; justify-content:center; position:relative; overflow:hidden; padding:120px 40px 80px; }
+  #inicio { background:var(--cream-dark); display:flex; align-items:center; justify-content:center; position:relative; overflow:hidden; padding:104px 40px 80px; }
   .hero-bg-circles { position:absolute; inset:0; overflow:hidden; }
   .hero-circle { position:absolute; border-radius:50%; border:1px solid rgba(232,197,71,0.08); }
   .hero-circle:nth-child(1) { width:700px; height:700px; top:-200px; right:-100px; }
   .hero-circle:nth-child(2) { width:500px; height:500px; top:-100px; right:0; }
   .hero-circle:nth-child(3) { width:900px; height:900px; bottom:-400px; left:-300px; }
-  .hero-content { text-align:center; z-index:2; padding:60px 20px; max-width:800px; }
+  .hero-content { text-align:center; z-index:2; padding:4px 20px 60px; width:100%; max-width:1400px; }
   .hero-badge { display:inline-block; font-family:'Oswald',sans-serif; font-size:1rem; letter-spacing:4px; text-transform:uppercase; color:var(--brown); border:1px solid var(--brown); padding:8px 24px; margin-bottom:32px; animation:fadeUp 0.8s ease forwards; opacity:0; }
   .hero-title { font-family:'Playfair Display',serif; font-size:clamp(4rem,10vw,8rem); font-weight:900; font-style:italic; color:var(--brown); line-height:0.9; margin-bottom:28px; animation:fadeUp 0.8s 0.2s ease forwards; opacity:0; }
-  .hero-desc { font-size:1.05rem; color:var(--text); line-height:1.8; max-width:480px; margin:0 auto 44px; animation:fadeUp 0.8s 0.4s ease forwards; opacity:0; }
+  .hero-desc { font-size:1.2rem; font-weight:700; color:var(--text); line-height:1.7; max-width:540px; margin:0 auto 44px; animation:fadeUp 0.8s 0.4s ease forwards; opacity:0; }
   .hero-ctas { display:flex; gap:16px; justify-content:center; flex-wrap:wrap; animation:fadeUp 0.8s 0.5s ease forwards; opacity:0; }
   .hero-trust { display:flex; gap:24px; justify-content:center; flex-wrap:wrap; margin-top:32px; animation:fadeUp 0.8s 0.7s ease forwards; opacity:0; }
   .trust-item { display:flex; align-items:center; gap:7px; font-family:'Oswald',sans-serif; font-size:0.68rem; letter-spacing:2px; text-transform:uppercase; color:var(--brown-mid); }
@@ -77,6 +78,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   .marquee-track { display:inline-flex; animation:marquee 25s linear infinite; }
   .marquee-item { font-family:'Oswald',sans-serif; font-size:0.75rem; letter-spacing:3px; text-transform:uppercase; color:var(--cream); padding:0 32px; }
   .marquee-dot { color:var(--yellow); font-size:1.2rem; vertical-align:middle; }
+  .senasa-mark { display:inline-block; width:1.55em; height:1.5em; vertical-align:-0.4em; margin-left:9px; margin-right:5px; background:url(data:image/png;base64,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) center/contain no-repeat; }
   @keyframes marquee { from{transform:translateX(0)} to{transform:translateX(-50%)} }
 
   section { padding:100px 40px; }
@@ -129,10 +131,15 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   .helado-nutri-table td { font-size:0.8rem; color:var(--text); padding:7px 10px; line-height:1.4; }
   .helado-nutri-table td:last-child { font-weight:600; text-align:right; white-space:nowrap; color:var(--brown); }
 
-  .benefits-bar { background:var(--red); padding:40px 40px; display:flex; justify-content:center; gap:30px; flex-wrap:wrap; }
-  .benefit-item { text-align:center; color:var(--cream); }
-  .benefit-icon { font-size:1.6rem; margin-bottom:8px; }
-  .benefit-title { font-family:'Oswald',sans-serif; font-size:0.62rem; letter-spacing:1.5px; text-transform:uppercase; font-weight:600; max-width:100px; line-height:1.4; }
+  .hero-top { display:flex; align-items:center; justify-content:center; gap:clamp(6px,1.4vw,22px); margin-bottom:18px; }
+  .hero-benefits { display:flex; flex-direction:column; gap:clamp(16px,2.4vw,30px); animation:fadeUp 0.8s 0.3s ease forwards; opacity:0; }
+  .hero-benefit { width:142px; min-height:84px; display:flex; flex-direction:column; align-items:center; text-align:center; color:var(--brown); }
+  .hero-benefit-icon { font-size:1.75rem; line-height:1; margin-bottom:7px; }
+  .hero-benefit-title { font-family:'Oswald',sans-serif; font-size:0.66rem; letter-spacing:1.5px; text-transform:uppercase; font-weight:600; line-height:1.45; }
+  .hero-top { justify-content:space-between; gap:20px; max-width:1320px; margin:0 auto 18px; }
+  .hero-benefit { width:190px; min-height:118px; }
+  .hero-benefit-icon { font-size:1.9rem; margin-bottom:11px; width:62px; height:62px; display:flex; align-items:center; justify-content:center; background:var(--white); border:2px solid var(--yellow); border-radius:50%; }
+  .hero-benefit-title { font-size:0.78rem; letter-spacing:2px; font-weight:700; line-height:1.5; }
 
   /* CALCULADORA */
   #calculadora { background:var(--cream-dark); padding:100px 40px; text-align:center; }
@@ -381,7 +388,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <nav>
   <a href="#inicio" class="nav-logo" style="display:flex; flex-direction:column; line-height:1.1;">
     Fresquito's
-    <span style="font-family:'Oswald',sans-serif; font-size:0.55rem; letter-spacing:3px; text-transform:uppercase; color:var(--yellow); font-style:normal; font-weight:400;">Helado Premium Para Perros</span>
+    <span style="font-family:'Oswald',sans-serif; font-size:0.55rem; letter-spacing:3px; text-transform:uppercase; color:#A8740A; font-style:normal; font-weight:400;">Helado Premium Para Perros</span>
   </a>
   <ul class="nav-links" id="navLinks">
     <li><a href="#nosotros">Nosotros</a></li>
@@ -410,38 +417,26 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <div class="hero-bg-circles"><div class="hero-circle"></div><div class="hero-circle"></div><div class="hero-circle"></div></div>
   <div class="hero-content">
     <h1 class="hero-title" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);">Fresquito's – Helado Premium Para Perros</h1>
-    <img src="logo_sin_fondo.png" alt="Fresquito's – Helado Premium Para Perros" style="width:clamp(220px,35vw,420px); margin:0 auto 28px; display:block; animation:fadeUp 0.8s 0.2s ease forwards; opacity:0;">
+    <div class="hero-top">
+      <div class="hero-benefits hero-benefits-l">
+      <div class="hero-benefit"><div class="hero-benefit-icon">👨‍⚕️</div><div class="hero-benefit-title">Formulado por Veterinarios</div></div>
+      <div class="hero-benefit"><div class="hero-benefit-icon">🍬</div><div class="hero-benefit-title">Reducido en Azúcares</div></div>
+      <div class="hero-benefit"><div class="hero-benefit-icon"><span style="font-family:'Oswald',sans-serif;font-size:0.8em;font-weight:700;letter-spacing:1px">Ca·Mg</span></div><div class="hero-benefit-title">Con Minerales</div></div>
+      </div>
+      <img src="logo_sin_fondo.png" alt="Fresquito's – Helado Premium Para Perros" style="width:clamp(220px,35vw,420px); margin:0 auto 16px; display:block; animation:fadeUp 0.8s 0.2s ease forwards; opacity:0;">
+      <div class="hero-benefits hero-benefits-r">
+      <div class="hero-benefit"><div class="hero-benefit-icon">🐾</div><div class="hero-benefit-title">100% Canino</div></div>
+      <div class="hero-benefit"><div class="hero-benefit-icon">💪</div><div class="hero-benefit-title">Nutritivo</div></div>
+      <div class="hero-benefit"><div class="hero-benefit-icon">❤️</div><div class="hero-benefit-title">Pensado para el bienestar del perro</div></div>
+      </div>
+    </div>
     <p class="hero-desc">Formulado y desarrollado por veterinarios con ingredientes saludables y nutritivos.</p>
     <div class="hero-ctas">
       <a href="https://wa.me/5491161931536?text=Hola%21%20Quisiera%20hacer%20un%20pedido%20de%20Fresquito%27s%20%F0%9F%90%BE" class="btn-primary" target="_blank" rel="noopener noreferrer" id="heroWhatsappCta">Pedir por WhatsApp</a>
       <a href="#nuestros-helados" class="btn-outline">Ver Sabores</a>
     </div>
-    <div class="hero-trust">
-      <span class="trust-item trust-senasa">SENASA inscripto · Est. Nº 2025-96/A/H</span>
-    </div>
   </div>
 </section>
-
-<div class="marquee-strip">
-  <div class="marquee-track">
-    <span class="marquee-item">Nutritivo <span class="marquee-dot">✦</span></span>
-    <span class="marquee-item">Alto Valor Proteico <span class="marquee-dot">✦</span></span>
-    <span class="marquee-item">Reducido en Azúcares <span class="marquee-dot">✦</span></span>
-    <span class="marquee-item">Con Minerales <span class="marquee-dot">✦</span></span>
-    <span class="marquee-item">Formulado por Veterinarios <span class="marquee-dot">✦</span></span>
-    <span class="marquee-item">100% Canino <span class="marquee-dot">✦</span></span>
-    <span class="marquee-item">Aprobado por SENASA <span class="marquee-dot">✦</span></span>
-    <span class="marquee-item">Hecho con Amor <span class="marquee-dot">✦</span></span>
-    <span class="marquee-item">Nutritivo <span class="marquee-dot">✦</span></span>
-    <span class="marquee-item">Alto Valor Proteico <span class="marquee-dot">✦</span></span>
-    <span class="marquee-item">Reducido en Azúcares <span class="marquee-dot">✦</span></span>
-    <span class="marquee-item">Con Minerales <span class="marquee-dot">✦</span></span>
-    <span class="marquee-item">Formulado por Veterinarios <span class="marquee-dot">✦</span></span>
-    <span class="marquee-item">100% Canino <span class="marquee-dot">✦</span></span>
-    <span class="marquee-item">Aprobado por SENASA <span class="marquee-dot">✦</span></span>
-    <span class="marquee-item">Hecho con Amor <span class="marquee-dot">✦</span></span>
-  </div>
-</div>
 
 <section id="nosotros" style="padding:100px 40px; background:var(--white);">
   <div style="max-width:1100px; margin:0 auto; display:grid; grid-template-columns:1fr 1fr; gap:120px; align-items:center;" class="nosotros-grid">
@@ -477,7 +472,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div class="helado-card reveal">
       <div class="helado-name">Carne</div>
       <img src="pote carne (web).png" alt="Sabor Carne" class="helado-img">
-      <p class="helado-desc">Intenso y cremoso. Nutritivo y lleno de proteínas. Un sabor que los perros adoran desde el primer lamido.</p>
+      <p class="helado-desc">Intenso y cremoso. Nutritivo y con minerales. Un sabor que los perros adoran desde el primer lamido.</p>
       <div class="helado-nutrientes">
         <span class="helado-nutriente">Calcio</span>
         <span class="helado-nutriente">Magnesio</span>
@@ -503,7 +498,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div class="helado-card reveal" style="transition-delay:0.15s">
       <div class="helado-name">Pollo</div>
       <img src="pote pollo (web).png" alt="Sabor Pollo" class="helado-img">
-      <p class="helado-desc">Suave y fresco. Nutritivo y lleno de proteínas. Un clásico que nunca falla y deja con ganas de más.</p>
+      <p class="helado-desc">Suave y fresco. Nutritivo y con minerales. Un clásico que nunca falla y deja con ganas de más.</p>
       <div class="helado-nutrientes">
         <span class="helado-nutriente">Calcio</span>
         <span class="helado-nutriente">Magnesio</span>
@@ -530,15 +525,26 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <a href="#suscripcion" class="btn-primary reveal" style="background:var(--yellow);color:var(--brown);">Quiero probarlos</a>
 </section>
 
-<div class="benefits-bar">
-  <div class="benefit-item"><div class="benefit-icon">💪</div><div class="benefit-title">Nutritivo</div></div>
-  <div class="benefit-item"><div class="benefit-icon">🥩</div><div class="benefit-title">Valor Proteico</div></div>
-  <div class="benefit-item"><div class="benefit-icon">🍬</div><div class="benefit-title">Reducido en Azúcares</div></div>
-  <div class="benefit-item"><div class="benefit-icon"><span style="font-family:'Oswald',sans-serif;font-size:0.85em;font-weight:700;letter-spacing:1px">Ca·Mg</span></div><div class="benefit-title">Con Minerales</div></div>
-  <div class="benefit-item"><div class="benefit-icon">👨‍⚕️</div><div class="benefit-title">Formulado por Veterinarios</div></div>
-  <div class="benefit-item"><div class="benefit-icon">🌿</div><div class="benefit-title">Nutrición funcional</div></div>
-  <div class="benefit-item"><div class="benefit-icon">❤️</div><div class="benefit-title">Pensado para el bienestar del perro</div></div>
-  <div class="benefit-item"><div class="benefit-icon">🐾</div><div class="benefit-title">100% Canino</div></div></div>
+
+
+<div class="marquee-strip">
+  <div class="marquee-track">
+    <span class="marquee-item">Nutritivo <span class="marquee-dot">✦</span></span>
+    <span class="marquee-item">Reducido en Azúcares <span class="marquee-dot">✦</span></span>
+    <span class="marquee-item">Con Minerales <span class="marquee-dot">✦</span></span>
+    <span class="marquee-item">Formulado por Veterinarios <span class="marquee-dot">✦</span></span>
+    <span class="marquee-item">100% Canino <span class="marquee-dot">✦</span></span>
+    <span class="marquee-item">Aprobado por SENASA<span class="senasa-mark" aria-hidden="true"></span> <span class="marquee-dot">✦</span></span>
+    <span class="marquee-item">Hecho con Amor <span class="marquee-dot">✦</span></span>
+    <span class="marquee-item">Nutritivo <span class="marquee-dot">✦</span></span>
+    <span class="marquee-item">Reducido en Azúcares <span class="marquee-dot">✦</span></span>
+    <span class="marquee-item">Con Minerales <span class="marquee-dot">✦</span></span>
+    <span class="marquee-item">Formulado por Veterinarios <span class="marquee-dot">✦</span></span>
+    <span class="marquee-item">100% Canino <span class="marquee-dot">✦</span></span>
+    <span class="marquee-item">Aprobado por SENASA<span class="senasa-mark" aria-hidden="true"></span> <span class="marquee-dot">✦</span></span>
+    <span class="marquee-item">Hecho con Amor <span class="marquee-dot">✦</span></span>
+  </div>
+</div>
 
 <!-- CALCULADORA -->
 <section id="calculadora">
@@ -815,7 +821,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <span class="locales-chip">🐾 Pet Shops</span>
       <span class="locales-chip">🛒 Kioscos</span>
       <span class="locales-chip">🌿 Dietéticas</span>
-      <span class="locales-chip">☕ Cafés Pet Friendly</span>
+      <span class="locales-chip">🍽️ Gastronomía Pet Friendly</span>
       <span class="locales-chip">⛽ Estaciones de Servicio</span>
       <span class="locales-chip">🏪 Supermercados</span>
     </div>
@@ -850,7 +856,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div class="faq-item reveal"><button class="faq-question"><span class="faq-question-text">¿Cuánto le doy a mi perro?</span><span class="faq-icon">+</span></button><div class="faq-answer"><div class="faq-answer-inner">Las dosis recomendadas están sujetas al peso del animal. Una cuchara equivale a 15g aproximadamente.<table class="faq-table"><tr><th>Tamaño</th><th>Peso</th><th>Porción (1 cuchara = 15g)</th></tr><tr><td>Pequeños</td><td>Hasta 10 kg</td><td>1 a 2 cucharas</td></tr><tr><td>Medianos</td><td>10 a 25 kg</td><td>2 a 4 cucharas</td></tr><tr><td>Grandes</td><td>25 a 40 kg</td><td>4 a 6 cucharas</td></tr><tr><td>Muy grandes</td><td>40 kg o más</td><td>6 a 8 cucharas</td></tr></table>Las cantidades pueden variar según la actividad, condición y estado fisiológico del perro. Consultá siempre con tu veterinario.</div></div></div>
     <div class="faq-item reveal"><button class="faq-question"><span class="faq-question-text">¿Cómo se conserva y se sirve?</span><span class="faq-icon">+</span></button><div class="faq-answer"><div class="faq-answer-inner">Conservar en freezer a -18°C hasta un máximo de 6 meses desde su elaboración. Antes de servir, dejá el envase a temperatura ambiente durante 5 a 10 minutos para una textura más cremosa. Una vez descongelado, no volver a congelar. Conservá siempre en su envase original.</div></div></div>
     <div class="faq-item reveal"><button class="faq-question"><span class="faq-question-text">¿Con qué frecuencia puede comerlo?</span><span class="faq-icon">+</span></button><div class="faq-answer"><div class="faq-answer-inner">Fresquito's es un snack congelado que puede ofrecerse post actividad física o como premio funcional. No constituye un alimento completo. Se recomienda 1 a 3 veces por semana según la dieta, el nivel de actividad del perro y la porción administrada. Siempre con moderación y bajo supervisión.</div></div></div>
-    <div class="faq-item reveal"><button class="faq-question"><span class="faq-question-text">¿Está habilitado por SENASA?</span><span class="faq-icon">+</span></button><div class="faq-answer"><div class="faq-answer-inner">Fresquito's está aprobado e inscripto ante SENASA como suplemento alimenticio para perros adultos. El establecimiento elaborador, Ferjuan S.R.L., también se encuentra habilitado por SENASA (Nº 2025-96/A/H), ubicado en Florencio Sánchez 88, B1766, La Tablada, Pcia. de Buenos Aires.</div></div></div>
+    <div class="faq-item reveal"><button class="faq-question"><span class="faq-question-text">¿Está habilitado por SENASA?</span><span class="faq-icon">+</span></button><div class="faq-answer"><div class="faq-answer-inner">Fresquito's está aprobado e inscripto ante SENASA como suplemento alimenticio para perros adultos. El establecimiento elaborador, Ferjuan S.R.L., ubicado en Florencio Sánchez 88, B1766, La Tablada, Pcia. de Buenos Aires, también cuenta con la habilitación de SENASA.</div></div></div>
   </div>
 </section>
 
