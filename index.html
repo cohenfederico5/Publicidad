@@ -19,7 +19,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <!-- End Google Ads Tag -->
 <meta name="viewport" content="width=800">
 <title>Fresquito's – Helado Premium Para Perros</title>
-<meta name="description" content="Fresquito's es el primer helado premium para perros de Argentina. Formulado con ingredientes naturales y respaldado por veterinarios. Sabores: Carne y Pollo.">
+<meta name="description" content="Fresquito's es el primer helado premium para perros de Argentina. Formulado con ingredientes naturales y respaldado por un médico veterinario. Sabores: Carne y Pollo.">
 <meta property="og:title" content="Fresquito's – Helado Premium Para Perros">
 <meta property="og:description" content="Porque tu perro también merece un mimo. Formulado especialmente para el organismo canino.">
 <meta property="og:type" content="website">
@@ -98,6 +98,22 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   .nosotros-foto-top img { height:240px; object-position:center 30%; }
   .nosotros-foto-bottom img { height:220px; object-position:center 40%; }
   .nosotros-foto-top:hover img, .nosotros-foto-bottom:hover img { transform:scale(1.04); }
+  /* --- Aval veterinario --- */
+  .hero-vet { font-family:'Oswald',sans-serif; font-size:0.72rem; letter-spacing:2px; text-transform:uppercase;
+    color:var(--brown-mid); margin:-30px auto 40px; max-width:540px; display:flex; flex-wrap:wrap;
+    align-items:center; justify-content:center; gap:0 9px; line-height:1.6;
+    animation:fadeUp 0.8s 0.45s ease forwards; opacity:0; }
+  .hero-vet strong { font-weight:700; color:var(--red); }
+  .hero-vet-sep { color:var(--yellow); }
+  .vet-card { margin-top:28px; padding:22px 26px; background:var(--cream); border:1px solid var(--cream-dark);
+    border-left:4px solid var(--red); border-radius:4px; }
+  .vet-card-label { font-family:'Oswald',sans-serif; font-size:0.62rem; letter-spacing:2.5px;
+    text-transform:uppercase; color:var(--brown-mid); margin-bottom:9px; }
+  .vet-card-name { font-family:'Playfair Display',serif; font-style:italic; font-weight:700;
+    font-size:1.32rem; color:var(--red); line-height:1.25; }
+  .vet-card-cred { font-family:'Lora',serif; font-size:0.86rem; color:var(--text); line-height:1.7; margin-top:7px; }
+  .vet-card-mp { font-family:'Oswald',sans-serif; font-size:0.68rem; letter-spacing:2px; text-transform:uppercase;
+    color:var(--brown-mid); margin-top:10px; padding-top:10px; border-top:1px solid var(--cream-dark); }
   .pills { display:flex; gap:10px; flex-wrap:wrap; margin-top:28px; }
   .pill { font-family:'Oswald',sans-serif; font-size:0.7rem; letter-spacing:2px; text-transform:uppercase; background:var(--cream-dark); color:var(--brown); padding:8px 16px; border-left:3px solid var(--red); }
 
@@ -419,7 +435,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <h1 class="hero-title" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);">Fresquito's – Helado Premium Para Perros</h1>
     <div class="hero-top">
       <div class="hero-benefits hero-benefits-l">
-      <div class="hero-benefit"><div class="hero-benefit-icon">👨‍⚕️</div><div class="hero-benefit-title">Formulado por Veterinarios</div></div>
+      <div class="hero-benefit"><div class="hero-benefit-icon">👨‍⚕️</div><div class="hero-benefit-title">Formulado por un Veterinario</div></div>
       <div class="hero-benefit"><div class="hero-benefit-icon">🍬</div><div class="hero-benefit-title">Reducido en Azúcares</div></div>
       <div class="hero-benefit"><div class="hero-benefit-icon"><span style="font-family:'Oswald',sans-serif;font-size:0.8em;font-weight:700;letter-spacing:1px">Ca·Mg</span></div><div class="hero-benefit-title">Con Minerales</div></div>
       </div>
@@ -430,7 +446,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <div class="hero-benefit"><div class="hero-benefit-icon">❤️</div><div class="hero-benefit-title">Pensado para el bienestar del perro</div></div>
       </div>
     </div>
-    <p class="hero-desc">Formulado y desarrollado por veterinarios con ingredientes saludables y nutritivos.</p>
+    <p class="hero-desc">Formulado y desarrollado por un médico veterinario con ingredientes saludables y nutritivos.</p>
+    <p class="hero-vet"><strong>Dr. Baltazar Nuozzi</strong><span class="hero-vet-sep">·</span>M.V. UNLP<span class="hero-vet-sep">·</span>M.P. 10.033</p>
     <div class="hero-ctas">
       <a href="https://wa.me/5491161931536?text=Hola%21%20Quisiera%20hacer%20un%20pedido%20de%20Fresquito%27s%20%F0%9F%90%BE" class="btn-primary" target="_blank" rel="noopener noreferrer" id="heroWhatsappCta">Pedir por WhatsApp</a>
       <a href="#nuestros-helados" class="btn-outline">Ver Sabores</a>
@@ -452,8 +469,18 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <span class="section-label">★ Quiénes somos</span>
       <h2 class="section-title">El sabor que <em>tu perro</em> merecía</h2>
       <div class="divider"><div class="divider-line"></div><span class="divider-icon">✦</span><div class="divider-line"></div></div>
-      <p class="section-body">Somos amantes de los perros como lo son ustedes. Hace un tiempo en un viaje que hicimos con nuestros perros a Chile observamos que en un comercio estaba vendiendo helado para perros. Le dimos de probar a nuestros perros que quedaron encantados pidiendo más. Así fue como se nos ocurrió brindar este producto en nuestro país ofreciéndole a nuestros perros la posibilidad de disfrutar de un producto que sea refrescante, nutritivo y que esté pensado especialmente para el organismo canino. Así nació Fresquito's. Un proyecto hecho con pasión, con una fórmula respaldada por veterinarios, aprobada por el SENASA y elaborado con ingredientes naturales.</p>
+      <p class="section-body">Somos amantes de los perros como lo son ustedes. Hace un tiempo en un viaje que hicimos con nuestros perros a Chile observamos que en un comercio estaba vendiendo helado para perros. Le dimos de probar a nuestros perros que quedaron encantados pidiendo más. Así fue como se nos ocurrió brindar este producto en nuestro país ofreciéndole a nuestros perros la posibilidad de disfrutar de un producto que sea refrescante, nutritivo y que esté pensado especialmente para el organismo canino. Así nació Fresquito's. Un proyecto hecho con pasión, con una fórmula respaldada por un médico veterinario, aprobada por el SENASA y elaborado con ingredientes naturales.</p>
       <p class="section-body" style="margin-top:16px;">Cada pote es un momento especial entre vos y tu mejor amigo.</p>
+      <div class="vet-card reveal">
+        <div class="vet-card-label">★ Nuestro respaldo profesional</div>
+        <div class="vet-card-name">Dr. Baltazar Nuozzi</div>
+        <div class="vet-card-cred">
+          Médico Veterinario — UNLP<br>
+          Etólogo Clínico — UNLP / CFVET<br>
+          Diplomado en Etología Clínica y Nutrición — UCASAL
+        </div>
+        <div class="vet-card-mp">Matrícula Profesional 10.033</div>
+      </div>
       <div class="pills">
         <span class="pill">Receta Veterinaria</span>
         <span class="pill">Nutritivo</span>
@@ -532,14 +559,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <span class="marquee-item">Nutritivo <span class="marquee-dot">✦</span></span>
     <span class="marquee-item">Reducido en Azúcares <span class="marquee-dot">✦</span></span>
     <span class="marquee-item">Con Minerales <span class="marquee-dot">✦</span></span>
-    <span class="marquee-item">Formulado por Veterinarios <span class="marquee-dot">✦</span></span>
+    <span class="marquee-item">Formulado por un Veterinario <span class="marquee-dot">✦</span></span>
     <span class="marquee-item">100% Canino <span class="marquee-dot">✦</span></span>
     <span class="marquee-item">Aprobado por SENASA<span class="senasa-mark" aria-hidden="true"></span> <span class="marquee-dot">✦</span></span>
     <span class="marquee-item">Hecho con Amor <span class="marquee-dot">✦</span></span>
     <span class="marquee-item">Nutritivo <span class="marquee-dot">✦</span></span>
     <span class="marquee-item">Reducido en Azúcares <span class="marquee-dot">✦</span></span>
     <span class="marquee-item">Con Minerales <span class="marquee-dot">✦</span></span>
-    <span class="marquee-item">Formulado por Veterinarios <span class="marquee-dot">✦</span></span>
+    <span class="marquee-item">Formulado por un Veterinario <span class="marquee-dot">✦</span></span>
     <span class="marquee-item">100% Canino <span class="marquee-dot">✦</span></span>
     <span class="marquee-item">Aprobado por SENASA<span class="senasa-mark" aria-hidden="true"></span> <span class="marquee-dot">✦</span></span>
     <span class="marquee-item">Hecho con Amor <span class="marquee-dot">✦</span></span>
@@ -850,7 +877,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <span class="section-label">★ Todo lo que necesitás saber</span>
       <h2 class="section-title">Preguntas <em>frecuentes</em></h2>
     </div>
-    <div class="faq-item reveal"><button class="faq-question"><span class="faq-question-text">¿Qué es Fresquito's?</span><span class="faq-icon">+</span></button><div class="faq-answer"><div class="faq-answer-inner">Fresquito's es un helado pensado para el organismo canino cuya fórmula fue desarrollada y avalada por veterinarios. Es un suplemento alimenticio ideal con ingredientes nutritivos y de la más alta calidad seleccionados para el bienestar y disfrute del perro.</div></div></div>
+    <div class="faq-item reveal"><button class="faq-question"><span class="faq-question-text">¿Qué es Fresquito's?</span><span class="faq-icon">+</span></button><div class="faq-answer"><div class="faq-answer-inner">Fresquito's es un helado pensado para el organismo canino cuya fórmula fue desarrollada y avalada por un médico veterinario. Es un suplemento alimenticio ideal con ingredientes nutritivos y de la más alta calidad seleccionados para el bienestar y disfrute del perro.</div></div></div>
     <div class="faq-item reveal"><button class="faq-question"><span class="faq-question-text">¿Qué ingredientes tiene?</span><span class="faq-icon">+</span></button><div class="faq-answer"><div class="faq-answer-inner">Leche descremada en polvo, suero de queso en polvo, aceite de palma, maltodextrina, dextrosa, estabilizantes y emulsificantes (mono y diglicéridos de ácidos grasos, goma guar, goma de celulosa, carragenina, polioxietilén sorbitan monooleato), cloruro de calcio, citrato de magnesio, ácido ascórbico. Aromatizante sabor carne o pollo según variedad.</div></div></div>
     <div class="faq-item reveal"><button class="faq-question"><span class="faq-question-text">¿Todos los perros pueden comerlo?</span><span class="faq-icon">+</span></button><div class="faq-answer"><div class="faq-answer-inner">Fresquito's está formulado para perros sanos, a partir de los 30 días en cachorros y hasta los 18 años. No se recomienda para perros con diabetes, hiperactividad, obesidad o trastornos gastrointestinales. Ante cualquier duda, consultá con tu veterinario.</div></div></div>
     <div class="faq-item reveal"><button class="faq-question"><span class="faq-question-text">¿Cuánto le doy a mi perro?</span><span class="faq-icon">+</span></button><div class="faq-answer"><div class="faq-answer-inner">Las dosis recomendadas están sujetas al peso del animal. Una cuchara equivale a 15g aproximadamente.<table class="faq-table"><tr><th>Tamaño</th><th>Peso</th><th>Porción (1 cuchara = 15g)</th></tr><tr><td>Pequeños</td><td>Hasta 10 kg</td><td>1 a 2 cucharas</td></tr><tr><td>Medianos</td><td>10 a 25 kg</td><td>2 a 4 cucharas</td></tr><tr><td>Grandes</td><td>25 a 40 kg</td><td>4 a 6 cucharas</td></tr><tr><td>Muy grandes</td><td>40 kg o más</td><td>6 a 8 cucharas</td></tr></table>Las cantidades pueden variar según la actividad, condición y estado fisiológico del perro. Consultá siempre con tu veterinario.</div></div></div>
