@@ -227,18 +227,20 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
   /* PLAN CARD */
   .plan-cards-grid { display:flex; gap:24px; justify-content:center; flex-wrap:wrap; margin-bottom:48px; position:relative; z-index:1; }
-  .plan-card { background:var(--cream-dark); border:3px solid var(--brown); width:340px; position:relative; }
+  .plan-card { background:var(--cream-dark); border:3px solid var(--brown); width:300px; position:relative; display:flex; flex-direction:column; }
   .plan-card.plan-destacado { border-color:var(--yellow); }
-  .plan-badge { position:absolute; top:-14px; left:50%; transform:translateX(-50%); background:var(--yellow); color:var(--brown); font-family:'Oswald',sans-serif; font-size:0.6rem; letter-spacing:3px; text-transform:uppercase; font-weight:700; padding:5px 18px; white-space:nowrap; }
+  .plan-badge { position:absolute; z-index:3; top:-14px; left:50%; transform:translateX(-50%); background:var(--yellow); color:var(--brown); font-family:'Oswald',sans-serif; font-size:0.6rem; letter-spacing:3px; text-transform:uppercase; font-weight:700; padding:5px 18px; white-space:nowrap; }
+  .plan-ribbon-wrap { position:absolute; inset:0; overflow:hidden; pointer-events:none; z-index:2; }
+  .plan-ribbon { position:absolute; top:18px; right:-50px; width:170px; transform:rotate(45deg); background:var(--red); color:var(--cream); text-align:center; font-family:'Oswald',sans-serif; font-weight:700; font-size:0.95rem; letter-spacing:2px; text-transform:uppercase; padding:5px 0; box-shadow:0 3px 8px rgba(61,31,10,0.25); }
   .plan-card-header { background:var(--cream-dark); padding:18px 28px 14px; border-bottom:1px solid rgba(232,197,71,0.2); }
   .plan-card-tag { font-family:'Oswald',sans-serif; font-size:0.62rem; letter-spacing:3px; text-transform:uppercase; color:var(--red); margin-bottom:0; margin-top:8px; }
   .plan-card-name { font-family:'Playfair Display',serif; font-size:1.6rem; font-weight:900; font-style:italic; color:var(--brown); line-height:1.1; }
-  .plan-card-body { padding:16px 28px 20px; }
+  .plan-card-body { padding:16px 28px 20px; flex:1; display:flex; flex-direction:column; }
   .plan-card-format { display:flex; align-items:center; justify-content:center; gap:16px; margin-bottom:20px; padding-bottom:20px; border-bottom:1px solid rgba(232,197,71,0.15); }
   .plan-card-format-icon { font-size:2rem; }
   .plan-card-format-text strong { font-family:'Oswald',sans-serif; font-size:1rem; letter-spacing:1px; text-transform:uppercase; color:var(--brown); display:block; text-align:center; }
   .plan-card-format-text span { font-size:0.85rem; color:var(--brown-mid); }
-  .plan-card-includes { list-style:none; display:flex; flex-direction:column; gap:10px; margin-bottom:20px; }
+  .plan-card-includes { list-style:none; display:flex; flex-direction:column; gap:10px; margin-bottom:20px; flex:1; }
   .plan-card-includes li { display:flex; align-items:flex-start; gap:10px; font-size:0.88rem; color:var(--text); line-height:1.4; text-align:left; }
   .plan-card-includes li::before { content:'✦'; color:var(--red); font-size:0.7rem; flex-shrink:0; min-width:12px; text-align:center; margin-top:2px; }
   .plan-card-benefits { display:flex; flex-wrap:wrap; gap:6px; margin-bottom:16px; }
@@ -726,24 +728,25 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <div class="plan-card-body">
         <div class="plan-card-format">
           <div class="plan-card-format-text">
-            <strong>2 potes de 360cc</strong>
+            <strong>4 potes de 360cc</strong>
           </div>
         </div>
         <ul class="plan-card-includes">
           <li>Elegís el sabor o combinalos</li>
-          <li>Entrega mensual a domicilio</li>
+          <li>Entrega a domicilio (con costo)</li>
           <li>Podés pausar o cancelar cuando quieras</li>
         </ul>
         <div class="plan-card-flavors">
           <span class="plan-flavor-tag plan-flavor-carne">Carne</span>
           <span class="plan-flavor-tag plan-flavor-pollo">Pollo</span>
         </div>
-        <a href="https://wa.me/5491161931536?text=Hola%21%20Quisiera%20suscribirme%20al%20plan%20de%202%20potes%20%F0%9F%90%BE" class="plan-card-cta" target="_blank" rel="noopener noreferrer">Quiero este plan</a>
+        <a href="https://wa.me/5491161931536?text=Hola%21%20Quisiera%20suscribirme%20al%20plan%20de%204%20potes%20%F0%9F%90%BE" class="plan-card-cta" target="_blank" rel="noopener noreferrer">Quiero este plan</a>
       </div>
     </div>
 
     <div class="plan-card plan-destacado">
-      <div class="plan-badge">★ Más popular</div>
+      <div class="plan-badge">★ El más elegido</div>
+      <div class="plan-ribbon-wrap"><div class="plan-ribbon">10% OFF</div></div>
       <div class="plan-card-header">
         <div class="plan-card-name">Suscripción<br>Fresquito's</div>
         <div class="plan-card-tag">Plan mensual</div>
@@ -751,19 +754,44 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <div class="plan-card-body">
         <div class="plan-card-format">
           <div class="plan-card-format-text">
-            <strong>4 potes de 360cc</strong>
+            <strong>8 potes de 360cc</strong>
           </div>
         </div>
         <ul class="plan-card-includes">
           <li>Elegís el sabor o combinalos</li>
-          <li>Entrega mensual a domicilio</li>
+          <li>Entrega a domicilio (parcialmente bonificado)</li>
           <li>Podés pausar o cancelar cuando quieras</li>
         </ul>
         <div class="plan-card-flavors">
           <span class="plan-flavor-tag plan-flavor-carne">Carne</span>
           <span class="plan-flavor-tag plan-flavor-pollo">Pollo</span>
         </div>
-        <a href="https://wa.me/5491161931536?text=Hola%21%20Quisiera%20suscribirme%20al%20plan%20de%204%20potes%20%F0%9F%90%BE" class="plan-card-cta plan-card-cta-destacado" target="_blank" rel="noopener noreferrer">Quiero este plan</a>
+        <a href="https://wa.me/5491161931536?text=Hola%21%20Quisiera%20suscribirme%20al%20plan%20de%208%20potes%20%F0%9F%90%BE" class="plan-card-cta plan-card-cta-destacado" target="_blank" rel="noopener noreferrer">Quiero este plan</a>
+      </div>
+    </div>
+
+    <div class="plan-card">
+      <div class="plan-ribbon-wrap"><div class="plan-ribbon">15% OFF</div></div>
+      <div class="plan-card-header">
+        <div class="plan-card-name">Suscripción<br>Fresquito's</div>
+        <div class="plan-card-tag">Plan mensual</div>
+      </div>
+      <div class="plan-card-body">
+        <div class="plan-card-format">
+          <div class="plan-card-format-text">
+            <strong>12 potes de 360cc</strong>
+          </div>
+        </div>
+        <ul class="plan-card-includes">
+          <li>Elegís el sabor o combinalos</li>
+          <li>Entrega a domicilio (bonificado)</li>
+          <li>Podés pausar o cancelar cuando quieras</li>
+        </ul>
+        <div class="plan-card-flavors">
+          <span class="plan-flavor-tag plan-flavor-carne">Carne</span>
+          <span class="plan-flavor-tag plan-flavor-pollo">Pollo</span>
+        </div>
+        <a href="https://wa.me/5491161931536?text=Hola%21%20Quisiera%20suscribirme%20al%20plan%20de%2012%20potes%20%F0%9F%90%BE" class="plan-card-cta" target="_blank" rel="noopener noreferrer">Quiero este plan</a>
       </div>
     </div>
 
