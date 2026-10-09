@@ -270,10 +270,15 @@
             <div class="stat-value" style="font-size:1rem;padding-top:6px;" id="statSuscUltimo">—</div>
             <div class="stat-sub">fecha</div>
           </div>
+          <div class="stat-card">
+            <div class="stat-label">Provincia que más pide</div>
+            <div class="stat-value" style="font-size:1rem;padding-top:6px;" id="statSuscProv">—</div>
+            <div class="stat-sub" id="statSuscProvSub">anotados</div>
+          </div>
         </div>
         <div class="toolbar">
           <div class="toolbar-left">
-            <input type="text" class="search-input" id="searchSusc" placeholder="Buscar email...">
+            <input type="text" class="search-input" id="searchSusc" placeholder="Buscar email o provincia...">
           </div>
           <div style="display:flex;gap:8px;">
             <button class="btn-export" id="exportSusc">Exportar CSV</button>
@@ -286,6 +291,8 @@
               <tr>
                 <th>#</th>
                 <th>Email</th>
+                <th>Provincia</th>
+                <th>Comentario</th>
                 <th>Fecha de registro</th>
                 <th></th>
               </tr>
@@ -528,7 +535,7 @@
   // --- SUSCRIPTORES ---
   function renderSusc(filter) {
     let data = getSusc();
-    if (filter) data = data.filter(d => String(d.email || '').toLowerCase().includes(filter.toLowerCase()));
+    if (filter) data = data.filter(d => (String(d.email || '') + ' ' + String(d.provincia || '')).toLowerCase().includes(filter.toLowerCase()));
     const tbody = document.getElementById('tbodySusc');
     const empty = document.getElementById('emptySusc');
     tbody.innerHTML = '';
@@ -539,6 +546,8 @@
       tr.innerHTML = `
         <td style="color:var(--brown-light);font-family:'Oswald',sans-serif;font-size:0.7rem;">${i+1}</td>
         <td class="td-email td-main">${escapeHTML(row.email)}</td>
+        <td style="font-size:0.82rem;white-space:nowrap;">${row.provincia ? escapeHTML(row.provincia) : '—'}</td>
+        <td class="td-mensaje">${row.comentario ? `<span class="mensaje-text">${escapeHTML(row.comentario)}</span>` : '<span class="mensaje-empty">—</span>'}</td>
         <td class="td-fecha">${formatFecha(row.fecha)}</td>
         <td><button class="btn-delete" data-email="${escapeHTML(row.email)}">Eliminar</button></td>
       `;
@@ -561,13 +570,18 @@
     document.getElementById('badgeSusc').textContent = d.length;
     const ultimo = d.length ? formatFecha(d[d.length-1].fecha) : '—';
     document.getElementById('statSuscUltimo').textContent = ultimo;
+    const cuenta = {};
+    d.forEach(r => { if (r.provincia) cuenta[r.provincia] = (cuenta[r.provincia] || 0) + 1; });
+    const top = Object.entries(cuenta).sort((a, b) => b[1] - a[1])[0];
+    document.getElementById('statSuscProv').textContent = top ? top[0] : '—';
+    document.getElementById('statSuscProvSub').textContent = top ? `${top[1]} anotado${top[1] === 1 ? '' : 's'}` : 'anotados';
   }
 
   document.getElementById('searchSusc').addEventListener('input', function() { renderSusc(this.value); });
   document.getElementById('exportSusc').addEventListener('click', () => {
     const d = getSusc();
     if (!d.length) return;
-    downloadCSV([['Email','Fecha'], ...d.map(r => [r.email, formatFecha(r.fecha)])], 'suscriptores_fresquitos.csv');
+    downloadCSV([['Email','Provincia','Comentario','Fecha'], ...d.map(r => [r.email, r.provincia, r.comentario, formatFecha(r.fecha)])], 'suscriptores_fresquitos.csv');
   });
   document.getElementById('clearSusc').addEventListener('click', () => {
     showModal('¿Borrás todos los suscriptores? Esta acción no se puede deshacer.', () => {

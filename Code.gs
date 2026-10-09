@@ -82,14 +82,19 @@ var PIE_MAIL =
   'Aviso automático de fresquitos.com.ar · ' +
   '<a href="https://fresquitos.com.ar/admin.html" style="color:#C85C4A;">Abrir el panel</a></p>';
 
-function avisarSuscriptor_(email, fecha) {
+function avisarSuscriptor_(email, fecha, provincia, comentario) {
   var html =
     '<div style="font-family:Arial,sans-serif;font-size:15px;color:#2C1505;">' +
-    '<p style="font-size:17px;"><b>Nuevo suscriptor en la lista de espera</b></p>' +
+    '<p style="font-size:17px;"><b>Nuevo en la lista de espera</b></p>' +
     '<p style="font-size:18px;"><a href="mailto:' + escapeHtml_(email) + '">' +
     escapeHtml_(email) + '</a></p>' +
-    '<p style="color:#6B5B47;">' + escapeHtml_(fecha) + '</p></div>';
-  avisar_('🍦 Nuevo suscriptor: ' + email, html, email);
+    (provincia ? '<p style="font-size:16px;">📍 <b>' + escapeHtml_(provincia) + '</b></p>' : '');
+  if (comentario) {
+    html += '<p style="background:#F7F2E4;padding:14px 16px;border-left:3px solid #C85C4A;' +
+            'white-space:pre-wrap;">' + escapeHtml_(comentario) + '</p>';
+  }
+  html += '<p style="color:#6B5B47;">' + escapeHtml_(fecha) + '</p></div>';
+  avisar_('🍦 Lista de espera: ' + (provincia ? provincia + ' — ' : '') + email, html, email);
 }
 
 function avisarMayorista_(d) {
@@ -190,9 +195,16 @@ function doPost(e) {
     // --- Público ---
     if (accion === 'save_suscriptor') {
       if (!emailValido_(data.email)) return jsonOut({ ok: false, error: 'email inválido' });
-      var hojaS = getOrCreateSheet(ss, 'Suscriptores', ['Email', 'Fecha']);
-      hojaS.appendRow([limpiar_(data.email), limpiar_(data.fecha)]);
-      avisarSuscriptor_(limpiar_(data.email), limpiar_(data.fecha));
+      var hojaS = getOrCreateSheet(ss, 'Suscriptores', ['Email', 'Fecha', 'Provincia', 'Comentario']);
+      // La hoja existía desde antes con solo Email y Fecha: las columnas
+      // nuevas van al final para no desalinear las filas viejas.
+      if (!hojaS.getRange(1, 3).getValue()) {
+        hojaS.getRange(1, 3, 1, 2).setValues([['Provincia', 'Comentario']]).setFontWeight('bold');
+      }
+      var provincia  = textoSeguro_(data.provincia).slice(0, 60);
+      var comentario = textoSeguro_(data.comentario).slice(0, 300);
+      hojaS.appendRow([limpiar_(data.email), limpiar_(data.fecha), provincia, comentario]);
+      avisarSuscriptor_(limpiar_(data.email), limpiar_(data.fecha), provincia, comentario);
       return jsonOut({ ok: true });
     }
 
@@ -293,8 +305,8 @@ function doGet(e) {
 function leerSuscriptores_(ss) {
   var sheet = ss.getSheetByName('Suscriptores');
   if (!sheet || sheet.getLastRow() <= 1) return [];
-  return sheet.getRange(2, 1, sheet.getLastRow() - 1, 2).getValues()
-    .map(function(r) { return { email: r[0], fecha: r[1] }; });
+  return sheet.getRange(2, 1, sheet.getLastRow() - 1, 4).getValues()
+    .map(function(r) { return { email: r[0], fecha: r[1], provincia: r[2], comentario: r[3] }; });
 }
 
 function leerMayoristas_(ss) {
@@ -312,6 +324,13 @@ function leerMayoristas_(ss) {
 function limpiar_(v) {
   if (v == null) return '';
   return String(v).slice(0, MAX_CAMPO);
+}
+
+// Texto libre que escribe cualquiera desde la web. Si empieza con = + - @
+// la planilla lo tomaría como fórmula: el apóstrofe lo fuerza a texto.
+function textoSeguro_(v) {
+  var s = limpiar_(v).trim();
+  return /^[=+\-@]/.test(s) ? "'" + s : s;
 }
 
 function emailValido_(v) {

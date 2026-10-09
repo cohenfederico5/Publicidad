@@ -288,6 +288,12 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   .suscripcion-success { font-family:'Oswald',sans-serif; font-size:0.72rem; letter-spacing:2px; text-transform:uppercase; color:var(--brown); margin-top:16px; display:none; }
   .suscripcion-success.visible { display:block; }
   .suscripcion-form input.field-error { border-color:var(--red) !important; }
+  .espera-campo { display:block; width:100%; max-width:480px; margin:0 auto 12px; padding:14px 20px; border:3px solid var(--brown); font-family:'Lora',serif; font-size:0.95rem; background:var(--white); color:var(--brown); outline:none; box-sizing:border-box; }
+  select.espera-campo { cursor:pointer; }
+  select.espera-campo:invalid { color:rgba(107,58,31,0.6); }
+  textarea.espera-campo { resize:vertical; min-height:72px; line-height:1.5; }
+  textarea.espera-campo::placeholder { color:var(--brown-mid); opacity:0.6; }
+  .espera-campo.field-error { border-color:var(--red) !important; }
 
   /* BLOG */
   #blog { background:var(--white); padding:100px 40px; }
@@ -887,6 +893,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <div class="reveal" style="margin-top:56px; max-width:480px; margin-left:auto; margin-right:auto;">
     <span class="section-label" style="margin-bottom:20px;font-size:0.85rem;letter-spacing:4px;display:block;">Próximamente en todo el país</span>
     <p style="font-size:1rem; color:var(--brown-mid); line-height:1.8; margin-bottom:20px;">Por ahora entregamos <strong style="color:var(--brown);">solo en CABA y GBA</strong>. ¿Estás en otra provincia? Dejanos tu email y te avisamos antes que nadie cuando lleguemos.</p>
+    <select id="suscProvincia" class="espera-campo" required aria-label="Tu provincia">
+      <option value="" disabled selected>Elegí tu provincia</option>
+      <option>Buenos Aires (interior)</option><option>Catamarca</option><option>Chaco</option><option>Chubut</option><option>Córdoba</option><option>Corrientes</option><option>Entre Ríos</option><option>Formosa</option><option>Jujuy</option><option>La Pampa</option><option>La Rioja</option><option>Mendoza</option><option>Misiones</option><option>Neuquén</option><option>Río Negro</option><option>Salta</option><option>San Juan</option><option>San Luis</option><option>Santa Cruz</option><option>Santa Fe</option><option>Santiago del Estero</option><option>Tierra del Fuego</option><option>Tucumán</option>
+    </select>
+    <textarea id="suscComentario" class="espera-campo" maxlength="300" placeholder="Comentario (opcional) — tu ciudad, cómo se llama tu perro, lo que quieras contarnos…"></textarea>
     <div class="suscripcion-form">
       <input type="email" id="suscEmail" placeholder="tucorreo@gmail.com">
       <button type="button" id="btnSuscribirse">Anotarme</button>
@@ -1158,6 +1169,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     const input = document.getElementById('suscEmail');
     const success = document.getElementById('suscSuccess');
     const btn = document.getElementById('btnSuscribirse');
+    const provincia = document.getElementById('suscProvincia');
+    const comentario = document.getElementById('suscComentario');
+    if (!provincia.value) {
+      provincia.classList.add('field-error');
+      provincia.focus();
+      return;
+    }
     if (!input.value || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(input.value)) {
       input.classList.add('field-error');
       input.focus();
@@ -1166,16 +1184,21 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     input.classList.remove('field-error');
     fetch(APPS_SCRIPT_URL, {
       method: 'POST', mode: 'no-cors',
-      body: JSON.stringify({ action: 'save_suscriptor', email: input.value.trim(), fecha: new Date().toISOString() })
+      body: JSON.stringify({ action: 'save_suscriptor', email: input.value.trim(), provincia: provincia.value, comentario: comentario.value.trim(), fecha: new Date().toISOString() })
     });
     input.disabled = true;
+    provincia.disabled = true;
+    comentario.disabled = true;
     btn.disabled = true;
     btn.textContent = '¡Listo!';
     success.classList.add('visible');
-    dataLayer.push({ event: 'newsletter_subscribe' });
+    dataLayer.push({ event: 'newsletter_subscribe', provincia: provincia.value });
     fbq('track', 'Lead');
   });
   document.getElementById('suscEmail').addEventListener('input', function() {
+    this.classList.remove('field-error');
+  });
+  document.getElementById('suscProvincia').addEventListener('change', function() {
     this.classList.remove('field-error');
   });
 
