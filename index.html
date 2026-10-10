@@ -219,7 +219,10 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   #suscripcion .section-label { color:var(--red-dark); font-size:0.9rem; }
   #suscripcion .section-title { color:var(--brown); margin:0 auto 16px; }
   .suscripcion-desc { font-size:1rem; color:var(--brown-mid); max-width:560px; margin:0 auto 40px; line-height:1.8; position:relative; z-index:1; }
-  .suscripcion-zona { display:inline-block; background:var(--brown); color:var(--cream); font-family:'Oswald',sans-serif; font-size:0.95rem; font-weight:700; letter-spacing:3px; text-transform:uppercase; padding:12px 28px; margin:-16px auto 48px; position:relative; z-index:1; }
+  .suscripcion-zona { display:inline-block; background:var(--brown); color:var(--cream); font-family:'Oswald',sans-serif; font-size:0.95rem; font-weight:700; letter-spacing:3px; text-transform:uppercase; padding:12px 28px; position:relative; z-index:1; }
+  .suscripcion-chips { display:flex; flex-wrap:wrap; justify-content:center; align-items:stretch; gap:12px; margin:-16px auto 48px; position:relative; z-index:1; }
+  .suscripcion-precio { display:inline-flex; align-items:center; gap:12px; background:var(--white); color:var(--brown); border:3px solid var(--brown); font-family:'Oswald',sans-serif; font-size:0.95rem; font-weight:700; letter-spacing:3px; text-transform:uppercase; padding:9px 25px; }
+  .suscripcion-precio strong { font-family:'Playfair Display',serif; font-style:italic; font-weight:900; font-size:1.35rem; letter-spacing:0; text-transform:none; color:var(--red); line-height:1; font-variant-numeric:lining-nums; }
   .suscripcion-form { display:flex; max-width:480px; margin:0 auto; position:relative; z-index:1; }
   .suscripcion-form input { flex:1; padding:16px 20px; border:3px solid var(--brown); border-right:none; font-family:'Lora',serif; font-size:0.95rem; background:var(--white); color:var(--brown); outline:none; }
   .suscripcion-form input::placeholder { color:var(--brown-mid); opacity:0.6; }
@@ -241,6 +244,10 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   .plan-card-format-icon { font-size:2rem; }
   .plan-card-format-text strong { font-family:'Oswald',sans-serif; font-size:1rem; letter-spacing:1px; text-transform:uppercase; color:var(--brown); display:block; text-align:center; }
   .plan-card-format-text span { font-size:0.85rem; color:var(--brown-mid); }
+  .plan-card-precio { display:flex; flex-direction:column; align-items:center; gap:2px; margin-top:12px; }
+  .plan-card-precio s { font-family:'Oswald',sans-serif; font-size:0.95rem; letter-spacing:1px; color:var(--brown-mid); opacity:0.75; text-decoration-color:var(--red); text-decoration-thickness:2px; }
+  .plan-card-precio strong { font-family:'Playfair Display',serif; font-style:italic; font-weight:900; font-size:2.3rem; color:var(--brown); line-height:1; font-variant-numeric:lining-nums; }
+  .plan-card-precio span { font-family:'Oswald',sans-serif; font-size:0.62rem; letter-spacing:2px; text-transform:uppercase; color:var(--brown-mid); margin-top:4px; }
   .plan-card-includes { list-style:none; display:flex; flex-direction:column; gap:10px; margin-bottom:20px; flex:1; }
   .plan-card-includes li { display:flex; align-items:flex-start; gap:10px; font-size:0.88rem; color:var(--text); line-height:1.4; text-align:left; }
   .plan-card-includes li::before { content:'✦'; color:var(--red); font-size:0.7rem; flex-shrink:0; min-width:12px; text-align:center; margin-top:2px; }
@@ -724,7 +731,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <span class="section-label reveal">★ El plan</span>
   <h2 class="section-title reveal">Un mimo <em>cada mes</em></h2>
   <p class="suscripcion-desc reveal">Recibí Fresquito's en tu puerta todos los meses. Sin complicaciones, sin quedarte sin stock.</p>
-  <div class="suscripcion-zona reveal">📍 Entregas solo en CABA y GBA</div>
+  <div class="suscripcion-chips reveal">
+    <div class="suscripcion-zona">📍 Entregas solo en CABA y GBA</div>
+    <div class="suscripcion-precio">Precio por pote 360cc <strong>$11.000</strong></div>
+  </div>
 
   <div class="plan-cards-grid reveal">
 
@@ -738,6 +748,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <div class="plan-card-format">
           <div class="plan-card-format-text">
             <strong>4 potes de 360cc</strong>
+            <div class="plan-card-precio">
+              <s>$44.000</s>
+              <strong>$39.600</strong>
+              <span>por mes</span>
+            </div>
           </div>
         </div>
         <ul class="plan-card-includes">
@@ -764,6 +779,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <div class="plan-card-format">
           <div class="plan-card-format-text">
             <strong>8 potes de 360cc</strong>
+            <div class="plan-card-precio">
+              <s>$88.000</s>
+              <strong>$74.800</strong>
+              <span>por mes</span>
+            </div>
           </div>
         </div>
         <ul class="plan-card-includes">
@@ -789,6 +809,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <div class="plan-card-format">
           <div class="plan-card-format-text">
             <strong>12 potes de 360cc</strong>
+            <div class="plan-card-precio">
+              <s>$132.000</s>
+              <strong>$105.600</strong>
+              <span>por mes</span>
+            </div>
           </div>
         </div>
         <ul class="plan-card-includes">
