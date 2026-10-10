@@ -116,6 +116,13 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     color:var(--brown-mid); margin-top:10px; padding-top:10px; border-top:1px solid var(--cream-dark); }
   .pills { display:flex; gap:10px; flex-wrap:wrap; margin-top:28px; }
   .pill { font-family:'Oswald',sans-serif; font-size:0.7rem; letter-spacing:2px; text-transform:uppercase; background:var(--cream-dark); color:var(--brown); padding:8px 16px; border-left:3px solid var(--red); }
+  .nosotros-fotos .pills { display:grid; grid-template-columns:repeat(2,max-content); justify-content:center; margin-top:4px; }
+  .vet-consulta { margin-top:14px; padding-top:16px; border-top:1px solid var(--cream-dark); }
+  .vet-consulta-text { font-family:'Lora',serif; font-size:0.92rem; color:var(--text); line-height:1.6; margin:0 0 14px; }
+  .vet-consulta-text strong { color:var(--brown); }
+  .vet-consulta-btn { display:inline-flex; align-items:center; gap:10px; font-family:'Oswald',sans-serif; font-size:0.78rem; letter-spacing:2px; text-transform:uppercase; font-weight:700; padding:13px 24px; background:var(--brown); color:var(--cream); text-decoration:none; transition:background 0.2s; clip-path:polygon(6px 0%,100% 0%,calc(100% - 6px) 100%,0% 100%); }
+  .vet-consulta-btn:hover { background:var(--brown-mid); }
+  .vet-consulta-nota { font-family:'Lora',serif; font-style:italic; font-size:0.76rem; color:var(--brown-mid); line-height:1.5; margin-top:12px; }
 
   #nuestros-helados { background:var(--cream-dark); text-align:center; padding:100px 40px; }
   #nuestros-helados .section-label { color:var(--red); }
@@ -403,6 +410,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     .nav-logo span { display:none; }
     .nav-links a { font-size:0.65rem; letter-spacing:1px; }
     .nav-links { gap:14px; }
+    .vet-consulta-btn { letter-spacing:1px; padding:13px 18px; white-space:nowrap; }
   }
 
   /* ── WHATSAPP FLOTANTE ── */
@@ -480,6 +488,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <div class="nosotros-foto-bottom">
         <img src="perro lamiendo helado 2.png" alt="Labrador disfrutando un Fresquito's en el jardín">
       </div>
+      <div class="pills">
+        <span class="pill">Receta Veterinaria</span>
+        <span class="pill">Nutritivo</span>
+        <span class="pill">Ingredientes Naturales</span>
+        <span class="pill">Con Amor 🐾</span>
+      </div>
     </div>
     <div class="reveal" style="transition-delay:0.15s">
       <span class="section-label">★ Quiénes somos</span>
@@ -496,12 +510,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           Diplomado en Etología Clínica y Nutrición — UCASAL
         </div>
         <div class="vet-card-mp">Matrícula Profesional 10.033</div>
-      </div>
-      <div class="pills">
-        <span class="pill">Receta Veterinaria</span>
-        <span class="pill">Nutritivo</span>
-        <span class="pill">Ingredientes Naturales</span>
-        <span class="pill">Con Amor 🐾</span>
+        <div class="vet-consulta">
+          <p class="vet-consulta-text">¿Tenés una consulta técnica sobre Fresquito's? <strong>Escribile al Dr. Baltazar Nuozzi.</strong></p>
+          <a href="https://wa.me/5491154763480?text=Hola%20Balta%21%20Tengo%20una%20consulta%20sobre%20Fresquito%27s%0AMi%20consulta%3A%20" class="vet-consulta-btn" id="vetConsultaCta" target="_blank" rel="noopener noreferrer">💬 Consultá al veterinario</a>
+          <div class="vet-consulta-nota">Consultas técnicas sobre el producto. No reemplaza la consulta clínica de tu perro.</div>
+        </div>
       </div>
     </div>
   </div>
@@ -1296,11 +1309,17 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   });
 
   // WhatsApp clicks (todos los links wa.me)
-  document.querySelectorAll('a[href*="wa.me"]').forEach(function(link) {
+  document.querySelectorAll('a[href*="wa.me"]:not(#vetConsultaCta)').forEach(function(link) {
     link.addEventListener('click', function() {
       dataLayer.push({ event: 'whatsapp_click' });
       fbq('track', 'Contact');
     });
+  });
+
+  // Consulta al veterinario: evento propio, no cuenta como contacto de venta
+  var vetWa = document.getElementById('vetConsultaCta');
+  if (vetWa) vetWa.addEventListener('click', function() {
+    dataLayer.push({ event: 'vet_consulta_click' });
   });
 
   // Hero WhatsApp CTA tracking
