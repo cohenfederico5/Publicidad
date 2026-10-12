@@ -243,6 +243,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   .plan-ribbon-wrap { position:absolute; inset:0; overflow:hidden; pointer-events:none; z-index:2; }
   .plan-ribbon { position:absolute; top:18px; right:-50px; width:170px; transform:rotate(45deg); background:var(--red); color:var(--cream); text-align:center; font-family:'Oswald',sans-serif; font-weight:700; font-size:0.95rem; letter-spacing:2px; text-transform:uppercase; padding:5px 0; box-shadow:0 3px 8px rgba(61,31,10,0.25); }
   .plan-card-header { background:var(--cream-dark); padding:18px 28px 14px; border-bottom:1px solid rgba(232,197,71,0.2); }
+  .planes-recurrencia { font-family:'Lora',serif; font-style:italic; font-size:1rem; color:var(--brown-mid); margin:-16px auto 0; position:relative; z-index:1; }
   .plan-card-tag { font-family:'Oswald',sans-serif; font-size:0.62rem; letter-spacing:3px; text-transform:uppercase; color:var(--red); margin-bottom:0; margin-top:8px; }
   .plan-card-name { font-family:'Playfair Display',serif; font-size:1.6rem; font-weight:900; font-style:italic; color:var(--brown); line-height:1.1; }
   .plan-card-body { padding:16px 28px 20px; flex:1; display:flex; flex-direction:column; }
@@ -440,7 +441,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <li><a href="#nosotros">Nosotros</a></li>
     <li><a href="#nuestros-helados">Sabores</a></li>
     <li><a href="#calculadora">Calculadora</a></li>
-    <li><a href="#suscripcion">Suscripción</a></li>
+    <li><a href="#suscripcion">Planes</a></li>
     <li><a href="#mayoristas">Mayoristas</a></li>
     <li><a href="#puntos-de-venta">¿Dónde encontrarnos?</a></li>
     <li><a href="#faq">FAQ</a></li>
@@ -747,9 +748,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </section>
 
 <section id="suscripcion">
-  <span class="section-label reveal">★ El plan</span>
-  <h2 class="section-title reveal">Un mimo <em>cada mes</em></h2>
-  <p class="suscripcion-desc reveal">Recibí Fresquito's en tu puerta todos los meses. Sin complicaciones, sin quedarte sin stock.</p>
+  <span class="section-label reveal">★ Los planes</span>
+  <h2 class="section-title reveal">Un mimo <em>a su medida</em></h2>
+  <p class="suscripcion-desc reveal">Elegí tu pack y recibilo en tu puerta.</p>
   <div class="suscripcion-chips reveal">
     <div class="suscripcion-zona">📍 Entregas solo en CABA y GBA</div>
     <div class="suscripcion-precio">Precio por pote 360cc <strong>$11.000</strong></div>
@@ -760,8 +761,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div class="plan-card">
       <div class="plan-ribbon-wrap"><div class="plan-ribbon">10% OFF</div></div>
       <div class="plan-card-header">
-        <div class="plan-card-name">Suscripción<br>Fresquito's</div>
-        <div class="plan-card-tag">Plan mensual</div>
+        <div class="plan-card-name">Pack<br>Fresquito's</div>
       </div>
       <div class="plan-card-body">
         <div class="plan-card-format">
@@ -769,21 +769,17 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             <strong>4 potes de 360cc</strong>
             <div class="plan-card-precio">
               <s>$44.000</s>
-              <strong>$39.600</strong>
-              <span>por mes</span>
-            </div>
+              <strong>$39.600</strong>            </div>
           </div>
         </div>
         <ul class="plan-card-includes">
           <li>Elegís el sabor o combinalos</li>
-          <li>Entrega a domicilio (con costo)</li>
-          <li>Podés pausar o cancelar cuando quieras</li>
-        </ul>
+          <li>Entrega a domicilio (con costo)</li>        </ul>
         <div class="plan-card-flavors">
           <span class="plan-flavor-tag plan-flavor-carne">Carne</span>
           <span class="plan-flavor-tag plan-flavor-pollo">Pollo</span>
         </div>
-        <a href="https://wa.me/5491161931536?text=Hola%21%20Quisiera%20suscribirme%20al%20plan%20de%204%20potes%20%F0%9F%90%BE%0AMi%20barrio%2Flocalidad%20es%3A%20" class="plan-card-cta" target="_blank" rel="noopener noreferrer">Quiero este plan</a>
+        <a href="https://wa.me/5491161931536?text=Hola%21%20Quisiera%20pedir%20el%20pack%20de%204%20potes%20%F0%9F%90%BE%0AMi%20barrio%2Flocalidad%20es%3A%20" class="plan-card-cta" target="_blank" rel="noopener noreferrer">Quiero este plan</a>
       </div>
     </div>
 
@@ -791,8 +787,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <div class="plan-badge">★ El más elegido</div>
       <div class="plan-ribbon-wrap"><div class="plan-ribbon">15% OFF</div></div>
       <div class="plan-card-header">
-        <div class="plan-card-name">Suscripción<br>Fresquito's</div>
-        <div class="plan-card-tag">Plan mensual</div>
+        <div class="plan-card-name">Pack<br>Fresquito's</div>
       </div>
       <div class="plan-card-body">
         <div class="plan-card-format">
@@ -800,29 +795,24 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             <strong>8 potes de 360cc</strong>
             <div class="plan-card-precio">
               <s>$88.000</s>
-              <strong>$74.800</strong>
-              <span>por mes</span>
-            </div>
+              <strong>$74.800</strong>            </div>
           </div>
         </div>
         <ul class="plan-card-includes">
           <li>Elegís el sabor o combinalos</li>
-          <li>Entrega a domicilio (parcialmente bonificado)</li>
-          <li>Podés pausar o cancelar cuando quieras</li>
-        </ul>
+          <li>Entrega a domicilio (parcialmente bonificado)</li>        </ul>
         <div class="plan-card-flavors">
           <span class="plan-flavor-tag plan-flavor-carne">Carne</span>
           <span class="plan-flavor-tag plan-flavor-pollo">Pollo</span>
         </div>
-        <a href="https://wa.me/5491161931536?text=Hola%21%20Quisiera%20suscribirme%20al%20plan%20de%208%20potes%20%F0%9F%90%BE%0AMi%20barrio%2Flocalidad%20es%3A%20" class="plan-card-cta plan-card-cta-destacado" target="_blank" rel="noopener noreferrer">Quiero este plan</a>
+        <a href="https://wa.me/5491161931536?text=Hola%21%20Quisiera%20pedir%20el%20pack%20de%208%20potes%20%F0%9F%90%BE%0AMi%20barrio%2Flocalidad%20es%3A%20" class="plan-card-cta plan-card-cta-destacado" target="_blank" rel="noopener noreferrer">Quiero este plan</a>
       </div>
     </div>
 
     <div class="plan-card">
       <div class="plan-ribbon-wrap"><div class="plan-ribbon">20% OFF</div></div>
       <div class="plan-card-header">
-        <div class="plan-card-name">Suscripción<br>Fresquito's</div>
-        <div class="plan-card-tag">Plan mensual</div>
+        <div class="plan-card-name">Pack<br>Fresquito's</div>
       </div>
       <div class="plan-card-body">
         <div class="plan-card-format">
@@ -830,25 +820,23 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             <strong>12 potes de 360cc</strong>
             <div class="plan-card-precio">
               <s>$132.000</s>
-              <strong>$105.600</strong>
-              <span>por mes</span>
-            </div>
+              <strong>$105.600</strong>            </div>
           </div>
         </div>
         <ul class="plan-card-includes">
           <li>Elegís el sabor o combinalos</li>
-          <li>Entrega a domicilio (bonificado)</li>
-          <li>Podés pausar o cancelar cuando quieras</li>
-        </ul>
+          <li>Entrega a domicilio (bonificado)</li>        </ul>
         <div class="plan-card-flavors">
           <span class="plan-flavor-tag plan-flavor-carne">Carne</span>
           <span class="plan-flavor-tag plan-flavor-pollo">Pollo</span>
         </div>
-        <a href="https://wa.me/5491161931536?text=Hola%21%20Quisiera%20suscribirme%20al%20plan%20de%2012%20potes%20%F0%9F%90%BE%0AMi%20barrio%2Flocalidad%20es%3A%20" class="plan-card-cta" target="_blank" rel="noopener noreferrer">Quiero este plan</a>
+        <a href="https://wa.me/5491161931536?text=Hola%21%20Quisiera%20pedir%20el%20pack%20de%2012%20potes%20%F0%9F%90%BE%0AMi%20barrio%2Flocalidad%20es%3A%20" class="plan-card-cta" target="_blank" rel="noopener noreferrer">Quiero este plan</a>
       </div>
     </div>
 
   </div>
+
+  <p class="planes-recurrencia reveal">¿Lo querés todos los meses? Avisanos y te lo agendamos.</p>
 
 </section>
 
@@ -990,7 +978,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <div class="footer-logo">Fresquito's</div>
   <div class="footer-tagline">Helado Premium Para Perros</div>
   <div class="footer-links">
-    <a href="#nosotros">Nosotros</a><a href="#nuestros-helados">Sabores</a><a href="#calculadora">Calculadora</a><a href="#suscripcion">Suscripción</a><a href="#mayoristas">Mayoristas</a><a href="#puntos-de-venta">¿Dónde encontrarnos?</a><a href="#faq">FAQ</a><a href="#contacto">Contacto</a>
+    <a href="#nosotros">Nosotros</a><a href="#nuestros-helados">Sabores</a><a href="#calculadora">Calculadora</a><a href="#suscripcion">Planes</a><a href="#mayoristas">Mayoristas</a><a href="#puntos-de-venta">¿Dónde encontrarnos?</a><a href="#faq">FAQ</a><a href="#contacto">Contacto</a>
   </div>
   <div class="footer-copy">© 2026 Fresquito's · Helado Premium Para Perros · Argentina · www.fresquitos.com.ar · <a href="/privacidad.html" style="color:inherit;opacity:0.6;text-decoration:none;">Política de Privacidad</a></div>
 </footer>
